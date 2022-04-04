@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="boardst.sql">
+	<select id="GetTotalCount" resultType="int">
+		select count(*) from board_st
+	<!-- 
+		<if test="whatColumn =='name'">
+			where name like #{keyword}
+		</if>
+		<if test="whatColumn == 'contents'">
+			where contents like #{keyword}
+		</if>
+	-->
+	</select>
+	<select id="GetAllBoard" resultType="boardst.model.BSTBean">
+		select * from board_st
+		<!-- 
+		<if test="whatColumn =='name'">
+			where name like #{keyword}
+		</if>
+		<if test="whatColumn == 'contents'">
+			where contents like #{keyword}
+		</if>
+		 -->
+		 order by num desc
+	</select>
+	<select id="GetBoardByNum" resultType="boardst.model.BSTBean">
+		select * from board_st where num=#{num}
+	</select>
+	<select id="GetBoardReplyByNum" resultType="boardst.model.BSTReplyBean">
+		select * from boardreply_st where pnum=#{num}
+	</select>
+	<insert id="InsertReply">
+		insert into boardreply_st values(bstrep_seq.nextval,#{pnum},#{teachid},#{content},null,sysdate)
+	</insert>
+	<update id="UpdateCheck">
+		update board_st set st_check='AR' where num=#{num}
+	</update>
+	<insert id="InsertBoard">
+		insert into board_st values(bst_seq.nextval,#{stuid},#{subject},#{teacher},#{title},#{content},#{image},'BR',sysdate)
+	</insert>
+	<update id="UpdateBoard">
+		update board_st set subject=#{subject}, teacher=#{teacher}, title=#{title}, content=#{content} where num=#{num}
+	</update>
+	<update id="UpdateReply">
+		update boardreply_st set content=#{content} where num=#{num}
+	</update>
+	<delete id="DeleteBoard">
+		delete board_st where num=#{num}
+	</delete>
+	<delete id="DeleteReply">
+		delete boardreply_st where num=#{num}
+	</delete>
+	<update id="UpdateCheck_Delete">
+		update board_st set st_check='BR' where num=#{num} 
+	</update>
+</mapper>
