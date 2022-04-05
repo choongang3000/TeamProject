@@ -30,7 +30,8 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
-	<filter>
+	<!-- 한글설정 -->
+		<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>
 			org.springframework.web.filter.CharacterEncodingFilter
@@ -46,8 +47,24 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/*</url-pattern>		
 	</filter-mapping>
+	
+	<!-- 게시판 작업 -->
+	<servlet>
+		<servlet-name>boards</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/bs-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>boards</servlet-name>
+		<url-pattern>*.bs</url-pattern>
+	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>boardst</servlet-name>
@@ -64,4 +81,67 @@
 		<url-pattern>*.bst</url-pattern>
 	</servlet-mapping>
 	
+	<!-- 관리자 페이지 -->
+	<servlet>
+		<servlet-name>admin</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/admin-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>admin</servlet-name>
+		<url-pattern>*.ad</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 선생님 페이지 -->
+	<servlet>
+		<servlet-name>teacher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/teacher-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>teacher</servlet-name>
+		<url-pattern>*.tc</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 학생 페이지 -->
+	<servlet>
+		<servlet-name>student</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/student-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>student</servlet-name>
+		<url-pattern>*.stu</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 로그인 페이지 -->
+	<servlet>
+		<servlet-name>login</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/login-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>login</servlet-name>
+		<url-pattern>*.log</url-pattern>
+	</servlet-mapping>
 </web-app>

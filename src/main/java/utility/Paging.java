@@ -8,7 +8,7 @@ public class Paging {
 	private int pageSize = 0 ; //한 페이지에 보여줄 건수
 	private int beginRow = 0 ; //현재 페이지의 시작 행
 	private int endRow = 0 ; //현재 페이지의 끝 행
-	private int pageCount = 3 ; // 한 화면에 보여줄 페이지 링크 수 (페이지 갯수)=> 레코드 갯수 아님 
+	private int pageCount = 5 ; // 한 화면에 보여줄 페이지 링크 수 (페이지 갯수)=> 레코드 갯수 아님 
 	private int beginPage = 0 ; //페이징 처리 시작 페이지 번호
 	private int endPage = 0 ; //페이징 처리 끝 페이지 번호
 	private int offset = 0 ; // pageNumber가 선택되었을때 건너뛰는 data(레코드)의 갯수 => pageNumber=3이고 pageSize=2이면 앞의 4개의 data를 건너뛰므로 offset=4가 된다. 
@@ -188,7 +188,7 @@ public class Paging {
 		this.pageNumber = Integer.parseInt( _pageNumber ) ; 
 
 		if( _pageSize == null || _pageSize.equals("null") || _pageSize.equals("") ){
-			_pageSize = "2" ; // 한 페이지에 보여줄 레코드 갯수
+			_pageSize = "10" ; // 한 페이지에 보여줄 레코드 갯수
 		}		
 		this.pageSize = Integer.parseInt( _pageSize ) ;
 		

@@ -2,5 +2,11 @@
     pageEncoding="UTF-8"%>
 
 <%
-	response.sendRedirect("list.bst");
+//response.sendRedirect("list.bs");
 %>
+
+<a href="list.stu">학생list로 이동</a><br>
+<a href="list.tc">선생님list로 이동</a><br>
+<a href="list.ad">관리자list로 이동</a><br>
+<a href="list.bs">수강후기 게시판으로 이동</a><br>
+<a href="login.log">로그인화면으로 이동</a><br>

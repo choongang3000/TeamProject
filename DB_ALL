@@ -1,0 +1,121 @@
+--회원 테이블
+drop sequence acc_seq;
+create sequence acc_seq 
+start with 1 
+increment by 1 
+nocache;
+
+drop table accounts cascade constraints;
+create table accounts(
+	num number primary key,
+	name varchar2(15) not null,
+	type varchar2(10) not null,
+	id varchar2(12) not null unique,
+	pw varchar2(12) not null,
+	rrn1 number not null,
+	rrn2 number not null,
+	email varchar2(25) not null,
+	phone1 number,
+	phone2 number,
+	phone3 number,
+	addr varchar2(100),
+	joindate date default sysdate
+);
+
+insert into accounts values(acc_seq.nextval, '관리자', 'admin', 'admin', '1234', '111', '111', 'admin@gmail.com', '111', '1111', '1111', '경기도 고양시 일산동구 마두1동',default); 
+insert into accounts values(acc_seq.nextval, '선생님이름', 'teacher', 'teacher', '1234', '111', '111', 'teacher@gmail.com', '111', '1111', '1111', '경기도 고양시 일산동구 마두1동',default); 
+insert into accounts values(acc_seq.nextval, '학생이름', 'student', 'student', '1234', '111', '111', 'student@gmail.com', '111', '1111', '1111', '경기도 고양시 일산동구 마두1동',default); 
+
+--과목 테이블
+drop sequence sub_seq;
+create sequence sub_seq
+start with 1
+increment by 1
+nocache;
+
+drop table subjects cascade constraints;
+create table subjects(
+	num number not null primary key,
+	name varchar2(30) not null
+);
+
+insert into subjects values(sub_seq.nextval, '과목내용1');
+insert into subjects values(sub_seq.nextval, '과목내용2');
+
+--강사 테이블(변경가능있음)
+drop sequence tch_seq;
+create sequence tch_seq
+start with 1
+increment by 1
+nocache;
+
+drop table teachers cascade constraints;
+create table teachers(
+	num number not null primary key,
+	name varchar2(15) not null,
+	t_image varchar2(20),
+	subject varchar2(30) not null,
+	visa varchar2(10), -- 강사 비자코드
+  	tterm date not null,-- 강사 계약기간
+  	twageratio float not null, -- 강사 임금 비율
+  	introduction varchar2(100) --강사소개
+);
+
+insert into teachers values(tch_seq.nextval,'선생님이름',null,'과목내용2','visacode','2023-1-1',0.4,'강사 소개글 입니다');
+
+
+--강의 테이블
+drop sequence cos_seq;
+create sequence cos_seq
+start with 1
+increment by 1
+nocache;
+
+drop table courses cascade constraints;
+create table course(
+	num number not null primary key,
+	name varchar2(50) not null,
+	teacher varchar2(15) not null,
+	subject varchar2(30) not null,
+	image varchar(30),
+	video varchar2(30) not null,
+	content varchar2(30) not null, --강의소개
+	price number not null, --강의가격
+	upload_date date default sysdate --업로드날짜
+);
+
+
+
+--주문 테이블
+drop sequence ord_seq;
+create sequence ord_seq 
+start with 1 
+increment by 1 
+nocache ;
+
+DROP TABLE orders CASCADE CONSTRAINTS;
+
+  create table orders(
+  oid number primary key,
+  mid varchar2(10) references members(id) on delete set null,
+  orderdate date default sysdate
+);
+
+
+-- 강의 주문 상세 테이블(?)
+drop sequence cosordd_seq;
+create sequence cosordd_seq 
+start with 1 
+increment by 1 
+nocache ;
+
+
+drop table cosord_details purge ;
+create table cosord_details(
+  odid number primary key,
+  oid number references orders(oid) on delete cascade,
+  pnum number references products(num) on delete set null
+); 
+
+
+=================================================================
