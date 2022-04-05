@@ -38,6 +38,7 @@ boardst/boardst_detail<br>
 		        }
 		 	});
 	}
+	
 </script>
 
 <center>

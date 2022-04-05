@@ -1,8 +1,10 @@
 package boardst.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import boardst.model.BSTBean;
 import boardst.model.BSTDao;
 
 @Controller
@@ -22,14 +25,29 @@ public class BSTDeleteController {
 	@Autowired
 	private BSTDao bstdao;
 	
+	@Autowired
+	ServletContext servletContext;
+	
 	@RequestMapping(value=command)
 	public String doAction(@RequestParam(value="num", required=true) int num,
 							@RequestParam(value="pageNumber", required=true) String pageNumber,
 							HttpServletRequest request,
 							HttpServletResponse response) {
 		
+		String uploadPath = servletContext.getRealPath("/resources");
+		
 		response.setContentType("text/html;charset=UTF-8");
 		
+		BSTBean bstbean =bstdao.getBoardByNum(num);
+		
+		if(bstbean.getImage() != null || !bstbean.getImage().equals("")) {
+			File dir = new File(uploadPath,bstbean.getImage());
+			
+			if(dir.exists()) {
+				dir.delete();
+			}
+		}
+
 		int cnt = bstdao.deleteBoard(num);
 		
 		if(cnt>0) {

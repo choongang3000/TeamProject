@@ -30,7 +30,7 @@ public class BSTFileDownloadController {
 							HttpServletResponse response) {
 		
 		try {
-			response.setContentType("text/html;charset=UTF-8");
+//			response.setContentType("text/html;charset=UTF-8");
 			
 			String uploadPath = servletContext.getRealPath("/resources");
 			String path = uploadPath + "\\" + FileName;
@@ -41,14 +41,14 @@ public class BSTFileDownloadController {
 //			if(header.contains("Chrome")) {} 사용 브라우저가 크롬일 경우
 			
 			String FileName_enc = new String(FileName.getBytes("UTF-8"),"ISO-8859-1");// 한글깨짐 처리
-			if(FileName.equals(FileName_enc) == false) {
-				System.out.println(FileName);
-				System.out.println(FileName_enc);
-				System.out.println("문제 생김");
-				PrintWriter out = response.getWriter();
-				out.print("<script>alert('파일 이름 오류 발생.  파일이름을 적절히 설정해 주세요')</script>");
-				return;
-			}
+//			if(FileName.equals(FileName_enc) == false) {
+//				System.out.println(FileName);
+//				System.out.println(FileName_enc);
+//				System.out.println("문제 생김");
+//				PrintWriter out = response.getWriter();
+//				out.print("<script>alert('파일 이름 오류 발생.  파일이름을 적절히 설정해 주세요')</script>");
+//				return;
+//			}
 			
 			response.setHeader("Content-Disposition", "attachment;filename=" + FileName_enc.substring(37,FileName_enc.length())); // 다운로드 되거나 로컬에 저장되는 용도로 쓰이는지를 알려주는 헤더
 	    	

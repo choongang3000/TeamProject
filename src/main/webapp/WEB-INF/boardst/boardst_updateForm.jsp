@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="../common/common.jsp" %>
 <%@ include file="top.jsp" %>
 boardst/boardst_updateForm.jsp<br>
 &nbsp;
 <center>
-	<form action="update.bst" method="post">
+	<form action="update.bst" method="post"  enctype="multipart/form-data">
 	<input type="hidden" name="pageNumber" value="${pageNumber }">
 	<input type="hidden" name="num" value="${board.num }">
 	<table border=1 class="table table-striped" style="width:60%">
@@ -31,6 +32,16 @@ boardst/boardst_updateForm.jsp<br>
 				<div class="form-floating">
 				  <textarea class="form-control" id="floatingTextarea" style="height: 300px; width:100%; resize: none;" name="content">${board.content }</textarea>
 				  <label for="floatingTextarea">수정할 질문 내용</label>
+				  <br>
+					<p>
+						<input class="form-control" type="file" name="upload">
+					</p>
+					<p>
+					&nbsp;기존 파일 : 
+					<c:set var="name_length" value="${fn:length(board.image)}"/>
+					<c:set var="fileName" value="${fn:substring(board.image,37,name_length)}"/>
+					${fileName }
+					</p>
 				</div>
 			</td>
 		</tr>
