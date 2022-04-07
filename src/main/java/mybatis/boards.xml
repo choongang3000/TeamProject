@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace = "boards.model.BS">
+ 
+ 	<select id="GetArticleCount" resultType="int">
+		select count(*) from boards
+		<if test="whatColumn == 'writer'">
+			where writer like #{keyword}
+		</if>
+		<if test="whatColumn =='subject'">
+			where subject like #{keyword}
+		</if>
+	</select>
+
+	<select id="GetArticles" resultType="boards.model.BSBean">
+		select num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, image 
+		from (select rownum as rank, num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, image
+		from (select num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, image 
+		from boards)
+		<if test="whatColumn == 'writer'">
+			where writer like #{keyword}
+		</if>
+		<if test="whatColumn =='subject'">
+			where subject like #{keyword}
+		</if>
+		order by ref desc, re_step asc)
+	</select>
+	
+	<insert id="InsertBS">
+ 		insert into boards(num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, image)
+ 		values(boards_seq.nextval,#{writer},#{email},#{subject},#{passwd},#{reg_date},#{readcount},boards_seq.currval,0,0,#{content},#{image})
+ 	</insert>
+	<!-- 
+	<insert id="InsertArticle">
+		insert into boards(num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, ip, image)
+		values(boards_seq.nextval,#{writer},#{email},#{subject},#{passwd},#{reg_date},#{readcount},board_seq.currval,0,0,#{content},#{ip},#{image})
+	</insert>
+	 -->
+	<select id="GetArticle" resultType="boards.model.BSBean">
+		select * from boards where num=#{num}
+	</select>
+	
+	<update id="AddReadCount">
+		update boards set readcount = readcount+1 where num=#{num}
+	</update>
+	
+	<select id="GetBoardPassword" resultType="String">
+		select passwd from boards where num=#{num}
+	</select>
+	
+	<update id="UpdateArticle">
+		update boards set writer=#{writer}, email=#{email}, subject=#{subject}, content=#{content} where num=#{num}
+	</update>
+	
+	<delete id="DeleteArticle">
+		delete boards where num=#{num}
+	</delete>
+	
+	<update id="ReplyArticle1">
+		update boards set re_step = re_step+1 where ref=#{ref} and re_step>#{re_step}
+		<!-- update boards set re_step = re_step+1 where ref = #{ref} and re_step > #{re_step} -->
+	</update>
+
+	<insert id="ReplyArticle2">
+		insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image) 
+		values(boards_seq.nextval,#{writer},#{email},#{subject},#{passwd},#{reg_date},#{ref},#{re_step}+1,#{re_level}+1,#{content},#{image})
+	</insert>
+	
+ </mapper>

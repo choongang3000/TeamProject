@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace ="admin.model.Sub">
+ 
+ 	<select id="SubjectAll" resultType="admin.model.SubBean">
+ 		select * from subjects order by subnum
+ 	</select>
+ 	
+ 	<insert id="InsertSubject">
+ 		insert into subjects(subnum, subname)
+ 		values(sub_seq.nextval, #{subname})
+ 	</insert>
+ 	
+ 	<select id="SelectSubject" resultType="admin.model.SubBean">
+ 		select * from subjects where subnum=#{subnum}
+ 	</select>
+ 	
+ 	<update id="UpdateSubject">
+ 		update subjects set subname=#{subname} where subnum=#{subnum}
+ 	</update>
+ 	
+ 	<delete id="DeleteSubject">
+ 		delete from subjects where subnum=#{subnum}
+ 	</delete>
+ </mapper>
