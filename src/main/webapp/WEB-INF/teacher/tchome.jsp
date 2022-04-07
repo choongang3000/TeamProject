@@ -3,9 +3,12 @@
 <%@ include file="../common/common.jsp" %>
 <%@ include file="../admin/adtop.jsp" %>
 	<center>
-    <table>
+    <table style="width:70%">
     	<tr>
     		<td align=right><input type="button" value="선생님 계정 생성" class="btn btn-primary btn-sm" onClick="location.href='insert.tc'"><br></td>
+    	</tr>
+    	<tr>
+    		<td height=15px></td>
     	</tr>
     	<tr>
     		<td align=right>
