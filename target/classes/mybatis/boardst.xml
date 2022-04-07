@@ -43,7 +43,8 @@
 		insert into board_st values(bst_seq.nextval,#{stuid},#{subject},#{teacher},#{title},#{content},#{image},'BR',sysdate)
 	</insert>
 	<update id="UpdateBoard">
-		update board_st set subject=#{subject}, teacher=#{teacher}, title=#{title}, content=#{content}, image=#{image} where num=#{num}
+		update board_st set subject=#{subject}, teacher=#{teacher}, title=#{title}, content=#{content}, image=#{image, jdbcType=VARCHAR} 
+		where num=#{num}
 	</update>
 	<update id="UpdateReply">
 		update boardreply_st set content=#{content} where num=#{num}

@@ -7,8 +7,8 @@ nocache;
 
 drop table accounts cascade constraints;
 create table accounts(
-	num number primary key,
-	name varchar2(15) not null,
+	anum number primary key,
+	aname varchar2(15) not null,
 	type varchar2(10) not null,
 	id varchar2(12) not null unique,
 	pw varchar2(12) not null,
@@ -23,24 +23,11 @@ create table accounts(
 );
 
 insert into accounts values(acc_seq.nextval, '관리자', 'admin', 'admin', '1234', '111', '111', 'admin@gmail.com', '111', '1111', '1111', '경기도 고양시 일산동구 마두1동',default); 
-insert into accounts values(acc_seq.nextval, '선생님이름', 'teacher', 'teacher', '1234', '111', '111', 'teacher@gmail.com', '111', '1111', '1111', '경기도 고양시 일산동구 마두1동',default); 
+insert into accounts values(acc_seq.nextval, '선생님name', 'teacher', 'teacher', '1234', '111', '111', 'teacher@gmail.com', '111', '1111', '1111', '경기도 고양시 일산동구 마두1동',default); 
+insert into accounts values(acc_seq.nextval, '선생님name1', 'teacher', 'teacher1', '1234', '111', '111', 'teacher1@gmail.com', '111', '1111', '1111', '경기도 고양시 일산동구 마두1동',default); 
+insert into accounts values(acc_seq.nextval, '선생님name2', 'teacher', 'teacher2', '1234', '111', '111', 'teacher2@gmail.com', '111', '1111', '1111', '경기도 고양시 일산동구 마두1동',default); 
 insert into accounts values(acc_seq.nextval, '학생이름', 'student', 'student', '1234', '111', '111', 'student@gmail.com', '111', '1111', '1111', '경기도 고양시 일산동구 마두1동',default); 
 
---과목 테이블
-drop sequence sub_seq;
-create sequence sub_seq
-start with 1
-increment by 1
-nocache;
-
-drop table subjects cascade constraints;
-create table subjects(
-	num number not null primary key,
-	name varchar2(30) not null
-);
-
-insert into subjects values(sub_seq.nextval, '과목내용1');
-insert into subjects values(sub_seq.nextval, '과목내용2');
 
 --강사 테이블(변경가능있음)
 drop sequence tch_seq;
@@ -51,18 +38,39 @@ nocache;
 
 drop table teachers cascade constraints;
 create table teachers(
-	num number not null primary key,
-	name varchar2(15) not null,
-	t_image varchar2(20),
-	subject varchar2(30) not null,
-	visa varchar2(10), -- 강사 비자코드
-  	tterm date not null,-- 강사 계약기간
-  	twageratio float not null, -- 강사 임금 비율
+	tnum number not null primary key,
+	tid varchar2(12) references accounts(id) on delete cascade,
+	tname varchar2(15) not null,
+	t_image varchar2(100),
+	subject varchar2(100) not null,
+	visa varchar2(10), --강사 비자코드
+  	tterm date not null,--강사 계약기간
+  	twageratio float not null, --강사 임금 비율
   	introduction varchar2(100) --강사소개
 );
 
-insert into teachers values(tch_seq.nextval,'선생님이름',null,'과목내용2','visacode','2023-1-1',0.4,'강사 소개글 입니다');
+insert into teachers values(tch_seq.nextval,'teacher','선생님name',null,'빅데이터','visacode','2023-1-1',0.4,'강사 소개글 입니다');
+insert into teachers values(tch_seq.nextval,'teacher1','선생님name1',null,'자바','visacode1','2023-1-1',0.5,'강사 소개글 입니다1');
+insert into teachers values(tch_seq.nextval,'teacher2','선생님name2',null,'C언어','visacode2','2023-1-1',0.6,'강사 소개글 입니다2');
 
+--과목 테이블
+drop sequence sub_seq;
+create sequence sub_seq
+start with 1
+increment by 1
+nocache;
+
+drop table subjects cascade constraints;
+create table subjects(
+	subnum number not null primary key,
+	subname varchar2(30) not null
+);
+
+insert into subjects values(sub_seq.nextval, '빅데이터');
+insert into subjects values(sub_seq.nextval, '자바');
+insert into subjects values(sub_seq.nextval, 'C언어');
+insert into subjects values(sub_seq.nextval, '데이터베이스');
+insert into subjects values(sub_seq.nextval, '기타');
 
 --강의 테이블
 drop sequence cos_seq;

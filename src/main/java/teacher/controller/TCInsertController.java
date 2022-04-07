@@ -1,7 +1,8 @@
-package boardst.controller;
+package teacher.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
@@ -11,51 +12,54 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import boardst.model.BSTBean;
-import boardst.model.BSTDao;
+import teacher.model.TeacherBean;
+import teacher.model.TeacherDao;
 
 @Controller
-public class BSTInsertController {
-
-	private final String command = "insert.bst";
-	private String getPage = "boardst_insertForm";
-	private String gotoPage = "redirect:/list.bst";
+public class TCInsertController {
+	
+	private final String command="insert.tc";
+	private String getPage = "insertTcForm";
+	private String gotoPage = "redirect:/list.tc";
 	
 	@Autowired
-	private BSTDao bstdao;
+	private TeacherDao tdao;
 	
 	@Autowired
 	ServletContext servletContext;
 	
 	@RequestMapping(value=command, method=RequestMethod.GET)
-	public String doAction(@RequestParam(value="pageNumber") String pageNumber,
-							HttpServletRequest request) {
+	public String doAction(HttpServletRequest request) {
 		
-		request.setAttribute("pageNumber", pageNumber);
+		List<String> subArr = tdao.getSubject();
+		
+		request.setAttribute("subArr", subArr);
+		
+		System.out.println(subArr.size());
 		
 		return getPage;
 	}
-	
-	
+
 	@RequestMapping(value=command, method=RequestMethod.POST)
-	public String doAction(BSTBean bstBean,
-							HttpServletRequest request) {
+	public String doAction(TeacherBean tBean) {
 		
+
 		String uploadPath = servletContext.getRealPath("/resources");
-		if( !bstBean.getImage().equals("") ) {
-			MultipartFile multi = bstBean.getUpload();
+		if(!tBean.getT_image().equals("")) {
+			MultipartFile multi = tBean.getUpload();
 			
 			UUID uuid = UUID.randomUUID();
 			String fileName = uuid + "-" + multi.getOriginalFilename();
 			
-			bstBean.setImage(fileName); 
+			tBean.setT_image(fileName); 
+		
+		
+			int cnt1 = tdao.insertAccount(tBean);
+			int cnt2 = tdao.insertTeacher(tBean);
 			
-			int cnt = bstdao.insertBoard(bstBean);
-			
-			if(cnt>0) {
+			if(cnt1>0 && cnt2>0) {
 				File f = new File(uploadPath,fileName);
 				try {
 					multi.transferTo(f);
@@ -68,7 +72,8 @@ public class BSTInsertController {
 			}
 		}
 		else {
-			bstdao.insertBoard(bstBean);
+			tdao.insertAccount(tBean);
+			tdao.insertTeacher(tBean);
 		}
 		
 		return gotoPage;

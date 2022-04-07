@@ -40,7 +40,7 @@ public class BSTDeleteController {
 		
 		BSTBean bstbean =bstdao.getBoardByNum(num);
 		
-		if(bstbean.getImage() != null || !bstbean.getImage().equals("")) {
+		if(!bstbean.getImage().equals("")) {
 			File dir = new File(uploadPath,bstbean.getImage());
 			
 			if(dir.exists()) {

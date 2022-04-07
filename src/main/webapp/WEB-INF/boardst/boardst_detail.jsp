@@ -78,7 +78,6 @@ boardst/boardst_detail<br>
 				<a href="javascript:download('${board.image}');">
 					${fileName }
 				</a>
-				
 			</td>
 		</tr>
 	</table>

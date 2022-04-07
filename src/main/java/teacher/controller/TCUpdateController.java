@@ -1,66 +1,66 @@
-package boardst.controller;
+package teacher.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import boardst.model.BSTBean;
-import boardst.model.BSTDao;
+import teacher.model.TeacherBean;
+import teacher.model.TeacherDao;
 
 @Controller
-public class BSTUpdateController {
-	
-	private final String command = "update.bst";
-	private String getPage = "boardst_updateForm";
+public class TCUpdateController {
+
+	private final String command = "update.tc";
+	private String getPage = "updateTeacherForm";
+	private String gotoPage = "redirect:/detail.tc";
 	private String beforeFile;
-	private String afterFile;
 	
 	@Autowired
-	private BSTDao bstdao;
+	private TeacherDao tdao;
 	
 	@Autowired
 	ServletContext servletContext;
 	
 	@RequestMapping(value=command, method=RequestMethod.GET)
-	public ModelAndView doAction(@RequestParam(value="num", required=true) int num,
-							@RequestParam(value="pageNumber", required=true) String pageNumber) {
+	public String doAction(@RequestParam(value="anum",required=true) int anum,
+							HttpServletRequest request) {
 		
-		BSTBean board = bstdao.getBoardByNum(num);
+		List<String> subArr = tdao.getSubject();
+		TeacherBean tbean = tdao.getTeacherData(anum);
 		
-		beforeFile = board.getImage();
+		beforeFile = tbean.getT_image();
 		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("board",board);
-		mav.addObject("pageNumber",pageNumber);
-		mav.setViewName(getPage);
+		request.setAttribute("tbean", tbean);
+		request.setAttribute("subArr", subArr);
 		
-		return mav;
+		return getPage;
 	}
-	
+
 	@RequestMapping(value=command, method=RequestMethod.POST)
-	public ModelAndView doAction(@RequestParam(value="pageNumber", required=true) String pageNumber,
-									BSTBean bstbean) {
-		
+	public ModelAndView doAction(@ModelAttribute("tbean") TeacherBean tbean) {
+
 		ModelAndView mav = new ModelAndView();
 		
 		String uploadPath = servletContext.getRealPath("/resources");
 
-		if( !bstbean.getImage().equals("") ) {
-			MultipartFile multi = bstbean.getUpload();
+		if( !tbean.getT_image().equals("") ) {
+			MultipartFile multi = tbean.getUpload();
 		
 			if(beforeFile != null) {
 				File dir = new File(uploadPath,beforeFile);
-			
 				if(dir.exists()) {
 					dir.delete();
 				}
@@ -70,12 +70,12 @@ public class BSTUpdateController {
 			UUID uuid = UUID.randomUUID();
 			String fileName = uuid + "-" + multi.getOriginalFilename();
 			
-			bstbean.setImage(fileName);
+			tbean.setT_image(fileName);
 			
-			int cnt = bstdao.updateBoard(bstbean);
+			int cnt1 = tdao.updateAccount(tbean);
+			int cnt2 = tdao.updateTeacher(tbean);
 			
-			
-			if(cnt>0) {
+			if(cnt1>0 && cnt2>0) {
 				File f = new File(uploadPath,fileName);
 				try {
 					multi.transferTo(f);
@@ -86,12 +86,13 @@ public class BSTUpdateController {
 				}
 			}
 			
-			mav.setViewName("redirect:/detail.bst?num="+bstbean.getNum()+"&pageNumber="+pageNumber);
+			mav.setViewName(gotoPage + "?anum=" + tbean.getAnum());
 		}
 		else {
-			bstbean.setImage(beforeFile);
-			bstdao.updateBoard(bstbean);
-			mav.setViewName("redirect:/detail.bst?num="+bstbean.getNum()+"&pageNumber="+pageNumber);
+			tbean.setT_image(beforeFile);
+			tdao.updateAccount(tbean);
+			tdao.updateTeacher(tbean);
+			mav.setViewName(gotoPage + "?anum=" + tbean.getAnum());
 		}
 		
 		return mav;
