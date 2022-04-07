@@ -18,7 +18,7 @@ public class BSDetailController {
 	private BSDao bsdao;
 	
 	@RequestMapping(value=command)
-	public ModelAndView doAction(@RequestParam(value="num", required=true) String num,
+	public ModelAndView doAction(@RequestParam(value="num", required=true) String num ,
 			@RequestParam(value="pageNumber", required=true) String pageNumber) {
 		
 		bsdao.addReadCount(num);

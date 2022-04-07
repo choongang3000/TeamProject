@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ê²Œì‹œíŒ íŒŒì¼ëª… + íŒ¨í‚¤ì§€ëª… í†µì¼
 ì–¸ë”ë°”(_)ì´ìš©ì‹œ ì—ëŸ¬ë‚  ìˆ˜ ìžˆì–´ì„œ ìƒëžµí•¨
 
@@ -410,3 +411,209 @@ where rank between 3 and 7;
 
   
 </div>
+=======
+°Ô½ÃÆÇ ÆÄÀÏ¸í + ÆÐÅ°Áö¸í ÅëÀÏ
+¾ð´õ¹Ù(_)ÀÌ¿ë½Ã ¿¡·¯³¯ ¼ö ÀÖ¾î¼­ »ý·«ÇÔ
+
+ÆÄÀÏ¸í(Å¬·¡½º¸í)
+BSInsertController => ³»²¨
+BTInsertController
+BAInsertController
+BSAInsertController
+BSTInsertController
+
+ÆÐÅ°Áö¸í
+boards => ³»²¨
+boardt
+boarda
+boardsa
+boardst
+
+°Ô½ÃÆÇ : ¾²±â - Spring - °Ô½ÃÆÇ
+
+==============================================================================
+drop table boards;
+
+create table boards( 
+	num number not null primary key,
+	writer varchar2(20) not null,
+	email varchar2(20),
+	subject varchar2(30) not null,
+	passwd varchar2(20) not null,
+	reg_date date not null,
+	readcount int default 0, --Á¶È¸¼ö(int·Îµµ »ç¿ë/number°¡ ¸¹ÀÌ »ç¿ëµÇÁö¸¸ intµµ »ç¿ëÇÒ ¼ö ÀÖÀ½)
+	ref number not null, --´ä±Û¾²±â¿Í °ü·Ã
+	re_step number not null, --´ä±Û¾²±â¿Í °ü·Ã
+	re_level number not null, --´ä±Û¾²±â¿Í °ü·Ã
+	content varchar2(50) not null,
+	image varchar2(30)
+);
+
+drop sequence boards_seq;
+create sequence boards_seq
+  increment by 1
+  start with 1
+  minvalue 1
+  maxvalue 10000
+  nocache;
+  
+
+--¾Æ·¡ sql¹®Àº ´ä±Û±îÁö insert ÇÑ °Í
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
+values(boards_seq.nextval,'a1','a1','a1','1234','2015-1-1',1,0,0,'³»¿ë1',null);
+
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
+values(boards_seq.nextval,'a2','a2','a2','1234','2015-1-1',2,0,0,'³»¿ë2',null);
+
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
+values(boards_seq.nextval,'a21','a21','a21','1234','2015-1-1',2,4,1,'³»¿ë21',null);
+
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
+values(boards_seq.nextval,'a22','a22','a22','1234','2015-1-1',2,1,1,'³»¿ë22',null);
+
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
+values(boards_seq.nextval,'a221','a221','a221','1234','2015-1-1',2,3,2,'³»¿ë221',null);
+
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
+values(boards_seq.nextval,'a222','a222','a222','1234','2015-1-1',2,2,2,'³»¿ë222',null);
+
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
+values(boards_seq.nextval,'a3','a3','a3','1234','2015-1-1',7,0,0,'³»¿ë3',null);
+
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
+values(boards_seq.nextval,'a31','a31','a31','1234','2015-1-1',7,6,1,'³»¿ë31',null);
+
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
+values(boards_seq.nextval,'a311','a311','a311','1234','2015-1-1',7,7,2,'³»¿ë311',null);
+
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
+values(boards_seq.nextval,'a32','a32','a32','1234','2015-1-1',7,2,1,'³»¿ë32',null);
+
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
+values(boards_seq.nextval,'a321','a321','a321','1234','2015-1-1',7,5,2,'³»¿ë321',null);
+
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
+values(boards_seq.nextval,'a322','a322','a322','1234','2015-1-1',7,3,2,'³»¿ë322',null);
+
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
+values(boards_seq.nextval,'a3221','a3221','a3221','1234','2015-1-1',7,4,3,'³»¿ë3221',null);
+
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
+values(boards_seq.nextval,'a33','a33','a33','1234','2015-1-1',7,1,1,'³»¿ë33',null);
+
+commit;
+
+SQL> col subject for a10
+SQL> select rownum,num,subject,ref,re_step,re_level from board;
+
+    ROWNUM        NUM SUBJECT           REF    RE_STEP   RE_LEVEL
+---------- ---------- ---------- ---------- ---------- ----------
+         1          1 a1                  1          0          0
+         2          2 a2                  2          0          0
+         3          3 a21                 2          4          1
+         4          4 a22                 2          1          1
+         5          5 a221                2          3          2
+         6          6 a222                2          2          2
+         7          7 a3                  6          0          0
+         8          8 a31                 6          6          1
+         9          9 a311                6          7          2
+        10         10 a32                 6          2          1
+        11         11 a321                6          5          2
+        12         12 a322                6          3          2
+        13         13 a3221               6          4          3
+        14         14 a33                 6          1          1
+
+
+SQL> select rownum,num,subject,ref,re_step,re_level from board
+  2  order by ref desc, re_step asc;
+
+    ROWNUM        NUM SUBJECT           REF    RE_STEP   RE_LEVEL
+---------- ---------- ---------- ---------- ---------- ----------
+         7          7 a3                  6          0          0
+        14         14 a33                 6          1          1
+        10         10 a32                 6          2          1
+        12         12 a322                6          3          2
+        13         13 a3221               6          4          3
+        11         11 a321                6          5          2
+         8          8 a31                 6          6          1
+         9          9 a311                6          7          2
+         2          2 a2                  2          0          0
+         4          4 a22                 2          1          1
+         6          6 a222                2          2          2
+         5          5 a221                2          3          2
+         3          3 a21                 2          4          1
+         1          1 a1                  1          0          0
+
+14 °³ÀÇ ÇàÀÌ ¼±ÅÃµÇ¾ú½À´Ï´Ù.
+
+[topNÀý »ç¿ëÀÇ 1´Ü°è]
+select num, subject, ref, re_step, re_level	
+from board 
+order by ref desc, re_step asc;
+
+
+      NUM SUBJECT           REF    RE_STEP   RE_LEVEL
+--------- ---------- ---------- ---------- ----------
+        7 a3                  6          0          0
+       14 a33                 6          1          1
+       10 a32                 6          2          1
+       12 a322                6          3          2
+       13 a3221               6          4          3
+       11 a321                6          5          2
+        8 a31                 6          6          1
+        9 a311                6          7          2
+        2 a2                  2          0          0
+        4 a22                 2          1          1
+        6 a222                2          2          2
+        5 a221                2          3          2
+        3 a21                 2          4          1
+        1 a1                  1          0          0
+
+[topNÀý »ç¿ëÀÇ 2´Ü°è]
+select rownum as rank, num, subject, ref, re_step, re_level	
+from (select num, subject, ref, re_step, re_level	
+from board 
+order by ref desc, re_step asc);
+
+
+     RANK        NUM SUBJECT           REF    RE_STEP   RE_LEVEL
+--------- ---------- ---------- ---------- ---------- ----------
+        1          7 a3                  6          0          0
+        2         14 a33                 6          1          1
+        3         10 a32                 6          2          1
+        4         12 a322                6          3          2
+        5         13 a3221               6          4          3
+        6         11 a321                6          5          2
+        7          8 a31                 6          6          1
+        8          9 a311                6          7          2
+        9          2 a2                  2          0          0
+       10          4 a22                 2          1          1
+       11          6 a222                2          2          2
+       12          5 a221                2          3          2
+       13          3 a21                 2          4          1
+       14          1 a1                  1          0          0
+
+
+[topNÀý »ç¿ëÀÇ ÃÖÁ¾ 3´Ü°è]
+
+select rank, num, subject, ref, re_step, re_level		        
+from (select rownum as rank, num, subject, ref, re_step, re_level	
+from (select num, subject, ref, re_step, re_level	
+from board 
+order by ref desc, re_step asc)) 
+where rank between 3 and 7;
+		        
+
+   RANK        NUM SUBJECT           REF    RE_STEP   RE_LEVEL
+------- ---------- ---------- ---------- ---------- ----------
+      3         10 a32                 6          2          1
+      4         12 a322                6          3          2
+      5         13 a3221               6          4          3
+      6         11 a321                6          5          2
+      7          8 a31                 6          6          1
+
+
+
+
+
+>>>>>>> refs/remotes/develop/develop
