@@ -21,7 +21,7 @@
     <div class="row g-5">
       <div class="d-block mx-auto mb-6">
         <h4 class="mb-3">강사 정보</h4>
-		<form class="needs-validation" action="update.tc" method="post" enctype="multipart/form-data">
+		<form class="needs-validation" action="tcupdate.ad" method="post" enctype="multipart/form-data">
           <div class="row g-3">	
           
 			<input type="hidden" name="anum" value="${tbean.anum }">

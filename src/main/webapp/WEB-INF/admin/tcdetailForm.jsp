@@ -6,7 +6,7 @@
 <table border=1 class="table table-bordered border-dark" style="width:700px;">
 	<tr>
 		<td colspan=3 align=right class="table-active">
-			<input type="button" value="목록으로" onClick="location.href='list.tc'" class="btn btn-secondary btn-sm">
+			<input type="button" value="목록으로" onClick="location.href='tclist.ad'" class="btn btn-secondary btn-sm">
 		</td>
 	</tr>
 	<tr>
@@ -78,7 +78,7 @@
 	</tr>
 </table>
 <br>
-<input type="button" value="수정" onClick="location.href='update.tc?anum=${tbean.anum}'" class="btn btn-primary">
-<input type="button" value="삭제" onClick="location.href='delete.tc?anum=${tbean.anum}'" class="btn btn-outline-danger">
+<input type="button" value="수정" onClick="location.href='tcupdate.ad?anum=${tbean.anum}'" class="btn btn-primary">
+<input type="button" value="삭제" onClick="location.href='tcdelete.ad?anum=${tbean.anum}'" class="btn btn-outline-danger">
 </center>
 <%@ include file="../admin/adbottom.jsp" %>

@@ -1,20 +1,19 @@
-package teacher.model;
+package admin.model;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import utility.Paging;
 
 @Component("myTeacherDao")
 public class TeacherDao {
 	
-	private String namespace = "teacher.model.TC";
+	private String namespace = "admin.model.TC";
 	
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;

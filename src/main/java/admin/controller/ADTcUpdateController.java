@@ -1,6 +1,7 @@
-package teacher.controller;
+package admin.controller;
 
 import java.io.File;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
@@ -17,15 +18,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import teacher.model.TeacherBean;
-import teacher.model.TeacherDao;
+import admin.model.TeacherBean;
+import admin.model.TeacherDao;
+
 
 @Controller
-public class TCUpdateController {
+public class ADTcUpdateController {
 
-	private final String command = "update.tc";
-	private String getPage = "updateTeacherForm";
-	private String gotoPage = "redirect:/detail.tc";
+	private final String command = "tcupdate.ad";
+	private String getPage = "tcupdateForm";
+	private String gotoPage = "redirect:/tcdetail.ad";
 	private String beforeFile;
 	
 	@Autowired

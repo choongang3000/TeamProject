@@ -1,6 +1,5 @@
-package teacher.model;
+package admin.model;
 
-import java.sql.Timestamp;
 
 import org.springframework.web.multipart.MultipartFile;
 

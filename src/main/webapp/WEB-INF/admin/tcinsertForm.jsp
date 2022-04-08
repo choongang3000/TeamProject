@@ -20,7 +20,7 @@
     
     <div class="row g-5">
       <div class="d-block mx-auto mb-6">
-		<form class="needs-validation" action="insert.tc" method="post" enctype="multipart/form-data">
+		<form class="needs-validation" action="tcinsert.ad" method="post" enctype="multipart/form-data">
           <div class="row g-3">	
           
 			<input type="hidden" name="type" value="teacher">

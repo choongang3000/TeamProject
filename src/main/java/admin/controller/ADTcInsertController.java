@@ -1,6 +1,7 @@
-package teacher.controller;
+package admin.controller;
 
 import java.io.File;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
@@ -14,15 +15,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
-import teacher.model.TeacherBean;
-import teacher.model.TeacherDao;
+import admin.model.TeacherBean;
+import admin.model.TeacherDao;
+
 
 @Controller
-public class TCInsertController {
+public class ADTcInsertController {
 	
-	private final String command="insert.tc";
-	private String getPage = "insertTcForm";
-	private String gotoPage = "redirect:/list.tc";
+	private final String command="tcinsert.ad";
+	private String getPage = "tcinsertForm";
+	private String gotoPage = "redirect:/tclist.ad";
 	
 	@Autowired
 	private TeacherDao tdao;

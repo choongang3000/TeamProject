@@ -1,4 +1,4 @@
-package teacher.controller;
+package admin.controller;
 
 import java.io.File;
 
@@ -9,15 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import boardst.model.BSTBean;
-import teacher.model.TeacherBean;
-import teacher.model.TeacherDao;
+import admin.model.TeacherBean;
+import admin.model.TeacherDao;
 
 @Controller
-public class TCDeleteController {
+public class ADTcDeleteController {
 
-	private final String command = "delete.tc";
-	private String gotoPage = "redirect:/list.tc";
+	private final String command = "tcdelete.ad";
+	private String gotoPage = "redirect:/tclist.ad";
 	
 	@Autowired
 	private TeacherDao tdao;

@@ -1,6 +1,7 @@
-package teacher.controller;
+package admin.controller;
 
 import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.HashMap;
@@ -14,14 +15,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import teacher.model.TeacherBean;
-import teacher.model.TeacherDao;
+import admin.model.TeacherBean;
+import admin.model.TeacherDao;
 import utility.Paging;
 
 @Controller
-public class TCListController {
-	private final String command = "list.tc";
-	private String getPage = "tchome";
+public class ADTcListController {
+	private final String command = "tclist.ad";
+	private String getPage = "tclist";
 	
 	@Autowired
 	private TeacherDao tdao;

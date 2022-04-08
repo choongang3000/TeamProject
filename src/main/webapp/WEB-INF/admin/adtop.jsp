@@ -86,7 +86,7 @@
       <ul class="nav nav-pills">
         <li class="nav-item"><a href="list.ad" class="nav-link active" aria-current="page">Home</a></li>
         <li class="nav-item"><a href="sublist.ad" class="nav-link">과목</a></li>
-        <li class="nav-item"><a href="list.tc" class="nav-link">강사</a></li>
+        <li class="nav-item"><a href="tclist.ad" class="nav-link">강사</a></li>
         <li class="nav-item"><a href="colist.ad" class="nav-link">강의</a></li>
         <li class="nav-item"><a href="#" class="nav-link">주문내역</a></li>
         <li class="nav-item"><a href="#" class="nav-link">자주묻는질문</a></li>
