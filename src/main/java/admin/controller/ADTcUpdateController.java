@@ -53,6 +53,8 @@ public class ADTcUpdateController {
 
 	@RequestMapping(value=command, method=RequestMethod.POST)
 	public ModelAndView doAction(@ModelAttribute("tbean") TeacherBean tbean) {
+		
+		tbean.setAddr(tbean.getAddr_num()+"|"+tbean.getAddr_first()+"|"+tbean.getAddr_last());
 
 		ModelAndView mav = new ModelAndView();
 		

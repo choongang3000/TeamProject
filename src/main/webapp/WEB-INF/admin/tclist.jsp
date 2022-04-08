@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp" %>
-<%@ include file="../admin/adtop.jsp" %>
+<%@ include file="adtop.jsp" %>
 	<center>
-    <table>
+    <table style="width:70%">
     	<tr>
     		<td align=right><input type="button" value="선생님 계정 생성" class="btn btn-primary btn-sm" onClick="location.href='tcinsert.ad'"><br></td>
     	</tr>
@@ -16,7 +16,6 @@
 				  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
 				    테이블 정렬 설정
 				  </a>
-				
 				  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 				    <li>
 					    <form action="tclist.ad" method="post" >
@@ -85,21 +84,6 @@
 		    </td>
 	    </tr>
     </table>
-	</center>    
+	</center>
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-<%@ include file="../admin/adbottom.jsp" %>    
+<%@ include file="adbottom.jsp" %>    

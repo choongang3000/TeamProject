@@ -1,7 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
-<%@ include file="../admin/adtop.jsp" %>
+<%@ include file="adtop.jsp" %>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script> 
+    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+    function sample4_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+ 
+                // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+ 				
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraRoadAddr !== ''){
+                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                }
+                // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+                if(fullRoadAddr !== ''){
+                    fullRoadAddr += extraRoadAddr;
+                }
+ 				
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample4_postcode').value = data.zonecode; //5자리 새우편번호 사용
+                document.getElementById('sample4_roadAddress').value = fullRoadAddr;
+ 				
+                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+            }
+        }).open();
+    }
+</script>
+
+
+
 <style>
 	body{
 		width:60%;
@@ -14,7 +57,6 @@
 <body class="bg-light">
 	<main>
 	<div class="py-5 text-center">
-      <img class="d-block mx-auto mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
       <h2>강사 계정 생성</h2>
     </div>
     
@@ -110,18 +152,37 @@
                 </div>
               </div>
             </div>
-            
-            <div class="col-12">
+            <!-- &nbsp;&nbsp; -->
+            <div class="col-4">
               <label for="addr" class="form-label">주소</label>
               <div class="input-group has-validation">
+                <input type="text" class="form-control" id="sample4_postcode" name="addr_num" placeholder="우편번호">
+				&nbsp;&nbsp;
+				<input type="button" class="btn btn-secondary" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
+				<span id="guide" style="color:#999"></span>
                 <!-- <span class="input-group-text">@</span> -->
-                <input type="text" name="addr" class="form-control" value="${tbean.addr }">
-	            <div class="invalid-feedback">
+                <div class="invalid-feedback">
 	               주소를 작성해주세요.
 	            </div>
               </div>
             </div>
-            
+             
+            <div class="col-8">
+            	<label for="addr_first" class="form-label"> <br></label>
+              <div class="input-group has-validation">
+                <!-- <span class="input-group-text">@</span> -->
+              	<input type="text" class="form-control" id="sample4_roadAddress" name="addr_first" placeholder="도로명주소">   
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="input-group has-validation">
+                <!-- <span class="input-group-text">@</span> -->
+              	<input type="text" class="form-control" name="addr_last" placeholder="나머지 주소 작성">   
+              </div>
+            </div>
+			
+
             <div class="col-12">
               <label for="upload" class="form-label">강사 사진</label>
               <div class="input-group has-validation">
@@ -212,7 +273,7 @@
       <li class="list-inline-item"><a href="#">Support</a></li>
     </ul>
   </footer>
-<%@ include file="../admin/adbottom.jsp" %>
+<%@ include file="adbottom.jsp" %>
 
 
 

@@ -47,7 +47,8 @@ public class ADTcInsertController {
 	@RequestMapping(value=command, method=RequestMethod.POST)
 	public String doAction(TeacherBean tBean) {
 		
-
+		tBean.setAddr(tBean.getAddr_num()+"|"+tBean.getAddr_first()+"|"+tBean.getAddr_last());
+		
 		String uploadPath = servletContext.getRealPath("/resources");
 		if(!tBean.getT_image().equals("")) {
 			MultipartFile multi = tBean.getUpload();

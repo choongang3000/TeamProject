@@ -19,6 +19,9 @@ public class TeacherBean {
 	private String addr;
 	private String joindate;
 	
+	private String addr_num;
+	private String addr_first;
+	private String addr_last;	
 	
 	private int tnum;
 	private String tid;
@@ -31,6 +34,32 @@ public class TeacherBean {
 	private String introduction;
 	
 	private MultipartFile upload;
+	
+	
+
+	public String getAddr_num() {
+		return addr_num;
+	}
+
+	public void setAddr_num(String addr_num) {
+		this.addr_num = addr_num;
+	}
+
+	public String getAddr_first() {
+		return addr_first;
+	}
+
+	public void setAddr_first(String addr_first) {
+		this.addr_first = addr_first;
+	}
+
+	public String getAddr_last() {
+		return addr_last;
+	}
+
+	public void setAddr_last(String addr_last) {
+		this.addr_last = addr_last;
+	}
 
 	public MultipartFile getUpload() {
 		return upload;

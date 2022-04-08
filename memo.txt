@@ -18,7 +18,7 @@ create table accounts(
 	phone1 number,
 	phone2 number,
 	phone3 number,
-	addr varchar2(100),
+	addr varchar2(200),
 	joindate date default sysdate
 );
 
