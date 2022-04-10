@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace ="admin.model.TC">
+ 	<select id="GetTeacherCount" resultType="int">
+ 		select count(*)
+		from accounts,teachers where id=tid
+ 		<if test="whatColumn == 'subject' and ascdesc == null">
+ 			and subject like #{keyword}
+ 		</if>
+ 		<if test="whatColumn == 'tname' and ascdesc == null">
+ 			and tname like #{keyword}
+ 		</if>
+ 		<if test="whatColumn == 'id' and ascdesc == null">
+ 			and id like #{keyword}
+ 		</if>
+ 		<if test="whatColumn == 'email' and ascdesc == null">
+ 			and email like #{keyword}
+ 		</if>
+ 	</select>
+ 	<select id="GetAllTeacher" resultType="admin.model.TeacherBean">
+ 		select anum,tnum,aname,tname,id,tid,pw,rrn1,rrn2,email,phone1,phone2,phone3,addr,joindate,t_image,subject,visa,tterm,twageratio,introduction
+		from accounts,teachers where id=tid
+		<if test="whatColumn == 'subject' and ascdesc == null">
+ 			and subject like #{keyword}
+ 		</if>
+ 		<if test="whatColumn == 'tname' and ascdesc == null">
+ 			and tname like #{keyword}
+ 		</if>
+ 		<if test="whatColumn == 'id' and ascdesc == null">
+ 			and id like #{keyword}
+ 		</if>
+ 		<if test="whatColumn == 'email' and ascdesc == null">
+ 			and email like #{keyword}
+ 		</if>
+ 		<if test="ascdesc == 'asc' and whatColumn == 'tname'">
+ 			order by tname
+ 		</if>
+ 		<if test="ascdesc == 'asc' and whatColumn == 'id'">
+ 			order by id
+ 		</if>
+ 		<if test="ascdesc == 'asc' and whatColumn == 'tterm'">
+ 			order by tterm
+ 		</if>
+ 		<if test="ascdesc == 'desc' and whatColumn == 'tname'">
+ 			order by tname desc
+ 		</if>
+ 		<if test="ascdesc == 'desc' and whatColumn == 'id'">
+ 			order by id desc
+ 		</if>
+ 		<if test="ascdesc == 'desc' and whatColumn == 'tterm'">
+ 			order by tterm desc
+ 		</if>
+ 		<if test="ascdesc == null">
+ 			order by anum desc
+ 		</if>
+ 	</select>
+ 	<select id="GetSubject" resultType="String">
+ 		select subname from subjects order by subname
+ 	</select>
+ 	<insert id="InsertAccount">
+ 		insert into accounts 
+		values(acc_seq.nextval, #{aname}, #{type}, #{id}, #{pw}, #{rrn1}, #{rrn2}, #{email}, #{phone1}, #{phone2}, #{phone3}, #{addr}, default)
+ 	</insert>
+ 	<insert id="InsertTeacher">
+ 		insert into teachers 
+ 		values(tch_seq.nextval, #{id}, #{aname}, #{t_image,jdbcType=VARCHAR}, #{subject}, #{visa}, #{tterm}, #{twageratio}, #{introduction})
+ 	</insert>
+ 	<select id="GetTeacherData" resultType="admin.model.TeacherBean">
+ 		select anum,tnum,aname,tname,type,id,tid,pw,rrn1,rrn2,email,phone1,phone2,phone3,addr,joindate,t_image,subject,visa,tterm,twageratio,introduction
+		from accounts,teachers where id=tid and anum=#{anum}
+ 	</select>
+ 	<update id="UpdateAccount">
+		update accounts set aname=#{aname}, email=#{email}, phone1=#{phone1}, phone2=#{phone2}, phone3=#{phone3}, addr=#{addr} where anum=#{anum}
+ 	</update>
+ 	<update id="UpdateTeacher">
+ 		update teachers set tname=#{aname}, t_image=#{t_image,jdbcType=VARCHAR}, subject=#{subject}, tterm=#{tterm}, introduction=#{introduction}, twageratio=#{twageratio}, visa=#{visa} where tnum=#{tnum}
+ 	</update>
+ 	<delete id="DeleteAccount">
+ 		delete accounts where anum=#{anum} 
+ 	</delete>
+ 	<delete id="DeleteTeacher">
+ 		delete teachers where tnum=#{tnum}
+ 	</delete>
+ </mapper>
