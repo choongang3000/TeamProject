@@ -80,19 +80,19 @@ increment by 1
 nocache;
 
 drop table courses cascade constraints;
-create table course(
-	num number not null primary key,
-	name varchar2(50) not null,
-	teacher varchar2(15) not null,
-	subject varchar2(30) not null,
-	image varchar(30),
-	video varchar2(30) not null,
-	content varchar2(30) not null, --강의소개
-	price number not null, --강의가격
-	upload_date date default sysdate --업로드날짜
+create table courses(
+	conum number not null primary key, --강의번호
+	coname varchar2(50) not null, --강의명
+	coteacher varchar2(15) not null, --강의담당선생님
+	cosubject varchar2(30) not null, --강의과목
+	coimage varchar(100), --강의이미지
+	covideo varchar2(100) not null, --강의영상
+	cocontent varchar2(50) not null, --강의소개내용
+	coprice number not null, --강의가격
+	coupload_date date default sysdate --강의업로드날짜
 );
 
-
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date) values(cos_seq.nextval, 'JAVA뽀개기', 'A선생님', 'JAVA', NULL, 'video.jsp', 'JAVA강의입니다', 100000, '2022-04-06');
 
 --주문 테이블
 drop sequence ord_seq;

@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import admin.model.TeacherBean;
 import admin.model.TeacherDao;
-
+	
 @Controller
 public class ADTcDeleteController {
-
+	
 	private final String command = "tcdelete.ad";
 	private String gotoPage = "redirect:/tclist.ad";
 	
 	@Autowired
 	private TeacherDao tdao;
-
+	
 	@Autowired
 	ServletContext servletContext;
 	
@@ -31,7 +31,7 @@ public class ADTcDeleteController {
 		
 		TeacherBean tbean = tdao.getTeacherData(anum);
 		
-		if(!tbean.getT_image().equals("")) {
+		if(tbean.getT_image() != null) {//!tbean.getT_image().equals("")
 			File dir = new File(uploadPath,tbean.getT_image());
 			
 			if(dir.exists()) {

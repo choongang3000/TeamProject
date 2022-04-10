@@ -97,5 +97,20 @@ public class TeacherDao {
 		return cnt;
 	}
 	
+	public boolean check_id(String id) {
+		
+		int result_cnt = -1;
+		
+		result_cnt = sqlSessionTemplate.selectOne(namespace + ".Check_id",id);
+		
+		if(result_cnt>0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+		
+	}
+	
 	
 }

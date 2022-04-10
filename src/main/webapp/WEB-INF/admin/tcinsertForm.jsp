@@ -2,8 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
 <%@ include file="adtop.jsp" %>
+<script src="<%=request.getContextPath()%>/resources/js/jquery.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script> 
+<script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function sample4_execDaumPostcode() {
         new daum.Postcode({
@@ -41,6 +42,95 @@
             }
         }).open();
     }
+    
+
+    var checked = false;
+    var check_res = false;
+
+    $(function(){
+
+    	$("input[name=id]").keydown(function(){
+    		$("#idspan").css("display","none");
+    		checked = false;
+    		check_res = false;
+    	})
+    	
+    	$("input[name=id_check]").click(function(){	
+    		
+    		$.ajax({
+    			url : "check_id.ad",
+    			data : ({
+    				input_id : $("input[name=id]").val(),
+    			}),
+    			success : function(data){
+    				checked = true;
+    				if($.trim(data) == "impossible"){
+    					$("#idspan").html("<font color='red' style='font-size:small'>중복된 ID입니다</font>");
+    					$("#idspan").show();
+    					$("input[name=id]").select();
+    				}
+    				else{
+    					$("#idspan").html("<font color='red' style='font-size:small'>사용 가능한 ID입니다</font>");	
+    					$("#idspan").show();
+    					check_res = true;
+    				}
+    			}
+    			
+    		})//ajax	
+    	})//id_check click */
+    })//ready
+
+    function pw_check(){
+    	
+    	var pw = $("input[name=pw]").val();
+    	
+    	var regexp = /^[a-z0-9]{3,12}$/;
+    	var chk_num =  pw.search(/^[0-9]{3,12}$/);	
+    	var chk_eng =  pw.search(/^[a-z]{3,12}$/);
+    	
+
+    	if(pw.search(regexp) == -1){
+    		alert("3~12자리의 영소문자/숫자를 조합해 주세요");
+    	}
+    	if(chk_num == 0 || chk_eng == 0){
+    		alert("3~12자리의 영소문자/숫자를 조합해 주세요");
+    		return false;
+    	}
+    	
+    }
+
+
+    function repw_check(){
+    	if($("input[name=pw]").val() == $("input[name=repw]").val()){
+    		$("#pwspan").html("<font style='font-size:small'>비밀번호가 일치 합니다</font>");
+    	}
+    	else{
+    		$("#pwspan").html("<font color='red' style='font-size:small'>비밀번호가 일치 하지 않습니다</font>");
+    	}
+    }
+
+    function check(){
+    	
+    	if($("input[name=id]").val() == ""){
+    		alert("ID를 입력해 주세요");
+    		$("input[name=id]").focus();
+    		return false;
+    	}
+    	
+    	if(checked == false){
+    		alert("ID 중복확인을 해주세요");
+    		return false;
+    	}
+    	
+    	if(check_res == false){
+    		alert("중복된 ID 입니다");
+    		$("input[name=id]").select();
+    		return false;
+    	}
+    	
+    }
+    
+    
 </script>
 
 
@@ -75,14 +165,26 @@
               </div>
             </div>
             
-            <div class="col-8">
+            <div class="col-3">
+	            <label for="id" class="form-label"><br></label>
+	              <div class="input-group has-validation">
+	                <!-- <span class="input-group-text">@</span> -->
+	                <input type="button" name="id_check" class="btn btn-secondary" value="아이디 중복 확인">
+	              </div>
+            </div>
+            
+            <div class="col-5">
+            	<label for="id" class="form-label"><br></label>
+	              <div>
+					<span id="idspan" style="font-size:20px; font-weight:bold;"></span>
+	              </div>
             </div>
             
             <div class="col-4">
               <label for="pw" class="form-label">비밀번호*</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
-                <input type="text" name="pw" class="form-control" value="${tbean.pw }">
+                <input type="text" name="pw" class="form-control" onBlur="return pw_check()" value="${tbean.pw }">
               </div>
             </div>
 	
@@ -93,14 +195,18 @@
               <label for="pw_re" class="form-label">비밀번호확인</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
-                <input type="text" name="pw_re" class="form-control">
+                <input type="text" name="repw" onkeyup="repw_check()" class="form-control">
                 <div class="invalid-feedback">
                   비밀번호 확인을 작성해주세요.
                 </div>
               </div>
             </div>
             
-             <div class="col-8">
+            <div class="col-8">
+            	<label for="pw_re" class="form-label"><br></label>
+              <div class="input-group has-validation">
+				<span id="pwspan" style="font-size:20px; font-weight:bold;"></span>
+              </div> 
             </div>
             
              <div class="col-4">
@@ -257,7 +363,7 @@
             <hr class="my-4">
 			
             <button class="w-50 btn btn-secondary btn-mg" type="button" onClick="history.back()">강사 목록으로 돌아가기</button>
-            <button class="w-50 btn btn-primary btn-mg" type="submit">강사계정 생성</button>
+            <button class="w-50 btn btn-primary btn-mg" type="submit" onClick="return check()">강사계정 생성</button>
             
 		</div>
         </form>

@@ -83,4 +83,7 @@
  	<delete id="DeleteTeacher">
  		delete teachers where tnum=#{tnum}
  	</delete>
+ 	<select id="Check_id" resultType="int">
+ 		select count(*) from accounts where id=#{id}
+ 	</select>
  </mapper>
