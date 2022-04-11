@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  <configuration>
+  	
+  	<!-- xml파일 mapper namespace 별칭지정 -->
+	<typeAliases>
+		<typeAlias type="boardt.model.BTBean" alias="BTBean"/>
+	</typeAliases>
+	
+  	<mappers>
+		<mapper resource="mybatis/boards.xml"/>
+		<mapper resource="mybatis/boardt.xml"/>
+		<mapper resource="mybatis/admin.xml"/>
+		<mapper resource="mybatis/student.xml"/>
+		<mapper resource="mybatis/teacher.xml"/>
+		<mapper resource="mybatis/login.xml"/>
+		<mapper resource="mybatis/subject.xml"/>
+		<mapper resource="mybatis/courses.xml"/>
+		<mapper resource="mybatis/user.xml"/>
+		
+	</mappers>
+	
+
+	
+  </configuration>
+  
