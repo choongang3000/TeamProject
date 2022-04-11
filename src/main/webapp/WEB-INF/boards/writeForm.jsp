@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp" %>
 <%@ include file="../admin/adtop.jsp" %>
-    
+   
 <style type="text/css" >
 	body{
 		text-align:center;
@@ -74,3 +74,4 @@
 	</table>
 </form:form>
 <%@ include file="../admin/adbottom.jsp" %> 
+

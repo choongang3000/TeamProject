@@ -39,7 +39,6 @@
                 </div>
               </div>
             </div>
-            
             <!-- 담당선생님 -->
             <div class="col-sm-4">
               <label for="coteacher" class="form-label">담당 선생님</label>

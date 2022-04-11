@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp" %>
 <%@ include file="../admin/adtop.jsp" %>
-
 <style>
 	.err{
 		color:red;
@@ -74,3 +73,4 @@
 </form:form>
 </center>
 <%@ include file="../admin/adbottom.jsp" %> 
+

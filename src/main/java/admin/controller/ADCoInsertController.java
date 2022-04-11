@@ -2,11 +2,13 @@ package admin.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.servlet.ServletContext;
 
@@ -38,13 +40,17 @@ public class ADCoInsertController {
 	
 	@RequestMapping(value=command, method=RequestMethod.GET)
 	public String doAction(HttpServletRequest request) {
+		
 		List<SubBean> sublist = subdao.subjectAll();
 		request.setAttribute("sublist", sublist);
+		
 		return getPage;
 	}
 	
 	@RequestMapping(value=command, method=RequestMethod.POST)
-	public ModelAndView doAction(CoBean cobean,HttpServletRequest request) {
+	public ModelAndView doAction(CoBean cobean,HttpServletRequest request,HttpServletResponse response) {
+		response.setContentType("text/html;charset=UTF-8");
+		
 		ModelAndView mav = new ModelAndView();
 		
 		//날짜
@@ -64,11 +70,16 @@ public class ADCoInsertController {
 			 try {
 				 upimage.transferTo(imagef);
 				 upvideo.transferTo(videof);
+				 
+				//PrintWriter out = response.getWriter();
+				//out.print("<script>alert('강의 등록이 완료되었습니다.')</script>");
+				//out.flush();
 			} catch (IllegalStateException e) {
 				System.out.println("Courses 삽입 오류1");
 			} catch (IOException e) {
 				System.out.println("Courses 삽입 오류2");
 			}
+			 
 			 mav.setViewName(gotoPage);
 		 }
 		 

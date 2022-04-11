@@ -12,6 +12,7 @@
 	
   	<mappers>
 		<mapper resource="mybatis/boards.xml"/>
+		<mapper resource="mybatis/boardst.xml"/>
 		<mapper resource="mybatis/boardt.xml"/>
 		<mapper resource="mybatis/admin.xml"/>
 		<mapper resource="mybatis/student.xml"/>

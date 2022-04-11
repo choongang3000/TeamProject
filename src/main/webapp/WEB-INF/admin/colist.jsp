@@ -61,7 +61,7 @@
     		<td>${list.coimage }</td>
     		<td>${list.covideo }</td>
     		<td>${list.cocontent }</td>
-    		<td><fmt:formatNumber value="${list.coprice }" pattern="###,###"/></td>
+    		<td><fmt:formatNumber value="${list.coprice }" pattern="#,###,###"/></td>
     		<td>
     			<fmt:formatDate value="${list.coupload_date }" pattern="yyyy-MM-dd"/>
     		</td>

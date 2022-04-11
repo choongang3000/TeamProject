@@ -32,4 +32,12 @@ public class CoDao {
 		return cobean;
 	}
 	
+	public void updateCourses(CoBean cobean) {
+		sqlSessionTemplate.update(namespace+".UpdateCourses",cobean);
+	}
+	
+	public void deleteCourses(String conum) {
+		sqlSessionTemplate.delete(namespace+".DeleteCourses",conum);
+	}
+	
 }

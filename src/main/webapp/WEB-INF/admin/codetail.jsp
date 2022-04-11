@@ -3,6 +3,15 @@
 <%@ include file="../common/common.jsp" %>
 <%@ include file="../admin/adtop.jsp" %>
 <!-- colist.jsp<br> -->
+<script>
+	function upd(){
+		location.href="coupdate.ad?conum=${cobean.conum }";
+	}
+	
+	function del(){
+		location.href="codelete.ad?conum=${cobean.conum }";
+	}
+</script>
 <style>
 	body{
 		width:70%;
@@ -16,7 +25,6 @@
 		height:30%;
 	}
 </style>
-
 <center>
 <h2>강의 정보</h2>
 <br>
@@ -50,7 +58,9 @@
 		<td width="150" height="300">강의영상</td>
 		<td colspan="3">
 			<c:if test='${videoName != null }'>
-				<video controls="controls" th:src="<%=request.getContextPath() %>/resources/${videoName}" width="400" autoplay="autoplay"></video>
+				<video loop="loop" muted="muted" controls="controls" src="http://techslides.com/demos/sample-videos/small.mp4" width="400" height="300">&nbsp;</video>
+				<%--<video loop="loop" muted="muted" controls="controls" src="<%=request.getContextPath() %>/resources/${videoName}" width="400">&nbsp;</video> --%>
+				<%-- <video loop="loop" muted="muted" playsinline controls="controls" src="<%=request.getContextPath() %>/resources/${videoName}" width="400" autoplay="autoplay">&nbsp;</video> --%>
 				<%-- <img src="<%=request.getContextPath()/resources/${videoName}"> --%>
 				<br>
 				${videoName}"
@@ -73,8 +83,8 @@
 </table>
 <br>
 <input type="button" value="이전화면" onClick="history.back()">
-<input type="button" value="수정">
-<input type="button" value="삭제">
+<input type="button" value="수정" onClick="upd()">
+<input type="button" value="삭제" onClick="del()">
 </center>
 <br>
 <%@ include file="../admin/adbottom.jsp" %> 
