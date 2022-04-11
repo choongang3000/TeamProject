@@ -14,6 +14,7 @@
 <!-- shlist.jsp <br> -->
 <h2>주문내역 조회</h2>
 <br>    
+
 <table border="0" align="center">
 <tr height="100">
 	<td colspan="6">

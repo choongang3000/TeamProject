@@ -4,6 +4,7 @@
 <%
 //response.sendRedirect("list.bs");
 %>
+
 <center>
 <br><br><br><br><br><br><br><br><br>
 <a href="list.stu">학생list로 이동</a><br>
@@ -11,6 +12,7 @@
 <a href="list.ad">관리자list로 이동</a><br>
 <a href="list.bs">수강후기 게시판으로 이동</a><br>
 <a href="login.log">로그인화면으로 이동</a><br>
-<a href="colist.ad">강의리스트로 이동</a>
-<a href="shlist.stu">학생페이지:결제폼</a>
+<a href="colist.ad">강의리스트로 이동</a><br>
+<a href="shlist.stu">학생페이지:결제폼</a><br>
+<a href="cartlist.stu">학생페이지:장바구니</a><br>
 </center>

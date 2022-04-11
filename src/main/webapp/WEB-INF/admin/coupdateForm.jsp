@@ -17,7 +17,6 @@
 <div class="container">
   <main>
     <div class="py-5 text-center">
-      <img class="d-block mx-auto mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
       <h2>강의 정보 수정</h2>
       <p class="lead">등록된 강의를 수정해주세요.</p>
     </div>
@@ -69,7 +68,13 @@
 			<!-- 강의이미지 => 어떻게 가져올건지? --> 
             <div class="col-12">
               <label for="coimage" class="form-label">강의 이미지 <span class="text-muted">(Optional)</span></label>
-              <input type="file" class="form-control" name="upimage" value="${imageName }">
+			  <c:if test='${imageName != null }'>
+			 	 <br> 기존 강의영상 이름 : ${imageName }
+			  </c:if>
+			  <c:if test='${imageName == null }'>
+				<br> 기존 강의영상 이름 : 기존 영상 없음
+			 </c:if>
+              <input type="file" class="form-control" name="upimage" value="<%=request.getContextPath()%>/resources/${imageName}">
               <div class="invalid-feedback">
                 강의 이미지를 넣어주세요.
               </div>
@@ -78,7 +83,8 @@
             <!-- 강의영상 => 어떻게 가져올건지? -->
             <div class="col-12">
               <label for="covideo" class="form-label">강의 영상<span class="text-muted"></span></label>
-              <input type="file" class="form-control" name="upvideo" value="${videoName }">
+              <br> 기존 강의영상 이름 : ${videoName }
+              <input type="file" class="form-control" name="upvideo" value="<%=request.getContextPath()%>/resources/${videoName}" required>
               <div class="invalid-feedback">
                 강의 영상을 넣어주세요.
               </div>
@@ -96,7 +102,10 @@
 			<!-- 강의가격 -->
             <div class="col-3">
               <label for="coprice" class="form-label">판매가격<span class="text-muted"></span></label>
-              <input type="text" class="form-control" name="coprice" value="${cobean.coprice }">
+              <input type="text" class="form-control" name="coprice" value="${cobean.coprice }" required>
+              <div class="invalid-feedback">
+                강의금액을 입력해주세요.
+              </div>
             </div>
             
             <%--

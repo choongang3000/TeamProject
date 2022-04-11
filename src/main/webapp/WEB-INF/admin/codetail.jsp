@@ -60,10 +60,17 @@
 		<td width="150" height="300">강의영상</td>
 		<td colspan="3">
 			<c:if test='${videoName != null }'>
-				<video loop="loop" muted="muted" controls="controls" src="http://techslides.com/demos/sample-videos/small.mp4" width="400" height="300">&nbsp;</video>
+				<!-- <video loop="loop" muted="muted" controls="controls" src="http://techslides.com/demos/sample-videos/small.mp4" width="400" height="300">&nbsp;</video> -->
 				<%--<video loop="loop" muted="muted" controls="controls" src="<%=request.getContextPath() %>/resources/${videoName}" width="400">&nbsp;</video> --%>
 				<%-- <video loop="loop" muted="muted" playsinline controls="controls" src="<%=request.getContextPath() %>/resources/${videoName}" width="400" autoplay="autoplay">&nbsp;</video> --%>
 				<%-- <img src="<%=request.getContextPath()/resources/${videoName}"> --%>
+				<br>
+				<video
+				    src="<%=request.getContextPath() %>/resources/${videoName}"
+					poster="<%=request.getContextPath()%>/resources/${videoName}"
+					width="500"
+					controls autoplay>
+				</video>
 				<br>
 				${videoName}"
 			</c:if>

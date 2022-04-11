@@ -48,8 +48,9 @@ public class ADCoInsertController {
 	}
 	
 	@RequestMapping(value=command, method=RequestMethod.POST)
-	public ModelAndView doAction(CoBean cobean,HttpServletRequest request,HttpServletResponse response) {
-		response.setContentType("text/html;charset=UTF-8");
+	public ModelAndView doAction(@Valid CoBean cobean, BindingResult result,
+								HttpServletRequest request) {
+
 		
 		ModelAndView mav = new ModelAndView();
 		
@@ -59,21 +60,25 @@ public class ADCoInsertController {
 		
 		//이미지, 영상
 		String uploadPath = servletContext.getRealPath("/resources");
+
 		MultipartFile upimage = cobean.getUpimage();
 		MultipartFile upvideo = cobean.getUpvideo();
 		
+		if(result.hasErrors()) {
+			mav.setViewName(getPage);
+			return mav;
+		}
+		
+		
 		int cnt = codao.insertCourses(cobean);
 		if(cnt > 0) {
-			 File imagef = new File(uploadPath+"\\" + cobean.getCoimage());
-			 File videof = new File(uploadPath+"\\" + cobean.getCovideo());
+			 File imagef = new File(uploadPath+ "\\" + cobean.getCoimage());
+			 File videof = new File(uploadPath+ "\\" + cobean.getCovideo());
 			 
 			 try {
 				 upimage.transferTo(imagef);
 				 upvideo.transferTo(videof);
 				 
-				//PrintWriter out = response.getWriter();
-				//out.print("<script>alert('강의 등록이 완료되었습니다.')</script>");
-				//out.flush();
 			} catch (IllegalStateException e) {
 				System.out.println("Courses 삽입 오류1");
 			} catch (IOException e) {
@@ -81,8 +86,9 @@ public class ADCoInsertController {
 			}
 			 
 			 mav.setViewName(gotoPage);
-		 }
-		 
+		
+		}
+		
 		 else {
 			 mav.setViewName(getPage);
 		 }

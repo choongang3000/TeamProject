@@ -3,12 +3,15 @@ package admin.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import admin.model.CoBean;
 import admin.model.CoDao;
@@ -40,8 +43,18 @@ public class ADCoUpdateController {
 	}
 	
 	@RequestMapping(value=command,method=RequestMethod.POST)
-	public String doAction(CoBean cobean) {
+	public ModelAndView doAction(@Valid CoBean cobean, BindingResult result) {
+		ModelAndView mav = new ModelAndView();
+		
 		codao.updateCourses(cobean);
-		return gotoPage;
+		
+		if(result.hasErrors()) {
+			mav.setViewName(getPage);
+			return mav;
+		}
+		
+		mav.setViewName(gotoPage);
+		return mav;
 	}
+	
 }
