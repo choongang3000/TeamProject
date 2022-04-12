@@ -1,0 +1,49 @@
+package board.CsController;
+
+import java.sql.Timestamp;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import board.Csmodel.boardCsBean;
+import board.Csmodel.boardCsDao;
+
+@Controller
+public class BCsInsertController {
+	
+	private final String command = "insert.bod";
+	private String getPage = "writeForm";
+	private String gotoPage = "redirect:/Cslist.bod";
+	
+	@Autowired
+	private boardCsDao csdao;
+	
+	@RequestMapping(value=command, method=RequestMethod.GET)
+	public String doAction1() {
+		
+		return getPage;
+	}
+	
+	@RequestMapping(value=command, method=RequestMethod.POST)
+	public String doAction(boardCsBean bb, HttpServletRequest request) {
+		Timestamp reg_date = new Timestamp(System.currentTimeMillis());
+		
+		bb.setReg_date(reg_date);
+		
+		String ip = request.getRemoteAddr();
+		bb.setIp(ip);
+		
+		int cnt = csdao.insertArticle(bb);
+		if(cnt>0) {
+			return gotoPage;
+		}
+		else {
+			return getPage;
+		}
+	}
+			
+}

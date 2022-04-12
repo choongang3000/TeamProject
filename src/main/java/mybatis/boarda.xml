@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace = "boarda.model.BABean">
+  	<select id="GetBAListCount" resultType="int">
+		select count(*) from boarda
+		<if test="whatColumn == 'bacategory'">
+			where name like #{keyword}
+		</if>
+		order by banum desc
+	</select>
+  	
+  	<select id="GetBAList" resultType="boarda.model.BABean">
+  		select * from boarda
+  		<if test="whatColumn == 'bacategory'">
+			where name like #{keyword}
+		</if>
+		order by banum desc
+  	</select>
+  	
+  	<select id="GetBA" resultType="boarda.model.BABean">
+  		select * from boarda where banum=#{banum}
+  	</select>
+  	
+  	<insert id="InsertBA">
+  		insert into boarda(banum,bacategory,basubject,bacontent,baimage,bafile)
+  		values(seqba.nextval,#{bacategory},#{basubject},#{bacontent},#{baimage},#{bafile})
+  	</insert>
+
+  	<update id="UpdateBA">
+  		update boarda set basubject=#{basubject},bacontent=#{bacontent},baimage=#{baimage},bafile=#{bafile})
+  	</update>
+  	<delete id="DeleteBA">
+  		delete boarda where banum=#{banum}
+  	</delete>
+  	
+</mapper>

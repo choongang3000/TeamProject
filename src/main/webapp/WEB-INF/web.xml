@@ -178,5 +178,94 @@
 		<url-pattern>*.us</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>member</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/member-servlet.xml</param-value>
+		</init-param>  
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>member</servlet-name>
+		<url-pattern>*.mem</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>boarda</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/ba-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>boarda</servlet-name>
+		<url-pattern>*.ba</url-pattern>
+	</servlet-mapping>
+	<!-- on -->
+	<servlet>
+		<servlet-name>on</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/on-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>on</servlet-name>
+		<url-pattern>*.on</url-pattern>
+	</servlet-mapping>
+	<!-- 강의 -->
+	<servlet>
+		<servlet-name>course</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/cos-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>course</servlet-name>
+		<url-pattern>*.cos</url-pattern>
+	</servlet-mapping>
+	<!-- 선생님 -->
+	<servlet>
+		<servlet-name>teachers</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/te-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>teachers</servlet-name>
+		<url-pattern>*.te</url-pattern>
+	</servlet-mapping>
+	<!-- 회원 -->
+	<servlet>
+		<servlet-name>accounts</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/ac-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>accounts</servlet-name>
+		<url-pattern>*.ac</url-pattern>
+	</servlet-mapping>
 	
 </web-app>

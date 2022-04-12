@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="teachers.model.TEBean">
+	<select id="GetTEListCount" resultType="int">
+		select count(*) from teachers
+	</select>
+
+	<select id="GetTEList" resultType="teachers.model.TEBean">
+  		select * from teachers
+  	</select>
+  	
+  	<select id="GetTE" resultType="teachers.model.TEBean">
+  		select * from teachers where tnum=#{tnum}
+  	</select>
+  	
+  	<insert id="InsertTE">
+  		insert into teachers(tnum,tid,tname,t_image,subject,visa,tterm,twageratio,introduction)
+  		values(tch_seq.nextval,#{tid},#{tname},#{t_image},#{subject},#{visa},#{tterm},#{twageratio},#{introduction})
+  	</insert>
+
+  	<update id="UpdateTE">
+  		update teachers set t_image=#{t_image},subject=#{subject},visa=#{visa},tterm=#{tterm},twageratio=#{twageratio},introduction=#{introduction})
+  	</update>
+  	<delete id="DeleteTE">
+  		delete teachers where tnum=#{tnum}
+  	</delete>
+</mapper>
+
+<!-- order.xml -->
+

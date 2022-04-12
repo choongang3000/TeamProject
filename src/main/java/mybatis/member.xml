@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member.model.Member">
+	<insert id="InsertMember">
+ 		insert into accounts(num,name,type,id,pw,rrn1,rrn2,email,phone1,phone2,phone3,addr,joindate)
+		values(#{acc_seq.nextval},#{name},#{type},#{id},#{pw},#{rrn1},#{rrn2},#{email},#{phone1},#{phone2},#{phone3},#{addr},#{joindate})
+ 	</insert>
+	
+	<select id="GetTotalCount" resultType="int">
+  	select count(*) from accounts
+  	<if test="whatColumn == 'name'">
+  		where name like #{keyword}
+  	</if>
+  	<if test="whatColumn == 'type'">
+  		where type like #{keyword}
+  	</if>
+  	</select>
+  	
+  	<select id="GetMemberList" resultType="MyMember">
+  	select * from accounts
+  	<if test="whatColumn == 'name'">
+  		where name like #{keyword}
+  	</if>
+  	<if test="whatColumn == 'id'">
+  		where id like #{keyword}
+  	</if>
+  	order by name desc
+  	</select>
+  	
+	<select id="SearchId" resultType="MyMember">
+		select * from accounts where id=#{id}
+	</select>
+	
+
+	
+</mapper>
+<!-- member.xml -->
+

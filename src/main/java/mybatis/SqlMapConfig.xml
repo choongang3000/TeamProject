@@ -6,8 +6,13 @@
   <configuration>
   	
   	<!-- xml파일 mapper namespace 별칭지정 -->
+  	<settings>
+		<setting name="cacheEnabled" value="false" /> 
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
 	<typeAliases>
 		<typeAlias type="boardt.model.BTBean" alias="BTBean"/>
+		<typeAlias type="member.model.MemberBean" alias="MyMember"/>
 	</typeAliases>
 	
   	<mappers>
@@ -21,7 +26,12 @@
 		<mapper resource="mybatis/subject.xml"/>
 		<mapper resource="mybatis/courses.xml"/>
 		<mapper resource="mybatis/user.xml"/>
-		
+		<mapper resource="mybatis/member.xml"/>
+		<mapper resource="mybatis/board.xml"/>
+		<mapper resource="mybatis/accounts.xml"/>
+		<mapper resource="mybatis/course.xml"/>
+		<mapper resource="mybatis/boarda.xml"/>
+		<mapper resource="mybatis/teachers.xml"/>
 	</mappers>
 	
 

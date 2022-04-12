@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="course.model.COSBean">
+
+	<select id="GetCOSListCount" resultType="int">
+		select count(*) from courses
+		<if test="whatColumn == 'coname'">
+			where coname like #{keyword}
+		</if>
+		<if test="whatColumn == 'cosubject'">
+			where cosubject like #{keyword}
+		</if>
+		order by conum desc
+	</select>
+  	
+  	<select id="GetCOSList" resultType="course.model.COSBean">
+  		select * from courses
+  		<if test="whatColumn == 'coname'">
+			where coname like #{keyword}
+		</if>
+		<if test="whatColumn == 'cosubject'">
+			where cosubject like #{keyword}
+		</if>
+		order by conum desc
+  	</select>
+  	
+  	<select id="GetCOS" resultType="course.model.COSBean">
+  		select * from courses where conum=#{conum}
+  	</select>
+  	
+  	<insert id="InsertCOS">
+  		insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+  		values(cos_seq.nextval,#{coname},#{coteacher},#{cosubject},#{covideo},#{cocontent},#{coprice},#{coupload_date})
+  	</insert>
+
+  	<update id="UpdateCOS">
+  		update courses set coname=#{coname},coteacher=#{coteacher},cosubject=#{cosubject},covideo=#{covideo},cocontent=#{cocontent},coprice=#{coprice})
+  	</update>
+  	<delete id="DeleteCOS">
+  		delete courses where conum=#{conum}
+  	</delete>
+</mapper>
