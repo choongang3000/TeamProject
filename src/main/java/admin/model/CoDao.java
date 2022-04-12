@@ -32,12 +32,21 @@ public class CoDao {
 		return cobean;
 	}
 	
-	public void updateCourses(CoBean cobean) {
-		sqlSessionTemplate.update(namespace+".UpdateCourses",cobean);
+	public int updateCourses(CoBean cobean) {
+		int cnt = -1;
+		cnt = sqlSessionTemplate.update(namespace+".UpdateCourses",cobean);
+		return cnt;
 	}
 	
-	public void deleteCourses(String conum) {
-		sqlSessionTemplate.delete(namespace+".DeleteCourses",conum);
+	public int deleteCourses(String conum) {
+		int cnt = -1;
+		cnt = sqlSessionTemplate.delete(namespace+".DeleteCourses",conum);
+		return cnt;
+	}
+	
+	public int totalCount(Map<String, String> map) {
+		int count = sqlSessionTemplate.selectOne(namespace+".GetCOSListCount",map);
+		return count;
 	}
 	
 }

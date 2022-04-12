@@ -58,8 +58,18 @@
     		<td><a href="codetail.ad?conum=${list.conum }">${list.coname }</a></td>
     		<td>${list.coteacher }</td>
     		<td>${list.cosubject }</td>
-    		<td>${list.coimage }</td>
-    		<td>${list.covideo }</td>
+    		<td>
+    			<%-- ${list.coimage } --%>
+	    		<c:set var="lenimg" value="${fn:length(list.coimage) }"/>
+	            <c:set var="img" value="${fn:substring(list.coimage,37,lenimg)}"/>
+	            ${fn:substring(list.coimage,37,lenimg)}
+    		</td>
+    		<td>
+    			<%-- ${list.covideo } --%>
+    			<c:set var="lenvid" value="${fn:length(list.covideo) }"/>
+            	<c:set var="vid" value="${fn:substring(list.covideo,37,lenvid)}"/>
+            	<c:out value="${fn:substring(list.covideo,37,lenvid)}"/>
+    		</td>
     		<td>${list.cocontent }</td>
     		<td><fmt:formatNumber value="${list.coprice }" pattern="#,###,###"/></td>
     		<td>

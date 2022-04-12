@@ -8,8 +8,8 @@
 	}
 </script>
 <body>
+	<form method="get" action="payment.stu">
 	<div class="container" style="width: 70%">
-
 		<div class="row">
 			<h1 class="page-header"
 				style="text-align: center; margin-bottom: 50px;">${bean.coname}</h1>
@@ -37,10 +37,10 @@
 			<div class="row">
 				<div class="selected_option" style="text-align: right;"></div>
 				<div style="text-align: center;">
-					<input type="hidden" name="num" value="${bean.conum}" /> <input
-						type="submit" class="btn btn-default" value="주문하기" /> <input
-						type="button" class="btn btn-default" value="상품 목록"
-						onClick="list()" />
+					<input type="hidden" name="num" value="${bean.conum}" /> 
+					<input type="submit" class="btn btn-default" value="주문하기" />
+					<input type="button" calss="btn btn-default" value="장바구니" onClick=""/> 
+					<input type="button" class="btn btn-default" value="상품더보기" onClick="history.back();" />
 				</div>
 			</div>
 			<hr>
@@ -64,4 +64,5 @@
 			</div>
 			</div>
 		</div>
+		</form>
 </body>

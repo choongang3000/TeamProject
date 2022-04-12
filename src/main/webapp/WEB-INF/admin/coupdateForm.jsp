@@ -17,7 +17,6 @@
 <div class="container">
   <main>
     <div class="py-5 text-center">
-      <img class="d-block mx-auto mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
       <h2>강의 정보 수정</h2>
       <p class="lead">등록된 강의를 수정해주세요.</p>
     </div>
@@ -25,7 +24,7 @@
     <div class="row g-5">
       <div class="d-block mx-auto mb-6">
         <h4 class="mb-3">강의 정보</h4>
-        <form class="needs-validation" method="post" action="coupdate.ad" enctype="multipart/form-data">
+        <form:form commandName="CoBean" class="needs-validation" method="post" action="coupdate.ad" enctype="multipart/form-data">
           <div class="row g-3">
             
            	<!-- 강의번호 -->
@@ -66,19 +65,41 @@
               </div>
             </div>
             
-			<!-- 강의이미지 => 어떻게 가져올건지? --> 
+            <!-- 강의이미지 -->
             <div class="col-12">
-              <label for="coimage" class="form-label">강의 이미지 <span class="text-muted">(Optional)</span></label>
-              <input type="file" class="form-control" name="upimage" value="${imageName }">
+              <label for="coimage" class="form-label">강의 이미지 <span class="text-muted">(Optional)</span></label><br>
+              <img src="<%=request.getContextPath() %>/resources/${cobean.coimage}" width="500" height="400"><br>
+              <br> 
+              기존 강의 이미지명 : ${cobean.coimage }
+              	
+                <c:set var="lenimg" value="${fn:length(cobean.coimage) }"/>
+	            <c:set var="img" value="${fn:substring(cobean.coimage,37,lenimg)}"/>
+	            ${fn:substring(cobean.coimage,37,lenimg)}
+	           <br>
+	         
+              <input type="file" class="form-control" name="upimage" value="<%=request.getContextPath()%>/resources/${cobean.coimage}" required>
+              <br>
               <div class="invalid-feedback">
                 강의 이미지를 넣어주세요.
               </div>
             </div>
             
-            <!-- 강의영상 => 어떻게 가져올건지? -->
+            <!-- 강의영상(용량은 어떻게 할건지) -->
             <div class="col-12">
-              <label for="covideo" class="form-label">강의 영상<span class="text-muted"></span></label>
-              <input type="file" class="form-control" name="upvideo" value="${videoName }">
+              <label for="covideo" class="form-label">강의 영상<span class="text-muted"></span></label><br>
+              <video
+				    src="<%=request.getContextPath() %>/resources/${cobean.covideo}"
+					poster="<%=request.getContextPath()%>/resources/${cobean.covideo}"
+					width="500"
+					controls autoplay>
+			  </video>
+              <br> 기존 강의명 : ${cobean.covideo }
+				<c:set var="lenvid" value="${fn:length(cobean.covideo) }"/>
+            	<c:set var="vid" value="${fn:substring(cobean.covideo,37,lenvid)}"/>
+            	<c:out value="${fn:substring(cobean.covideo,37,lenvid)}"/>
+            	<br>
+              <input type="file" class="form-control" name="upvideo" value="<%=request.getContextPath()%>/resources/${cobean.covideo}" required>
+              <br>
               <div class="invalid-feedback">
                 강의 영상을 넣어주세요.
               </div>
@@ -94,55 +115,24 @@
             </div>
 			
 			<!-- 강의가격 -->
-            <div class="col-3">
+            <div class="col-4">
               <label for="coprice" class="form-label">판매가격<span class="text-muted"></span></label>
-              <input type="text" class="form-control" name="coprice" value="${cobean.coprice }">
-            </div>
-            
-            <%--
-			<!-- 업로드날짜(년) -->
-            <div class="col-md-3">
-              <label for="coupload_date" class="form-label">업로드 날짜</label>
-              <select class="form-select" id="state" required>
-                <option value="">연도 선택</option>
-                <option>California</option>
-              </select>
+              <input type="text" class="form-control" name="coprice" value="${cobean.coprice }" required>
               <div class="invalid-feedback">
-                업로드할 날짜(년도)를 선택해주세요.
-              </div>
-            </div>
-            
-            <!-- 업로드날짜(월) -->
-            <div class="col-md-3">
-              <label for="coupload_date" class="form-label"> </label>
-              <select class="form-select" id="state" required>
-                <option value="">월 선택</option>
-                <option>California</option>
-              </select>
-              <div class="invalid-feedback">
-                업로드할 날짜(월)를 선택해주세요.
+                강의금액을 입력해주세요.
               </div>
             </div>
            
-            <!-- 업로드날짜(일) -->
-            <div class="col-md-3">
-              <label for="coupload_date" class="form-label"> </label>
-              <select class="form-select" id="state" required>
-                <option value="">일 선택</option>
-                <option>California</option>
-              </select>
-              <div class="invalid-feedback">
-                업로드할 날짜(일)를 선택해주세요.
-              </div>
-            </div>
-			 --%>
-			 
+           <div class="col-4">
+              <label for="coprice" class="form-label">업로드시간<span class="text-muted"></span></label>
+              <input type="text" class="form-control" name="coupload_date" value="${cobean.coupload_date }" readonly>
+            </div> 
           <hr class="my-4">
 			
           <button class="w-50 btn btn-secondary btn-mg" type="button" onClick="history.back()">강의목록으로 돌아가기</button>
           <button class="w-50 btn btn-primary btn-mg" type="submit">등록된 강의 수정</button>
         </div>
-        </form>
+        </form:form>
       </div>
     </div>
   </main>

@@ -2,13 +2,12 @@ package admin.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.servlet.ServletContext;
 
@@ -30,10 +29,13 @@ public class ADCoInsertController {
 	private final String command = "coinsert.ad";
 	private String getPage = "coinsertForm";
 	private String gotoPage = "redirect:/colist.ad";
+	
 	@Inject
 	private SubDao subdao;
+	
 	@Inject
 	private CoDao codao;
+	
 	@Autowired
 	ServletContext servletContext;
 	
@@ -48,8 +50,8 @@ public class ADCoInsertController {
 	}
 	
 	@RequestMapping(value=command, method=RequestMethod.POST)
-	public ModelAndView doAction(CoBean cobean,HttpServletRequest request,HttpServletResponse response) {
-		response.setContentType("text/html;charset=UTF-8");
+	public ModelAndView doAction(@Valid CoBean cobean, BindingResult result) {
+
 		
 		ModelAndView mav = new ModelAndView();
 		
@@ -59,31 +61,47 @@ public class ADCoInsertController {
 		
 		//이미지, 영상
 		String uploadPath = servletContext.getRealPath("/resources");
+		
+		//유효성검사 에러
+		if(result.hasErrors()) {
+			System.out.println("강의 insert 유효성에러");
+			mav.setViewName(getPage);
+			return mav;
+		}
+		
 		MultipartFile upimage = cobean.getUpimage();
 		MultipartFile upvideo = cobean.getUpvideo();
 		
+		UUID uuid = UUID.randomUUID();
+		String imageName = uuid + "-" + upimage.getOriginalFilename();
+		String videoName = uuid + "-" + upvideo.getOriginalFilename();
+		
+		cobean.setCoimage(imageName);
+		cobean.setCovideo(videoName);
+		
 		int cnt = codao.insertCourses(cobean);
 		if(cnt > 0) {
-			 File imagef = new File(uploadPath+"\\" + cobean.getCoimage());
-			 File videof = new File(uploadPath+"\\" + cobean.getCovideo());
+			 File imagef = new File(uploadPath,imageName);
+			 File videof = new File(uploadPath,videoName);
 			 
 			 try {
 				 upimage.transferTo(imagef);
 				 upvideo.transferTo(videof);
 				 
-				//PrintWriter out = response.getWriter();
-				//out.print("<script>alert('강의 등록이 완료되었습니다.')</script>");
-				//out.flush();
 			} catch (IllegalStateException e) {
 				System.out.println("Courses 삽입 오류1");
 			} catch (IOException e) {
 				System.out.println("Courses 삽입 오류2");
 			}
-			 
+			 System.out.println("강의 insert 성공");
 			 mav.setViewName(gotoPage);
-		 }
-		 
+		
+		} //cnt>0
+		
+		
 		 else {
+			 codao.insertCourses(cobean);
+			 System.out.println("강의 insert 실패");
 			 mav.setViewName(getPage);
 		 }
 		
