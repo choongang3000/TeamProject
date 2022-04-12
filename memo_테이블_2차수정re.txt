@@ -195,18 +195,18 @@ drop sequence ba_seq;
 create sequence ba_seq 
 start with 1 
 increment by 1 
-nocache ;
+nocache;
 
 
 drop table boarda CASCADE CONSTRAINTS;
 create table boarda(
   banum number primary key,
   bacategory varchar2(100) not null,
-  basubject varchar2(200) not null, 
+  basubject varchar2(200) not null,
   bacontent varchar2(300) not null,
   baimage varchar2(30),
-  bafile varchar2(30),
-); 
+  bafile varchar2(30)
+);
 
 insert into boarda values(ba_seq.nextval, '카테1', '질문1', '답변1', null, null);
 

@@ -81,7 +81,7 @@
     
   </head>
   <body>
-    
+
 <div class="container">
   <header class="blog-header py-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
@@ -95,12 +95,13 @@
         <a class="link-secondary" href="#" aria-label="Search">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
         </a>
+        &nbsp;${loginInfo.id }님&nbsp;
         <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
         <c:if test="${accounts == null }">
-        	<a class="btn btn-sm btn-outline-secondary" href="login.ac">로그인</a>
+        	<a class="btn btn-sm btn-outline-secondary" href="loginForm.mem">로그인</a>
         </c:if>
          <c:if test="${accounts != null }">
-        	<a class="btn btn-sm btn-outline-secondary" href="">로그아웃</a>
+        	<a class="btn btn-sm btn-outline-secondary" href="<%=request.getContextPath()%>/logout.jsp">로그아웃</a>
         </c:if>
       </div>
     </div>

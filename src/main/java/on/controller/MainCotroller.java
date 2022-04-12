@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import boarda.model.BADao;
 import course.controller.COSListController;
 import course.model.COSBean;
 import course.model.COSDao;
+import member.model.MemberBean;
 import teachers.controller.TEListController;
 import teachers.model.TEBean;
 import teachers.model.TEDao;
@@ -43,8 +45,11 @@ public class MainCotroller {
          @RequestParam(value="whatColumn", required=false) String whatColumn2,
          @RequestParam(value="keyword", required=false) String keyword2,
          @RequestParam(value="pageNumber", required=false) String pageNumber2,
-         HttpServletRequest request) {
+         HttpServletRequest request,
+         HttpSession session) {
       
+	  MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo"); 
+	   
       Map<String, String> map1=new HashMap<String, String>();
       Map<String, String> map2=new HashMap<String, String>();
       
@@ -74,6 +79,7 @@ public class MainCotroller {
       mav.addObject("pageInfo",pageInfo1);
       mav.addObject("totalCount",totalCount2);
       mav.addObject("pageInfo",pageInfo2);
+      mav.addObject("loginInfo",loginInfo);
       mav.setViewName(getPage);
       
       return mav;
