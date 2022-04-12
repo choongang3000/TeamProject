@@ -81,26 +81,26 @@
 	        <a class="link-secondary" href="#">Subscribe</a>
 	      </div>
 	      <div class="col-4 text-center">
-	        <a class="blog-header-logo text-dark title" href="#">ON강</a>
+	        <a class="blog-header-logo text-dark title" href="home.us"><img src="<%=request.getContextPath() %>/resources/images/온강 로고.png" width="100" height="100"/></a>
 	      </div>
 	      <div class="col-4 d-flex justify-content-end align-items-center">
 	        <a class="link-secondary" href="#" aria-label="Search">
 	          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
 	        </a>
-	        <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+	        <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>&nbsp
+	        <a class="btn btn-sm btn-outline-secondary" href="list.bst">1:1 문의</a>
 	      </div>
 	    </div>
 	  </header>
 	
 	  <div class="nav-scroller py-1 mb-2">
 	    <nav class="nav d-flex justify-content-between">
-	      <a class="p-2 link-secondary top_nav" href="alllist.us">강의</a>
-	      <a class="p-2 link-secondary top_nav" href="gradelist.us">학년</a>
-	      <a class="p-2 link-secondary top_nav" href="sublist.us">과목</a>
-	      <a class="p-2 link-secondary top_nav" href="telist.us">선생님</a>
-	      <a class="p-2 link-secondary top_nav" href="">수강중</a>
-	      <a class="p-2 link-secondary top_nav" href="#">게시판</a>
-	      <a class="p-2 link-secondary top_nav" href="#">마이페이지</a>
+	      <a class="p-2 link-secondary top_nav" href="list.cos">강의 &nbsp<img src="<%=request.getContextPath() %>/resources/images/computer-mouse-solid.svg" width="20" height="20"/></a>
+	      <!-- 강의 jsp는 course폴더에 있음 -->
+	      <a class="p-2 link-secondary top_nav" href="shlist.tc">선생님 &nbsp<img src="<%=request.getContextPath() %>/resources/images/computer-mouse-solid.svg" width="20" height="20"/></a>
+	      <a class="p-2 link-secondary top_nav" href="list.bt">Quiz &nbsp<img src="<%=request.getContextPath() %>/resources/images/quiz-bell.svg" width="20" height="20"/></a>
+	      <a class="p-2 link-secondary top_nav" href="list.ba">FAQ 게시판 &nbsp<img src="<%=request.getContextPath() %>/resources/images/computer-mouse-solid.svg" width="20" height="20"/></a>
+	      <a class="p-2 link-secondary top_nav" href="accounts.ac">마이페이지 &nbsp<img src="<%=request.getContextPath() %>/resources/images/mypage.svg" width="20" height="20"/></a>
 	    </nav>
 	  </div>
 	</div>

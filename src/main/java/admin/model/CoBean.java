@@ -2,9 +2,11 @@ package admin.model;
 
 import java.sql.Timestamp;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 //conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date
+@Component("myCoBean")
 public class CoBean {
 	private int conum;
 	private String coname;
@@ -19,10 +21,10 @@ public class CoBean {
 	private MultipartFile upimage; //coimage
 	private MultipartFile upvideo; //covideo
 	
-	
 	public MultipartFile getUpimage() { //coimage
 		return upimage;
 	}
+	
 	public void setUpimage(MultipartFile upimage) {
 		this.upimage = upimage;
 		coimage = upimage.getOriginalFilename();

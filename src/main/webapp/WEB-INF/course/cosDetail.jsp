@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
-<%@ include file="../fix/ad_top.jsp"%>
+<%@ include file="../user/ustop.jsp"%>
 <script>
 	function list() {
 		location.href = "list.cos?pageNumber=${pageNumber }";
@@ -65,3 +65,4 @@
 			</div>
 		</div>
 </body>
+<%@ include file="../user/usbottom.jsp"%>
