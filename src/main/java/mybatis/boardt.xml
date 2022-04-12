@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="boardt.model.BTBean">
+	<select id="GetTotalCount" resultType="int"><!-- dao에서 파라미터 타입으로 map이 넘어오는데 꼭 받아야하는건 아님(whatColumn과 keyword). 받으면 parameterType="hashmap"로 받아줌 -->
+		select count(*) from boardt
+<!-- 		<if test="whatColumn =='subject'">
+			where subject like #{keyword}
+		</if> -->
+	</select>
+		
+	<select id="GetBoardList" resultType="BTBean">
+		select * from boardt 
+<!-- 		<if test="whatColumn =='subject'">
+			where subject like #{keyword}
+		</if> -->
+		order by num desc
+	</select>
+	
+	<!-- BTInsertController => BTDao => BT.xml -->
+	<insert id="btinsert">
+		insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+ 		values(boardt_seq.nextval,#{subject},#{examfile},#{answer},#{passwd},#{quizimg},#{movingimg})
+ 	</insert>
+	
+	<delete id="btdelete">
+ 		delete from boardt where num=#{num}
+ 	</delete>
+ 	
+ 	<select id="GetNumBoardList" resultType="BTBean">
+		select * from boardt where num=#{num}
+	</select>
+	
+	<update id="btupdate">
+		update boardt set subject=#{subject}, examfile=#{examfile}, answer=#{answer}, passwd=#{passwd}, quizimg=#{quizimg}, movingimg=#{movingimg} where num=#{num}
+	</update>
+	
+	<select id="selectsub" resultType="String">
+		select subname from subjects
+		order by subname
+	</select>
+	
+	<select id="selectanswer" resultType="BTBean">
+		select num,answer from boardt
+		order by num desc
+	
+	</select>
+	
+	<select id="select" resultType="BTBean">
+		 select * from boardt 
+	<if test="subject != null">
+  		 where subject in
+    <foreach item="item" index="index" collection="subject.split(',')" open="(" separator="," close=")">
+    	 #{item}
+    </foreach>
+	</if>
+	order by num desc
+	</select>
+			<!--
+			subject에 엄청 많이 들어가 있을고란 말이지이..ㅠ-ㅠ
+			select * from boardt where subject = upper('java');
+			-->
+ 		<!-- <if test="subject != null and subject !=''"> --><!-- null 또는 "" 공백이 넘어오는 것은 전체조회 필요. null 또는 공백이 아니면 -->
+	
+</mapper>

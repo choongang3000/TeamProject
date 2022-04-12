@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace ="student.model.STU">
+ 	<select id="GetCourseByConum" resultType="admin.model.CoBean">
+ 		select * from courses where conum=#{conum}
+ 	</select>
+ 	<select id="GetAccount_test" resultType="admin.model.TeacherBean">
+ 		select * from accounts where type='student'
+ 	</select>
+ </mapper>
