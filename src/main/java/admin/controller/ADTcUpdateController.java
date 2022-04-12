@@ -91,7 +91,8 @@ public class ADTcUpdateController {
 			}
 			
 			mav.setViewName(gotoPage + "?anum=" + tbean.getAnum());
-		}
+		}//
+		
 		else {
 			tbean.setT_image(beforeFile);
 			tdao.updateAccount(tbean);

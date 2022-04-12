@@ -24,7 +24,7 @@ public class ADCoDeleteController {
 	@RequestMapping(value=command, method=RequestMethod.GET)
 	public String doAction(@RequestParam(value="conum", required=true) String conum) {
 		
-		codao.deleteCourses(conum);
+		int cnt = codao.deleteCourses(conum);
 
 		return getPage;
 	}

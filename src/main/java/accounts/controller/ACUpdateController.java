@@ -46,7 +46,7 @@ public class ACUpdateController {
 		}
 		
 		if(acbean.getPw().equals(ac.getPw())) {
-			acdao.updateac(ac);
+			//acdao.updateac(ac);
 			return "redirect:/accounts.ac";	
 		}
 		else {
