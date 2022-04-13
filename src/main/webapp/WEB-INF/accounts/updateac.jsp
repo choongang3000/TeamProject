@@ -22,7 +22,7 @@
 <form:form commandName="ac"  action="accounts.ac" method="post">
 <input type="hidden" name="anum" value="${ac.anum}">
 	<div class="wrap">
-		<div class=item-order">
+		<div class="item-order">
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<label class="input-group-text" for="inputGroupSelect01">구분</label>

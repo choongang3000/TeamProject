@@ -11,7 +11,7 @@
 	</tr>
 	<tr>
 		<td rowspan=4 width=160>
-			<img src="<%=request.getContextPath() %>/resources/${tbean.t_image}" width=100% height=200>
+			<img src="<%=request.getContextPath() %>/resources/images/${tbean.t_image}" width=100% height=200>
 		</td>
 		<th height=50 valign="middle" class="table-active" style="text-align: center;border-bottom: 1px dotted gray;">이름</th>
 		<td align=center style="text-align: center; border-bottom: 1px dotted gray;">${tbean.aname }</td>

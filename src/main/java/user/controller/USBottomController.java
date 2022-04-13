@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class USBottomController {
+	
 	private final String command = "bottom.us";
 	private String getPage = "uspolicy";
 
@@ -16,4 +17,5 @@ public class USBottomController {
 		
 		return getPage;
 	}
+	
 }

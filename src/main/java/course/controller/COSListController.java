@@ -37,7 +37,6 @@ public class COSListController {
 		Map<String, String> map=new HashMap<String, String>();
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");
-		System.out.println(map);
 		
 		int totalCount=cosdao.totalCount(map);
 		System.out.println("totalCount:"+totalCount);
@@ -51,7 +50,6 @@ public class COSListController {
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("list",list);
 		mav.addObject("totalCount",totalCount);
-		mav.addObject("map",map);
 		mav.addObject("pageInfo",pageInfo);
 		mav.setViewName(getPage);
 		return mav;

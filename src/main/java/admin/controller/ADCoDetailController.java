@@ -1,6 +1,7 @@
 package admin.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +17,7 @@ public class ADCoDetailController {
 	private String getPage = "codetail";
 	
 	@Autowired
+	@Qualifier("myCoDao")
 	private CoDao codao;
 	
 	@RequestMapping(value=command, method=RequestMethod.GET)

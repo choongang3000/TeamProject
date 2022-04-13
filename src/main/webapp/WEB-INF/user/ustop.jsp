@@ -22,7 +22,6 @@
 	<link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
 	<link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
 	<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<meta name="theme-color" content="#7952b3">
 
 	
@@ -88,7 +87,8 @@
 	        <a class="link-secondary" href="#" aria-label="Search">
 	          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
 	        </a>
-	        <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>&nbsp
+	        <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>&nbsp;
+	        <a class="btn btn-sm btn-outline-secondary" href="#">Log out</a>&nbsp;
 	        <a class="btn btn-sm btn-outline-secondary" href="list.bst">1:1 문의</a>
 	      </div>
 	    </div>
@@ -98,11 +98,12 @@
 	    <nav class="nav d-flex justify-content-between">
 	      <a class="p-2 link-secondary top_nav" href="list.cos">강의 &nbsp<img src="<%=request.getContextPath() %>/resources/images/computer-mouse-solid.svg" width="20" height="20"/></a>
 	      <!-- 강의 jsp는 course폴더에 있음 -->
-	      <a class="p-2 link-secondary top_nav" href="shlist.tc">선생님 &nbsp<img src="<%=request.getContextPath() %>/resources/images/computer-mouse-solid.svg" width="20" height="20"/></a>
+	      <a class="p-2 link-secondary top_nav" href="list.te">선생님 &nbsp<img src="<%=request.getContextPath() %>/resources/images/computer-mouse-solid.svg" width="20" height="20"/></a>
 	      <a class="p-2 link-secondary top_nav" href="list.bt">Quiz &nbsp<img src="<%=request.getContextPath() %>/resources/images/quiz-bell.svg" width="20" height="20"/></a>
 	      <a class="p-2 link-secondary top_nav" href="list.ba">FAQ 게시판 &nbsp<img src="<%=request.getContextPath() %>/resources/images/computer-mouse-solid.svg" width="20" height="20"/></a>
 	      <a class="p-2 link-secondary top_nav" href="accounts.ac">마이페이지 &nbsp<img src="<%=request.getContextPath() %>/resources/images/mypage.svg" width="20" height="20"/></a>
 	    </nav>
 	  </div>
 	</div>
+   
    

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import admin.model.CoBean;
+import admin.model.CoDao;
 import course.model.COSBean;
 import course.model.COSDao;
 import teachers.model.TEBean;
@@ -40,16 +42,16 @@ public class USHomeListController {
 			@RequestParam(value="pageNumber", required=false) String pageNumber2,
 			HttpServletRequest request) {
 
-		Map<String, String> map1=new HashMap<String, String>();
-		Map<String, String> map2=new HashMap<String, String>();
+		Map<String, String> map1 = new HashMap<String, String>();
+		Map<String, String> map2 = new HashMap<String, String>();
 
 		map1.put("whatColumn", whatColumn1);
 		map2.put("whatColumn", whatColumn2);
 		map1.put("keyword", "%"+keyword1+"%");
 		map2.put("keyword", "%"+keyword2+"%");
 
-		int totalCount1=tedao.totalCount(map1);
-		int totalCount2=cosdao.totalCount(map2);
+		int totalCount1 = tedao.totalCount(map1);
+		int totalCount2 = cosdao.totalCount(map2);
 		System.out.println("totalCount:"+totalCount1);
 		System.out.println("totalCount:"+totalCount2);
 
@@ -66,8 +68,8 @@ public class USHomeListController {
 		mav.addObject("teList", teList);
 		mav.addObject("cosList", cosList);
 		mav.addObject("totalCount",totalCount1);
-		mav.addObject("pageInfo",pageInfo1);
 		mav.addObject("totalCount",totalCount2);
+		mav.addObject("pageInfo",pageInfo1);
 		mav.addObject("pageInfo",pageInfo2);
 		mav.setViewName(getPage);
 

@@ -2,13 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
 <%@ include file="adtop.jsp"%>
-<style>
+<style>    
 	body {
 		width:1500px;
 		margin: 0 auto;
 	}
 </style>
-<script>
+<script>  
 	function insert() {
 		location.href = "insert.ba";
 	}

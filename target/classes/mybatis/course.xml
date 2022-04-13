@@ -43,11 +43,10 @@
   	</insert>
 
   	<update id="UpdateCOS">
-  		update courses set coname=#{coname},coteacher=#{coteacher},cosubject=#{cosubject},covideo=#{covideo},cocontent=#{cocontent},coprice=#{coprice})
+  		update courses set coname=#{coname},coteacher=#{coteacher},cosubject=#{cosubject},covideo=#{covideo},cocontent=#{cocontent},coprice=#{coprice}
+  		where conum=#{conum}
   	</update>
-  	
   	<delete id="DeleteCOS">
   		delete courses where conum=#{conum}
   	</delete>
-  	
 </mapper>

@@ -313,7 +313,7 @@
 			<div class="course-info-image swiper-container">
 				<div class="row"
 					style="float: left; text-align: center; width: 35%;">
-					<img alt="강의 이미지" src="<%=request.getContextPath()%>/resources/images/${bean.coimage}" width="150%"">
+					<img alt="강의 이미지" src="<%=request.getContextPath()%>/resources/images/${bean.coimage}" width="150%">
 				</div>
 			</div>
 		</div>
