@@ -18,13 +18,14 @@ public class ADCoDeleteController {
 
 	private final String command = "codelete.ad";
 	private String getPage = "redirect:/colist.ad";
+	
 	@Inject
 	private CoDao codao;
 	
 	@RequestMapping(value=command, method=RequestMethod.GET)
 	public String doAction(@RequestParam(value="conum", required=true) String conum) {
 		
-		codao.deleteCourses(conum);
+		int cnt = codao.deleteCourses(conum);
 
 		return getPage;
 	}

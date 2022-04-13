@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../common/common.jsp" %>   
-<%@ include file="../user/ustop.jsp"%> 
-
-<a href="start.jsp">시작페이지</a> <br>
-<a href="logout.jsp">로그아웃</a>
+<%@include file="../common/common.jsp"%>
+<%@include file="ustop.jsp"%>
+<center>ushome -> 상단 강의 탭 눌렀을 때 보일 화면(ussubject.jsp)</center>
 
 <style type="text/css">
 
@@ -115,7 +113,7 @@
 				<td><a href="subject-main.us"><font color="white"><b>전체강좌</b></font></a></td>
 			</tr>
 			<tr id="category-center">
-				<td><a href=""><font color="6C757D"><b>JAVA</b></font></a></td>
+				<td><a href="subject-main-java.us"><font color="6C757D"><b>JAVA</b></font></a></td>
 			</tr>
 			<tr id="category-center">
 				<td><a href=""><font color="6C757D"><b>DB</b></font></a></td>
@@ -132,75 +130,34 @@
 		</table>
 	</aside>	
 
-<section>
-	<div id="main-title">
-		<h1>강좌 리스트 화면(coslist.jsp)</h1>
-		<form action="list.cos" method="GET">
-			<select name="whatColumn">
-				<option value="">선택
-				<option value="coname">강의명
-				<option value="coteacher">선생님
-				<option value="cosubject">과목명
-			</select>
-			<input type="text" name="keyword">
-			<input type="submit" value="검색">
-		</form>
-		<table width="800">
-			<tr>
-				<td align="right" colspan="5">
-					<input type="button" value="추가하기" onclick="insert()">
-				</td>
-			</tr>
-			<tr>
-				<td colspan="5">
-					<br>
-				</td>
-			</tr>
-			<tr>
-				<!-- <th>상품번호</th> -->
-				<th>이미지</th>
-				<th>강의명</th>
-				<!-- <th>설명</th> -->
-				<th>가격</th>
-				<th>버튼</th>
-				<th>삭제|수정</th>
-			</tr>
-			<c:forEach var="course" items="${list}">
-			<tr>
-				<td>
-					<img id="teacher-img" src="<%=request.getContextPath()%>/resources/images/${course.coimage}" width=80 height=80>
-				</td>
-				<%-- <td>
-					<c:out value="${course.conum }" />
-				</td>	 --%>			
-				<td>
-					<a href="detail.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }">${course.coname }</a>
-				</td>
-				<%-- <td>
-					${course.cocontent }
-				</td> --%>
-				<td>
-					${course.coprice }원
-				</td>
-				<td>
-					<a href=""><button id="button1" type="button" class="btn btn-secondary btn-sm">수강신청 &nbsp<img src="<%=request.getContextPath() %>/resources/images/book-outline.svg" width="20" height="20"/></button></a> &nbsp
-					<a href=""><button id="button2" type="button" class="btn btn-secondary btn-sm">강의질문 &nbsp<img src="<%=request.getContextPath() %>/resources/images/질문게시판.svg" width="20" height="20"/></button></a>
-				</td>
-				<td colspan="2">
-					<input type="button" value="수정">
-					<input type="button" value="삭제">
-				</td>
-			</tr>
-			<tr>
-				<td colspan="5">
-					<hr>
-				</td>
-			</tr>
-			</c:forEach>
-		</table>
+	<section>
+	<div id="main-title"> <!-- 웹 페이지를 구성하는 건 요소 -->
+		<h1>온강 강사진들~~</h1>
+			<table width="800">
+				<tr>
+					<td><img id="teacher-img" src="<%=request.getContextPath() %>/resources/images/강사1-작은이미지.png" width="80" height="80"/></td>
+					<td id="td-title">비전공자를 위한 자바 프로그래밍 입문</td>
+					<td><a href=""><button id="button1" type="button" class="btn btn-secondary btn-sm">수강신청&nbsp<img src="<%=request.getContextPath() %>/resources/images/book-outline.svg" width="20" height="20"/></button></a> &nbsp
+						<a href=""><button id="button2" type="button" class="btn btn-secondary btn-sm">강의질문 &nbsp<img src="<%=request.getContextPath() %>/resources/images/질문게시판.svg" width="20" height="20"/></button></a>
+					</td>	
+				</tr>
+				<tr>
+					<td colspan="3"><hr></td>
+				</tr>
+				<tr>
+					<td><img id="teacher-img" src="<%=request.getContextPath() %>/resources/images/강사2-작은이미지.png" width="80" height="80"/></td>
+					<td id="td-title">자바 실전 프로그래밍</td>
+					<td>
+						<a href=""><button id="button1" type="button" class="btn btn-secondary btn-sm">수강신청 &nbsp<img src="<%=request.getContextPath() %>/resources/images/book-outline.svg" width="20" height="20"/></button></a> &nbsp
+						<a href=""><button id="button2" type="button" class="btn btn-secondary btn-sm">강의질문 &nbsp<img src="<%=request.getContextPath() %>/resources/images/질문게시판.svg" width="20" height="20"/></button></a>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3"><hr></td>
+				</tr>
+			</table>	
 	</div>
-</section>
-<br>
-	${pageInfo.pagingHtml }
-<br><br><br><br><br><br><br>
-<%@ include file="../user/usbottom.jsp"%>
+	</section>
+</body>
+
+<%@include file="usbottom.jsp"%>

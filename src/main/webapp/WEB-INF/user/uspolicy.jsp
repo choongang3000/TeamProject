@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="ustop.jsp" %>
 <!-- BTBottom.jsp -> policy.jsp(개인정보 취급방침)<br> -->
 
 <h3 align="center">개인정보 취급방침</h3>
 
-<div>
+<div>  
 온강 회원가입약관<br><br>
 
 온강은 공정거래위원회에서 심의한 표준약관을 사용하고 있습니다.<br><br>
@@ -81,5 +80,3 @@
 
 * 본 약관에 대한 저작권은 주식회사 XX에 귀속하며 무단 복제, 배포, 전송기타 저작권 침해행위를 엄금합니다.<br>
 </div>
-
-<%@include file="usbottom.jsp"%>

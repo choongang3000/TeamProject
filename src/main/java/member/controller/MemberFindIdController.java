@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import member.model.LoginBean;
+
 @Controller
 public class MemberFindIdController {
 	
@@ -17,7 +19,7 @@ public class MemberFindIdController {
 	}
 	
 	@RequestMapping(value=command, method=RequestMethod.POST)
-	public String doAction1() {
+	public String doAction(LoginBean logbean) {
 		
 		return getPage;
 	}

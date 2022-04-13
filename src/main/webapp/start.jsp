@@ -7,6 +7,7 @@
 <center>
 <br><br><br><br><br><br><br><br><br>
 
+<a href="home.us">사용자 페이지</a><br>
 <a href="submenu.us">회원 화면 이동</a><br>
 <a href="list.bt">회원 게시판 이동</a><br>
 <a href="list.stu">학생list로 이동</a><br>
@@ -14,6 +15,8 @@
 <a href="list.ad">관리자list로 이동</a><br>
 <a href="list.bs">수강후기 게시판으로 이동</a><br>
 <a href="login.log">로그인화면으로 이동</a><br>
-<a href="colist.ad">강의리스트로 이동</a>
-
+<a href="colist.ad">강의리스트로 이동</a><br>
+<a href="main.on">강의홈</a><br>
+<a href="list.stu">강의홈22</a><br>
+<a href="list.cos">상품보기</a><br>
 </center>
