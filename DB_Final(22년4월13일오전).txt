@@ -22,12 +22,12 @@ create table accounts(
 	joindate date default sysdate
 );
 
-insert into accounts values(acc_seq.nextval, '관리자', 'admin', 'admin', '1234', '111', '111', 'admin@gmail.com', '111', '1111', '1111', '경기도 고양시 일산동구 마두1동',default); 
-insert into accounts values(acc_seq.nextval, '선생님name', 'teacher', 'teacher', '1234', '111', '111', 'teacher@gmail.com', '111', '1111', '1111', '경기도 고양시 일산동구 마두1동',default); 
-insert into accounts values(acc_seq.nextval, '선생님name1', 'teacher', 'teacher1', '1234', '111', '111', 'teacher1@gmail.com', '111', '1111', '1111', '경기도 고양시 일산동구 마두1동',default); 
-insert into accounts values(acc_seq.nextval, '선생님name2', 'teacher', 'teacher2', '1234', '111', '111', 'teacher2@gmail.com', '111', '1111', '1111', '경기도 고양시 일산동구 마두1동',default); 
-insert into accounts values(acc_seq.nextval, '학생이름', 'student', 'student', '1234', '111', '111', 'student@gmail.com', '111', '1111', '1111', '경기도 고양시 일산동구 마두1동',default); 
-
+insert into accounts values(acc_seq.nextval, '관리자', 'admin', 'admin', '1234', '111', '111', 'admin@gmail.com', '010', '1234', '5678', '경기도 고양시 일산동구 마두1동',default); 
+insert into accounts values(acc_seq.nextval, '선생님name', 'teacher', 'teacher', '1234', '111', '111', 'teacher@gmail.com', '010', '9876', '5432', '경기도 고양시 일산동구 마두1동',default); 
+insert into accounts values(acc_seq.nextval, '선생님name1', 'teacher', 'teacher1', '1234', '111', '111', 'teacher1@gmail.com', '010', '1122', '3344', '경기도 고양시 일산동구 마두1동',default); 
+insert into accounts values(acc_seq.nextval, '선생님name2', 'teacher', 'teacher2', '1234', '111', '111', 'teacher2@gmail.com', '010', '9988', '7766', '경기도 고양시 일산동구 마두1동',default); 
+insert into accounts values(acc_seq.nextval, '학생이름', 'student', 'student', '1234', '111', '111', 'student@gmail.com', '010', '3344', '5566', '경기도 고양시 일산동구 마두1동',default); 
+insert into accounts values(acc_seq.nextval, '권준', 'student', 'kwon', '1234', '111', '111', 'kwonjun8890@gmail.com', '010', '3344', '5566', '경기도 고양시 일산동구 마두1동',default); 
 
 --강사 테이블
 drop sequence tch_seq;
@@ -49,9 +49,9 @@ create table teachers(
   	introduction varchar2(100) --강사소개
 );
 
-insert into teachers values(tch_seq.nextval,'teacher','선생님name',null,'빅데이터','visacode','2023-1-1',0.4,'강사 소개글 입니다');
-insert into teachers values(tch_seq.nextval,'teacher1','선생님name1',null,'자바','visacode1','2023-1-1',0.5,'강사 소개글 입니다1');
-insert into teachers values(tch_seq.nextval,'teacher2','선생님name2',null,'C언어','visacode2','2023-1-1',0.6,'강사 소개글 입니다2');
+insert into teachers values(tch_seq.nextval,'teacher','선생님name',null,'JAVA','visacode','2023-1-1',0.4,'강사 소개글 입니다');
+insert into teachers values(tch_seq.nextval,'teacher1','선생님name1',null,'DB','visacode1','2023-1-1',0.5,'강사 소개글 입니다1');
+insert into teachers values(tch_seq.nextval,'teacher2','선생님name2',null,'C++','visacode2','2023-1-1',0.6,'강사 소개글 입니다2');
 
 
 --과목 테이블
@@ -72,7 +72,9 @@ insert into subjects values(sub_seq.nextval, 'DB');
 insert into subjects values(sub_seq.nextval, 'JSP');
 insert into subjects values(sub_seq.nextval, 'CSS');
 insert into subjects values(sub_seq.nextval, 'HTML');
-insert into subjects values(sub_seq.nextval, 'ETC'); --기타과목
+insert into subjects values(sub_seq.nextval, 'ETC');
+--ETC는 기타과목
+
 
 --강의 테이블
 drop sequence cos_seq;
@@ -87,7 +89,7 @@ create table courses(
 	coname varchar2(100) not null, --강의명
 	coteacher varchar2(15) not null, --강의담당선생님
 	cosubject varchar2(30) not null, --강의과목
-	coimage varchar(100) --강의이미지
+	coimage varchar(100) not null, --강의이미지
 	covideo varchar2(100) not null, --강의영상
 	cocontent varchar2(100) not null, --강의소개내용
 	coprice number not null, --강의가격
@@ -124,6 +126,8 @@ create sequence cosordd_seq
 start with 1 
 increment by 1 
 nocache ;
+
+
 
 drop table cosord_details purge ;
 create table cosord_details(
@@ -209,49 +213,14 @@ create sequence boards_seq
   maxvalue 10000
   nocache;
   
-
---레코드 수정중(성은)
 insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
-values(boards_seq.nextval,'a1','a1','a1','1234','2015-1-1',1,0,0,'�궡�슜1',null);
+values(boards_seq.nextval,'학생1','stu@naver.com','짱이에요','1234','2015-1-1',1,0,0,'선생님 감사해용',null);
 
 insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
-values(boards_seq.nextval,'a2','a2','a2','1234','2015-1-1',2,0,0,'�궡�슜2',null);
+values(boards_seq.nextval,'학생2','stu2@gmail.com','감사해요','1234','2018-10-5',2,0,0,'성생님 짱이에요!',null);
 
 insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
-values(boards_seq.nextval,'a21','a21','a21','1234','2015-1-1',2,4,1,'�궡�슜21',null);
-
-insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
-values(boards_seq.nextval,'a22','a22','a22','1234','2015-1-1',2,1,1,'�궡�슜22',null);
-
-insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
-values(boards_seq.nextval,'a221','a221','a221','1234','2015-1-1',2,3,2,'�궡�슜221',null);
-
-insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
-values(boards_seq.nextval,'a222','a222','a222','1234','2015-1-1',2,2,2,'�궡�슜222',null);
-
-insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
-values(boards_seq.nextval,'a3','a3','a3','1234','2015-1-1',7,0,0,'�궡�슜3',null);
-
-insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
-values(boards_seq.nextval,'a31','a31','a31','1234','2015-1-1',7,6,1,'�궡�슜31',null);
-
-insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
-values(boards_seq.nextval,'a311','a311','a311','1234','2015-1-1',7,7,2,'�궡�슜311',null);
-
-insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
-values(boards_seq.nextval,'a32','a32','a32','1234','2015-1-1',7,2,1,'�궡�슜32',null);
-
-insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
-values(boards_seq.nextval,'a321','a321','a321','1234','2015-1-1',7,5,2,'�궡�슜321',null);
-
-insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
-values(boards_seq.nextval,'a322','a322','a322','1234','2015-1-1',7,3,2,'�궡�슜322',null);
-
-insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
-values(boards_seq.nextval,'a3221','a3221','a3221','1234','2015-1-1',7,4,3,'�궡�슜3221',null);
-
-insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
-values(boards_seq.nextval,'a33','a33','a33','1234','2015-1-1',7,1,1,'�궡�슜33',null);
+values(boards_seq.nextval,'선생님','tc@daum.net','자랑스럽다','1234','2015-10-6',2,1,1,'수고했어~!',null);
 
 commit;
 
@@ -340,17 +309,16 @@ drop table board cascade constraints;
 
 create table board( 
 	num number not null primary key,
-	writer varchar2(10) not null,
-	email varchar2(10),
-	subject varchar2(20) not null,
-	passwd varchar2(12) not null,
+	writer varchar2(30) not null,
+	email varchar2(30),
+	subject varchar2(30) not null,
+	passwd varchar2(20) not null,
 	reg_date date not null,
 	readcount int default 0,
 	ref number not null, --게시글이 속해있는 그룹을 숫자로 묶음 
 	re_step number not null, --같은 그룹 게시글들의 정렬 순서를 나타내는 값
 	re_level number not null, --부모 게시글인지 자식게시글인지 나타내는 값 0:부모 1:자식 2:자식의 자식...
-	content varchar2(20) not null,
-	ip varchar2(15) not null
+	content varchar2(100) not null
 );
 
 drop sequence board_seq;
@@ -361,46 +329,13 @@ create sequence board_seq
   maxvalue 10000
   nocache;
 	
-insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a1','a1','a1','1234','2015-1-1',1,0,0,'내용1','127.0.0.1');
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content)
+values(board_seq.nextval,'학생2','stu@naver.com','질문있어요','1234','2022-4-10',1,0,0,'내용1');
 
-insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a2','a2','a2','1234','2015-1-1',2,0,0,'내용2','127.0.0.1');
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content)
+values(board_seq.nextval,'학생1','stu2@gmail.com','도와주세요!','1234','2022-4-5',2,0,0,'내용2');
 
-insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a21','a21','a21','1234','2015-1-1',2,4,1,'내용21','127.0.0.1');
-
-insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a22','a22','a22','1234','2015-1-1',2,1,1,'내용22','127.0.0.1');
-
-insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a221','a221','a221','1234','2015-1-1',2,3,2,'내용221','127.0.0.1');
-
-insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a222','a222','a222','1234','2015-1-1',2,2,2,'내용222','127.0.0.1');
-
-insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a3','a3','a3','1234','2015-1-1',7,0,0,'내용3','127.0.0.1');
-
-insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a31','a31','a31','1234','2015-1-1',7,6,1,'내용31','127.0.0.1');
-
-insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a311','a311','a311','1234','2015-1-1',7,7,2,'내용311','127.0.0.1');
-
-insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a32','a32','a32','1234','2015-1-1',7,2,1,'내용32','127.0.0.1');
-
-insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a321','a321','a321','1234','2015-1-1',7,5,2,'내용321','127.0.0.1');
-
-insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a322','a322','a322','1234','2015-1-1',7,3,2,'내용322','127.0.0.1');
-
-insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a3221','a3221','a3221','1234','2015-1-1',7,4,3,'내용3221','127.0.0.1');
-
-insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a33','a33','a33','1234','2015-1-1',7,1,1,'내용33','127.0.0.1');
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content)
+values(board_seq.nextval,'관리자','tc@gmail.com','답변드립니다','1234','2015-4-6',2,1,1,'내용21');
 
 commit;

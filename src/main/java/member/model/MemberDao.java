@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import member.model.MemberBean;
 import utility.Paging;
 
-@Component("myMemberDao")//객체생성
+@Component("myMemberDao")//媛앹껜�깮�꽦
 public class MemberDao {
 private String namespace="member.model.Member";
 	
@@ -25,17 +25,6 @@ private String namespace="member.model.Member";
 		return cnt;
 	}
 
-	public int totalCount(Map<String,String> map) {
-		int cnt = sqlSessionTemplate.selectOne(namespace+".GetTotalCount",map);
-		return cnt;
-	}
-	
-	public List<MemberBean> memberList(Paging pageInfo,Map<String,String> map) {
-		List<MemberBean> list = new ArrayList<MemberBean>();
-		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
-		list = sqlSessionTemplate.selectList(namespace+".GetMemberList",map,rowBounds);
-		return list;
-	}
 
 	public MemberBean searchId(String id) {
 		MemberBean sbean= null;
@@ -44,13 +33,35 @@ private String namespace="member.model.Member";
 
 	}
 	
-	public MemberBean getMember(String id) {
-		MemberBean bean = sqlSessionTemplate.selectOne(namespace+".GetMember", id);
-
-		return bean;
+	public String idCheck(String id) {
+		String result = null;
+		
+		result = sqlSessionTemplate.selectOne(namespace + ".IdCheck",id);
+		
+		return result;
+	}
+	
+	public int updatePw(LoginBean logbean) {
+		int cnt = -1;
+		
+		cnt = sqlSessionTemplate.update(namespace + ".UpdatePw", logbean);
+		
+		return cnt;
+	}
+	
+	public String getPw(String id) {
+		String result = null;
+		
+		result = sqlSessionTemplate.selectOne(namespace + ".GetPw", id);
+		
+		return result;
+	}
+	
+	public MemberBean searchIdByBean(LoginBean logbean) {
+		MemberBean sbean= null;
+		sbean = sqlSessionTemplate.selectOne(namespace+".SearchIdByBean", logbean);
+		return sbean;
 
 	}
-
-	
 
 }

@@ -9,32 +9,25 @@
 		values(acc_seq.nextval,#{aname},#{type},#{id},#{pw},#{rrn1},#{rrn2},#{email},#{phone1},#{phone2},#{phone3},#{addr},sysdate)
  	</insert>
 	
-	<select id="GetTotalCount" resultType="int">
-  	select count(*) from accounts
-  	<if test="whatColumn == 'name'">
-  		where aname like #{keyword}
-  	</if>
-  	<if test="whatColumn == 'type'">
-  		where type like #{keyword}
-  	</if>
-  	</select>
-  	
-  	<select id="GetMemberList" resultType="MyMember">
-  	select * from accounts
-  	<if test="whatColumn == 'name'">
-  		where aname like #{keyword}
-  	</if>
-  	<if test="whatColumn == 'id'">
-  		where id like #{keyword}
-  	</if>
-  	order by name desc
-  	</select>
-  	
 	<select id="SearchId" resultType="MyMember">
 		select * from accounts where id=#{id}
 	</select>
 	
-
+	<select id="IdCheck" resultType="String">
+		select id from accounts where id=#{id}
+	</select>
+	
+	<update id="UpdatePw">
+		update accounts set pw=#{pw} where email=#{email}
+	</update>
+	
+	<select id="GetPw" resultType="String">
+		select pw from accounts where id=#{id}
+	</select>
+	
+	<select id="SearchIdByBean" resultType="MyMember">
+		select * from accounts where aname=#{aname} and email=#{email}
+	</select>
 	
 </mapper>
 <!-- member.xml -->

@@ -4,5 +4,5 @@ logout.jsp<br>
 
 <%
 	session.invalidate();
-	response.sendRedirect("main.on");
+	response.sendRedirect("home.us");
 %>

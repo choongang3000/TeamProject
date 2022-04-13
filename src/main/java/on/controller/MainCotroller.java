@@ -29,7 +29,7 @@ import utility.Paging;
 @Controller
 public class MainCotroller {
    
-   private final String command="/home.us"; //★JH : main.on -> home.us로 변경
+   private final String command="main.on"; //★JH : main.on -> home.us로 변경
    private String getPage = "main"; //★JH : main -> ushome로 변경
 
    @Autowired
