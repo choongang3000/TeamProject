@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="member.model.Member">
+
 	<insert id="InsertMember">
  		insert into accounts(anum,aname,type,id,pw,rrn1,rrn2,email,phone1,phone2,phone3,addr,joindate)
 		values(acc_seq.nextval,#{aname},#{type},#{id},#{pw},#{rrn1},#{rrn2},#{email},#{phone1},#{phone2},#{phone3},#{addr},sysdate)
@@ -33,9 +34,7 @@
 	<select id="SearchId" resultType="MyMember">
 		select * from accounts where id=#{id}
 	</select>
-	
 
-	
 </mapper>
 <!-- member.xml -->
 

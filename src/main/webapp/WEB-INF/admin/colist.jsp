@@ -25,7 +25,6 @@
 				<option value="coteacher">강사명
 				<option value="cosubject">과목명
 			</select>
-
 		<input type="text" name="keyword" class="form-control">
 		<input type="submit" value="검색" class="btn btn-secondary btn-sm">
 		</div>
@@ -40,7 +39,7 @@
 				<input type="button" value="강의추가" onClick="insert()" class="btn btn-secondary btn-sm">
 			</td>
 		<tr>
-    	<tr height="40px">
+    	<tr>
     		<td>번호</td>
     		<td>강의명</td>
     		<td>담당선생님</td>
@@ -51,9 +50,9 @@
     		<td>강의가격</td>
     		<td>업로드날짜</td>
     	</tr>
-    	<c:forEach var="list" items="${colist }">
     	<!-- conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date -->
-    	<tr height="40px">
+    	<c:forEach var="list" items="${colist }">
+    	<tr>
     		<td>${list.conum }</td>
     		<td><a href="codetail.ad?conum=${list.conum }">${list.coname }</a></td>
     		<td>${list.coteacher }</td>
@@ -79,4 +78,4 @@
     	</c:forEach>
     </table>
    
-<%@ include file="../admin/adbottom.jsp" %>   
+<%@ include file="../admin/adbottom.jsp" %> 

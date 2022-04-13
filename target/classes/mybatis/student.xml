@@ -6,6 +6,7 @@
  	<select id="GetCourseByConum" resultType="admin.model.CoBean">
  		select * from courses where conum=#{conum}
  	</select>
+ 	
  	<select id="GetAccount_test" resultType="admin.model.TeacherBean">
  		select * from accounts where type='student'
  	</select>

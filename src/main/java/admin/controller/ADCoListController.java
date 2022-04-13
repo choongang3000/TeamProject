@@ -31,10 +31,10 @@ public class ADCoListController {
 		
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("whatColumn", whatColumn);
+		map.put("keyword", "%"+keyword+"%");
 		//String keyword2 = keyword.toUpperCase();
 		//System.out.println("keyword:"+keyword.toUpperCase());
 		//System.out.println("keyword2"+keyword2);
-		map.put("keyword", "%"+keyword+"%");
 		
 		List<CoBean> colist = codao.coursesAll(map);
 		request.setAttribute("colist", colist);

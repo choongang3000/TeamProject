@@ -9,9 +9,7 @@
     		align: center;
     		text-align: center;
     		margin: auto;
-    	}
-
-    
+    	}    
     </style>
     
     <h2>주문 상세내역 조회</h2>
@@ -49,4 +47,5 @@
     <br><br>
     <input type="button" value="뒤로가기" onClick="history.back()">
 <br><br>
+
 <%@ include file="../admin/adbottom.jsp" %>

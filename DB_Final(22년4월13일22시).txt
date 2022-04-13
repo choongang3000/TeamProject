@@ -21,12 +21,14 @@ create table accounts(
 	addr varchar2(100),
 	joindate date default sysdate
 );
-
 insert into accounts values(acc_seq.nextval, '관리자', 'admin', 'admin', '1234', '111', '111', 'admin@gmail.com', '010', '1234', '5678', '경기도 고양시 일산동구 마두1동',default); 
-insert into accounts values(acc_seq.nextval, '선생님name', 'teacher', 'teacher', '1234', '111', '111', 'teacher@gmail.com', '010', '9876', '5432', '경기도 고양시 일산동구 마두1동',default); 
-insert into accounts values(acc_seq.nextval, '선생님name1', 'teacher', 'teacher1', '1234', '111', '111', 'teacher1@gmail.com', '010', '1122', '3344', '경기도 고양시 일산동구 마두1동',default); 
-insert into accounts values(acc_seq.nextval, '선생님name2', 'teacher', 'teacher2', '1234', '111', '111', 'teacher2@gmail.com', '010', '9988', '7766', '경기도 고양시 일산동구 마두1동',default); 
-insert into accounts values(acc_seq.nextval, '학생이름', 'student', 'student', '1234', '111', '111', 'student@gmail.com', '010', '3344', '5566', '경기도 고양시 일산동구 마두1동',default); 
+insert into accounts values(acc_seq.nextval, '제시', 'teacher', 'teacher1', '1234', '111', '111', 'teacher1@gmail.com', '010', '9876', '5432', '서울시 은평구 갈현1동',default); 
+insert into accounts values(acc_seq.nextval, '니콜라', 'teacher', 'teacher2', '1234', '111', '111', 'teacher2@gmail.com', '010', '1122', '3344', '서울시 동대문구 이문1동',default); 
+insert into accounts values(acc_seq.nextval, '마이클', 'teacher', 'teacher3', '1234', '111', '111', 'teacher3@gmail.com', '010', '9988', '7766', '경기도 하남시 풍산동',default); 
+insert into accounts values(acc_seq.nextval, '제니', 'teacher', 'teacher4', '1234', '111', '111', 'teacher4@gmail.com', '010', '8822', '7766', '경기도 고양시 일산동구 마두1동',default); 
+insert into accounts values(acc_seq.nextval, '샬럿', 'teacher', 'teacher5', '1234', '111', '111', 'teacher5@gmail.com', '010', '7722', '7766', '서울시 은평구 갈현1동',default); 
+insert into accounts values(acc_seq.nextval, '디올', 'teacher', 'teacher6', '1234', '111', '111', 'teacher6@gmail.com', '010', '9988', '7766', '경기도 하남시 풍산동',default); 
+insert into accounts values(acc_seq.nextval, '학생', 'student', 'student', '1234', '111', '111', 'student@gmail.com', '010', '3344', '5566', '경기도 고양시 일산동구 마두1동',default); 
 
 --강사 테이블
 drop sequence tch_seq;
@@ -48,9 +50,12 @@ create table teachers(
   	introduction varchar2(100) --강사소개
 );
 
-insert into teachers values(tch_seq.nextval,'teacher','선생님name',null,'JAVA','visacode','2023-1-1',0.4,'강사 소개글 입니다');
-insert into teachers values(tch_seq.nextval,'teacher1','선생님name1',null,'DB','visacode1','2023-1-1',0.5,'강사 소개글 입니다1');
-insert into teachers values(tch_seq.nextval,'teacher2','선생님name2',null,'C++','visacode2','2023-1-1',0.6,'강사 소개글 입니다2');
+insert into teachers values(tch_seq.nextval,'teacher1','제시','강사-큰이미지1(180x250).png','JAVA','F4','2022-4-1',0.4,'전 L사 개발자 팀장');
+insert into teachers values(tch_seq.nextval,'teacher2','니콜라','강사-큰이미지2(180x250).png','DB','F4','2022-4-1',0.5,'전 S사 개발자 팀장');
+insert into teachers values(tch_seq.nextval,'teacher3','마이클','강사-큰이미지3(180x250).png','JSP','F4','2022-4-1',0.6,'전 A사 개발자 부장');
+insert into teachers values(tch_seq.nextval,'teacher4','제니','강사-큰이미지4(180x250).png','CSS','F4','2022-4-17',0.6,'전 N사 개발자 팀장');
+insert into teachers values(tch_seq.nextval,'teacher5','샬럿','강사-큰이미지5(180x250).png','HTML','F4','2022-4-17',0.6,'전 S사 개발자 팀장');
+insert into teachers values(tch_seq.nextval,'teacher6','디올','강사-큰이미지6(180x250).png','ETC','F4','2022-4-17',0.6,'전 A사 개발자 팀장');
 
 
 --과목 테이블
@@ -95,11 +100,28 @@ create table courses(
 	coupload_date date default sysdate --강의업로드날짜
 );
 
-insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
-values(cos_seq.nextval, '비전공자를 위한 자바 프로그래밍 입문', '제시', 'JAVA', '강사1-작은이미지.png', 'video.jsp', 'JAVA강의입니다', 90000, '2022-04-06');
 
 insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
-values(cos_seq.nextval, '자바 실전 프로그래밍', '니콜라', 'JAVA', '강사2-작은이미지.png', 'video.jsp', 'JAVA강의입니다', 90000, '2022-04-06');
+values(cos_seq.nextval, '비전공자를 위한 자바 프로그래밍 입문', '제시', 'JAVA', '강사1-작은이미지.png', 'video.jsp', '초등학생도 듣는 자바 프로그래밍 입문 과정! 주저말고 일단 들어와~', 90000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '자바 실전 프로그래밍', '제시', 'JAVA', '강사2-작은이미지.png', 'video.jsp', '이력서에 JAVA 능숙이라고 당당하게 말할 수 있다 자바 실전 프로그래밍!', 90000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '일 능률 팍팍 SQL', '니콜라', 'DB', '강사1-작은이미지.png', 'video.jsp', '일 어떻게 해야할지 감 안와? SQL 강의 듣고 감이 내려온다~', 70000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 개발 종합반', '디올', 'ETC', '강사2-작은이미지.png', 'video.jsp', '스파르타로 기본 확실하게잡고 응용까지~', 90000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '데이터 분석 종합반', '니콜라', 'DB', '강사1-작은이미지.png', 'video.jsp', '데이터분석 왕초보 딱지 저리가~', 90000, '2022-04-06');
+
+--insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+--values(cos_seq.nextval, '', '샬럿', 'DB', '강사1-작은이미지.png', 'video.jsp', '', 90000, '2022-04-06');
+
+--insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+--values(cos_seq.nextval, '', '제니', 'DB', '강사1-작은이미지.png', 'video.jsp', '', 90000, '2022-04-06');
+
 
 --주문 테이블
 drop sequence ord_seq;

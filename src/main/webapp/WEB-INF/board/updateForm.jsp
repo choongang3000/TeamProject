@@ -16,9 +16,9 @@
 <div class="container">
 <body>   <!-- 바디시작 -->
 
-<form method="post" action="update.bod?pageNumber=${pageNumber}" onsubmit="return check()">
+<form method="post" action="update.bod?num=${bb.num }&pageNumber=${pageNumber}" onsubmit="return check()">
+	<input type="hidden" name="num" value="${bb.num}">
 	<table border="1" class='table'>
-		<input type="hidden" name="num" value="${bb.num}">
 		<%-- <tr>
 			<td colspan="2" align="right">
 				<a href="list.bod?pageNumber=${pageNumber }">글목록</a>
