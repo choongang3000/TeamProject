@@ -15,7 +15,7 @@ public class boardCsBean {
 	private int re_step;
 	private int re_level;
 	private String content;
-	private String ip;
+	//private String ip;
 
 	
 
@@ -27,7 +27,7 @@ public class boardCsBean {
 
 
 	public boardCsBean(int num, String writer, String email, String subject, String passwd, Timestamp reg_date,
-			int readcount, int ref, int re_step, int re_level, String content, String ip) {
+			int readcount, int ref, int re_step, int re_level, String content) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -40,7 +40,7 @@ public class boardCsBean {
 		this.re_step = re_step;
 		this.re_level = re_level;
 		this.content = content;
-		this.ip = ip;
+		
 	}
 
 
@@ -176,7 +176,7 @@ public class boardCsBean {
 	}
 
 
-
+/*
 	public String getIp() {
 		return ip;
 	}
@@ -186,7 +186,7 @@ public class boardCsBean {
 	public void setIp(String ip) {
 		this.ip = ip;
 	}
-
+*/
 
 
 	public boardCsBean getArticle(String num) {

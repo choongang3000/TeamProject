@@ -17,7 +17,7 @@ public class BCsInsertController {
 	
 	private final String command = "insert.bod";
 	private String getPage = "writeForm";
-	private String gotoPage = "redirect:/Cslist.bod";
+	private String gotoPage = "redirect:/list.bod";
 	
 	@Autowired
 	private boardCsDao csdao;
@@ -34,8 +34,8 @@ public class BCsInsertController {
 		
 		bb.setReg_date(reg_date);
 		
-		String ip = request.getRemoteAddr();
-		bb.setIp(ip);
+		//String ip = request.getRemoteAddr();
+		//bb.setIp(ip);
 		
 		int cnt = csdao.insertArticle(bb);
 		if(cnt>0) {

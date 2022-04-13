@@ -18,7 +18,7 @@ import teachers.model.TEDao;
 import utility.Paging;
 
 @Controller
-public class TEListController {
+public class TEListController { // 4/13 JH - TEDao, TEBean, teachers.xml, teachersÆú´õ - teacherlist.jsp
 	
 	private final String command = "/list.te";
 	private String getPage = "teacherlist";
@@ -27,7 +27,7 @@ public class TEListController {
 	private TEDao tedao;
 
 	@RequestMapping(command)
-	public ModelAndView doAction(
+	public ModelAndView doAction( 
 			@RequestParam(value="keyword", required=false) String keyword,
 			@RequestParam(value="pageNumber", required=false) String pageNumber,
 			HttpServletRequest request) {
@@ -53,6 +53,4 @@ public class TEListController {
 		return mav;
 	
 	}
-
-	
 }

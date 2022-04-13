@@ -66,7 +66,7 @@
 			<!-- 강의이미지 -->
             <div class="col-12">
               <label for="coimage" class="form-label">강의 이미지 <span class="text-muted">(Optional)</span></label>
-              <input type="file" class="form-control" name="upimage">
+              <input type="file" class="form-control" name="upimage" required>
               <div class="invalid-feedback">
                 강의 이미지를 넣어주세요.
               </div>

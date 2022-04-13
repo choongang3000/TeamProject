@@ -14,7 +14,7 @@ import board.Csmodel.boardCsDao;
 public class BCsDetailController {
 	
 	private final String command = "detail.bod";
-	private String getPage = "Content";
+	private String getPage = "content";
 	
 	@Autowired
 	private boardCsDao csdao;

@@ -81,7 +81,5 @@ public class COSBean {
 	public void setCoupload_date(String coupload_date) {
 		this.coupload_date = coupload_date;
 	}
-	
-	
-	
+
 }

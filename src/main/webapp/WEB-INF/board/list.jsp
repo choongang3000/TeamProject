@@ -38,7 +38,7 @@ On강<br>
 		<td align="center">작성자</td>
 		<td align="center">작성일</td>
 		<td align="center">조회</td>
-		<td align="center">IP</td>
+		<!-- <td align="center">IP</td> -->
 	</tr>
 	<c:set var="contentNum" value="${(totalCount - ((pageInfo.pageNumber-1)*pageInfo.pageSize)) }"/>
 	<c:forEach var="bd" items="${boardArr }">
@@ -59,7 +59,7 @@ On강<br>
 		<td align="center">${bd.writer}</td>
 		<td align="center"><fmt:formatDate value="${bd.reg_date}" type="both" pattern="yyyy/MM/dd HH:mm" /></td>
 		<td align="center">${bd.readcount}</td>
-		<td align="center">${bd.ip}</td>
+		<%-- <td align="center">${bd.ip}</td> --%>
 	</tr>	
 	</c:forEach>
 </table>

@@ -2,13 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
 <%@ include file="adtop.jsp"%>
-<style>
+<style>    
 	body {
 		width:1500px;
 		margin: 0 auto;
 	}
 </style>
-<script>
+<script>  
 	function insert() {
 		location.href = "insert.ba";
 	}
@@ -54,9 +54,9 @@
 					<c:if test="${list[i].baimage != null }">
 						<img src="<%request.getContextPath(); %>/resources/images/re.gif" width="" height="">
 					</c:if>
-					<!--<c:if test="${list[i].bafile != null }">
-						<!-- 파일 출력 설정 위치 
-					</c:if>-->
+					<%-- <c:if test="${list[i].bafile != null }">
+						파일 출력 설정 위치 
+					</c:if> --%>
 					<input class="btn btn-secondary btn-sm" type="submit" value="수정" onClick="location.href='update.ba?banum=${list[i].banum}&pageNumber=${pageInfo.pageNumber}'">
 					<input class="btn btn-secondary btn-sm" type="submit" value="삭제" onClick="location.href='delete.ba?banum=${list[i].banum}&pageNumber=${pageInfo.pageNumber}'">
 				</div>
