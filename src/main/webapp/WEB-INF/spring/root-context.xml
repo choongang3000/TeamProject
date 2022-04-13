@@ -16,5 +16,6 @@
 	</bean>
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactoryBean"></constructor-arg>
-	</bean>	
+	</bean>
+	<bean id="codao" class="admin.model.CoDao"/>
 </beans>
