@@ -16,7 +16,7 @@
 <div class="container">
 	<body>   <!-- 바디시작 -->
 <center>
-<form method="post" action="update.bod?pageNumber=${pageNumber}" onsubmit="return check()">
+<form method="post" action="update.bod?num=${bb.num}&pageNumber=${pageNumber}" onsubmit="return check()">
 	<table border="1" class='table'>
 		<input type="hidden" name="num" value="${bb.num}">
 		<%-- <tr>

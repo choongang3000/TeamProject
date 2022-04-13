@@ -56,7 +56,7 @@
 		</td>	
 	</tr>
 	<tr height="100">
-		<td class="table-secondary">
+		<td align="center" class="table-secondary">
 			글내용
 		</td>	
 		<td colspan="3" align="center">
