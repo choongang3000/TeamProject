@@ -10,7 +10,7 @@ public class TCShlistController {
 	private String getPage = "tcshlist";
 	
 	@RequestMapping(value=command)
-	public String doAction() {
+	public String doAction() { 
 		return getPage;
 	}
 }

@@ -2,40 +2,83 @@ package member.model;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MemberBean {
 	
-	private final String must_input = "í•„ìˆ˜ ì…ë ¥.";
+	private int anum;
 	
-	private int num;
-	@NotBlank(message = "name ì…ë ¥ì€ " +must_input)
-	private String name;
+	@NotBlank(message="²À ÀÔ·ÂÇØ ÁÖ¼¼¿ä")
+	private String aname;
+	
 	private String type;
-	@NotBlank(message = "id ì…ë ¥ì€ " + must_input)
+	
+	@NotBlank(message="²À ÀÔ·ÂÇØ ÁÖ¼¼¿ä")
 	private String id;
-	@NotBlank(message = "pw ì…ë ¥ì€ " + must_input)
+	
+	@NotBlank(message="²À ÀÔ·ÂÇØ ÁÖ¼¼¿ä")
 	private String pw;
+	
+	@NotNull(message="²À ÀÔ·ÂÇØ ÁÖ¼¼¿ä")
 	private int rrn1;
+	
+	@NotNull(message="²À ÀÔ·ÂÇØ ÁÖ¼¼¿ä")
 	private int rrn2;
+	
+	@NotBlank(message="²À ÀÔ·ÂÇØ ÁÖ¼¼¿ä")
 	private String email;
+	
+	@NotNull(message="²À ÀÔ·ÂÇØ ÁÖ¼¼¿ä")
 	private int phone1;
+	
+	@NotNull(message="²À ÀÔ·ÂÇØ ÁÖ¼¼¿ä")
 	private int phone2;
+	
+	@NotNull(message="²À ÀÔ·ÂÇØ ÁÖ¼¼¿ä")
 	private int phone3;
+	
 	private String addr;
 	private Date joindate;
-	public int getNum() {
-		return num;
+	
+	private String addr_num;
+	private String addr_first;
+	private String addr_last;
+	
+	
+	public String getAddr_num() {
+		return addr_num;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setAddr_num(String addr_num) {
+		this.addr_num = addr_num;
 	}
-	public String getName() {
-		return name;
+	public String getAddr_first() {
+		return addr_first;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setAddr_first(String addr_first) {
+		this.addr_first = addr_first;
+	}
+	public String getAddr_last() {
+		return addr_last;
+	}
+	public void setAddr_last(String addr_last) {
+		this.addr_last = addr_last;
+	}
+	public int getAnum() {
+		return anum;
+	}
+	public void setAnum(int anum) {
+		this.anum = anum;
+	}
+	public String getAname() {
+		return aname;
+	}
+	public void setAname(String aname) {
+		this.aname = aname;
 	}
 	public String getType() {
 		return type;
@@ -103,9 +146,7 @@ public class MemberBean {
 	public void setJoindate(Date joindate) {
 		this.joindate = joindate;
 	}
-	public String getMust_input() {
-		return must_input;
-	}
+	
 	
 	
 

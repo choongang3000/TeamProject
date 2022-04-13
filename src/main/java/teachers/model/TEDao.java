@@ -52,4 +52,9 @@ public class TEDao {
 		cnt = sqlSessionTemplate.delete(namespace+".DeleteTE", num);
 		return cnt;
 	}
+	
+	public List<TEBean> getTEList(){
+		List<TEBean> list = sqlSessionTemplate.selectList(namespace+".GetTEList");
+		return list;
+	}
 }

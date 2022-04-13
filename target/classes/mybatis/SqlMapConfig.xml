@@ -29,7 +29,6 @@
 		<mapper resource="mybatis/member.xml"/>
 		<mapper resource="mybatis/board.xml"/>
 		<mapper resource="mybatis/accounts.xml"/>
-		<mapper resource="mybatis/course.xml"/>
 		<mapper resource="mybatis/boarda.xml"/>
 		<mapper resource="mybatis/teachers.xml"/>
 	</mappers>

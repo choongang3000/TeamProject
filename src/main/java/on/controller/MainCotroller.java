@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import boarda.model.BADao;
 import course.controller.COSListController;
 import course.model.COSBean;
 import course.model.COSDao;
+import member.model.MemberBean;
 import teachers.controller.TEListController;
 import teachers.model.TEBean;
 import teachers.model.TEDao;
@@ -27,24 +29,29 @@ import utility.Paging;
 @Controller
 public class MainCotroller {
    
-   private final String command="/home.us"; //★JH : main.on -> home.us로 변경
-   private String getPage = "main"; //★JH : main -> ushome로 변경
+   private final String command1="/home.us"; //★JH : main.on -> home.us로 변경
+   private String getPage1 = "ushome"; //★JH : main -> ushome로 변경
 
    @Autowired
    private TEDao tedao;
+   
    @Autowired
    private COSDao cosdao;
 
-   @RequestMapping(command)
+  
+   @RequestMapping(command1)
    public ModelAndView doAction(
-       @RequestParam(value="whatColumn", required=false) String whatColumn1,
+		 @RequestParam(value="whatColumn", required=false) String whatColumn1,
+		 @RequestParam(value="whatColumn", required=false) String whatColumn2,
          @RequestParam(value="keyword", required=false) String keyword1,
-         @RequestParam(value="pageNumber", required=false) String pageNumber1,
-         @RequestParam(value="whatColumn", required=false) String whatColumn2,
          @RequestParam(value="keyword", required=false) String keyword2,
+         @RequestParam(value="pageNumber", required=false) String pageNumber1,
          @RequestParam(value="pageNumber", required=false) String pageNumber2,
-         HttpServletRequest request) {
+         HttpServletRequest request,
+         HttpSession session) {
       
+	  MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo"); 
+	   
       Map<String, String> map1=new HashMap<String, String>();
       Map<String, String> map2=new HashMap<String, String>();
       
@@ -58,8 +65,8 @@ public class MainCotroller {
       System.out.println("totalCount:"+totalCount1);
       System.out.println("totalCount:"+totalCount2);
       
-      String url1=request.getContextPath()+command;
-      String url2=request.getContextPath()+command;
+      String url1=request.getContextPath()+command1;
+      String url2=request.getContextPath()+command1;
       Paging pageInfo1=new Paging(pageNumber1, null, totalCount1, url1, whatColumn1, keyword1);
       Paging pageInfo2=new Paging(pageNumber2, null, totalCount2, url2, whatColumn2, keyword2);
       
@@ -74,10 +81,31 @@ public class MainCotroller {
       mav.addObject("pageInfo",pageInfo1);
       mav.addObject("totalCount",totalCount2);
       mav.addObject("pageInfo",pageInfo2);
-      mav.setViewName(getPage);
+      mav.addObject("loginInfo",loginInfo);
+      mav.setViewName(getPage1);
       
       return mav;
    
+   }
+   
+  	private final String command2 = "bottom.us";
+  	private String getPage2 = "uspolicy";
+
+  	@RequestMapping(value=command2,method=RequestMethod.GET)
+  	public String doAction2(HttpServletRequest request) {
+  		
+  		return getPage2;
+  	
+   }
+  	
+	private final String command3 = "/home.us";
+  	private String getPage3 = "ushome";
+
+  	@RequestMapping(value=command3,method=RequestMethod.GET)
+  	public String doAction3(HttpServletRequest request) {
+  		
+  		return getPage3;
+  	
    }
 
 }

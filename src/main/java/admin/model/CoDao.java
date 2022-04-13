@@ -15,6 +15,7 @@ import utility.Paging;
 
 @Component("myCoDao")
 public class CoDao {
+	
 	private String namespace = "admin.model.Co";
 	
 	@Autowired
@@ -30,7 +31,7 @@ public class CoDao {
 	public List<CoBean> coursesAllpage(Paging pageInfo, Map<String,String> map){
 		RowBounds rowbounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
 		List<CoBean> colist = new ArrayList<CoBean>();
-		colist = sqlSessionTemplate.selectList(namespace+".CoursesAll",map,rowbounds);
+		colist = sqlSessionTemplate.selectList(namespace+".CoursesAllpage",map,rowbounds);
 		return colist;
 	}
 	
@@ -62,9 +63,5 @@ public class CoDao {
 		return count;
 	}
 	
-	public int totalCount(Map<String, String> map) {
-		int count = sqlSessionTemplate.selectOne(namespace+".GetCOSListCount",map);
-		return count;
-	}
 	
 }

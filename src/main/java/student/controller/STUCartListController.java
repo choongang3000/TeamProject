@@ -16,7 +16,7 @@ import student.model.StuCartDao;
 
 @Controller
 public class STUCartListController {
-
+	
 	private final String command = "cartlist.stu";
 	private String getPage = "stuCartList";
 	

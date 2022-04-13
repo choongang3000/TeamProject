@@ -1,39 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="../common/common.jsp"%>
+<%@ include file="membertop.jsp" %>
 
-<script type="text/javascript">
-	function register(){
-		location.href="register.mem"; // MemberRegisterController 로 이동(회원가입)
+<style>
+	a{
+		text-decoration: none;
 	}
+	a:hover{
+		text-decoration: underline;
+	}
+</style>
 
-/* 	function memberList(){
-		location.href="memberList.mem"; // MemberListController
-	} */
-</script>
-
-
-<br>
-memberLoginForm.jsp <br>
 <!-- loginForm.mem => MemberLoginController로 이동 -->
-<form method="post" action="loginForm.mem"> 
-	<table border="1" width="300" height="150px">
+<form:form method="post" action="loginForm.mem" commandName="loginBean">
+	<center>
+	<table border="1" width="300" height="150px" class="table table-borderless" style="width:400px">
 		<tr>
-			<td>아이디</td>
-			<td><input type="text" name="id" value=""></td>
-		</tr>
-
-		<tr>
-			<td>비번</td>
-			<td><input type="password" name="pw" value=""></td>
+			<td><h2>On_인터넷 강의 로그인</h2></td>
 		</tr>
 		<tr>
-			<td colspan="2">
-				<input type="submit" value="로그인">
-				<input type="reset" value="취소">
-				<input type="button" value="회원가입" onClick="register()">
+			<td><input type="text" class="form-control form-control-lg" name="id" placeholder="아이디" required></td>
+		</tr>
+		<tr>
+			<td><input type="password" class="form-control form-control-lg" name="pw" placeholder="비밀번호" required></td>
+		</tr>
+		<tr>
+			<td align=right>
+				<a href="findid.mem" class="link-secondary" >아이디 찾기</a>&nbsp;|&nbsp;
+				<a href="findpw.mem" class="link-secondary" >비밀번호 찾기</a>&nbsp;|&nbsp;
+				<a href="register.mem" class="link-secondary" >회원가입</a>
 				<!-- <input type="button" value="회원목록보기"  onClick="memberList()"> -->
 			</td>
 		</tr>
+		<tr>
+			<td>
+				<div class="d-grid gap-1 col-12 mx-auto">
+				  <button class="btn btn-primary" type="submit">로그인</button>
+				</div>
+			</td>
+		</tr>
 	</table>
-
-</form>
+	</center>
+</form:form>
+<%@ include file="memberbottom.jsp" %>

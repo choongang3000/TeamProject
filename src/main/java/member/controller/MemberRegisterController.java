@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import admin.model.TeacherDao;
 import member.model.MemberBean;
 import member.model.MemberDao;
 
@@ -17,31 +18,30 @@ import member.model.MemberDao;
 public class MemberRegisterController {
 	private final String command = "register.mem";
 	private final String getPage = "memberRegisterForm";
-	private String gotoPage="redirect:/register.mem";//이부분 고쳐야할듯..?.
-					
+	private String gotoPage="redirect:/loginForm.mem";//�씠遺�遺� 怨좎퀜�빞�븷�벏..?.
+	
 	@Autowired
 	private MemberDao memberDao;
 	
-	
 	@RequestMapping(value=command,method=RequestMethod.GET)
-	public String doAction() { //GET방식
+	public String doAction() { //GET諛⑹떇
 
+		
 		return getPage;
 	}
 
 	
 	@RequestMapping(value=command,method=RequestMethod.POST)
-	public ModelAndView doAction(@ModelAttribute("member") @Valid MemberBean member,BindingResult result) {
-								//POST방식
+	public ModelAndView doAction(@ModelAttribute("membean") @Valid MemberBean membean,BindingResult result) {
+								//POST諛⑹떇
+		
+		membean.setAddr(membean.getAddr_num()+"|"+membean.getAddr_first()+"|"+membean.getAddr_last());
+		
 		ModelAndView mav = new ModelAndView();
-		if(result.hasErrors()) {
-			mav.setViewName(getPage);
-			return mav;
-		}
-
-		int cnt = memberDao.insertMember(member);
-			//cnt는...?
-		mav.setViewName(gotoPage); //이부분 고쳐야할듯..?.
+		
+		int cnt = memberDao.insertMember(membean);
+		
+		mav.setViewName(gotoPage);
 		return mav;
 
 	}

@@ -7,7 +7,6 @@
 <center>
 <br><br><br><br><br><br><br><br><br>
 
-
 <a href="home.us">사용자 페이지</a><br>
 <a href="submenu.us">회원 화면 이동</a><br>
 <a href="list.bt">회원 게시판 이동</a><br>

@@ -5,12 +5,14 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import member.model.LoginBean;
 import member.model.MemberBean;
 import member.model.MemberDao;
 
@@ -32,44 +34,42 @@ public class MemberLoginController {
 
 	
 	@RequestMapping(value=command,method=RequestMethod.POST)
-	public String doAction(MemberBean bean, HttpServletResponse response, HttpSession session) {
+	public String doAction(@Valid LoginBean bean, 
+							HttpServletResponse response, 
+							HttpSession session) {
 
 		response.setContentType("text/html; charset=UTF-8");
 
-		System.out.println(bean.getId());
-		System.out.println(bean.getPw());
-
-		MemberBean sbean =  memberDao.searchId(bean.getId());
-		System.out.println("sbean:" + sbean); //null or 
-		PrintWriter pw=null;
-		if(sbean == null) {
+		MemberBean mbean =  memberDao.searchId(bean.getId());
+		
+		PrintWriter out = null;
+		if(mbean == null) {
 
 			try {
-				pw = response.getWriter();
+				out = response.getWriter();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
-			pw.flush();
+			out.print("<script>alert('해당 아이디가 존재하지 않습니다.');</script>");
+			out.flush();
 			return getPage;
 		}//if
 		
-		else { 
+		else {
 
-			if(sbean.getPw().equals(bean.getPw())) {
-				session.setAttribute("loginInfo", sbean);
-				// 
+			if(mbean.getPw().equals(bean.getPw())) {
+				session.setAttribute("loginInfo", mbean);
 				String destination = (String)session.getAttribute("destination");
-				return destination; //"redirect:/insert.prd"
+				return "redirect:/main.on"; // 여기 수정 destination으로
 			}
-			else { 
+			else {
 				try {
-					pw=response.getWriter();
+					out=response.getWriter();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-			
-				pw.flush();
+				out.print("<script>alert('비밀번호가 일치하지 않습니다');</script>");
+				out.flush();
 			}
 			return getPage;
 		}

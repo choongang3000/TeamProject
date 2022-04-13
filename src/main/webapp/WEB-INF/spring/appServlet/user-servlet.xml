@@ -22,5 +22,7 @@
 	</bean>
 	
 	<context:component-scan base-package="user" />
+	<context:component-scan base-package="admin" />
+	<context:component-scan base-package="teachers" />
 
 </beans>

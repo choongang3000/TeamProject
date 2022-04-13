@@ -16,7 +16,10 @@ import admin.model.SubDao;
 @Controller
 public class USTopTab {
 
+	
 	/*
+	 * <<<<이건 안쓰는데 삭제 보류>>>>
+	 * 
 	 * //@Autowired //private SubDao subdao;
 	 * 
 	 * //ushome -> 상단 강의 탭 눌렀을 때 subject.us 요청 -> ussubject-main.jsp로 이동 private

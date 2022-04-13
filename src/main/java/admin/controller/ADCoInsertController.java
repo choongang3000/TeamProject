@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,7 @@ public class ADCoInsertController {
 	private SubDao subdao;
 	
 	@Inject
+	@Qualifier("myCoDao")
 	private CoDao codao;
 	
 	@Autowired
