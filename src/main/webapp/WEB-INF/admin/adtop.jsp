@@ -89,8 +89,8 @@
         <li class="nav-item"><a href="tclist.ad" class="nav-link">강사</a></li>
         <li class="nav-item"><a href="colist.ad" class="nav-link">강의</a></li>
         <li class="nav-item"><a href="shlist.ad" class="nav-link">주문내역</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">자주묻는질문</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Q&A</a></li>
+        <li class="nav-item"><a href="list.ba" class="nav-link">자주묻는질문</a></li>
+        <li class="nav-item"><a href="list.bod" class="nav-link">Q&A</a></li>
       </ul>
     </header>
   </div>

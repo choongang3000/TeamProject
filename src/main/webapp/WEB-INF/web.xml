@@ -65,6 +65,21 @@
 		<servlet-name>boards</servlet-name>
 		<url-pattern>*.bs</url-pattern>
 	</servlet-mapping>
+	<!-- 고객센터 게시판 -->
+	<servlet>
+		<servlet-name>board</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/board-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>board</servlet-name>
+		<url-pattern>*.bod</url-pattern>
+	</servlet-mapping>
 	
 	<!-- 게시판 작업(회원 로그인만 하면 이용할 수 있는 퀴즈 게시판) -->
 	<servlet>

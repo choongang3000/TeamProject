@@ -11,8 +11,8 @@ start.jsp <br>
 <a href="list.bt">수업자료 게시판(주현)</a><br>
 <a href="list.bs">수강후기 게시판(성은)</a><br>
 <a href="list.bst">수업질문 게시판(권준)</a><br>
-<a href="list.bs"></a><br>
-<a href="list.bs"></a><br>
+<a href="list.bod">1:1 문의하기 게시판(진환)</a><br>
+<a href="list.ba">자주묻는질문 게시판(명희)</a><br>
 
 <br><br><br>
 [페이지]<br>

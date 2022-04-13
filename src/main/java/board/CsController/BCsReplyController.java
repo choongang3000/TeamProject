@@ -45,13 +45,13 @@ public class BCsReplyController {
 		Timestamp reg_date = new Timestamp(System.currentTimeMillis());
 		bb.setReg_date(reg_date);
 		
-		String ip = request.getRemoteAddr();
-		bb.setIp(ip);
+		//String ip = request.getRemoteAddr();
+		//bb.setIp(ip);
 		
 		csdao.replyArticle_1(bb);
 		csdao.replyArticle_2(bb);
 		
-		return "redirect:/Cslist.bod?pageNumber=" + pageNumber;
+		return "redirect:/list.bod?pageNumber=" + pageNumber;
 	}
 								
 								
