@@ -1,32 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp" %>
-content.jsp<br>
 
-<style type="text/css">
-	body{
-		text-align:center;
-	}
-	table{
-		margin:auto;
-		width:500px;
-	}
-</style>
+<head>					<!-- 헤드 -->
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<!-- 부트스트랩 -->
 
+
+
+</head>  				<!-- 헤드 끝-->
 
 <%@ include file="color.jsp" %> <!-- include 지시어 : 내용을 복붙 -->
-<body bgcolor="<%= bodyback_c %>">
+<div class="container">
+<body>
 
-<b>글내용 보기</b>
-<table border="1">
+
+<table border="1" class='table'>
+		<td colspan="4" align="center">글내용 보기</td>
 	<tr>
-		<td align="center">
+		<td align="center" class="table-secondary">
 			글번호
 		</td>
-		<td align="center">
+		<td align="center" >
 			${bb.num }
 		</td>
-		<td align="center">
+		<td align="center" class="table-secondary">
 			조회수
 		</td>
 		<td align="center">
@@ -34,13 +34,13 @@ content.jsp<br>
 		</td>
 	</tr>
 	<tr  align="center">
-		<td align="center">
+		<td align="center" class="table-secondary">
 			작성자
 		</td>
 		<td align="center">
 			${bb.writer }
 		</td>
-		<td align="center">
+		<td align="center" class="table-secondary">
 			작성일
 		</td>	
 		<td align="center">
@@ -48,7 +48,7 @@ content.jsp<br>
 		</td>	
 	</tr>
 	<tr>
-		<td align="center">
+		<td align="center" class="table-secondary">
 			글제목
 		</td>	
 		<td colspan="3" align="center">
@@ -56,7 +56,7 @@ content.jsp<br>
 		</td>	
 	</tr>
 	<tr height="100">
-		<td>
+		<td class="table-secondary">
 			글내용
 		</td>	
 		<td colspan="3" align="center">
@@ -65,10 +65,14 @@ content.jsp<br>
 	</tr>
 	<tr align="center">
 		<td colspan="4">
-			<input type="submit" value="글수정" onClick="location.href='update.bod?num=${bb.num}&pageNumber=${pageNumber}'">
-			<input type="button" value="글삭제" onClick="location.href='delete.bod?num=${bb.num}&pageNumber=${pageNumber}'">
-			<input type="button" value="답글쓰기" onClick="location.href='reply.bod?ref=${bb.ref }&re_step=${bb.re_step}&re_level=${bb.re_level}&pageNumber=${pageNumber}'">
-			<input type="button" value="글목록" onClick="location.href='list.bod?pageNumber=${pageNumber}'">
+			<input type="submit" value="글수정" class="btn btn-info" onClick="location.href='update.bod?num=${bb.num}&pageNumber=${pageNumber}'">
+			<input type="button" value="글삭제" class="btn btn-secondary" onClick="location.href='delete.bod?num=${bb.num}&pageNumber=${pageNumber}'">
+			<input type="button" value="답글쓰기" class="btn btn-info" onClick="location.href='reply.bod?ref=${bb.ref }&re_step=${bb.re_step}&re_level=${bb.re_level}&pageNumber=${pageNumber}'">
+			<input type="button" value="글목록" class="btn btn-secondary" onClick="location.href='list.bod?pageNumber=${pageNumber}'">
 		</td>
 	</tr>
 </table>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<!-- 부트스트랩2 -->
+</body>
+</div>

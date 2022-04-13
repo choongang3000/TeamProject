@@ -51,7 +51,7 @@ public class BCsReplyController {
 		csdao.replyArticle_1(bb);
 		csdao.replyArticle_2(bb);
 		
-		return "redirect:/Cslist.bod?pageNumber=" + pageNumber;
+		return "redirect:/list.bod?pageNumber=" + pageNumber;
 	}
 								
 								

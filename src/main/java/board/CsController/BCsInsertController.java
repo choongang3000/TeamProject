@@ -17,7 +17,7 @@ public class BCsInsertController {
 	
 	private final String command = "insert.bod";
 	private String getPage = "writeForm";
-	private String gotoPage = "redirect:/Cslist.bod";
+	private String gotoPage = "redirect:/list.bod";
 	
 	@Autowired
 	private boardCsDao csdao;

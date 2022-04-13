@@ -47,13 +47,13 @@ public class BCsDeleteController {
 		boardCsBean csBean = csdao.getArticle(num);
 		if(csBean.getPasswd().equals(passwd)){
 			csdao.deleteArticle(num);
-			return "redirect:/Cslist.bod?pageNumber=" + pageNumber;
+			return "redirect:/list.bod?pageNumber=" + pageNumber;
 		}
 		else {
 			PrintWriter out;
 			try {
 				out = response.getWriter();
-				out.print("<script>alert('이게 뭐라쓴거지')</script>");
+				out.print("<script>alert('비번이 일치하지 않습니다.')</script>");
 				out.flush();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
