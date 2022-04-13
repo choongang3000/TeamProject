@@ -48,13 +48,13 @@ public class BCsUpdateController {
 		if(Csboard.getPasswd().equals(bb.getPasswd())) {
 			csdao.updateArticle(bb);
 			
-			return "redirect:/Cslist.bod?pageNumber="+pageNumber;
+			return "redirect:/list.bod?pageNumber="+pageNumber;
 		}
 		else {
 				
 				try {
 					PrintWriter out = response.getWriter();
-					out.print("<script>alert('ì—¬ê¸´ ë­ë¼ì“´ê±°ì§€')</script>");
+					out.print("<script>alert('¼öÁ¤¿Ï·á')</script>");
 					out.flush();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
