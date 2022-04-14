@@ -12,6 +12,25 @@
 	}
 </style>
 
+<script src="<%=request.getContextPath()%>/resources/js/jquery.js"></script>
+<script>
+	$(function(){
+		$("#findBtn").click(function(){
+			$.ajax({
+				url : "findid.mem",
+				type : "POST",
+				data : {
+					aname : $("#aname").val(),
+					email : $("#email").val()
+				},
+				success : function(result) {
+					alert(result);
+				},
+			})
+		});
+	})
+</script>
+
 <!-- loginForm.mem => MemberLoginController로 이동 -->
 <form:form method="post" action="findid.mem" commandName="loginBean">
 	<center>
@@ -20,10 +39,10 @@
 			<td><h2>On_인터넷 아이디 찾기</h2></td>
 		</tr>
 		<tr>
-			<td><input type="text" class="form-control form-control-lg" name="aname" placeholder="이름" required></td>
+			<td><input type="text" class="form-control form-control-lg" id="aname" name="aname" placeholder="이름" required></td>
 		</tr>
 		<tr>
-			<td><input type="password" class="form-control form-control-lg" name="email" placeholder="E-mail" required></td>
+			<td><input type="text" class="form-control form-control-lg" id="email" name="email" placeholder="E-mail" required></td>
 		</tr>
 		<tr>
 			<td align=right>
@@ -36,7 +55,7 @@
 		<tr>
 			<td>
 				<div class="d-grid gap-1 col-12 mx-auto">
-				  <button class="btn btn-primary" type="submit">아이디 찾기</button>
+				  <button class="btn btn-primary" id="findBtn" type="submit">아이디 찾기</button>
 				</div>
 			</td>
 		</tr>

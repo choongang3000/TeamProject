@@ -56,7 +56,7 @@ public class ADTcInsertController {
 			UUID uuid = UUID.randomUUID();
 			String fileName = uuid + "-" + multi.getOriginalFilename();
 			
-			tBean.setT_image(fileName); 
+			tBean.setT_image(fileName);
 		
 		
 			int cnt1 = tdao.insertAccount(tBean);

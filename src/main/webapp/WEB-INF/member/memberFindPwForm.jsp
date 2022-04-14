@@ -23,7 +23,7 @@
 			<td><input type="text" class="form-control form-control-lg" name="id" placeholder="아이디" required></td>
 		</tr>
 		<tr>
-			<td><input type="password" class="form-control form-control-lg" name="email" placeholder="E-mail" required></td>
+			<td><input type="text" class="form-control form-control-lg" name="email" placeholder="E-mail" required></td>
 		</tr>
 		<tr>
 			<td align=right>

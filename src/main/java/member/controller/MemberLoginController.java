@@ -60,7 +60,7 @@ public class MemberLoginController {
 			if(mbean.getPw().equals(bean.getPw())) {
 				session.setAttribute("loginInfo", mbean);
 				String destination = (String)session.getAttribute("destination");
-				return "redirect:/main.on"; // 여기 수정 destination으로
+				return "redirect:/home.us"; // 여기 수정 destination으로
 			}
 			else {
 				try {
