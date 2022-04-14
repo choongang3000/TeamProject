@@ -37,7 +37,7 @@
 	<table width="80%">
 		<tr>
 			<td align=right>
-				<input type="button" value="계속 쇼핑하기" class="btn btn-secondary">
+				<input type="button" value="계속 쇼핑하기" class="btn btn-secondary" onClick="location.href='list.cos'">
 				&nbsp;&nbsp;
 				<input type="button" value="결제하기" class="btn btn-primary" onClick="location.href='payment.stu'">
 			</td>

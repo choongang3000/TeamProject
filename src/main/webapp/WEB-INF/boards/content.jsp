@@ -15,6 +15,60 @@
 	img{
 		width:300px;
 	}
+	.star-rating {
+	  border:solid 1px #ccc;
+	  display:flex;
+	  flex-direction: row-reverse;
+	  font-size:1.5em;
+	  justify-content:space-around;
+	  padding:0 .2em;
+	  text-align:center;
+	  width:5em;
+	}
+	
+	.star-rating input {
+	  display:none;
+	}
+	
+	.star-rating label {
+	  color:#ccc;
+	  cursor:pointer;
+	}
+	
+	.star-rating :checked ~ label {
+	  color:#f90;
+	}
+	
+	.star-rating label:hover,
+	.star-rating label:hover ~ label {
+	  color:#fc0;
+	}
+	
+	article {
+	  background-color:#ffe;
+	  box-shadow:0 0 1em 1px rgba(0,0,0,.25);
+	  color:#006;
+	  font-family:cursive;
+	  font-style:italic;
+	  margin:4em;
+	  max-width:30em;
+	  padding:2em;
+	}
+	
+	.con{
+		height:60px;
+		width:500px;
+		position:absolute;
+		margin:auto;
+		left:0;
+		right:0;
+		top:0;
+		bottom:0;
+	}
+	
+	.fa-star{
+		font-size:65px;
+	}	 	
 </style>
 
 <br><br>
@@ -53,9 +107,30 @@
 
 	<tr height="40" style="border-top: solid black 1px">
 		<td align="center" bgcolor="#DCDCDC">
+			별점
+		</td>
+		<td align="center">
+			<div class="star-rating">
+				  <input type="radio" id="5-stars" name="rating" value="5" <c:if test="${5 eq bb.rating }">checked</c:if>>
+				  <label for="5-stars" class="star">&#9733;</label>
+				  
+				  <input type="radio" id="4-stars" name="rating" value="4" <c:if test="${4 eq bb.rating }">checked</c:if>>
+				  <label for="4-stars" class="star">&#9733;</label>
+				  
+				  <input type="radio" id="3-stars" name="rating" value="3" <c:if test="${3 eq bb.rating }">checked</c:if>>
+				  <label for="3-stars" class="star">&#9733;</label>
+				  
+				  <input type="radio" id="2-stars" name="rating" value="2" <c:if test="${2 eq bb.rating }">checked</c:if>>
+				  <label for="2-stars" class="star">&#9733;</label>
+				  
+				  <input type="radio" id="1-star" name="rating" value="1" <c:if test="${1 eq bb.rating }">checked</c:if>>
+				  <label for="1-star" class="star">&#9733;</label>
+			</div>
+		</td>	
+		<td align="center" bgcolor="#DCDCDC">
 			글제목
 		</td>	
-		<td colspan="3" align="center">
+		<td align="center">
 			${bb.subject } <!-- 글제목 -->
 		</td>	
 	</tr>

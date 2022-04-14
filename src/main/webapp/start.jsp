@@ -20,6 +20,5 @@ start.jsp <br>
 
 <br><br><br>
 [기능구현=완성되면 삭제예정]<br>
-<a href="list.stu">장바구니</a><br>
-<a href="payment.stu">결제폼으로</a><br>
+<a href="loginForm.mem">로그인</a><br>
 </center>

@@ -34,15 +34,15 @@
     
     <br><br>
     
-    <table border="0" width="60%" height="60%" align="center">
-    	<tr height="50px">
+    <table border="0" width="60%" align="center">
+    	<tr height="30px">
     		<td>번호</td>
     		<td>과목명</td>
     		<td>수정</td>
     		<td>삭제</td>
     	</tr>
     	<c:forEach var="list" items="${sublist }">
-    	<tr height="30px">
+    	<tr height="10px">
 	    	<td>${list.subnum }</td>
 	    	<td>${list.subname }</td>
 	    	<td><a href="subupdate.ad?subnum=${list.subnum }">수정</a></td>
@@ -52,4 +52,5 @@
     </table> 
     
     </center>
+    
 <%@ include file="../admin/adbottom.jsp" %>   
