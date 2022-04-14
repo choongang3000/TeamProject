@@ -29,7 +29,7 @@
 <tr height="30">
 	<td>1</td>
 	<td>주문강의 외 2개</td>
-	<td><fmt:formatNumber value="100000" pattern="#,###,###"/></td>
+	<td><fmt:formatNumber value="${totalcount }" pattern="#,###,###"/></td>
 	<td>2022-03-31</td>
 	<td><a href="shlistdetail.stu">주문상세보기</a></td>
 </tr>

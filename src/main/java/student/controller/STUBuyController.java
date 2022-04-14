@@ -22,10 +22,18 @@ public class STUBuyController {
 		
 		ArrayList<StuCartBean> cartArr =  (ArrayList<StuCartBean>)session.getAttribute("cartArr");
 		
+		request.setAttribute("cartArr", cartArr);
+		
 		int totalprice = 0;
+		int totalcount = 0;
 		for(StuCartBean cart : cartArr) {
+			totalcount += 1;
 			totalprice += cart.getCoprice();
 		}
+		
+		request.setAttribute("totalcount",totalcount);
+		request.setAttribute("totalprice",totalprice);
+		
 		
 		return getPage;
 	}

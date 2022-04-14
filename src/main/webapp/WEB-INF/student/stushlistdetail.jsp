@@ -3,6 +3,12 @@
 <%@ include file="../common/common.jsp" %>
 <%@ include file="../admin/adtop.jsp" %>
 	
+	<script>
+	function buylist(){
+		location.href="buycos.stu";
+	}
+	</script>
+	
 	<style>
     	body{
     		align: center;
@@ -15,7 +21,7 @@
 	<br>
 	<div>구매일자: 2022.03.31</div>
 	<br>
-	<table border="0" align="center" width="50%" height="80%">
+	<table border="0" align="center">
 		<tr>
 			<td colspan="3" align="center" bgcolor="#DCDCDC">구매상품</td>
 		</tr>
@@ -29,27 +35,21 @@
 		<tr>
 			<td>
 				<br>
-				<img src="" width="100" height="100"><br>
+				<img src="" width="50" height="50"><br>
 				HTML 뽀개기(기초)
 			</td>
 			<td>50,000원</td>
 			<td>수강중</td>
 		</tr>
-	</table>
-	<br>
-	<br>
-	<table border="0" align="center" width="50%" height="80%">
 		<tr>
-			<td colspan="2" align="center" bgcolor="#DCDCDC">결제정보</td>
+			<td colspan="3" align="center" bgcolor="#DCDCDC">결제정보</td>
 		</tr>
 		<tr>
-			<td height="50">총 상품 금액<br>50,000원</td>
-			<td height="50">결제 금액<br>50,000원</td>
-		</tr>
-		<tr>
-			<td colspan="2" height="100">총 결제 금액 50,000원</td>
+			
+			<td height="50">총 결제 개수<br>1개</td>
+			<td colspan="2">총 결제 금액<br>50,000원</td>
 		</tr>
 	</table>
 	<br>
-<input type="button" value="목록" onClick="history.back()">
+<input type="button" value="목록" onClick="buylist()">
 <%@ include file="../admin/adbottom.jsp" %>
