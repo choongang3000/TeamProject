@@ -51,4 +51,10 @@ public class COSDao {
 		cnt = sqlSessionTemplate.delete(namespace+".DeleteCOS", num);
 		return cnt;
 	}
+	
+	/* JH - 강사별 강의목록 출력 (관련:TEsubListController/course.xml) */
+	public List<COSBean> getTESubList(String tname) {
+		List<COSBean> list = sqlSessionTemplate.selectList(namespace+".GetTESubList",tname);
+		return list;
+	}
 }

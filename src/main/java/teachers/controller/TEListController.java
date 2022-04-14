@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ import teachers.model.TEDao;
 import utility.Paging;
 
 @Controller
-public class TEListController { // 4/13 JH - TEDao, TEBean, teachers.xml, teachers폴더 - teacherlist.jsp
+public class TEListController { // 4/13 JH - TEBean, TEListController, TEDao, teachers.xml, teachers폴더 - teacherlist.jsp
 	
 	private final String command = "/list.te";
 	private String getPage = "teacherlist";
@@ -26,7 +25,7 @@ public class TEListController { // 4/13 JH - TEDao, TEBean, teachers.xml, teache
 	@Autowired
 	private TEDao tedao;
 
-	@RequestMapping(command)
+	@RequestMapping(value=command)
 	public ModelAndView doAction( 
 			@RequestParam(value="keyword", required=false) String keyword,
 			@RequestParam(value="pageNumber", required=false) String pageNumber,

@@ -27,6 +27,11 @@
   	<delete id="DeleteTE">
   		delete teachers where tnum=#{tnum}
   	</delete>
+  	
+  	<select id="GetTeSubList" resultType="teachers.model.TEBean">
+  		select conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date,tnum,tname,t_image,subject,coupload_date
+  		from teachers, courses where coteacher = #{tname}
+  	</select>
 </mapper>
 
 <!-- order.xml -->

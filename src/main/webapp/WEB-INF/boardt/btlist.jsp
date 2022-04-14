@@ -196,7 +196,12 @@
 					<!-- <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> -->
 					<input type="checkbox" value="${i }" name="subjectall" onClick="subAll(this)" checked>전체
 					<c:forEach var="i" items="${Subjects }"> <!-- items sub가져와서.. i변수에 넣고.. jstl로 접근...-->
+					<c:if test="${i=='ETC'}"><!-- 참,거짓 판별할 때 EL안에다가 써줘야함 -->
+					<input type="checkbox" value="${i }"  id="subchk" name="subject" onClick="subElse(this)" checked>IT종합 &nbsp
+					</c:if>
+					<c:if test="${i != 'ETC'}">
 					<input type="checkbox" value="${i }"  id="subchk" name="subject" onClick="subElse(this)" checked>${i } &nbsp
+					</c:if>
 					</c:forEach>
 				</td>
 			</tr>

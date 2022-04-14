@@ -57,4 +57,12 @@ public class TEDao {
 		List<TEBean> list = sqlSessionTemplate.selectList(namespace+".GetTEList");
 		return list;
 	}
+	/*
+	TESubListController
+	
+	public TEBean getTEList(String tnum){
+		TEBean tbean = sqlSessionTemplate.selectOne(namespace+".GetTeSubList",tnum);
+		return tbean;
+	}
+	*/
 }
