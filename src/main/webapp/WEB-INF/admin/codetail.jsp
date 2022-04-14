@@ -3,6 +3,8 @@
 <%@ include file="../common/common.jsp" %>
 <%@ include file="../admin/adtop.jsp" %>
 <!-- colist.jsp<br> -->
+
+
 <script>
 	function upd(){
 		location.href="coupdate.ad?conum=${cobean.conum }";
@@ -26,6 +28,7 @@
 		height:30%;
 	}
 </style>
+
 <center>
 <h2>강의 정보</h2>
 
