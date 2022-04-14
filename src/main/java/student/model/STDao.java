@@ -14,14 +14,5 @@ public class STDao {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	public TeacherBean getAccount_test() {
-		
-		TeacherBean account = null;
-		
-		account = sqlSessionTemplate.selectOne(namespace + ".GetAccount_test");
-		
-		return account;
-	}
-	
 	
 }

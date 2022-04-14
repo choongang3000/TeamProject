@@ -18,7 +18,7 @@ create table accounts(
 	phone1 number,
 	phone2 number,
 	phone3 number,
-	addr varchar2(100),
+	addr varchar2(200),
 	joindate date default sysdate
 );
 insert into accounts values(acc_seq.nextval, '관리자', 'admin', 'admin', '1234', '111', '111', 'admin@gmail.com', '010', '1234', '5678', '경기도 고양시 일산동구 마두1동',default); 

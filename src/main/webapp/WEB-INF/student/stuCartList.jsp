@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
-<%@ include file="../admin/adtop.jsp" %>
+<%@ include file="../user/ustop.jsp"%>
 <!-- cartArr 로 cart목록 가져옴 -->
 <center>
+	<br><br>
 	<h2>장바구니</h2>
 	<br>
 	<table class="table" style="width:80%">
@@ -22,7 +23,7 @@
 			<td style="width:50%;text-align: center; vertical-align: middle;">${cart.coname }</td>
 			<td style="width:25%;text-align: center; vertical-align: middle;">${cart.coprice }</td>
 			<td style="width:10px;text-align: center; vertical-align: middle;">
-				<input type="button"  class="btn btn-outline-danger btn-sm" value="삭제">
+				<input type="button" class="btn btn-outline-danger btn-sm" value="삭제" onClick="location.href='deleteCart.stu?conum=${cart.conum}'">
 			</td>
 		<c:set var="i" value="${i+1}"/>
 		</tr>
@@ -43,5 +44,6 @@
 			<td width=50px></td>
 		</tr>
 	</table>
+	<br><br>
 </center>
-<%@ include file="../admin/adbottom.jsp" %>
+<%@ include file="../user/usbottom.jsp"%>

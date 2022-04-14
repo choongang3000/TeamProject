@@ -15,15 +15,8 @@ public class STUListController {
 	private final String command = "list.stu";
 	private String getPage = "stuhome";
 	
-	@Autowired
-	private STDao sdao;
-	
 	@RequestMapping(value=command)
 	public String doAction(HttpSession session) {
-		
-		TeacherBean account = sdao.getAccount_test();
-		
-		session.setAttribute("loginInfo", account);
 		
 		return getPage;
 	}

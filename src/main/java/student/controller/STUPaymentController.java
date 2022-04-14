@@ -19,7 +19,7 @@ public class STUPaymentController {
 	@RequestMapping(value=command,method=RequestMethod.GET)
 	public String doAction(HttpSession session,
 							HttpServletRequest request) {
-		/*
+		
 		ArrayList<StuCartBean> cartArr =  (ArrayList<StuCartBean>)session.getAttribute("cartArr");
 		
 		request.setAttribute("cartArr", cartArr);
@@ -33,7 +33,7 @@ public class STUPaymentController {
 		
 		request.setAttribute("totalcount",totalcount);
 		request.setAttribute("totalprice",totalprice);
-		*/
+		
 		return getPage;
 	}
 
