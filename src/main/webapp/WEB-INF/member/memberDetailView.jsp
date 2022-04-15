@@ -9,7 +9,7 @@
 <table border="1" width="600">
 	<tr>
     		<td>아이디</td>
-    		<td>${bean.id }</td>
+    		<td>${mbean.id }</td>
     </tr>
     <tr>
     		<td>비밀번호</td>
@@ -17,38 +17,38 @@
     </tr>
     <tr>
     		<td>이름</td>
-    		<td>${bean.name }</td>
+    		<td>${mbean.aname }</td>
     </tr>
 	<tr>
     		<td>TYPE</td>
-    		<td>${bean.type }</td>
+    		<td>${mbean.type }</td>
     </tr>
     <tr>
     		<td>생년월일</td>
-    		<td>${bean.rrn1 } - *******</td>
+    		<td>${mbean.rrn1 } - *******</td>
     </tr>
     <tr>
     		<td>지역정보</td>
-    		<td>${bean.addr}</td>
+    		<td>${mbean.addr}</td>
     </tr>
     <tr>
     		<td>이메일</td>
-    		<td>${bean.email }</td>
+    		<td>${mbean.email }</td>
     </tr>
     <tr>
     		<td>휴대폰</td>
-    		<td>${bean.phone1 } - ${bean.phone1 } - ${bean.phone1 }</td>
+    		<td>${mbean.phone1 } - ${mbean.phone1 } - ${mbean.phone1 }</td>
     </tr>
     <tr>
     		<td>회원가입일</td>
-    		<td>${bean.joindate }</td>
+    		<td>${mbean.joindate }</td>
     </tr>
     <tr>
     		<td colspan="2">
     			<a href="list.prd">뒤로가기</a>
+    			 <input class="btn btn-secondary btn-sm" type="submit" value="내 정보 관리" onClick="location.href='update.mem?anum=${loginInfo.anum}'">내 정보 수정</a>
     		</td>
     </tr>
-    
     
 </table>
 

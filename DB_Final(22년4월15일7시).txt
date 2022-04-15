@@ -1,0 +1,363 @@
+--회원 테이블
+drop sequence acc_seq;
+create sequence acc_seq 
+start with 1 
+increment by 1 
+nocache;
+
+drop table accounts cascade constraints;
+create table accounts(
+	anum number primary key,
+	aname varchar2(15) not null,
+	type varchar2(10) not null,
+	id varchar2(12) not null unique,
+	pw varchar2(12) not null,
+	rrn1 number not null,
+	rrn2 number not null,
+	email varchar2(25) not null,
+	phone1 number,
+	phone2 number,
+	phone3 number,
+	addr varchar2(200),
+	joindate date default sysdate
+);
+insert into accounts values(acc_seq.nextval, '관리자', 'admin', 'admin', '1234', '111', '111', 'admin@gmail.com', '010', '1234', '5678', '경기도 고양시 일산동구 마두1동',default); 
+insert into accounts values(acc_seq.nextval, '제시', 'teacher', 'teacher1', '1234', '111', '111', 'teacher1@gmail.com', '010', '9876', '5432', '서울시 은평구 갈현1동',default); 
+insert into accounts values(acc_seq.nextval, '니콜라', 'teacher', 'teacher2', '1234', '111', '111', 'teacher2@gmail.com', '010', '1122', '3344', '서울시 동대문구 이문1동',default); 
+insert into accounts values(acc_seq.nextval, '마이클', 'teacher', 'teacher3', '1234', '111', '111', 'teacher3@gmail.com', '010', '9988', '7766', '경기도 하남시 풍산동',default); 
+insert into accounts values(acc_seq.nextval, '제니', 'teacher', 'teacher4', '1234', '111', '111', 'teacher4@gmail.com', '010', '8822', '7766', '경기도 고양시 일산동구 마두1동',default); 
+insert into accounts values(acc_seq.nextval, '샬럿', 'teacher', 'teacher5', '1234', '111', '111', 'teacher5@gmail.com', '010', '7722', '7766', '서울시 은평구 갈현1동',default); 
+insert into accounts values(acc_seq.nextval, '디올', 'teacher', 'teacher6', '1234', '111', '111', 'teacher6@gmail.com', '010', '9988', '7766', '경기도 하남시 풍산동',default); 
+insert into accounts values(acc_seq.nextval, '학생', 'student', 'student', '1234', '111', '111', 'student@gmail.com', '010', '3344', '5566', '경기도 고양시 일산동구 마두1동',default); 
+
+--강사 테이블
+drop sequence tch_seq;
+create sequence tch_seq
+start with 1
+increment by 1
+nocache;
+
+drop table teachers cascade constraints;
+create table teachers(
+	tnum number not null primary key,
+	tid varchar2(12) references accounts(id) on delete cascade,
+	tname varchar2(15) not null,
+	t_image varchar2(100),
+	subject varchar2(100) not null,
+	visa varchar2(10), --媛뺤궗 鍮꾩옄肄붾뱶
+  	tterm date not null,--媛뺤궗 怨꾩빟湲곌컙
+  	twageratio float not null, --媛뺤궗 �엫湲� 鍮꾩쑉
+  	introduction varchar2(100) --媛뺤궗�냼媛�
+);
+
+insert into teachers values(tch_seq.nextval,'teacher1','제시','강사-큰이미지1(180x250).png','JAVA','F4','2022-4-1',0.4,'전 L사 개발자 팀장');
+insert into teachers values(tch_seq.nextval,'teacher2','니콜라','강사-큰이미지2(180x250).png','DB','F4','2022-4-1',0.5,'전 S사 개발자 팀장');
+insert into teachers values(tch_seq.nextval,'teacher3','마이클','강사-큰이미지3(180x250).png','JSP','F4','2022-4-1',0.6,'전 A사 개발자 부장');
+insert into teachers values(tch_seq.nextval,'teacher4','제니','강사-큰이미지4(180x250).png','CSS','F4','2022-4-17',0.6,'전 N사 개발자 팀장');
+insert into teachers values(tch_seq.nextval,'teacher5','샬럿','강사-큰이미지5(180x250).png','HTML','F4','2022-4-17',0.6,'전 S사 개발자 팀장');
+insert into teachers values(tch_seq.nextval,'teacher6','디올','강사-큰이미지6(180x250).png','ETC','F4','2022-4-17',0.6,'전 A사 개발자 팀장');
+
+
+--과목 테이블
+drop sequence sub_seq;
+create sequence sub_seq
+start with 1
+increment by 1
+nocache;
+
+drop table subjects cascade constraints;
+create table subjects(
+	subnum number not null primary key,
+	subname varchar2(30) not null unique
+);
+
+insert into subjects values(sub_seq.nextval, 'JAVA');
+insert into subjects values(sub_seq.nextval, 'DB');
+insert into subjects values(sub_seq.nextval, 'JSP');
+insert into subjects values(sub_seq.nextval, 'CSS');
+insert into subjects values(sub_seq.nextval, 'HTML');
+insert into subjects values(sub_seq.nextval, 'ETC');
+--ETC�뒗 湲고�怨쇰ぉ
+
+
+--媛뺤쓽 �뀒�씠釉�
+drop sequence cos_seq;
+create sequence cos_seq
+start with 1
+increment by 1
+nocache;
+
+drop table courses cascade constraints;
+create table courses(
+	conum number not null primary key, --媛뺤쓽踰덊샇
+	coname varchar2(100) not null, --媛뺤쓽紐�
+	coteacher varchar2(15) not null, --媛뺤쓽�떞�떦�꽑�깮�떂
+	cosubject varchar2(30) not null, --媛뺤쓽怨쇰ぉ
+	coimage varchar(100) not null, --媛뺤쓽�씠誘몄�
+	covideo varchar2(100) not null, --媛뺤쓽�쁺�긽
+	cocontent varchar2(100) not null, --媛뺤쓽�냼媛쒕궡�슜
+	coprice number not null, --媛뺤쓽媛�寃�
+	coupload_date date default sysdate --媛뺤쓽�뾽濡쒕뱶�궇吏�
+);
+
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '鍮꾩쟾怨듭옄瑜� �쐞�븳 �옄諛� �봽濡쒓렇�옒諛� �엯臾�', '�젣�떆', 'JAVA', '媛뺤궗1-�옉���씠誘몄�.png', 'video.jsp', '珥덈벑�븰�깮�룄 �뱽�뒗 �옄諛� �봽濡쒓렇�옒諛� �엯臾� 怨쇱젙! 二쇱�留먭퀬 �씪�떒 �뱾�뼱��~', 90000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '�옄諛� �떎�쟾 �봽濡쒓렇�옒諛�', '�젣�떆', 'JAVA', '媛뺤궗2-�옉���씠誘몄�.png', 'video.jsp', '�씠�젰�꽌�뿉 JAVA �뒫�닕�씠�씪怨� �떦�떦�븯寃� 留먰븷 �닔 �엳�떎 �옄諛� �떎�쟾 �봽濡쒓렇�옒諛�!', 90000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '�씪 �뒫瑜� �뙇�뙇 SQL', '�땲肄쒕씪', 'DB', '媛뺤궗1-�옉���씠誘몄�.png', 'video.jsp', '�씪 �뼱�뼸寃� �빐�빞�븷吏� 媛� �븞��? SQL 媛뺤쓽 �뱽怨� 媛먯씠 �궡�젮�삩�떎~', 70000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '�쎒 媛쒕컻 醫낇빀諛�', '�뵒�삱', 'ETC', '媛뺤궗2-�옉���씠誘몄�.png', 'video.jsp', '�뒪�뙆瑜댄�濡� 湲곕낯 �솗�떎�븯寃뚯옟怨� �쓳�슜源뚯�~', 90000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '�뜲�씠�꽣 遺꾩꽍 醫낇빀諛�', '�땲肄쒕씪', 'DB', '媛뺤궗1-�옉���씠誘몄�.png', 'video.jsp', '�뜲�씠�꽣遺꾩꽍 �솗珥덈낫 �뵳吏� ��由ш�~', 90000, '2022-04-06');
+
+--insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+--values(cos_seq.nextval, '', '�꺃�읉', 'DB', '媛뺤궗1-�옉���씠誘몄�.png', 'video.jsp', '', 90000, '2022-04-06');
+
+--insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+--values(cos_seq.nextval, '', '�젣�땲', 'DB', '媛뺤궗1-�옉���씠誘몄�.png', 'video.jsp', '', 90000, '2022-04-06');
+
+
+--二쇰Ц �뀒�씠釉�
+drop sequence ord_seq;
+create sequence ord_seq 
+start with 1 
+increment by 1 
+nocache ;
+
+DROP TABLE orders CASCADE CONSTRAINTS;
+
+  create table orders(
+  onum number primary key,
+  aid varchar2(10) references accounts(id) on delete set null,
+  totprice number not null,
+  orderdate date default sysdate
+);
+
+
+
+-- 媛뺤쓽 二쇰Ц �긽�꽭 �뀒�씠釉�
+drop sequence cosordd_seq;
+create sequence cosordd_seq 
+start with 1 
+increment by 1 
+nocache ;
+
+
+
+drop table cosord_details purge ;
+create table cosord_details(
+  odnum number primary key,
+  onum number references orders(onum) on delete cascade,
+  conum number references courses(conum) on delete set null
+); 
+
+
+
+-- 1:1 吏덈Ц 寃뚯떆�뙋(沅뚯�)
+drop sequence bst_seq;
+create sequence bst_seq 
+start with 1 
+increment by 1 
+nocache ;
+
+drop table board_st CASCADE CONSTRAINTS;
+create table board_st(
+  num number primary key,
+  stuid varchar2(15) not null,
+  subject varchar2(30) not null,
+  teacher varchar2(15) not null,
+  title varchar2(90) not null,
+  content varchar2(300) not null,
+  image varchar2(100),
+  st_check varchar2(5) not null,
+  write_date date default sysdate
+); 
+--check : Befor Reply(BR), After Reply(AR)
+insert into board_st values(bst_seq.nextval, 'kim', '�닔�븰', '�븘�씠�쑀', '�닔�뒫�듅媛� �닔2 138pg �쟻遺� 吏덈Ц', '吏덈Ц �궡�슜 �엯�땲�떎', null, 'AR', sysdate);
+insert into board_st values(bst_seq.nextval, 'kim', '�닔�븰', '�븘�씠�쑀', '�닔�뒫�듅媛� �닔2 138pg �쟻遺� 吏덈Ц1', '吏덈Ц �궡�슜 �엯�땲�떎1', null, 'BR', sysdate);
+insert into board_st values(bst_seq.nextval, 'kim', '�닔�븰', '�븘�씠�쑀', '�닔�뒫�듅媛� �닔2 138pg �쟻遺� 吏덈Ц2', '吏덈Ц �궡�슜 �엯�땲�떎2', null, 'BR', sysdate);
+insert into board_st values(bst_seq.nextval, 'kim', '�닔�븰', '�븘�씠�쑀', '�닔�뒫�듅媛� �닔2 138pg �쟻遺� 吏덈Ц3', '吏덈Ц �궡�슜 �엯�땲�떎3', null, 'BR', sysdate);
+insert into board_st values(bst_seq.nextval, 'kim', '�닔�븰', '�븘�씠�쑀', '�닔�뒫�듅媛� �닔2 138pg �쟻遺� 吏덈Ц4', '吏덈Ц �궡�슜 �엯�땲�떎4', null, 'BR', sysdate);
+
+-- 1:1 吏덈Ц 寃뚯떆�뙋 �떟蹂�(沅뚯�)
+drop sequence bstrep_seq;
+create sequence bstrep_seq 
+start with 1 
+increment by 1 
+nocache ;
+
+
+drop table boardreply_st CASCADE CONSTRAINTS;
+create table boardreply_st(
+  num number primary key,
+  pnum number references board_st(num) on delete cascade,
+  teachid varchar2(15) not null, 
+  content varchar2(300) not null,
+  image varchar2(30),
+  repdate date default sysdate
+); 
+
+insert into boardreply_st values(bstrep_seq.nextval, 1, '�븘�씠�쑀', '�꽑�깮�떂 �떟蹂� �궡�슜 �엯�땲�떎', null, sysdate);
+
+commit;
+
+
+-- �닔�뾽 �썑湲� 寃뚯떆�뙋 (�꽦��)
+drop table boards;
+
+create table boards( 
+	num number not null primary key,
+	writer varchar2(20) not null,
+	email varchar2(20),
+	subject varchar2(30) not null,
+	passwd varchar2(20) not null,
+	reg_date date not null,
+	readcount int default 0, 
+	ref number not null, 
+	re_step number not null, 
+	re_level number not null,
+	content varchar2(50) not null,
+	image varchar2(30),
+	rating number
+);
+
+drop sequence boards_seq;
+create sequence boards_seq
+  increment by 1
+  start with 1
+  minvalue 1
+  maxvalue 10000
+  nocache;
+  
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image,rating)
+values(boards_seq.nextval,'�븰�깮1','stu@naver.com','吏깆씠�뿉�슂','1234','2015-1-1',1,0,0,'�꽑�깮�떂 媛먯궗�빐�슜',null,5);
+
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image,rating)
+values(boards_seq.nextval,'�븰�깮2','stu2@gmail.com','媛먯궗�빐�슂','1234','2018-10-5',2,0,0,'�꽦�깮�떂 吏깆씠�뿉�슂!',null,4);
+
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image,rating)
+values(boards_seq.nextval,'�꽑�깮�떂','tc@daum.net','�옄�옉�뒪�읇�떎','1234','2015-10-6',2,1,1,'�닔怨좏뻽�뼱~!',null,null);
+
+commit;
+
+
+-- FAQ 寃뚯떆�뙋 (紐낇씗)
+
+drop sequence ba_seq;
+create sequence ba_seq 
+start with 1 
+increment by 1 
+nocache ;
+
+drop table boarda CASCADE CONSTRAINTS;
+create table boarda(
+  banum number primary key,
+  bacategory varchar2(100) not null,
+  basubject varchar2(200) not null, 
+  bacontent varchar2(300) not null,
+  baimage varchar2(30),
+  bafile varchar2(30)
+); 
+
+insert into boarda values(ba_seq.nextval, '移댄뀒1', '吏덈Ц1', '�떟蹂�1', null, null);
+
+commit;
+
+--�븰�깮�옄猷뚭쾶�떆�뙋 (二쇳쁽)
+--�쁾�쁾/resources/origin
+--由ъ냼�뒪 寃쎈줈�뿉 origin�뤃�뜑 異붽�/images�뤃�뜑�뿉 �씠誘몄� �꽔�뼱�빞�븿 
+
+drop table boardt cascade constraints;
+
+create table boardt(-- subject 留덈떎 �꽑�깮�빐�꽌 寃��깋�븯湲�/�젙�떟�솗�씤 �씠誘몄�瑜� �늻瑜대㈃ �씠踰ㅽ듃 諛쒖깮
+	num number not null primary key, -- 踰덊샇
+	subject varchar2(30) references subjects(subname) on delete cascade, -- 怨쇰ぉ / 怨쇰ぉ蹂꾨줈 議고쉶�븷嫄곗엫.
+	examfile varchar2(100) not null, -- 臾몄젣 �씠誘몄� �뙆�씪
+	answer varchar2(30) not null, -- �떟
+	passwd varchar2(12) not null, -- 鍮꾨�踰덊샇
+	quizimg varchar2(100) not null, -- �댁쫰 �씠誘몄� 
+	movingimg varchar2(100) not null -- �씠�룞 �씠誘몄�
+);
+
+drop sequence boardt_seq;
+create sequence boardt_seq
+  increment by 1
+  start with 1
+  minvalue 1
+  maxvalue 10000
+  nocache;
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'ETC','臾몄젣10.png','12','1234','�댁쫰10.png','�젙�떟�솗�씤10.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'ETC','臾몄젣9.png','�궗媛곹삎','1234','�댁쫰9.png','�젙�떟�솗�씤9.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'ETC','臾몄젣8.png','�룊�뻾�꽑','1234','�댁쫰8.png','�젙�떟�솗�씤8.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'ETC','臾몄젣7.png','�솕�궡�몴','1234','�댁쫰7.png','�젙�떟�솗�씤7.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'ETC','臾몄젣6.png','�긽�뼢�떇','1234','�댁쫰6.png','�젙�떟�솗�씤6.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'ETC','臾몄젣5.png','源딆씠','1234','�댁쫰5.png','�젙�떟�솗�씤5.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'ETC','臾몄젣4.png','�븷�옄�씪','1234','�댁쫰4.png','�젙�떟�솗�씤4.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'ETC','臾몄젣3.png','SELECT','1234','�댁쫰3.png','�젙�떟�솗�씤3.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'ETC','臾몄젣2.png','罹≪뒓�솕','1234','�댁쫰2.png','�젙�떟�솗�씤2.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'JAVA','臾몄젣1.png','UML','1234','�댁쫰1.png','�젙�떟�솗�씤1.png');
+
+commit;  
+
+
+--怨좉컼臾몄쓽 寃뚯떆�뙋(吏꾪솚 => �닔�젙�빐�빞�븿: �닔�젙�� �꽦���옉�뾽�삁�젙)
+drop table board;
+
+create table board( 
+	num number not null primary key,
+	writer varchar2(30) not null,
+	email varchar2(30),
+	subject varchar2(30) not null,
+	passwd varchar2(20) not null,
+	reg_date date not null,
+	readcount int default 0,
+	ref number not null, --寃뚯떆湲��씠 �냽�빐�엳�뒗 洹몃９�쓣 �닽�옄濡� 臾띠쓬 
+	re_step number not null, --媛숈� 洹몃９ 寃뚯떆湲��뱾�쓽 �젙�젹 �닚�꽌瑜� �굹���궡�뒗 媛�
+	re_level number not null, --遺�紐� 寃뚯떆湲��씤吏� �옄�떇寃뚯떆湲��씤吏� �굹���궡�뒗 媛� 0:遺�紐� 1:�옄�떇 2:�옄�떇�쓽 �옄�떇...
+	content varchar2(100) not null
+);
+
+drop sequence board_seq;
+create sequence board_seq
+  increment by 1
+  start with 1
+  minvalue 1
+  maxvalue 10000
+  nocache;
+	
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content)
+values(board_seq.nextval,'�븰�깮2','stu@naver.com','吏덈Ц�엳�뼱�슂','1234','2022-4-10',1,0,0,'�궡�슜1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content)
+values(board_seq.nextval,'�븰�깮1','stu2@gmail.com','�룄��二쇱꽭�슂!','1234','2022-4-5',2,0,0,'�궡�슜2');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content)
+values(board_seq.nextval,'愿�由ъ옄','tc@gmail.com','�떟蹂��뱶由쎈땲�떎','1234','2015-4-6',2,1,1,'�궡�슜21');
+
+commit;

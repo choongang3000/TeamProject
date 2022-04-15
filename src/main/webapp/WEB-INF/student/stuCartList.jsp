@@ -7,6 +7,7 @@
 	<br><br>
 	<h2>장바구니</h2>
 	<br>
+	<!-- <form action="payment.stu" method="get"> -->
 	<table class="table" style="width:80%">
 		<tr style="border-bottom: 2px solid black" class="table-active">
 			<th style="width:5%"></th>
@@ -40,10 +41,12 @@
 				<input type="button" value="계속 쇼핑하기" class="btn btn-secondary" onClick="location.href='list.cos'">
 				&nbsp;&nbsp;
 				<input type="button" value="결제하기" class="btn btn-primary" onClick="location.href='payment.stu'">
+				<!-- <input type="submit" value="결제하기" class="btn btn-primary"> -->
 			</td>
 			<td width=50px></td>
 		</tr>
 	</table>
+	<!-- </form> -->
 	<br><br>
 </center>
 <%@ include file="../user/usbottom.jsp"%>

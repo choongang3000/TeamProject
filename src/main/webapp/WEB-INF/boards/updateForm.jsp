@@ -4,11 +4,115 @@
 
 <%@ include file="../admin/adtop.jsp" %>
 
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="star-rating.css">
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#s1").click(function(){
+			$(".fa-star").css("color","black");
+			$("#s1").css("color","yellow");
+		});
+		$("#s2").click(function(){
+			$(".fa-star").css("color","black");
+			$("#s1,#s2").css("color","yellow");
+		});
+		$("#s3").click(function(){
+			$(".fa-star").css("color","black");
+			$("#s1,#s2,#s3").css("color","yellow");
+		});
+		$("#s4").click(function(){
+			$(".fa-star").css("color","black");
+			$("#s1,#s2,#s3,#s4").css("color","yellow");
+		});
+		$("#s5").click(function(){
+			$(".fa-star").css("color","black");
+			$(".fa-star").css("color","yellow");
+		}); */
+		
+		var rating = $('.review .rating');
+		rating.each(function(){
+			var targetScore = $(this).attr('data-rate');
+			$(this).find('svg:nth-child(-n+' + targetScore +')').css({color:'#F05522'});
+		});
+		
+		var userScore = $('#makeStar');
+		userScore.change(function(){
+			var userScoreNum = $(this).val();
+			console.log(userScoreNum);
+			$('.make_star svg').css({color:'#000'});
+			$('.make_star svg:nth-child(-n' + userScoreNum +')').css({color:'#F05522'});
+		});
+		
+		$('.make_star svg').click(function({
+			var targetNum = $(this).index +1 ;
+			$('.make_star svg').css({color:'#000'});
+			$('.make_star svg:nth-child(-n+' + targetNum +')').css({color:'#F05522'});
+		});
+		
+	});
+</script>
+
 <style>
 	.err{
 		color:red;
 		font-weight:bold;
 	}
+	.star-rating {
+	  border:solid 1px #ccc;
+	  display:flex;
+	  flex-direction: row-reverse;
+	  font-size:1.5em;
+	  justify-content:space-around;
+	  padding:0 .2em;
+	  text-align:center;
+	  width:5em;
+	}
+	
+	.star-rating input {
+	  display:none;
+	}
+	
+	.star-rating label {
+	  color:#ccc;
+	  cursor:pointer;
+	}
+	
+	.star-rating :checked ~ label {
+	  color:#f90;
+	}
+	
+	.star-rating label:hover,
+	.star-rating label:hover ~ label {
+	  color:#fc0;
+	}
+	
+	article {
+	  background-color:#ffe;
+	  box-shadow:0 0 1em 1px rgba(0,0,0,.25);
+	  color:#006;
+	  font-family:cursive;
+	  font-style:italic;
+	  margin:4em;
+	  max-width:30em;
+	  padding:2em;
+	}
+	
+	.con{
+		height:60px;
+		width:500px;
+		position:absolute;
+		margin:auto;
+		left:0;
+		right:0;
+		top:0;
+		bottom:0;
+	}
+	
+	.fa-star{
+		font-size:65px;
+	}	 	
 </style>
 
 <center>
@@ -54,6 +158,27 @@
 			<td>
 				<textarea name="content" rows="15" cols="50" class="form-control" placeholder="내용을 입력해주세요" id="floatingTextarea" style="resize:none;">${bb.content}</textarea>
 				<form:errors path="content" cssClass="err"></form:errors>			
+			</td>
+		</tr>
+		<tr>
+			<td align="center" bgcolor="#DCDCDC">별점주기</td>
+			<td>	
+				<div class="star-rating">
+				  <input type="radio" id="5-stars" name="rating" value="5" <c:if test="${5 eq bb.rating }">checked</c:if>>
+				  <label for="5-stars" class="star">&#9733;</label>
+				  
+				  <input type="radio" id="4-stars" name="rating" value="4" <c:if test="${4 eq bb.rating }">checked</c:if>>
+				  <label for="4-stars" class="star">&#9733;</label>
+				  
+				  <input type="radio" id="3-stars" name="rating" value="3" <c:if test="${3 eq bb.rating }">checked</c:if>>
+				  <label for="3-stars" class="star">&#9733;</label>
+				  
+				  <input type="radio" id="2-stars" name="rating" value="2" <c:if test="${2 eq bb.rating }">checked</c:if>>
+				  <label for="2-stars" class="star">&#9733;</label>
+				  
+				  <input type="radio" id="1-star" name="rating" value="1" <c:if test="${1 eq bb.rating }">checked</c:if>>
+				  <label for="1-star" class="star">&#9733;</label>
+			</div>
 			</td>
 		</tr>
 		<tr>

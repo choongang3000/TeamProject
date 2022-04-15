@@ -9,10 +9,11 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript">
-
-/* 카드결제 */
-function kg(){
-	  //class가 btn_payment인 태그를 선택했을 때 작동한다.
+function pm(){
+	var name = document.forms[0].paymentMethod.value;
+	
+	if(name == "kg"){
+		//alert(name);
 		var IMP = window.IMP;
 	  	IMP.init('imp61700942');/*'가맹점 식별코드'*/
 	  	//결제시 전달되는 정보
@@ -20,7 +21,7 @@ function kg(){
 				    pg : 'inicis', 
 				    pay_method : 'card',
 				    merchant_uid : 'merchant_' + new Date().getTime(),
-				    name : '주문명:결제테스트'/*상품명*/,
+				    name : ${totalcount} /*상품명 '주문명:결제테스트'*/,
 				    amount :  ${totalprice } /*상품 가격*/, 
 				    buyer_email : 'iamport@siot.do'/*구매자 이메일*/,
 				    buyer_name : '구매자이름',
@@ -42,15 +43,14 @@ function kg(){
 				        result ='1';
 				    }
 				    if(result=='0') {
-				    	location.href= "shlistdetail.stu";
+				    	/* location.href= "shlistdetail.stu"; */
+				    	document.forms[0].submit();
 				    }
 				    alert(msg);
 				});
-};
-
-/* 가상계좌 */
-function danal(){
-	  //class가 btn_payment인 태그를 선택했을 때 작동한다.
+	};
+	if(name == "danal"){
+		//alert(name);
 		var IMP = window.IMP;
 	  	IMP.init('imp61700942');/*'가맹점 식별코드'*/
 	  	//결제시 전달되는 정보
@@ -80,16 +80,15 @@ function danal(){
 				        result ='1';
 				    }
 				    if(result=='0') {
-				    	location.href="shlistdetail.stu";
+				    	//location.href= "shlistdetail.stu";
+				    	//location.href="buycos.stu";
+				    	document.forms[0].submit();
 				    }
 				    alert(msg);
 				});
-};
-
-/* 카카오페이 */
-function kakao(){
-
-        //class가 btn_payment인 태그를 선택했을 때 작동한다.
+	};
+	if(name == "kakao"){
+		//alert(name);
 		var IMP = window.IMP;
 	  	IMP.init('imp61700942');/*'가맹점 식별코드'*/
 	  	//결제시 전달되는 정보
@@ -119,12 +118,14 @@ function kakao(){
 				        result ='1';
 				    }
 				    if(result=='0') {
-				    	location.href= "shlistdetail.stu";
+				    	//location.href= "shlistdetail.stu";
+				    	//location.href= "buycos.stu";
+				    	document.forms[0].submit();
 				    }
 				    alert(msg);
 				});
+	};
 };
-
 /* 	
 결제수단 선택하면 결제수단 관련내용 출력되게하기
 function div_show(selectNum){
@@ -172,6 +173,7 @@ function div_show(selectNum){
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-primary">구매상품</span>
           <span class="badge bg-primary rounded-pill">구매수량(${totalcount })</span>
+          <input type="hidden" name="totalcount" value="${totalcount}">
         </h4>
         
         <ul class="list-group mb-3">
@@ -180,9 +182,14 @@ function div_show(selectNum){
             <div>
               <h6 class="my-0">${cart.coname }</h6>
               <small class="text-muted">${cart.coteacher }의 ${cart.cosubject }</small>
+              <input type="hidden" name="coname" value="${cart.coname}">
+              <input type="hidden" name="coteacher" value="${cart.coteacher}">
+              <input type="hidden" name="cosubject" value="${cart.cosubject}">
+              <input type="hidden" name="coimage" value="${cart.coimage}">
             </div>
             <span class="text-muted">
             <fmt:formatNumber value="${cart.coprice}" pattern="#,###,###"/>원
+            <input type="hidden" name="coprice" value="${cart.coprice}">
             <%-- ${cart.coprice}원 --%>
             </span>
           </li>
@@ -191,6 +198,7 @@ function div_show(selectNum){
             <span>최종 결제금액</span>
             <strong>
             <fmt:formatNumber value="${totalprice }" pattern="#,###,###"/>원
+            <input type="hidden" name="totalprice" value="${totalprice}">
             <%-- ${totalprice }원 --%>
             </strong>
           </li>
@@ -198,7 +206,8 @@ function div_show(selectNum){
       </div>
       
       <div class="col-md-7 col-lg-8">
-      <form class="needs-validation" method="post" action="buycos.stu" novalidate> <!-- form여깃음 -->
+      <!-- <form class="needs-validation" method="post" action="buycos.stu" novalidate> form여깃음 -->
+      <form class="needs-validation" method="get" action="buycos.stu" novalidate> <!-- form여깃음 -->
        <hr class="my-4">
        <br>
           <h4 class="mb-3">결제수단 선택</h4> <!-- 미완성3:결제수단 어떤거 선택할건지? -->
@@ -207,21 +216,21 @@ function div_show(selectNum){
           
             <div class="form-check">
               <!-- <input id="radio_p1" name="paymentMethod" type="radio" class="form-check-input" onclick="div_show('1');" required> -->
-              <input id="radio_p1" name="paymentMethod" type="radio" class="form-check-input" onclick="kg()" required>
+              <input id="radio_p1" name="paymentMethod" type="radio" class="form-check-input" value="kg" required>
               <label class="form-check-label" for="payment1">신용카드</label>
             </div>
             
             
             <div class="form-check">
               <!-- <input id="radio_p2" name="paymentMethod" type="radio" class="form-check-input" onclick="div_show('2');" required> -->
-              <input id="radio_p1" name="paymentMethod" type="radio" class="form-check-input" onclick="danal()" required>
+              <input id="radio_p1" name="paymentMethod" type="radio" class="form-check-input" value="danal" required>
               <label class="form-check-label" for="payment2">무통장입금</label>
             </div>
             
             
             <div class="form-check">
               <!-- <input id="radio_p3" name="paymentMethod" type="radio" class="form-check-input" onclick="div_show('3');" required> -->
-              <input id="radio_p1" name="paymentMethod" type="radio" class="form-check-input" onclick="kakao()" required>
+              <input id="radio_p1" name="paymentMethod" type="radio" class="form-check-input" value="kakao" required>
               <label class="form-check-label" for="payment3">카카오페이</label>
             </div>
             
@@ -309,7 +318,7 @@ function div_show(selectNum){
 		  
           <br><br>
           <!-- <hr class="my-4"> -->
-          <button class="w-100 btn btn-primary btn-lg" type="submit">결제하기</button>
+          <button class="w-100 btn btn-primary btn-lg" type="button" onClick="pm()">결제하기</button>
         </form>
 	 	<br><br>
       </div>
@@ -388,7 +397,5 @@ alert(msg);
 });
 });
 </script>
-
-
 출처: https://minaminaworld.tistory.com/78 [미나미 블로그] 
 -->

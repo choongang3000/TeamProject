@@ -63,5 +63,24 @@ private String namespace="member.model.Member";
 		return sbean;
 
 	}
+	
+	public List<MemberBean> memberAll() {
+		List<MemberBean> mlist = new ArrayList<MemberBean>();
+		mlist = sqlSessionTemplate.selectList(namespace+".MemberAll");
+		return mlist;		
+	}
+	
+	public MemberBean selectMember(int anum) {
+		MemberBean mbean = sqlSessionTemplate.selectOne(namespace+".SelectMember",anum);
+		return mbean;
+	}
+	
+	public void updateMember(MemberBean mbean) {
+		sqlSessionTemplate.update(namespace+".UpdateMember",mbean);
+	}
+	
+	public void deleteMember(MemberBean mb) {
+		 sqlSessionTemplate.delete(namespace + ".DeleteMember", mb);
+	}
 
 }

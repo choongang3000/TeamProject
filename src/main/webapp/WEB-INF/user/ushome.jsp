@@ -21,7 +21,7 @@
       	
         <h5>${cos.coname}</h5>
         <p>${cos.cocontent}</p>
-        <p><a href="detail.cos?conum=${course.conum }" class="btn btn-primary">보러가기</a><p>
+        <p><a href="detail.cos?conum=${cos.conum }&pageNumber=${pageInfo.pageNumber }" class="btn btn-primary">보러가기</a><p>
       </div>
     </div>
   </c:forEach>

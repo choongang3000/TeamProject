@@ -11,8 +11,9 @@ import org.springframework.stereotype.Component;
 import boarda.model.BABean;
 import utility.Paging;
 
-@Component("TEDao")
+@Component("myTEDao")
 public class TEDao {
+	
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 	

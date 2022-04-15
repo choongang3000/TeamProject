@@ -1,13 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beansProjectDescription>
 	<version>1</version>
-	<pluginVersion><![CDATA[2.5.0.201010141000-RC1]]></pluginVersion>
+	<pluginVersion><![CDATA[3.9.21.202203211437-RELEASE]]></pluginVersion>
 	<configSuffixes>
 		<configSuffix><![CDATA[xml]]></configSuffix>
 	</configSuffixes>
 	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/order-servlet.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/orderdetails-servlet.xml</config>
 	</configs>
+	<autoconfigs>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/te-servlet.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/on-servlet.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/admin-servlet.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/student-servlet.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/login-servlet.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/user-servlet.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/ba-servlet.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/cos-servlet.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/ac-servlet.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/board-servlet.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/bs-servlet.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/bt-servlet.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/member-servlet.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/teacher-servlet.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/root-context.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/boardst-servlet.xml</config>
+	</autoconfigs>
 	<configSets>
 	</configSets>
 </beansProjectDescription>

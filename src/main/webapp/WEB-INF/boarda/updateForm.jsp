@@ -1,41 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
+<%@ include file="../fix/ad_top.jsp"%>
 <style type="text/css">
 .err {
 	color: red;
 	font-weight: bold;
 }
+
+#container {
+	width: 65%;
+	margin: auto;
+}
 </style>
-<%
-	String[] cateArr = {"자주 찾는 질문","회원","클래스 이용","학습","수업 개설/관리","학습 관리","강좌 관리","기타"};
-
-%> 
-
-<form:form commandName="ba" action="update.ba?pageNumber=${pageNumber }" method="post">
-<h2>질문 수정(페이지:${pageNumber} 글번호:${ba.banum} )</h2>
-	<input type="hidden" name="banum" value="${ba.banum}">
-	<p>
-	<label>*카테고리</label>
-	<select name="bacategory">
-		<option value="">선택하세요
-		<c:set var="cateArr" value="<%= cateArr %>"/>
-		<c:forEach var="bacategory" items="${cateArr}">
-			<option value="${bacategory }" <c:if test="${ba.bacategory == bacategory }"> selected </c:if> >${bacategory }
-		</c:forEach>
-	</select>
-	<form:errors cssClass="err" path="bacategory"/>
-	</p>
-	<p>
-		*질문 <input type="text" name="basubject" value="${ba.basubject }"> 
-		<form:errors cssClass="err" path="basubject" />
-	</p>
-	<p>
-		*답변 <input type="text" name="bacontent" value="${ba.bacontent }"> 
-		<form:errors cssClass="err" path="bacontent" />
-	</p>
-	<p>
-		<input class="form-control" id="formFile" type="file" name="upload" value="${ba.baimage }">
-	</p>
-	<input type="submit" value="추가하기">
-</form:form>
+<div id="container">
+	<form:form class="needs-validation" action="update.ba" method="post" commandName="babean">
+		<select name="bacategory" class="form-select" aria-label="Default select example">
+  			<option value="">카테고리 선택</option>
+			<option value="회원">회원</option>
+			<option value="클래스이용">클래스 이용</option>
+			<option value="학습">학습</option>
+			<option value="강좌관리">강좌 관리</option>
+			<option value="기타">기타</option>
+		</select>
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label">질문</label> 
+			<input type="text" name="basubject" class="form-control" id="exampleFormControlInput1" value="${babean.basubject }" required>
+		</div>
+		<div class="mb-3">
+			<label for="exampleFormControlTextarea1" class="form-label">답변</label>
+			<textarea class="form-control" name="bacontent" id="exampleFormControlTextarea1" rows="3" required>${babean.bacontent }</textarea>
+		</div>
+		<button type="submit" class="btn btn-primary btn-sm">수정</button>
+	</form:form>
+</div>
