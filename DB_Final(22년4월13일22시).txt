@@ -123,7 +123,7 @@ values(cos_seq.nextval, '데이터 분석 종합반', '니콜라', 'DB', '강사
 --values(cos_seq.nextval, '', '제니', 'DB', '강사1-작은이미지.png', 'video.jsp', '', 90000, '2022-04-06');
 
 
---주문 테이블
+--주문 테이블(주문목록)
 drop sequence ord_seq;
 create sequence ord_seq 
 start with 1 
@@ -133,10 +133,10 @@ nocache ;
 DROP TABLE orders CASCADE CONSTRAINTS;
 
   create table orders(
-  onum number primary key,
-  aid varchar2(10) references accounts(id) on delete set null,
-  totprice number not null,
-  orderdate date default sysdate
+  onum number primary key,--주문번호
+  aid varchar2(10) references accounts(id) on delete set null, --주문자id
+  totprice number not null, --주문전체금액
+  odate date default sysdate  --주문날짜
 );
 
 
@@ -152,9 +152,10 @@ nocache ;
 
 drop table cosord_details purge ;
 create table cosord_details(
-  odnum number primary key,
-  onum number references orders(onum) on delete cascade,
-  conum number references courses(conum) on delete set null
+  odnum number primary key, --상세주문번호
+  onum number references orders(onum) on delete cascade, --주문목록의 주문번호
+  conum number references courses(conum) on delete set null, --강의번호
+  oddate date default sysdate --주문테이블의 주문날짜와 같음
 ); 
 
 

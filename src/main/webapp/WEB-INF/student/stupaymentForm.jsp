@@ -9,7 +9,6 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript">
-
 /* 카드결제 */
 function kg(){
 	  //class가 btn_payment인 태그를 선택했을 때 작동한다.
@@ -47,7 +46,6 @@ function kg(){
 				    alert(msg);
 				});
 };
-
 /* 가상계좌 */
 function danal(){
 	  //class가 btn_payment인 태그를 선택했을 때 작동한다.
@@ -85,10 +83,8 @@ function danal(){
 				    alert(msg);
 				});
 };
-
 /* 카카오페이 */
 function kakao(){
-
         //class가 btn_payment인 태그를 선택했을 때 작동한다.
 		var IMP = window.IMP;
 	  	IMP.init('imp61700942');/*'가맹점 식별코드'*/
@@ -124,7 +120,6 @@ function kakao(){
 				    alert(msg);
 				});
 };
-
 /* 	
 결제수단 선택하면 결제수단 관련내용 출력되게하기
 function div_show(selectNum){
@@ -388,7 +383,5 @@ alert(msg);
 });
 });
 </script>
-
-
 출처: https://minaminaworld.tistory.com/78 [미나미 블로그] 
 -->
