@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="../common/common.jsp" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -87,21 +89,24 @@
 	        <a class="link-secondary" href="#" aria-label="Search">
 	          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
 	        </a>
-	        <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>&nbsp;
+	        <c:if test="${loginInfo != null }">
+	        <font size="2">${loginInfo.id } 님 환영합니다</font>
+	        </c:if>
+	        <a class="btn btn-sm btn-outline-secondary" href="loginForm.mem">Sign up</a>&nbsp;
 	        <a class="btn btn-sm btn-outline-secondary" href="<%=request.getContextPath()%>/logout.jsp">Log out</a>&nbsp;
 	        <a class="btn btn-sm btn-outline-secondary" href="list.bst">1:1 문의</a>
 	      </div>
 	    </div>
 	  </header>
 	
-	  <div class="nav-scroller py-1 mb-2">
+	  <div class="nav-scroller py-1 mb-2 border-bottom">
 	    <nav class="nav d-flex justify-content-between">
 	      <a class="p-2 link-secondary top_nav" href="list.cos">강의 &nbsp<img src="<%=request.getContextPath() %>/resources/images/computer-mouse-solid.svg" width="20" height="20"/></a>
 	      <!-- 강의 jsp는 course폴더에 있음 -->
 	      <a class="p-2 link-secondary top_nav" href="list.te">선생님 &nbsp<img src="<%=request.getContextPath() %>/resources/images/computer-mouse-solid.svg" width="20" height="20"/></a>
 	      <a class="p-2 link-secondary top_nav" href="list.bt">Quiz &nbsp<img src="<%=request.getContextPath() %>/resources/images/quiz-bell.svg" width="20" height="20"/></a>
 	      <a class="p-2 link-secondary top_nav" href="list.ba">FAQ 게시판 &nbsp<img src="<%=request.getContextPath() %>/resources/images/computer-mouse-solid.svg" width="20" height="20"/></a>
-	      <a class="p-2 link-secondary top_nav" href="accounts.ac">마이페이지 &nbsp<img src="<%=request.getContextPath() %>/resources/images/mypage.svg" width="20" height="20"/></a>
+	      <a class="p-2 link-secondary top_nav" href="mypage.mem">마이페이지 &nbsp<img src="<%=request.getContextPath() %>/resources/images/mypage.svg" width="20" height="20"/></a>
 	    </nav>
 	  </div>
 	</div>

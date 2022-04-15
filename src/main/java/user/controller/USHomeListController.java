@@ -43,7 +43,7 @@ public class USHomeListController {
 			@RequestParam(value="whatColumn", required=false) String whatColumn2,
 			@RequestParam(value="keyword", required=false) String keyword2,
 			@RequestParam(value="pageNumber", required=false) String pageNumber2,
-			HttpServletRequest request) {
+			HttpServletRequest request, HttpSession session) {
 
 		Map<String, String> map1 = new HashMap<String, String>();
 		Map<String, String> map2 = new HashMap<String, String>();
@@ -63,10 +63,10 @@ public class USHomeListController {
 		Paging pageInfo1=new Paging(pageNumber1, null, totalCount1, url1, whatColumn1, keyword1);
 		Paging pageInfo2=new Paging(pageNumber2, null, totalCount2, url2, whatColumn2, keyword2);
 
-
+		
 		List<TEBean> teList = tedao.getTEList(pageInfo1, map1); 
 		List<COSBean> cosList = cosdao.getCOSList(pageInfo2, map2);
-
+		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("teList", teList);
 		mav.addObject("cosList", cosList);

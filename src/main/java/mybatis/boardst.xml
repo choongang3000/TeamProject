@@ -6,7 +6,13 @@
 <mapper namespace="boardst.sql">
 	<select id="GetTotalCount" resultType="int">
 		select count(*) from board_st
-	<!-- 
+		<if test="type == 'teacher'">
+			where teacher=#{teacherName}
+		</if>
+		<if test="type == 'student'">
+			where stuid=#{stuId}
+		</if>	
+		<!-- 
 		<if test="whatColumn =='name'">
 			where name like #{keyword}
 		</if>
@@ -17,6 +23,12 @@
 	</select>
 	<select id="GetAllBoard" resultType="boardst.model.BSTBean">
 		select * from board_st
+		<if test="type == 'teacher'">
+			where teacher=#{teacherName}
+		</if>
+		<if test="type == 'student'">
+			where stuid=#{stuId}
+		</if>
 		<!-- 
 		<if test="whatColumn =='name'">
 			where name like #{keyword}
@@ -58,4 +70,14 @@
 	<update id="UpdateCheck_Delete">
 		update board_st set st_check='BR' where num=#{num} 
 	</update>
+	
+	<select id="GetSubjectArr" resultType="String">
+		select subname from subjects
+		order by subname	
+	</select>
+
+	<select id="GetTeacherArr" resultType="String">
+		select tname from teachers
+		order by tname
+	</select>
 </mapper>

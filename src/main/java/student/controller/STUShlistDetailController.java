@@ -1,6 +1,6 @@
 package student.controller;
 
-import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +12,10 @@ public class STUShlistDetailController {
 	private String getPage = "stushlistdetail";
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
-	public String doAction() {
+	public String doAction(HttpSession session) {
+		
+		session.removeAttribute("mycart");
+		session.removeAttribute("cartArr");
 		
 		return getPage;
 	}

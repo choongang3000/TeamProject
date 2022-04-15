@@ -9,6 +9,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import admin.model.TeacherBean;
+import admin.model.TeacherDao;
 import member.model.MemberBean;
 import utility.Paging;
 
@@ -62,6 +64,12 @@ private String namespace="member.model.Member";
 		sbean = sqlSessionTemplate.selectOne(namespace+".SearchIdByBean", logbean);
 		return sbean;
 
+	}
+	
+	public TeacherBean getTeacherData(String anum) {
+		TeacherBean tbean = sqlSessionTemplate.selectOne(namespace + ".GetTeacherData",anum);
+		
+		return tbean;
 	}
 
 }

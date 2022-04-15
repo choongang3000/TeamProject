@@ -1,18 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp" %>
-<%@ include file="top.jsp" %>
+<%@ include file="../user/ustop.jsp" %>
+	<br><br>
 	<center>
 		<table style="text-align: center; width:70%" class="table table-striped" >
 			<tr>
+				<c:if test="${loginInfo.type=='student' }">
 				<td colspan=6 align=right>
 					<input type="button" value="질문 작성" class="btn btn-secondary btn-sm" onClick="location.href='insert.bst?pageNumber=${pageInfo.pageNumber}'">
 				</td>
+				</c:if>
 			</tr>
 			<tr style="border-bottom: 2px solid black;">
 				<th width=30 >NO</th>
 				<th width=60>과목</th>
+				<c:if test="${loginInfo.type=='student' }">
 				<th width=90>선생님</th>
+				</c:if>
+				<c:if test="${loginInfo.type=='teacher' }">
+				<th width=90>학생ID</th>
+				</c:if>
 				<th width=450>제목</th>
 				<th width=170>작성일</th>
 				<th width=100>상태</th>
@@ -23,7 +31,12 @@
 				<th>${contentNum }</th>
 				<c:set var="contentNum" value="${contentNum -1 }"/>
 				<td>${bd.subject }</td>
+				<c:if test="${loginInfo.type=='student' }">
 				<td>${bd.teacher }</td>
+				</c:if>
+				<c:if test="${loginInfo.type=='teacher' }">
+				<td>${bd.stuid }</td>
+				</c:if>
 				<td align=left>
 					&nbsp;
 					<a href="detail.bst?pageNumber=${pageInfo.pageNumber }&num=${bd.num}">${bd.title }</a>
@@ -42,4 +55,5 @@
 		${pageInfo.pagingHtml }
 		
 	</center>
-<%@ include file="bottom.jsp" %>
+	<br><br>
+<%@ include file="../user/usbottom.jsp" %>
