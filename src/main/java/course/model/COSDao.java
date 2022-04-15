@@ -1,5 +1,6 @@
 package course.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -52,9 +53,11 @@ public class COSDao {
 		return cnt;
 	}
 	
-	/* JH - 강사별 강의목록 출력 (관련:TEsubListController/course.xml) */
-	public List<COSBean> getTESubList(String tname) {
-		List<COSBean> list = sqlSessionTemplate.selectList(namespace+".GetTESubList",tname);
-		return list;
+	public List<String> getSubject(){
+		List<String> subArr = new ArrayList<String>();
+		
+		subArr = sqlSessionTemplate.selectList(namespace + ".GetSubject");
+		
+		return subArr;
 	}
 }

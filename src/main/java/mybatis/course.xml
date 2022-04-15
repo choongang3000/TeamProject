@@ -53,4 +53,9 @@
   	<delete id="DeleteCOS">
   		delete courses where conum=#{conum}
   	</delete>
+  	
+  	<select id="GetSubject" resultType="String">
+  		select subname from subjects
+  		order by subname
+  	</select>
 </mapper>
