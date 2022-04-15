@@ -6,16 +6,49 @@
 <mapper namespace = "boarda.model.BABean">
   	<select id="GetBAListCount" resultType="int">
 		select count(*) from boarda
-		<if test="whatColumn == 'bacategory'">
-			where name like #{keyword}
+		<if test="bacategory != null">
+			<if test="bacategory == '회원'">
+				where bacategory='회원'
+			</if>
+			<if test="bacategory == '클래스이용'">
+				where bacategory='클래스이용'
+			</if>
+			<if test="bacategory == '학습'">
+				where bacategory='학습'
+			</if>
+			<if test="bacategory == '강좌관리'">
+				where bacategory='강좌관리'
+			</if>
+			<if test="bacategory == '기타'">
+				where bacategory='기타'
+			</if>
 		</if>
-		order by banum desc
+		<if test="keyword != null">
+			where basubject like #{keyword}
+		</if>
 	</select>
   	
   	<select id="GetBAList" resultType="boarda.model.BABean">
   		select * from boarda
-  		<if test="whatColumn == 'bacategory'">
-			where name like #{keyword}
+  		<if test="bacategory != null">
+			<if test="bacategory == '회원'">
+				where bacategory='회원'
+			</if>
+			<if test="bacategory == '클래스이용'">
+				where bacategory='클래스이용'
+			</if>
+			<if test="bacategory == '학습'">
+				where bacategory='학습'
+			</if>
+			<if test="bacategory == '강좌관리'">
+				where bacategory='강좌관리'
+			</if>
+			<if test="bacategory == '기타'">
+				where bacategory='기타'
+			</if>
+		</if>
+		<if test="keyword != null">
+			where basubject like #{keyword}
 		</if>
 		order by banum desc
   	</select>
