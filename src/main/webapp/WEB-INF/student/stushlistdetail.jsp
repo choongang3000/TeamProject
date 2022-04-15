@@ -37,7 +37,7 @@
 			<td>
 				<br>
 				<img src="" width="50" height="50"><br>
-				HTML 뽀개기(기초)
+				
 			</td>
 			<td>50,000원</td>
 			<td>수강중</td>
@@ -48,8 +48,8 @@
 		</tr>
 		<tr>
 			
-			<td height="50">총 결제 개수<br>1개</td>
-			<td colspan="2">총 결제 금액<br>50,000원</td>
+			<td height="50">총 결제 개수<br>${totalcount }개</td>
+			<td colspan="2">총 결제 금액<br>${totalprice }원</td>
 		</tr>
 	</table>
 	<br>

@@ -30,6 +30,21 @@
 		select * from accounts where aname=#{aname} and email=#{email}
 	</select>
 	
+	<select id="MemberAll" resultType="MyMember">
+ 		select * from accounts order by anum
+ 	</select>
+ 	
+	<select id="SelectMember" resultType="MyMember">
+ 		select * from accounts where anum=#{anum}
+ 	</select>
+ 	
+ 	<update id="UpdateMember">
+ 		update accounts set aname=#{aname} where anum=#{anum}
+ 	</update>
+ 	
+ 	<delete id="DeleteMember">
+ 		delete from accounts where anum=#{anum}
+ 	</delete>
 </mapper>
 <!-- member.xml -->
 

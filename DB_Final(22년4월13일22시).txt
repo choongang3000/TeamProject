@@ -153,6 +153,7 @@ nocache ;
 drop table cosord_details purge ;
 create table cosord_details(
   odnum number primary key, --상세주문번호
+  oid varchar2(50),
   onum number references orders(onum) on delete cascade, --주문목록의 주문번호
   conum number references courses(conum) on delete set null, --강의번호
   oddate date default sysdate --주문테이블의 주문날짜와 같음
