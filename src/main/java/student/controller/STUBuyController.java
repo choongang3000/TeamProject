@@ -17,8 +17,7 @@ public class STUBuyController {
 	private String getPage = "stushlist";
 	
 	@RequestMapping(command)
-	public String doAction(HttpServletRequest request,
-							HttpSession session) {
+	public String doAction(HttpServletRequest request,HttpSession session) {
 		
 		ArrayList<StuCartBean> cartArr =  (ArrayList<StuCartBean>)session.getAttribute("cartArr");
 		

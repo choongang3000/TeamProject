@@ -223,7 +223,8 @@ create table boards(
 	re_step number not null, 
 	re_level number not null,
 	content varchar2(50) not null,
-	image varchar2(30)
+	image varchar2(30),
+	rating number
 );
 
 drop sequence boards_seq;
@@ -234,14 +235,14 @@ create sequence boards_seq
   maxvalue 10000
   nocache;
   
-insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
-values(boards_seq.nextval,'학생1','stu@naver.com','짱이에요','1234','2015-1-1',1,0,0,'선생님 감사해용',null);
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image,rating)
+values(boards_seq.nextval,'학생1','stu@naver.com','짱이에요','1234','2015-1-1',1,0,0,'선생님 감사해용',null,5);
 
-insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
-values(boards_seq.nextval,'학생2','stu2@gmail.com','감사해요','1234','2018-10-5',2,0,0,'성생님 짱이에요!',null);
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image,rating)
+values(boards_seq.nextval,'학생2','stu2@gmail.com','감사해요','1234','2018-10-5',2,0,0,'성생님 짱이에요!',null,4);
 
-insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
-values(boards_seq.nextval,'선생님','tc@daum.net','자랑스럽다','1234','2015-10-6',2,1,1,'수고했어~!',null);
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image,rating)
+values(boards_seq.nextval,'선생님','tc@daum.net','자랑스럽다','1234','2015-10-6',2,1,1,'수고했어~!',null,null);
 
 commit;
 

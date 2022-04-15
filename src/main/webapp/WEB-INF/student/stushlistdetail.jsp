@@ -5,7 +5,7 @@
 	
 	<script>
 	function buylist(){
-		location.href="buycos.stu";
+		location.href="shlist.stu";
 	}
 	</script>
 	
@@ -30,6 +30,7 @@
 			<td bgcolor="#DCDCDC">상품명</td>
 			<td bgcolor="#DCDCDC">구매가</td>
 			<td bgcolor="#DCDCDC">수강상태</td>
+			<!-- <td bgcolor="#DCDCDC">환불요청</td> -->
 		</tr>
 		
 		<tr>
@@ -40,6 +41,7 @@
 			</td>
 			<td>50,000원</td>
 			<td>수강중</td>
+			<!-- <td>부분환불</td> -->
 		</tr>
 		<tr>
 			<td colspan="3" align="center" bgcolor="#DCDCDC">결제정보</td>
