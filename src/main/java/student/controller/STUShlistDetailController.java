@@ -15,9 +15,6 @@ public class STUShlistDetailController {
 	@RequestMapping(value=command,method=RequestMethod.GET)
 	   public String doAction(HttpSession session) {
 	      
-	      session.removeAttribute("mycart");
-	      session.removeAttribute("cartArr");
-	      
 	      return getPage;
 	   }
 	

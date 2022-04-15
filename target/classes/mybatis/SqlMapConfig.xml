@@ -32,6 +32,8 @@
 		<mapper resource="mybatis/accounts.xml"/>
 		<mapper resource="mybatis/boarda.xml"/>
 		<mapper resource="mybatis/teachers.xml"/>
+		<mapper resource="mybatis/order.xml"/>
+		<mapper resource="mybatis/orderdetails.xml"/>
 	</mappers>
 	
 
