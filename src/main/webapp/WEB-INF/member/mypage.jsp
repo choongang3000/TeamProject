@@ -3,12 +3,13 @@
 <%@ include file="../common/common.jsp"%>
 <%@ include file="../fix/ad_top.jsp"%>
 <div class="row">
+접속자 정보 : ${loginInfo.id }<br>
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">내 정보 관리</h5>
-        <p class="card-text">내 정보 관리, 수정</p>
-        <input class="btn btn-secondary btn-sm" type="submit" value="내 정보 관리" onClick="location.href='update.ac?anum=${accounts.anum}'">내 정보 관리</a>
+        <p class="card-text">내 정보 수정</p>
+        <input class="btn btn-secondary btn-sm" type="submit" value="내 정보 관리" onClick="location.href='update.mem?anum=${loginInfo.anum}'">내 정보 관리</a>
       </div>
     </div>
   </div>

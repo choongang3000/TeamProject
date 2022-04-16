@@ -89,13 +89,27 @@
 	        <a class="link-secondary" href="#" aria-label="Search">
 	          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
 	        </a>
-	        <c:if test="${loginInfo != null }">
-	        <font size="2">${loginInfo.id } 님 환영합니다</font>
-	        </c:if>
-	        <a class="btn btn-sm btn-outline-secondary" href="loginForm.mem">Sign up</a>&nbsp;
-	        <a class="btn btn-sm btn-outline-secondary" href="<%=request.getContextPath()%>/logout.jsp">Log out</a>&nbsp;
-	        <a class="btn btn-sm btn-outline-secondary" href="list.bst">1:1 문의</a>
-	      </div>
+	        <c:choose>
+				<c:when test="${sessionScope.loginInfo != null}">
+					<div id="header-main-menu">
+						<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
+							<span>관리자님 반갑습니다!</span>
+							<a href="list.ad" class="header-sub-menu">관리자 홈으로 가기</a>
+						</c:if>
+						<c:if test="${sessionScope.loginInfo.type != 'admin' }">
+							<span>${loginInfo.aname } 님 반갑습니다!</span>
+							<a href="#" class="header-sub-menu">정보수정</a> 
+						</c:if>
+						<a href="<%=request.getContextPath()%>/logout.jsp" class="header-sub-menu">로그아웃</a>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div id="header-main-menu">
+						<a href="loginForm.mem" class="header-sub-menu">로그인</a> 
+						<a href="register.mem" class="header-sub-menu">회원가입</a>
+					</div>
+				</c:otherwise>
+			</c:choose>
 	    </div>
 	  </header>
 	

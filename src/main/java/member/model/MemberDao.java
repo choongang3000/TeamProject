@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import admin.model.TeacherBean;
 import admin.model.TeacherDao;
+import course.model.COSBean;
 import member.model.MemberBean;
 import utility.Paging;
 
@@ -66,10 +67,58 @@ private String namespace="member.model.Member";
 
 	}
 	
+	
+	public List<MemberBean> memberAll() {
+		List<MemberBean> mlist = new ArrayList<MemberBean>();
+		mlist = sqlSessionTemplate.selectList(namespace+".MemberAll");
+		return mlist;		
+	}
+	
+	public MemberBean selectMember(String anum) {
+		MemberBean mbean = sqlSessionTemplate.selectOne(namespace+".SelectMember",anum);
+		return mbean;
+	}
+	
+	public void updateMember(MemberBean mbean) {
+		sqlSessionTemplate.update(namespace+".UpdateMember",mbean);
+	}
+	
+	public int deleteMember(MemberBean mbean) {
+		int cnt=-1;
+		cnt = sqlSessionTemplate.delete(namespace + ".DeleteMember", mbean);
+		return cnt;
+	}
+	
 	public TeacherBean getTeacherData(String anum) {
 		TeacherBean tbean = sqlSessionTemplate.selectOne(namespace + ".GetTeacherData",anum);
 		
 		return tbean;
 	}
-
+	
+	public int getCourseCount(Map<String,String> map) {
+		
+		if(map.get("keyword") != null) {
+			map.put("keyword", "%"+map.get("keyword")+"%" );
+		}
+		
+		int totalcount = sqlSessionTemplate.selectOne(namespace + ".GetCourseCount", map);
+		
+		return totalcount;
+	}
+	
+	public List<COSBean> getAllCourse( Map<String,String> map, Paging pageInfo){
+		
+		if(map.get("keyword") != null) {
+			map.put("keyword", "%"+map.get("keyword")+"%" );
+		}
+		
+		List<COSBean> cosArr = new ArrayList<COSBean>();
+		
+		RowBounds rowbounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
+		
+		cosArr = sqlSessionTemplate.selectList(namespace + ".GetAllCourse", map, rowbounds);
+		
+		return cosArr;
+	}
+	
 }

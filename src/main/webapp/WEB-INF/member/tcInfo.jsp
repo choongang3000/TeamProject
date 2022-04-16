@@ -42,7 +42,7 @@
               <label for="pw" class="form-label">PW</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
-                <input type="text" name="pw" class="form-control" value="${tbean.pw }" disabled="disabled">
+                <input type="password" name="pw" class="form-control" value="${tbean.pw }" disabled="disabled">
               </div>
             </div>
             

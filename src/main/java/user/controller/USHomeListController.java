@@ -43,7 +43,10 @@ public class USHomeListController {
 			@RequestParam(value="whatColumn", required=false) String whatColumn2,
 			@RequestParam(value="keyword", required=false) String keyword2,
 			@RequestParam(value="pageNumber", required=false) String pageNumber2,
-			HttpServletRequest request, HttpSession session) {
+			HttpServletRequest request,
+			HttpSession session) {
+		
+		MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo"); 
 
 		Map<String, String> map1 = new HashMap<String, String>();
 		Map<String, String> map2 = new HashMap<String, String>();

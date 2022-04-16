@@ -9,7 +9,10 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript">
-
+function do1(){
+	var res = document.forms[0].paymentMethod.value;
+	alert(res);
+}
 /* 카드결제 */
 function kg(){
 	  //class가 btn_payment인 태그를 선택했을 때 작동한다.
@@ -157,7 +160,6 @@ function div_show(selectNum){
 	}	
 </style>
 
-
 <link href="form-validation.css" rel="stylesheet">
 <div class="container">
   <main>
@@ -207,21 +209,21 @@ function div_show(selectNum){
           
             <div class="form-check">
               <!-- <input id="radio_p1" name="paymentMethod" type="radio" class="form-check-input" onclick="div_show('1');" required> -->
-              <input id="radio_p1" name="paymentMethod" type="radio" class="form-check-input" onclick="kg()" required>
+              <input id="radio_p1" name="paymentMethod" type="radio" class="form-check-input" value="kg" required>
               <label class="form-check-label" for="payment1">신용카드</label>
             </div>
             
             
             <div class="form-check">
               <!-- <input id="radio_p2" name="paymentMethod" type="radio" class="form-check-input" onclick="div_show('2');" required> -->
-              <input id="radio_p1" name="paymentMethod" type="radio" class="form-check-input" onclick="danal()" required>
+              <input id="radio_p1" name="paymentMethod" type="radio" class="form-check-input" value="danal" required>
               <label class="form-check-label" for="payment2">무통장입금</label>
             </div>
             
             
             <div class="form-check">
               <!-- <input id="radio_p3" name="paymentMethod" type="radio" class="form-check-input" onclick="div_show('3');" required> -->
-              <input id="radio_p1" name="paymentMethod" type="radio" class="form-check-input" onclick="kakao()" required>
+              <input id="radio_p1" name="paymentMethod" type="radio" class="form-check-input" value="kakao" required>
               <label class="form-check-label" for="payment3">카카오페이</label>
             </div>
             
@@ -309,7 +311,7 @@ function div_show(selectNum){
 		  
           <br><br>
           <!-- <hr class="my-4"> -->
-          <button class="w-100 btn btn-primary btn-lg" type="submit">결제하기</button>
+          <button class="w-100 btn btn-primary btn-lg" onclick="do1()" type="button">결제하기</button>
         </form>
 	 	<br><br>
       </div>

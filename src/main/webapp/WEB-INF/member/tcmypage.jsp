@@ -33,7 +33,7 @@
       <div class="card-body">
         <h5 class="card-title">내 강의 목록</h5>
         <p class="card-text">강의 목록</p>
-        <a href="<%=request.getContextPath()%>wishList.jsp" class="btn btn-primary">내 강의 목록</a>
+        <a href="tcCourseList.mem" class="btn btn-primary">내 강의 목록</a>
       </div>
     </div>
   </div>

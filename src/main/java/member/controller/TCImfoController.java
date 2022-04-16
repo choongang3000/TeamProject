@@ -11,7 +11,7 @@ import admin.model.TeacherBean;
 import member.model.MemberDao;
 
 @Controller
-public class MemberShowTcImfoController {
+public class TCImfoController {
 	
 	private final String command = "tcInfo.mem";
 	private String getPage = "tcInfo";
