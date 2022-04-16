@@ -29,22 +29,28 @@ public class BAListController {
 	@RequestMapping(command)
 	public ModelAndView doAction(
 			@RequestParam(value="keyword", required=false) String keyword,
+			@RequestParam(value="bacategory", required=false) String bacategory,			
 			@RequestParam(value="pageNumber", required=false) String pageNumber,
 			HttpServletRequest request) {
 		
-		Map<String, String> map=new HashMap<String, String>();
+		System.out.println(bacategory);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("bacategory", bacategory);
+		map.put("keyword", keyword);
 		
-		map.put("keyword", "%"+keyword+"%");
+		System.out.println("여기1!!!");
+		System.out.println(map);
 		
 		int totalCount=badao.totalCount(map);
 		System.out.println("totalCount:"+totalCount);
 		
 		String url=request.getContextPath()+command;
-		Paging pageInfo=new Paging(pageNumber, null, totalCount, url, null, keyword);
+		
+		Paging pageInfo=new Paging(pageNumber, "10", totalCount, url, null, keyword);
 		
 		  
 		List<BABean> list = badao.getBAList(pageInfo, map);
-	 
+		System.out.println("여기!!!!!!! >>> " + list.size());
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("list",list);
 		mav.addObject("totalCount",totalCount);

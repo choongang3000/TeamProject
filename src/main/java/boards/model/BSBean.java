@@ -29,12 +29,17 @@ public class BSBean {
 	@NotBlank(message = "내용을 입력해주세요.")
 	private String content; //textarea
 	
-	private String ip;
+	private String rating;
 	
 	private String image;
 	private MultipartFile upload;
 	
-	//
+	public String getRating() {
+		return rating;
+	}
+	public void setRating(String rating) {
+		this.rating = rating;
+	}
 	public MultipartFile getUpload() {
 		return upload;
 	}
@@ -116,12 +121,6 @@ public class BSBean {
 	}
 	public void setContent(String content) {
 		this.content = content;
-	}
-	public String getIp() {
-		return ip;
-	}
-	public void setIp(String ip) {
-		this.ip = ip;
 	}
 	
 }

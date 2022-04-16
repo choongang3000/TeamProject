@@ -337,8 +337,8 @@
 				</span>
 			</div>
 			<!-- 버튼 시작 -->
-			<button type="button" class="buy-btn" onclick="#">주문하기</button>
-			<button type="button" class="cart-btn" onclick="list()"><img src="<%=request.getContextPath() %>/resources/images/baseline_list_black_24dp.png" /></button>
+			<button type="button" class="buy-btn" onclick="location.href='addcart.stu?conum=${bean.conum}'">주문하기</button>
+			<button type="button" class="cart-btn" onclick="list()"><img src="<%=request.getContextPath() %>/resources/images/outline_list_black_24dp.png" /></button>
 			<!-- 버튼 끝 -->
 		</div>
 	</div>

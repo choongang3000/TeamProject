@@ -16,9 +16,9 @@
 	</select>
 
 	<select id="GetArticles" resultType="boards.model.BSBean">
-		select num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, image 
-		from (select rownum as rank, num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, image
-		from (select num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, image 
+		select num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, image, rating 
+		from (select rownum as rank, num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, image, rating 
+		from (select num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, image, rating 
 		from boards)
 		<if test="whatColumn == 'writer'">
 			where writer like #{keyword}
@@ -30,8 +30,8 @@
 	</select>
 	
 	<insert id="InsertBS">
- 		insert into boards(num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, image)
- 		values(boards_seq.nextval,#{writer},#{email},#{subject},#{passwd},#{reg_date},#{readcount},boards_seq.currval,0,0,#{content},#{image})
+ 		insert into boards(num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, image, rating)
+ 		values(boards_seq.nextval,#{writer},#{email},#{subject},#{passwd},#{reg_date},#{readcount},boards_seq.currval,0,0,#{content},#{image},#{rating})
  	</insert>
 	<!-- 
 	<insert id="InsertArticle">

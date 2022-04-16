@@ -9,7 +9,28 @@
 	function insert(){
 		location.href = "insert.bs";
 	}
-</script>
+/* 
+	var rating = $('.review .rating');
+	rating.each(function(){
+		var targetScore = $(this).attr('data-rate');
+		$(this).find('svg:nth-child(-n+' + targetScore +')').css({color:'#F05522'});
+	});
+	
+	var userScore = $('#makeStar');
+	userScore.change(function(){
+		var userScoreNum = $(this).val();
+		console.log(userScoreNum);
+		$('.make_star svg').css({color:'#000'});
+		$('.make_star svg:nth-child(-n' + userScoreNum +')').css({color:'#F05522'});
+	});
+	
+	$('.make_star svg').click(function({
+		var targetNum = $(this).index +1 ;
+		$('.make_star svg').css({color:'#000'});
+		$('.make_star svg:nth-child(-n+' + targetNum +')').css({color:'#F05522'});
+	});
+	
+ */</script>
     
 <style>
 	body{
@@ -21,7 +42,60 @@
 		margin:auto;
 		
 	}
-
+	.star-rating {
+	  border:solid 1px #ccc;
+	  display:flex;
+	  flex-direction: row-reverse;
+	  font-size:1.5em;
+	  justify-content:space-around;
+	  padding:0 .2em;
+	  text-align:center;
+	  width:5em;
+	}
+	
+	.star-rating input {
+	  display:none;
+	}
+	
+	.star-rating label {
+	  color:#ccc;
+	  cursor:pointer;
+	}
+	
+	.star-rating :checked ~ label {
+	  color:#f90;
+	}
+	
+	.star-rating label:hover,
+	.star-rating label:hover ~ label {
+	  color:#fc0;
+	}
+	
+	article {
+	  background-color:#ffe;
+	  box-shadow:0 0 1em 1px rgba(0,0,0,.25);
+	  color:#006;
+	  font-family:cursive;
+	  font-style:italic;
+	  margin:4em;
+	  max-width:30em;
+	  padding:2em;
+	}
+	
+	.con{
+		height:60px;
+		width:500px;
+		position:absolute;
+		margin:auto;
+		left:0;
+		right:0;
+		top:0;
+		bottom:0;
+	}
+	
+	.fa-star{
+		font-size:65px;
+	}	 
 </style> 
 
 <br><br>
@@ -43,19 +117,10 @@
 	</form>
 </div>
 
-<!-- <table width="700" border="1"> 글쓰기 영역
-	<tr>
-		<td align="right">
-			<input type="button" value="글쓰기" onClick="insert()" class="btn btn-secondary btn-sm">
-		</td>
-		<td align="right"><a href="insert.bs">글쓰기</a></td>
-	</tr>
-</table> -->
-
 <table class="table table-hover" border="0" align="center">
 
 	<tr height="30"> <!-- 글쓰기 -->
-		<td colspan="5" align="right">
+		<td colspan="6" align="right">
 			<input type="button" value="글쓰기" onClick="insert()" class="btn btn-secondary btn-sm"  >
 		</td>
 	<tr>
@@ -65,6 +130,7 @@
 		<td align="center">제목</td>
 		<td align="center">작성자</td>
 		<td align="center">작성일</td>
+		<td align="center">별점</td>
 		<td align="center">조회수</td>
 	</tr>
 	
@@ -89,8 +155,26 @@
 			</c:if>	
 		</td>
 		<td align="center">${list.writer}</td> <!-- 작성자 -->
-		<td align="center"><fmt:formatDate value="${list.reg_date}" type="both" pattern="yy/MM/dd HH:mm" /></td> <!-- 날짜 -->
+		<td align="center"><fmt:formatDate value="${list.reg_date}" type="both" pattern="yy/MM/dd HH:mm"/></td> <!-- 날짜 -->
 		<td align="center">${list.readcount}</td> <!-- 조회수 -->
+		<td align="center">
+			<div class="star-rating">
+				  <input type="radio" id="5-stars" name="rating" value="5" <c:if test="${5 eq list.rating }">checked</c:if>>
+				  <label for="5-stars" class="star">&#9733;</label>
+				  
+				  <input type="radio" id="4-stars" name="rating" value="4" <c:if test="${4 eq list.rating }">checked</c:if>>
+				  <label for="4-stars" class="star">&#9733;</label>
+				  
+				  <input type="radio" id="3-stars" name="rating" value="3" <c:if test="${3 eq list.rating }">checked</c:if>>
+				  <label for="3-stars" class="star">&#9733;</label>
+				  
+				  <input type="radio" id="2-stars" name="rating" value="2" <c:if test="${2 eq list.rating }">checked</c:if>>
+				  <label for="2-stars" class="star">&#9733;</label>
+				  
+				  <input type="radio" id="1-star" name="rating" value="1" <c:if test="${1 eq list.rating }">checked</c:if>>
+				  <label for="1-star" class="star">&#9733;</label>
+			</div>
+		</td>
 	</tr>	
 	</c:forEach>
 

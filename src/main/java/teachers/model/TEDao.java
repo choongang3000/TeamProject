@@ -12,8 +12,9 @@ import boarda.model.BABean;
 import course.model.COSBean;
 import utility.Paging;
 
-@Component("TEDao")
+@Component("myTEDao")
 public class TEDao {
+	
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 

@@ -49,7 +49,7 @@ public class BSInsertController {
 		//ip주소
 		//String ip = request.getRemoteAddr();
 		//bsbean.setIp(ip);
-		bsbean.setIp(request.getRemoteAddr());
+		/* bsbean.setIp(request.getRemoteAddr()); */
 		
 		//이미지 경로
 		String uploadPath = servletContext.getRealPath("/resources");

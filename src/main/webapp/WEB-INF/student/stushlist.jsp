@@ -23,14 +23,16 @@
 	<td>주문강의</td>
 	<td>총금액</td>
 	<td>주문일자</td>
+	<td>환불</td>
 	<td>상세정보</td>
 </tr>
 
 <tr height="30">
 	<td>1</td>
 	<td>주문강의 외 2개</td>
-	<td><fmt:formatNumber value="100000" pattern="#,###,###"/></td>
+	<td><fmt:formatNumber value="${totalcount }" pattern="#,###,###"/></td>
 	<td>2022-03-31</td>
+	<td><input type="button" value="환불" onClick="cancelPay()"></td> 
 	<td><a href="shlistdetail.stu">주문상세보기</a></td>
 </tr>
 

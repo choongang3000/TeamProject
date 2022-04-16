@@ -45,7 +45,6 @@ public class STUCartListController {
 		request.setAttribute("totalprice", totalprice);
 		request.setAttribute("cartArr", cartArr);
 		session.setAttribute("cartArr", cartArr);
-		
 		return getPage;
 	}
 }

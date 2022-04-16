@@ -21,11 +21,17 @@ public class BADao {
 	private String namespace="boarda.model.BABean";
 	
 	public int totalCount(Map<String, String> map) {
+		if(map.get("keyword") != null) {
+			map.put("keyword", "%"+map.get("keyword")+"%" );
+		}
 		int count = sqlSessionTemplate.selectOne(namespace+".GetBAListCount",map);
 		return count;
 	}
 	
 	public List<BABean> getBAList(Paging pageInfo, Map<String, String> map){
+		if(map.get("keyword") != null) {
+			map.put("keyword", "%"+map.get("keyword")+"%" );
+		}
 		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
 		List<BABean> list = sqlSessionTemplate.selectList(namespace+".GetBAList",map,rowBounds);
 		return list;
@@ -43,9 +49,9 @@ public class BADao {
 		return cnt;
 	}
 	
-	public int updateBA(BABean bean) {
+	public int updateBA(BABean babean) {
 		int cnt = -1;
-		cnt = sqlSessionTemplate.update(namespace+".UpdateBA", bean);
+		cnt = sqlSessionTemplate.update(namespace+".UpdateBA", babean);
 		return cnt;
 	}
 	

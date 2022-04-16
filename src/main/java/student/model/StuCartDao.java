@@ -22,5 +22,4 @@ public class StuCartDao {
 		return cobean;	
 	}
 	
-	
 }
