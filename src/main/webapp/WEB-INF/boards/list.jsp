@@ -120,7 +120,7 @@
 <table class="table table-hover" border="0" align="center">
 
 	<tr height="30"> <!-- 글쓰기 -->
-		<td colspan="6" align="right">
+		<td colspan="5" align="right">
 			<input type="button" value="글쓰기" onClick="insert()" class="btn btn-secondary btn-sm"  >
 		</td>
 	<tr>
@@ -130,7 +130,6 @@
 		<td align="center">제목</td>
 		<td align="center">작성자</td>
 		<td align="center">작성일</td>
-		<td align="center">별점</td>
 		<td align="center">조회수</td>
 	</tr>
 	
@@ -157,24 +156,6 @@
 		<td align="center">${list.writer}</td> <!-- 작성자 -->
 		<td align="center"><fmt:formatDate value="${list.reg_date}" type="both" pattern="yy/MM/dd HH:mm"/></td> <!-- 날짜 -->
 		<td align="center">${list.readcount}</td> <!-- 조회수 -->
-		<td align="center">
-			<div class="star-rating">
-				  <input type="radio" id="5-stars" name="rating" value="5" <c:if test="${5 eq list.rating }">checked</c:if>>
-				  <label for="5-stars" class="star">&#9733;</label>
-				  
-				  <input type="radio" id="4-stars" name="rating" value="4" <c:if test="${4 eq list.rating }">checked</c:if>>
-				  <label for="4-stars" class="star">&#9733;</label>
-				  
-				  <input type="radio" id="3-stars" name="rating" value="3" <c:if test="${3 eq list.rating }">checked</c:if>>
-				  <label for="3-stars" class="star">&#9733;</label>
-				  
-				  <input type="radio" id="2-stars" name="rating" value="2" <c:if test="${2 eq list.rating }">checked</c:if>>
-				  <label for="2-stars" class="star">&#9733;</label>
-				  
-				  <input type="radio" id="1-star" name="rating" value="1" <c:if test="${1 eq list.rating }">checked</c:if>>
-				  <label for="1-star" class="star">&#9733;</label>
-			</div>
-		</td>
 	</tr>	
 	</c:forEach>
 

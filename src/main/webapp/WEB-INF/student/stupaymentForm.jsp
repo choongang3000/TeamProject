@@ -207,7 +207,7 @@ function div_show(selectNum){
       
       <div class="col-md-7 col-lg-8">
       <!-- <form class="needs-validation" method="post" action="buycos.stu" novalidate> form여깃음 -->
-      <form class="needs-validation" method="post" action="payment.stu" novalidate> <!-- form여깃음 -->
+      <form class="needs-validation" method="get" action="buycos.stu" novalidate> <!-- form여깃음 -->
        <hr class="my-4">
        <br>
           <h4 class="mb-3">결제수단 선택</h4> <!-- 미완성3:결제수단 어떤거 선택할건지? -->

@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: kmj
+=======
+Built-By: dhkdr
+>>>>>>> branch 'merged' of https://github.com/choongang3000/TeamProject.git
 Build-Jdk: 11.0.13
 Created-By: Maven Integration for Eclipse
 

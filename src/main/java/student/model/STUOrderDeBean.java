@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class STUOrderDeBean {
 	private int odnum;
-	private String oid;
+	private String aid;
 	private int onum; //orderbean 주문번호
 	private int conum;
 	private Timestamp oddate;
@@ -15,11 +15,11 @@ public class STUOrderDeBean {
 	public void setOdnum(int odnum) {
 		this.odnum = odnum;
 	}
-	public String getOid() {
-		return oid;
+	public String getAid() {
+		return aid;
 	}
-	public void setOid(String oid) {
-		this.oid = oid;
+	public void setAid(String aid) {
+		this.aid = aid;
 	}
 	public int getOnum() {
 		return onum;

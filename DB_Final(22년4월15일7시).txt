@@ -44,10 +44,10 @@ create table teachers(
 	tname varchar2(15) not null,
 	t_image varchar2(100),
 	subject varchar2(100) not null,
-	visa varchar2(10), --강사 비자코드
-  	tterm date not null,--강사 계약기간
-  	twageratio float not null, --강사 임금 비율
-  	introduction varchar2(100) --강사소개
+	visa varchar2(10), --媛뺤궗 鍮꾩옄肄붾뱶
+  	tterm date not null,--媛뺤궗 怨꾩빟湲곌컙
+  	twageratio float not null, --媛뺤궗 �엫湲� 鍮꾩쑉
+  	introduction varchar2(100) --媛뺤궗�냼媛�
 );
 
 insert into teachers values(tch_seq.nextval,'teacher1','제시','강사-큰이미지1(180x250).png','JAVA','F4','2022-4-1',0.4,'전 L사 개발자 팀장');
@@ -77,10 +77,10 @@ insert into subjects values(sub_seq.nextval, 'JSP');
 insert into subjects values(sub_seq.nextval, 'CSS');
 insert into subjects values(sub_seq.nextval, 'HTML');
 insert into subjects values(sub_seq.nextval, 'ETC');
---ETC는 기타과목
+--ETC�뒗 湲고�怨쇰ぉ
 
 
---강의 테이블
+--媛뺤쓽 �뀒�씠釉�
 drop sequence cos_seq;
 create sequence cos_seq
 start with 1
@@ -89,41 +89,41 @@ nocache;
 
 drop table courses cascade constraints;
 create table courses(
-	conum number not null primary key, --강의번호
-	coname varchar2(100) not null, --강의명
-	coteacher varchar2(15) not null, --강의담당선생님
-	cosubject varchar2(30) not null, --강의과목
-	coimage varchar(100) not null, --강의이미지
-	covideo varchar2(100) not null, --강의영상
-	cocontent varchar2(100) not null, --강의소개내용
-	coprice number not null, --강의가격
-	coupload_date date default sysdate --강의업로드날짜
+	conum number not null primary key, --媛뺤쓽踰덊샇
+	coname varchar2(100) not null, --媛뺤쓽紐�
+	coteacher varchar2(15) not null, --媛뺤쓽�떞�떦�꽑�깮�떂
+	cosubject varchar2(30) not null, --媛뺤쓽怨쇰ぉ
+	coimage varchar(100) not null, --媛뺤쓽�씠誘몄�
+	covideo varchar2(100) not null, --媛뺤쓽�쁺�긽
+	cocontent varchar2(100) not null, --媛뺤쓽�냼媛쒕궡�슜
+	coprice number not null, --媛뺤쓽媛�寃�
+	coupload_date date default sysdate --媛뺤쓽�뾽濡쒕뱶�궇吏�
 );
 
 
 insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
-values(cos_seq.nextval, '비전공자를 위한 자바 프로그래밍 입문', '제시', 'JAVA', '강사1-작은이미지.png', 'video.jsp', '초등학생도 듣는 자바 프로그래밍 입문 과정! 주저말고 일단 들어와~', 90000, '2022-04-06');
+values(cos_seq.nextval, '鍮꾩쟾怨듭옄瑜� �쐞�븳 �옄諛� �봽濡쒓렇�옒諛� �엯臾�', '�젣�떆', 'JAVA', '媛뺤궗1-�옉���씠誘몄�.png', 'video.jsp', '珥덈벑�븰�깮�룄 �뱽�뒗 �옄諛� �봽濡쒓렇�옒諛� �엯臾� 怨쇱젙! 二쇱�留먭퀬 �씪�떒 �뱾�뼱��~', 90000, '2022-04-06');
 
 insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
-values(cos_seq.nextval, '자바 실전 프로그래밍', '제시', 'JAVA', '강사2-작은이미지.png', 'video.jsp', '이력서에 JAVA 능숙이라고 당당하게 말할 수 있다 자바 실전 프로그래밍!', 90000, '2022-04-06');
+values(cos_seq.nextval, '�옄諛� �떎�쟾 �봽濡쒓렇�옒諛�', '�젣�떆', 'JAVA', '媛뺤궗2-�옉���씠誘몄�.png', 'video.jsp', '�씠�젰�꽌�뿉 JAVA �뒫�닕�씠�씪怨� �떦�떦�븯寃� 留먰븷 �닔 �엳�떎 �옄諛� �떎�쟾 �봽濡쒓렇�옒諛�!', 90000, '2022-04-06');
 
 insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
-values(cos_seq.nextval, '일 능률 팍팍 SQL', '니콜라', 'DB', '강사1-작은이미지.png', 'video.jsp', '일 어떻게 해야할지 감 안와? SQL 강의 듣고 감이 내려온다~', 70000, '2022-04-06');
+values(cos_seq.nextval, '�씪 �뒫瑜� �뙇�뙇 SQL', '�땲肄쒕씪', 'DB', '媛뺤궗1-�옉���씠誘몄�.png', 'video.jsp', '�씪 �뼱�뼸寃� �빐�빞�븷吏� 媛� �븞��? SQL 媛뺤쓽 �뱽怨� 媛먯씠 �궡�젮�삩�떎~', 70000, '2022-04-06');
 
 insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
-values(cos_seq.nextval, '웹 개발 종합반', '디올', 'ETC', '강사2-작은이미지.png', 'video.jsp', '스파르타로 기본 확실하게잡고 응용까지~', 90000, '2022-04-06');
+values(cos_seq.nextval, '�쎒 媛쒕컻 醫낇빀諛�', '�뵒�삱', 'ETC', '媛뺤궗2-�옉���씠誘몄�.png', 'video.jsp', '�뒪�뙆瑜댄�濡� 湲곕낯 �솗�떎�븯寃뚯옟怨� �쓳�슜源뚯�~', 90000, '2022-04-06');
 
 insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
-values(cos_seq.nextval, '데이터 분석 종합반', '니콜라', 'DB', '강사1-작은이미지.png', 'video.jsp', '데이터분석 왕초보 딱지 저리가~', 90000, '2022-04-06');
+values(cos_seq.nextval, '�뜲�씠�꽣 遺꾩꽍 醫낇빀諛�', '�땲肄쒕씪', 'DB', '媛뺤궗1-�옉���씠誘몄�.png', 'video.jsp', '�뜲�씠�꽣遺꾩꽍 �솗珥덈낫 �뵳吏� ��由ш�~', 90000, '2022-04-06');
 
 --insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
---values(cos_seq.nextval, '', '샬럿', 'DB', '강사1-작은이미지.png', 'video.jsp', '', 90000, '2022-04-06');
+--values(cos_seq.nextval, '', '�꺃�읉', 'DB', '媛뺤궗1-�옉���씠誘몄�.png', 'video.jsp', '', 90000, '2022-04-06');
 
 --insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
---values(cos_seq.nextval, '', '제니', 'DB', '강사1-작은이미지.png', 'video.jsp', '', 90000, '2022-04-06');
+--values(cos_seq.nextval, '', '�젣�땲', 'DB', '媛뺤궗1-�옉���씠誘몄�.png', 'video.jsp', '', 90000, '2022-04-06');
 
 
---주문 테이블
+--二쇰Ц �뀒�씠釉�
 drop sequence ord_seq;
 create sequence ord_seq 
 start with 1 
@@ -141,7 +141,7 @@ DROP TABLE orders CASCADE CONSTRAINTS;
 
 
 
--- 강의 주문 상세 테이블
+-- 媛뺤쓽 二쇰Ц �긽�꽭 �뀒�씠釉�
 drop sequence cosordd_seq;
 create sequence cosordd_seq 
 start with 1 
@@ -159,7 +159,7 @@ create table cosord_details(
 
 
 
--- 1:1 질문 게시판(권준)
+-- 1:1 吏덈Ц 寃뚯떆�뙋(沅뚯�)
 drop sequence bst_seq;
 create sequence bst_seq 
 start with 1 
@@ -179,13 +179,13 @@ create table board_st(
   write_date date default sysdate
 ); 
 --check : Befor Reply(BR), After Reply(AR)
-insert into board_st values(bst_seq.nextval, 'kim', '수학', '아이유', '수능특강 수2 138pg 적분 질문', '질문 내용 입니다', null, 'AR', sysdate);
-insert into board_st values(bst_seq.nextval, 'kim', '수학', '아이유', '수능특강 수2 138pg 적분 질문1', '질문 내용 입니다1', null, 'BR', sysdate);
-insert into board_st values(bst_seq.nextval, 'kim', '수학', '아이유', '수능특강 수2 138pg 적분 질문2', '질문 내용 입니다2', null, 'BR', sysdate);
-insert into board_st values(bst_seq.nextval, 'kim', '수학', '아이유', '수능특강 수2 138pg 적분 질문3', '질문 내용 입니다3', null, 'BR', sysdate);
-insert into board_st values(bst_seq.nextval, 'kim', '수학', '아이유', '수능특강 수2 138pg 적분 질문4', '질문 내용 입니다4', null, 'BR', sysdate);
+insert into board_st values(bst_seq.nextval, 'kim', '�닔�븰', '�븘�씠�쑀', '�닔�뒫�듅媛� �닔2 138pg �쟻遺� 吏덈Ц', '吏덈Ц �궡�슜 �엯�땲�떎', null, 'AR', sysdate);
+insert into board_st values(bst_seq.nextval, 'kim', '�닔�븰', '�븘�씠�쑀', '�닔�뒫�듅媛� �닔2 138pg �쟻遺� 吏덈Ц1', '吏덈Ц �궡�슜 �엯�땲�떎1', null, 'BR', sysdate);
+insert into board_st values(bst_seq.nextval, 'kim', '�닔�븰', '�븘�씠�쑀', '�닔�뒫�듅媛� �닔2 138pg �쟻遺� 吏덈Ц2', '吏덈Ц �궡�슜 �엯�땲�떎2', null, 'BR', sysdate);
+insert into board_st values(bst_seq.nextval, 'kim', '�닔�븰', '�븘�씠�쑀', '�닔�뒫�듅媛� �닔2 138pg �쟻遺� 吏덈Ц3', '吏덈Ц �궡�슜 �엯�땲�떎3', null, 'BR', sysdate);
+insert into board_st values(bst_seq.nextval, 'kim', '�닔�븰', '�븘�씠�쑀', '�닔�뒫�듅媛� �닔2 138pg �쟻遺� 吏덈Ц4', '吏덈Ц �궡�슜 �엯�땲�떎4', null, 'BR', sysdate);
 
--- 1:1 질문 게시판 답변(권준)
+-- 1:1 吏덈Ц 寃뚯떆�뙋 �떟蹂�(沅뚯�)
 drop sequence bstrep_seq;
 create sequence bstrep_seq 
 start with 1 
@@ -203,12 +203,12 @@ create table boardreply_st(
   repdate date default sysdate
 ); 
 
-insert into boardreply_st values(bstrep_seq.nextval, 1, '아이유', '선생님 답변 내용 입니다', null, sysdate);
+insert into boardreply_st values(bstrep_seq.nextval, 1, '�븘�씠�쑀', '�꽑�깮�떂 �떟蹂� �궡�슜 �엯�땲�떎', null, sysdate);
 
 commit;
 
 
--- 수업 후기 게시판 (성은)
+-- �닔�뾽 �썑湲� 寃뚯떆�뙋 (�꽦��)
 drop table boards;
 
 create table boards( 
@@ -236,18 +236,18 @@ create sequence boards_seq
   nocache;
   
 insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image,rating)
-values(boards_seq.nextval,'학생1','stu@naver.com','짱이에요','1234','2015-1-1',1,0,0,'선생님 감사해용',null,5);
+values(boards_seq.nextval,'�븰�깮1','stu@naver.com','吏깆씠�뿉�슂','1234','2015-1-1',1,0,0,'�꽑�깮�떂 媛먯궗�빐�슜',null,5);
 
 insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image,rating)
-values(boards_seq.nextval,'학생2','stu2@gmail.com','감사해요','1234','2018-10-5',2,0,0,'성생님 짱이에요!',null,4);
+values(boards_seq.nextval,'�븰�깮2','stu2@gmail.com','媛먯궗�빐�슂','1234','2018-10-5',2,0,0,'�꽦�깮�떂 吏깆씠�뿉�슂!',null,4);
 
 insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image,rating)
-values(boards_seq.nextval,'선생님','tc@daum.net','자랑스럽다','1234','2015-10-6',2,1,1,'수고했어~!',null,null);
+values(boards_seq.nextval,'�꽑�깮�떂','tc@daum.net','�옄�옉�뒪�읇�떎','1234','2015-10-6',2,1,1,'�닔怨좏뻽�뼱~!',null,null);
 
 commit;
 
 
--- FAQ 게시판 (명희)
+-- FAQ 寃뚯떆�뙋 (紐낇씗)
 
 drop sequence ba_seq;
 create sequence ba_seq 
@@ -265,24 +265,24 @@ create table boarda(
   bafile varchar2(30)
 ); 
 
-insert into boarda values(ba_seq.nextval, '카테1', '질문1', '답변1', null, null);
+insert into boarda values(ba_seq.nextval, '移댄뀒1', '吏덈Ц1', '�떟蹂�1', null, null);
 
 commit;
 
---학생자료게시판 (주현)
---★★/resources/origin
---리소스 경로에 origin폴더 추가/images폴더에 이미지 넣어야함 
+--�븰�깮�옄猷뚭쾶�떆�뙋 (二쇳쁽)
+--�쁾�쁾/resources/origin
+--由ъ냼�뒪 寃쎈줈�뿉 origin�뤃�뜑 異붽�/images�뤃�뜑�뿉 �씠誘몄� �꽔�뼱�빞�븿 
 
 drop table boardt cascade constraints;
 
-create table boardt(-- subject 마다 선택해서 검색하기/정답확인 이미지를 누르면 이벤트 발생
-	num number not null primary key, -- 번호
-	subject varchar2(30) references subjects(subname) on delete cascade, -- 과목 / 과목별로 조회할거임.
-	examfile varchar2(100) not null, -- 문제 이미지 파일
-	answer varchar2(30) not null, -- 답
-	passwd varchar2(12) not null, -- 비밀번호
-	quizimg varchar2(100) not null, -- 퀴즈 이미지 
-	movingimg varchar2(100) not null -- 이동 이미지
+create table boardt(-- subject 留덈떎 �꽑�깮�빐�꽌 寃��깋�븯湲�/�젙�떟�솗�씤 �씠誘몄�瑜� �늻瑜대㈃ �씠踰ㅽ듃 諛쒖깮
+	num number not null primary key, -- 踰덊샇
+	subject varchar2(30) references subjects(subname) on delete cascade, -- 怨쇰ぉ / 怨쇰ぉ蹂꾨줈 議고쉶�븷嫄곗엫.
+	examfile varchar2(100) not null, -- 臾몄젣 �씠誘몄� �뙆�씪
+	answer varchar2(30) not null, -- �떟
+	passwd varchar2(12) not null, -- 鍮꾨�踰덊샇
+	quizimg varchar2(100) not null, -- �댁쫰 �씠誘몄� 
+	movingimg varchar2(100) not null -- �씠�룞 �씠誘몄�
 );
 
 drop sequence boardt_seq;
@@ -294,39 +294,39 @@ create sequence boardt_seq
   nocache;
 
 insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
-values(boardt_seq.nextval,'ETC','문제10.png','12','1234','퀴즈10.png','정답확인10.png');
+values(boardt_seq.nextval,'ETC','臾몄젣10.png','12','1234','�댁쫰10.png','�젙�떟�솗�씤10.png');
 
 insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
-values(boardt_seq.nextval,'ETC','문제9.png','사각형','1234','퀴즈9.png','정답확인9.png');
+values(boardt_seq.nextval,'ETC','臾몄젣9.png','�궗媛곹삎','1234','�댁쫰9.png','�젙�떟�솗�씤9.png');
 
 insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
-values(boardt_seq.nextval,'ETC','문제8.png','평행선','1234','퀴즈8.png','정답확인8.png');
+values(boardt_seq.nextval,'ETC','臾몄젣8.png','�룊�뻾�꽑','1234','�댁쫰8.png','�젙�떟�솗�씤8.png');
 
 insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
-values(boardt_seq.nextval,'ETC','문제7.png','화살표','1234','퀴즈7.png','정답확인7.png');
+values(boardt_seq.nextval,'ETC','臾몄젣7.png','�솕�궡�몴','1234','�댁쫰7.png','�젙�떟�솗�씤7.png');
 
 insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
-values(boardt_seq.nextval,'ETC','문제6.png','상향식','1234','퀴즈6.png','정답확인6.png');
+values(boardt_seq.nextval,'ETC','臾몄젣6.png','�긽�뼢�떇','1234','�댁쫰6.png','�젙�떟�솗�씤6.png');
 
 insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
-values(boardt_seq.nextval,'ETC','문제5.png','깊이','1234','퀴즈5.png','정답확인5.png');
+values(boardt_seq.nextval,'ETC','臾몄젣5.png','源딆씠','1234','�댁쫰5.png','�젙�떟�솗�씤5.png');
 
 insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
-values(boardt_seq.nextval,'ETC','문제4.png','애자일','1234','퀴즈4.png','정답확인4.png');
+values(boardt_seq.nextval,'ETC','臾몄젣4.png','�븷�옄�씪','1234','�댁쫰4.png','�젙�떟�솗�씤4.png');
 
 insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
-values(boardt_seq.nextval,'ETC','문제3.png','SELECT','1234','퀴즈3.png','정답확인3.png');
+values(boardt_seq.nextval,'ETC','臾몄젣3.png','SELECT','1234','�댁쫰3.png','�젙�떟�솗�씤3.png');
 
 insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
-values(boardt_seq.nextval,'ETC','문제2.png','캡슐화','1234','퀴즈2.png','정답확인2.png');
+values(boardt_seq.nextval,'ETC','臾몄젣2.png','罹≪뒓�솕','1234','�댁쫰2.png','�젙�떟�솗�씤2.png');
 
 insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
-values(boardt_seq.nextval,'JAVA','문제1.png','UML','1234','퀴즈1.png','정답확인1.png');
+values(boardt_seq.nextval,'JAVA','臾몄젣1.png','UML','1234','�댁쫰1.png','�젙�떟�솗�씤1.png');
 
 commit;  
 
 
---고객문의 게시판(진환 => 수정해야함: 수정은 성은작업예정)
+--怨좉컼臾몄쓽 寃뚯떆�뙋(吏꾪솚 => �닔�젙�빐�빞�븿: �닔�젙�� �꽦���옉�뾽�삁�젙)
 drop table board;
 
 create table board( 
@@ -337,9 +337,9 @@ create table board(
 	passwd varchar2(20) not null,
 	reg_date date not null,
 	readcount int default 0,
-	ref number not null, --게시글이 속해있는 그룹을 숫자로 묶음 
-	re_step number not null, --같은 그룹 게시글들의 정렬 순서를 나타내는 값
-	re_level number not null, --부모 게시글인지 자식게시글인지 나타내는 값 0:부모 1:자식 2:자식의 자식...
+	ref number not null, --寃뚯떆湲��씠 �냽�빐�엳�뒗 洹몃９�쓣 �닽�옄濡� 臾띠쓬 
+	re_step number not null, --媛숈� 洹몃９ 寃뚯떆湲��뱾�쓽 �젙�젹 �닚�꽌瑜� �굹���궡�뒗 媛�
+	re_level number not null, --遺�紐� 寃뚯떆湲��씤吏� �옄�떇寃뚯떆湲��씤吏� �굹���궡�뒗 媛� 0:遺�紐� 1:�옄�떇 2:�옄�떇�쓽 �옄�떇...
 	content varchar2(100) not null
 );
 
@@ -352,12 +352,12 @@ create sequence board_seq
   nocache;
 	
 insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content)
-values(board_seq.nextval,'학생2','stu@naver.com','질문있어요','1234','2022-4-10',1,0,0,'내용1');
+values(board_seq.nextval,'�븰�깮2','stu@naver.com','吏덈Ц�엳�뼱�슂','1234','2022-4-10',1,0,0,'�궡�슜1');
 
 insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content)
-values(board_seq.nextval,'학생1','stu2@gmail.com','도와주세요!','1234','2022-4-5',2,0,0,'내용2');
+values(board_seq.nextval,'�븰�깮1','stu2@gmail.com','�룄��二쇱꽭�슂!','1234','2022-4-5',2,0,0,'�궡�슜2');
 
 insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content)
-values(board_seq.nextval,'관리자','tc@gmail.com','답변드립니다','1234','2015-4-6',2,1,1,'내용21');
+values(board_seq.nextval,'愿�由ъ옄','tc@gmail.com','�떟蹂��뱶由쎈땲�떎','1234','2015-4-6',2,1,1,'�궡�슜21');
 
 commit;

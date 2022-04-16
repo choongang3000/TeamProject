@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import member.model.MemberBean;
 import student.model.STUOrderDao;
@@ -48,26 +49,25 @@ public class STUPaymentController {
 		
 		return getPage;
 	}
-
+/*
 	@RequestMapping(value=command,method=RequestMethod.POST)
-	public String doAction2(HttpSession session,HttpServletRequest request) {
+	public String doAction2(StuCartBean cartbean, HttpSession session, HttpServletRequest request, @RequestParam("totprice") int totalprice) {
 		ArrayList<StuCartBean> cartArr =  (ArrayList<StuCartBean>)session.getAttribute("cartArr");
 		
-		  MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo");
+		MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo");
 		  
-		  orderdao.insertOrder(loginInfo.getId());
+		orderdao.insertOrder(loginInfo.getId());
 		 
-		
-		int maxoid = orderdao.getMaxOid();
-		System.out.println("maxoid:"+maxoid);
+		int maxOnum = orderdao.getMaxOnum();
+		System.out.println("maxOnum:"+maxOnum);
 		
 		STUOrderDeBean odbean = new STUOrderDeBean();
-		odbean.setOnum(maxoid);
+		odbean.setOnum(maxOnum);
 		oddao.insertOrderDetail(odbean);
 		
 		request.setAttribute("cartArr", cartArr);
 		
 		return gotoPage;
 	}
-
+*/
 }

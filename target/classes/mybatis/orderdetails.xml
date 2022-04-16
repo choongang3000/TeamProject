@@ -5,8 +5,8 @@
 
 <mapper namespace="student.model.STUOrderDe">
 	<insert id="InsertOrderDetail">
-		insert into cosord_details(odnum, oid, onum, conum, oddate) 
-		values(cosordd_seq.nextval, #{oid}, #{onum}, #{conum}, #{oddate})	
+		insert into cosord_details(odnum, aid, onum, conum, oddate) 
+		values(cosordd_seq.nextval, #{aid}, #{onum}, #{conum}, #{oddate})	
 	</insert>
 	
 </mapper>

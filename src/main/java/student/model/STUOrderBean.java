@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class STUOrderBean {
 
 	private int onum; //주문번호(primary key)
-	private String oid; //주문자id
+	private String aid; //주문자id
 	private int totprice; //주문전체금액
 	private Timestamp odate; //주문날짜
 	
@@ -15,11 +15,11 @@ public class STUOrderBean {
 	public void setOnum(int onum) {
 		this.onum = onum;
 	}
-	public String getOid() {
-		return oid;
+	public String getAid() {
+		return aid;
 	}
-	public void setOid(String oid) {
-		this.oid = oid;
+	public void setAid(String aid) {
+		this.aid = aid;
 	}
 	public int getTotprice() {
 		return totprice;
