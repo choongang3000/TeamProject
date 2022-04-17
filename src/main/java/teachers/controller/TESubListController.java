@@ -26,25 +26,6 @@ import utility.Paging;
 @Controller
 public class TESubListController {//4/14 JH - teacherlist.jsp 강의 보러가기 버튼 -> sublist.te 요청 -> teachersublist.jsp 이동
 
-/*
- 	@Autowired
-	private TEDao tedao;
-	
-	private final String command = "/sublist.te";
-	private String getPage = "teachersublist";
-
-	@RequestMapping(value = command, method = RequestMethod.GET)
-	public String doAction(
-			@RequestParam(value = "tnum", required = true) String tnum,
-			@RequestParam(value = "tname", required = true) String tname,
-			Model model) {
-	
-			TEBean bean = tedao.getTEList(tnum);
-			model.addAttribute("bean", bean);
-
-			return getPage;
-	}
-*/
 
 	private final String command = "/sublist.te";
 	private String getPage = "teachersublist";
@@ -54,7 +35,8 @@ public class TESubListController {//4/14 JH - teacherlist.jsp 강의 보러가기 버튼
 
 	@RequestMapping(value=command)
 	public ModelAndView doAction( /* 상단 선생님 탭(teacherlist.jsp)에서 버튼 누르면 tname 넘김 */
-			//@RequestParam(value = "tname", required = true) String tname,
+			@RequestParam(value="pageNumber", required=false) String pageNumber,
+			@RequestParam(value="conum", required=false) String conum,
 			TEBean tbean, BindingResult result) {
 			//HttpServletRequest request) {
 		
@@ -93,6 +75,8 @@ public class TESubListController {//4/14 JH - teacherlist.jsp 강의 보러가기 버튼
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("list",list);
 		mav.addObject("comp",comp);
+		mav.addObject("conum",conum);
+		mav.addObject("pageNumber",pageNumber);
 //		mav.addObject("re_list",re_list);
 		//mav.addObject("coimage",coimage);
 		//mav.addObject("tebean",tebean);

@@ -95,20 +95,12 @@ private String namespace="member.model.Member";
 	
 	public int getCourseCount(Map<String,String> map) {
 		
-		if(map.get("keyword") != null) {
-			map.put("keyword", "%"+map.get("keyword")+"%" );
-		}
-		
 		int totalcount = sqlSessionTemplate.selectOne(namespace + ".GetCourseCount", map);
 		
 		return totalcount;
 	}
 	
 	public List<COSBean> getAllCourse( Map<String,String> map, Paging pageInfo){
-		
-		if(map.get("keyword") != null) {
-			map.put("keyword", "%"+map.get("keyword")+"%" );
-		}
 		
 		List<COSBean> cosArr = new ArrayList<COSBean>();
 		

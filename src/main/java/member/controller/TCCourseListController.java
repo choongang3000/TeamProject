@@ -27,7 +27,7 @@ public class TCCourseListController {
 	private MemberDao mdao;
 	
 	@RequestMapping(command)
-	public String doAction(@RequestParam(value="pageNumber",required = false) String pageNumber, 
+	public String doAction(@RequestParam(value="pageNumber",required = false) String pageNumber,
 					       @RequestParam(value="whatColumn",required = false) String whatColumn,
 						   @RequestParam(value="keyword",required = false) String keyword,
 						   HttpSession session,
@@ -39,7 +39,12 @@ public class TCCourseListController {
 		
 		Map<String,String> map = new HashMap<String, String>();
 		map.put("coteacher", teacher.getAname());
-		map.put("keyword", keyword);
+		if(keyword != null) {
+			map.put("keyword", "%"+keyword+"%");
+		}
+		else {
+			map.put("keyword", keyword);			
+		}
 		map.put("whatColumn", whatColumn);
 		
 		int totalcount = mdao.getCourseCount(map);
