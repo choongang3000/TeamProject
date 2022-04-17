@@ -25,10 +25,10 @@
 	<!-- 슬라이드 화면 -->
 	  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
 	  <div class="carousel-inner">
-	    <div class="carousel-item active" data-bs-interval="10000">
+	    <div class="carousel-item active" data-bs-interval="5000">
 	      <img src="<%=request.getContextPath() %>/resources/images/상단광고1.png" class="d-block w-100" alt="...">
 	    </div>
-	    <div class="carousel-item" data-bs-interval="10000">
+	    <div class="carousel-item" data-bs-interval="5000">
 	      <img src="<%=request.getContextPath() %>/resources/images/상단광고2.png" class="d-block w-100" alt="...">
 	    </div>
 	  </div>

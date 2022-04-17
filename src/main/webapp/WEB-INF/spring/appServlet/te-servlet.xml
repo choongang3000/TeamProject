@@ -15,5 +15,6 @@
 	</bean>
 	
 	<context:component-scan base-package="teachers" />
+	<context:component-scan base-package="course" /><!-- KJH : 4/17 추가 Dao 스캔 -->
 	
 </beans>

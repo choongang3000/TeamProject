@@ -1,5 +1,6 @@
 package teachers.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import boarda.model.BABean;
 import course.model.COSBean;
+import utility.COSListPaging;
 import utility.Paging;
 
 @Component("myTEDao")
@@ -25,8 +27,8 @@ public class TEDao {
 		return count;
 	}
 
-	public List<TEBean> getTEList(Paging pageInfo, Map<String, String> map) {
-		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
+	public List<TEBean> getTEList(COSListPaging pageInfo1, Map<String, String> map) {
+		RowBounds rowBounds = new RowBounds(pageInfo1.getOffset(), pageInfo1.getLimit());
 		List<TEBean> list = sqlSessionTemplate.selectList(namespace + ".GetTEList", map, rowBounds);
 		return list;
 	}
@@ -59,13 +61,8 @@ public class TEDao {
 		List<TEBean> list = sqlSessionTemplate.selectList(namespace + ".GetTEList");
 		return list;
 	}
-	/*
-	 * public TEBean getTEList(String tname){ TEBean tbean =
-	 * sqlSessionTemplate.selectOne(namespace+".GetTeSubList",tname); return tbean;
-	 * }
-	 */
-
-	/* JH - 강사별 강의목록 출력 (관련:TEsubListController/course.xml) */
+	
+	/* KJH - 강사별 강의목록 출력 (관련:TEsubListController/teachers.xml) */
 	public List<TEBean> getTESubList(TEBean bean) {
 		// System.out.println(tname);
 		System.out.println("빈으로 출력해보자" + bean.getSubject());
@@ -73,10 +70,10 @@ public class TEDao {
 		return list;
 	}
 
-	/*
-	 public TEBean getTESubOne(String tname) { 
-		 TEBean tbean = sqlSessionTemplate.selectOne(namespace+".GeTTeSubOne", tname); 
-		 return tbean;
-	 }
-	 */
+	/* KJH - 상단 강의탭 - 사이드바 과목 가져오기 */
+	public List<String> getSubject(){
+		List<String> subArr = new ArrayList<String>();
+		subArr = sqlSessionTemplate.selectList(namespace + ".GetSubject");
+		return subArr;
+	}
 }

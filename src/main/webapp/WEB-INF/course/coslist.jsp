@@ -50,7 +50,7 @@
 		#category{
 			   float:left;
 			   text-align:center;
-			   margin:80px 100px; /* 80px 위아래 auto 좌우 */
+			   margin:80px 7%; /* 80px 위아래 auto 좌우 */
 			   width:200px;
 			   border : 1px solid #D8D8D8;
 			   background-color:#F6F6F6;
@@ -155,7 +155,7 @@
 			<c:forEach items="${subArr }" var="course">
 			<c:if test="${course != 'ETC' }">
 			<tr id="category-center">
-				<td><a href="list.cos?cosubject=${course }&pageNumber=${pageInfo.pageNumber }"><font color="6C757D"><b>${course }</b></font></a></td>
+				<td><a href="list.cos?cosubject=${course }"><font color="6C757D"><b>${course }</b></font></a></td>
 			</tr>
 			</c:if>
 			</c:forEach>
@@ -170,13 +170,17 @@
 
 			
 				<h1>강좌 리스트</h1>
-		<form action="list.cos?cosubject=${course }&pageNumber=${pageInfo.pageNumber }" method="GET">
+		<form action="list.cos" method="GET">
 			
 			<select name="whatColumn">
 				<option value="">선택
 				<option value="coname">강의명
 				<option value="coteacher">선생님
+				<c:if test="${cosubject == null or cosubject == '' }">
 				<option value="cosubject">과목명
+				</c:if>
+				<c:if test="${cosubject != null }">
+				</c:if>
 			</select>
 			<input type="hidden" name="cosubject" value="${cosubject }">
 			<input type="text" name="keyword">

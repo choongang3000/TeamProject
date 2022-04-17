@@ -106,20 +106,15 @@
 			<tr id="category-top">
 				<td><a href="list.te"><font color="white"><b>과목별 선생님</b></font></a></td>
 			</tr>
+			<c:forEach items="${subArr }" var="course">
+			<c:if test="${course != 'ETC' }">
 			<tr id="category-center">
-				<td><a href=""><font color="6C757D"><b>JAVA</b></font></a></td>
+				<td><a href="list.te?cosubject=${course }"><font color="6C757D"><b>${course }</b></font></a></td>
 			</tr>
+			</c:if>
+			</c:forEach>
 			<tr id="category-center">
-				<td><a href=""><font color="6C757D"><b>DB</b></font></a></td>
-			</tr>
-			<tr id="category-center">
-				<td><a href=""><font color="6C757D"><b>JSP</b></font></a></td>
-			</tr>
-			<tr id="category-center">
-				<td><a href=""><font color="6C757D"><b>CSS</b></font></a></td>
-			</tr>
-			<tr id="category-center">
-				<td><a href=""><font color="6C757D"><b>HTML</b></font></a></td>
+				<td><a href="list.te?cosubject=ETC"><font color="6C757D"><b>종합반</b></font></a></td>
 			</tr>
 		</table>
 	</aside>	
@@ -128,6 +123,7 @@
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <%-- <c:forEach var="te" items="${list }"> --%>
       <c:forEach var="te" items="${list }">
  			 <div class ="container" id="div_teacher" align="center">
  			 	<c:if test="${te.subject=='ETC'}"><!-- 참,거짓 판별할 때 EL안에다가 써줘야함 -->
