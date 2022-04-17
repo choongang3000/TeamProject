@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
 <%@ include file="../user/ustop.jsp"%>
-
+<!-- 상단 선생님 탭 - 강의보러가기 버튼 클릭했을 때 보이는 화면  -->
 <style type="text/css">
 
 		* { /* 기본적인 마진,패딩 없앰*/
@@ -29,11 +29,14 @@
 		}
 		
 		/* img Layout */
-		#teacher-img{
-				
+		#teacher-img-line{
 				border : 1px solid #D8D8D8;
 				display : block;
 				margin : 10px auto;
+		}
+		
+		#teacher-img{
+				margin : 30px 0px 0px 0px;
 		}
 		
 		#category{
@@ -65,7 +68,6 @@
 		}
 		
 		#main-title {
-				float:left;
 				width:1200px;
 				text-align:center;
 				margin:80px auto;
@@ -73,29 +75,10 @@
 				/*border-radius:10px;*/ /* 테두리 둥글게 설정 */
 		}
 		
-		button{
-			   background-color:gray;
-			   width:110px;
-			   border:0;
-			   outline:0;
-		}
-		
 		#td-title{ /* 강의 제목 설정 */
 			   text-align:left;
 		}
 		
-		/*
-		footer {
-				height: 120;
-      			display:block;
-				position: absolute;
-				left: 200;
-				bottom: 0;
-				width: 100%;
-				text-align: center;
-      	}
-      	
-      	*/
       	a {
       			text-decoration : none; 
       	}
@@ -115,27 +98,33 @@
       			width:100%;
       			text-align: center;
       	}
+      	
 </style>
 
 <body>
-			<div id="teacher-img">
+			<div id="teacher-img-line">
 			<c:if test="${comp.cosubject != 'ETC' }">
-			${comp.cosubject } 강사 - ${comp.coteacher } 선생님 / ${comp.introduction }
+			<b>${comp.cosubject } 강사 - ${comp.coteacher } 선생님 / ${comp.introduction }</b>
 			</c:if>
 			<c:if test="${comp.cosubject == 'ETC' }">
-			종합반 강사 - ${comp.coteacher } 선생님 / ${comp.introduction }
+			<b>종합반 강사 - ${comp.coteacher } 선생님 / ${comp.introduction }</b>
 			</c:if>
-			<img  src="<%=request.getContextPath()%>/resources/images/${comp.coimage}" width=400 height=300>
+			<img id="teacher-img" src="<%=request.getContextPath()%>/resources/images/${comp.coimage}" width=400 height=300>
 			</div>
 <section>
 	<div id="main-title">
-		<h1>강좌 리스트 화면(coslist.jsp)</h1>
-		<table width="1200" align="center">
+		<h1>개설 과목 리스트</h1>
+		<table width="1200">
+			<tr align="center" height="30px">
+				<th>| 강의명 |</th>
+				<th>| 강의소개 |</th>
+				<th>| 가격 |</th>
+				<th></th>
+			</tr>
 			<tr>
-				<th align="center">강의명</th>
-				<th align="center">강의소개</th>
-				<th align="center">가격</th>
-				<th align="center">버튼</th>
+				<td colspan="4">
+				<b><hr></b>
+				</td>
 			</tr>
 			<c:forEach var="course" items="${list}">
 			<tr>
@@ -145,8 +134,8 @@
 				<td>
 					${course.cocontent }
 				</td>
-				<td>
-					<fmt:formatNumber value="${course.coprice}" pattern="#,###"/>원
+				<td align="right">
+					<fmt:formatNumber value="${course.coprice}" pattern="#,###"/>원 &nbsp;&nbsp;&nbsp;
 				</td>
 				<td>
 					<a href="detail.cos"><button id="button1" type="button" class="btn btn-secondary btn-sm">수강신청 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/book-outline.svg" width="20" height="20"/></button></a> &nbsp;
@@ -163,7 +152,7 @@
 		${pageInfo.pagingHtml }
 	</div>
 </section>
-	
+
 <div id=foot>
 <hr>
 <br><br>	

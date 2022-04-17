@@ -4,9 +4,17 @@
 <%@ include file="../common/common.jsp" %>   
 <%@ include file="../user/ustop.jsp"%> 
 
-<a href="start.jsp">시작페이지</a> <br>
-<a href="logout.jsp">로그아웃</a>
+<%-- <c:choose>
+<c:when test="${sessionScope.loginInfo != null}">
+<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
+<h1>강좌 리스트 화면 - coslist.jsp</h1>
+</c:if>
+</c:when>
+</c:choose> --%>
+<!-- <a href="start.jsp">시작페이지</a> <br>
+<a href="logout.jsp">로그아웃</a> -->
 <style type="text/css">
+
 
 /* COSListController / coslist.jsp / CoSDao / CoSBean / course.xml */
 
@@ -42,7 +50,7 @@
 		#category{
 			   float:left;
 			   text-align:center;
-			   margin:80px 100px; /* 80px 위아래 auto 좌우 */
+			   margin:80px 7%; /* 80px 위아래 auto 좌우 */
 			   width:200px;
 			   border : 1px solid #D8D8D8;
 			   background-color:#F6F6F6;
@@ -69,7 +77,7 @@
 		
 		#main-title {
 				float:left;
-				width:800px;
+				width:920px;
 				text-align:center;
 				margin:80px auto;
 				background-color:#F6F6F6;
@@ -86,19 +94,7 @@
 		#td-title{ /* 강의 제목 설정 */
 			   text-align:left;
 		}
-		
-		/*
-		footer {
-				height: 120;
-      			display:block;
-				position: absolute;
-				left: 200;
-				bottom: 0;
-				width: 100%;
-				text-align: center;
-      	}
-      	
-      	*/
+
       	a {
       			text-decoration : none; 
       	}
@@ -117,6 +113,36 @@
       			float:left;
       			width:100%;
       			text-align: center;
+      	}
+      	form{
+      			margin:auto;
+      	}
+      	
+      	#b-update{
+      			border-radius : 3px;
+      			border : 1px solid blue;
+      			background-color: blue;
+      			color: white;
+      			height: 32px;
+      			width: 40px;
+      	}
+
+      	#b-delete{
+      			border-radius : 3px;
+      			border : 1px solid red;
+      			background-color: red;
+      			color: white;
+      			height: 32px;
+      			width: 40px;
+      	}
+      	
+      	#b-insert{
+      			border-radius : 3px;
+      			border : 1px solid #690;
+      			background-color: #690;
+      			color: white;
+      			height: 32px;
+      			width: 80px;
       	}
 </style>
 
@@ -141,62 +167,76 @@
 
 <section>
 	<div id="main-title">
-		<h1>강좌 리스트 화면(coslist.jsp)</h1>
+
+			
+				<h1>강좌 리스트</h1>
 		<form action="list.cos" method="GET">
+			
 			<select name="whatColumn">
 				<option value="">선택
 				<option value="coname">강의명
 				<option value="coteacher">선생님
+				<c:if test="${cosubject == null or cosubject == '' }">
 				<option value="cosubject">과목명
+				</c:if>
+				<c:if test="${cosubject != null }">
+				</c:if>
 			</select>
+			<input type="hidden" name="cosubject" value="${cosubject }">
 			<input type="text" name="keyword">
 			<input type="submit" value="검색">
 		</form>
-		<table width="800">
-			<tr>
-				<td align="right" colspan="5">
-					<input type="button" value="추가하기" onclick="insert()">
-				</td>
+		<table width="920">
+		
+			<tr align="center" height="30px">
+					<th align="center"><!-- | 강사 | --></th>
+					<th align="center" width="40%"><!-- | 강의명 | --></th>
+					<th align="center"><!-- | 가격 | --></th>
+					<th align="center"><!-- 버튼 --></th>
+				<c:choose>	
+				<c:when test="${sessionScope.loginInfo != null}">
+				<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
+					<th align="right"><input id="b-insert" type="button" value="추가하기" onclick="insert()"></th>
+				</c:if>
+				</c:when>
+				</c:choose>
 			</tr>
 			<tr>
 				<td colspan="5">
-					<br>
+					<hr>
 				</td>
-			</tr>
-			<tr>
-				<!-- <th>상품번호</th> -->
-				<th align="center">이미지</th>
-				<th align="center">강의명</th>
-				<!-- <th>설명</th> -->
-				<th align="center">가격</th>
-				<th align="center">버튼</th>
-				<th align="center">삭제|수정</th>
 			</tr>
 			<c:forEach var="course" items="${list}">
 			<tr>
-				<td>
+				<td align="center" width="15%"> <!-- JH : 화면 이동 매끄럽게 하기 위해서 width 고정함 -->
+					<b>${course.coteacher }</b>선생님
 					<img id="teacher-img" src="<%=request.getContextPath()%>/resources/images/${course.coimage}" width=80 height=80>
 				</td>
 				<%-- <td>
 					<c:out value="${course.conum }" />
 				</td>	 --%>			
 				<td>
-					<a href="detail.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }">${course.coname }</a>
+					&nbsp;&nbsp;&nbsp;<a href="detail.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }">${course.coname }</a>
 				</td>
 				<%-- <td>
 					${course.cocontent }
 				</td> --%>
-				<td>
-					<fmt:formatNumber value="${course.coprice}" pattern="#,###"/>원
+				<td align=center>
+					<fmt:formatNumber value="${course.coprice}" pattern="#,###"/>원 &nbsp;&nbsp;
 				</td>
 				<td>
 					<a href="detail.cos"><button id="button1" type="button" class="btn btn-secondary btn-sm">수강신청 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/book-outline.svg" width="20" height="20"/></button></a> &nbsp;
 					<a href="list.bst"><button id="button2" type="button" class="btn btn-secondary btn-sm">강의질문 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/질문게시판.svg" width="20" height="20"/></button></a>
 				</td>
-				<td colspan="2">
-					<input type="button" value="수정">
-					<input type="button" value="삭제">
+				<c:choose>
+				<c:when test="${sessionScope.loginInfo != null}">
+				<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
+				<td>
+					&nbsp;<input id="b-update" type="button" value="수정">&nbsp;<input id="b-delete" type="button" value="삭제">
 				</td>
+				</c:if>
+				</c:when>
+				</c:choose>
 			</tr>
 			<tr>
 				<td colspan="5">

@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import course.model.COSBean;
 import course.model.COSDao;
 import teachers.model.TEBean;
+import utility.COSListPaging;
 import utility.Paging;
 
 @Controller
@@ -32,28 +33,48 @@ public class COSListController {
 			@RequestParam(value="whatColumn",required = false) String whatColumn,
 			@RequestParam(value="keyword", required=false) String keyword,
 			@RequestParam(value="pageNumber", required=false) String pageNumber,
+			@RequestParam(value="cosubject", required=false) String cosubject,
 			HttpServletRequest request) {
 		
 		Map<String, String> map=new HashMap<String, String>();
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");
 		
+		if(cosubject != null) {
+	         if(cosubject.equals("")) {
+	            map.put("cosubject", null);
+	         }
+	         else {
+	            map.put("cosubject", cosubject);
+	         }
+	      }   
+	      else {
+	         map.put("cosubject", cosubject);
+	      }
+	
 		int totalCount=cosdao.totalCount(map);
 		System.out.println("totalCount:"+totalCount);
 		
-		String url=request.getContextPath()+command;
-		Paging pageInfo=new Paging(pageNumber, null, totalCount, url, whatColumn, keyword);
+		String url ;
+		if(cosubject != null) {
+			url = request.getContextPath()+command+"?cosubject="+cosubject;
+		}
+		else {
+			url = request.getContextPath()+command;
+		}
 		
+		COSListPaging pageInfo=new COSListPaging(pageNumber, null, totalCount, url, whatColumn, keyword);
 		  
 		List<COSBean> list = cosdao.getCOSList(pageInfo, map);
-		
 		List<String> subArr = cosdao.getSubject();
-	 
+
+		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("list",list);
-		mav.addObject("totalCount",totalCount);
 		mav.addObject("pageInfo",pageInfo);
+		mav.addObject("totalCount",totalCount);
 		mav.addObject("subArr",subArr);
+		mav.addObject("cosubject",cosubject);
 		mav.setViewName(getPage);
 		return mav;
 	
