@@ -48,6 +48,9 @@ public class TCCourseListController {
 		
 		List<COSBean> cosArr = mdao.getAllCourse(map, pageInfo);
 		
+		List<String> subArr = mdao.getSubject();
+		
+		request.setAttribute("subArr", subArr);
 		request.setAttribute("cosArr", cosArr);
 		request.setAttribute("pageInfo", pageInfo);
 		

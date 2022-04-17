@@ -52,7 +52,7 @@
 	</select>
 	
 	<update id="UpdateArticle">
-		update boards set writer=#{writer}, email=#{email}, subject=#{subject}, content=#{content} where num=#{num}
+		update boards set writer=#{writer}, email=#{email}, subject=#{subject}, content=#{content}, rating=#{rating} where num=#{num}
 	</update>
 	
 	<delete id="DeleteArticle">

@@ -39,11 +39,11 @@
  	</select>
  	
  	<update id="UpdateMember">
- 		update accounts set aname=#{aname} where anum=#{anum}
+ 		update accounts set pw=#{pw},aname=#{aname},rrn1=#{rrn1},rrn2=#{rrn2},email=#{email},phone1=#{phone1},phone2=#{phone2},phone3=#{phone3} where anum=#{anum}
  	</update>
  	
  	<delete id="DeleteMember">
- 		delete from accounts where anum=#{anum}
+ 		delete accounts where id=#{id} and pw=#{pw}
  	</delete>
  	
  	<select id="GetTeacherData" resultType="admin.model.TeacherBean">
@@ -58,7 +58,7 @@
  		and cosubject=#{whatColumn}
  		</if>
  		<if test="keyword != null">
- 		and coname=#{keyword}
+ 		and coname like #{keyword}
  		</if>
  	</select>
 
@@ -69,9 +69,13 @@
  		and cosubject=#{whatColumn}
  		</if>
  		<if test="keyword != null">
- 		and coname=#{keyword}
+ 		and coname like #{keyword}
  		</if>
  		order by conum desc
+ 	</select>
+ 	
+ 	<select id="GetSubject" resultType="String">
+ 		select subname from subjects order by subname
  	</select>
 </mapper>
 <!-- member.xml -->

@@ -38,11 +38,11 @@ public class MemberUpdateController {
 	ServletContext servletContext;
 	
 	@RequestMapping(value=command, method=RequestMethod.GET)
-	public String doAction(@RequestParam(value="anum",required=true) String anum,
+	public String doAction(@RequestParam(value="anum",required=true) int anum,
 							HttpServletRequest request) {
 		
 		MemberBean mbean = mdao.selectMember(anum);
-		request.setAttribute("mbean", mbean);;
+		request.setAttribute("mbean", mbean);
 		
 		return getPage;
 	}
@@ -55,7 +55,7 @@ public class MemberUpdateController {
 
 		ModelAndView mav = new ModelAndView();
 		mdao.updateMember(mbean);
-		mav.setViewName("redirect:/gotoPage");
+		mav.setViewName(gotoPage);
 		
 		return mav;
 	}

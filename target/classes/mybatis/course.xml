@@ -37,6 +37,10 @@
   		select * from courses where conum=#{conum}
   	</select>
   	
+  	<select id="GetTESubList" resultType="course.model.COSBean"><!-- coteacher과 tname이 일치하는지 확인 -->
+  		select * from courses where coname=#{coname}
+  	</select>
+  	
   	<insert id="InsertCOS">
   		insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
   		values(cos_seq.nextval,#{coname},#{coteacher},#{cosubject},#{covideo},#{cocontent},#{coprice},#{coupload_date})
@@ -49,4 +53,9 @@
   	<delete id="DeleteCOS">
   		delete courses where conum=#{conum}
   	</delete>
+  	
+  	<select id="GetSubject" resultType="String">
+  		select subname from subjects
+  		order by subname
+  	</select>
 </mapper>

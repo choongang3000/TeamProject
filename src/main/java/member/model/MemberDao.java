@@ -74,7 +74,7 @@ private String namespace="member.model.Member";
 		return mlist;		
 	}
 	
-	public MemberBean selectMember(String anum) {
+	public MemberBean selectMember(int anum) {
 		MemberBean mbean = sqlSessionTemplate.selectOne(namespace+".SelectMember",anum);
 		return mbean;
 	}
@@ -83,10 +83,8 @@ private String namespace="member.model.Member";
 		sqlSessionTemplate.update(namespace+".UpdateMember",mbean);
 	}
 	
-	public int deleteMember(MemberBean mbean) {
-		int cnt=-1;
-		cnt = sqlSessionTemplate.delete(namespace + ".DeleteMember", mbean);
-		return cnt;
+	public void deleteMember(MemberBean mb) {
+		 sqlSessionTemplate.delete(namespace + ".DeleteMember", mb);
 	}
 	
 	public TeacherBean getTeacherData(String anum) {
@@ -119,6 +117,14 @@ private String namespace="member.model.Member";
 		cosArr = sqlSessionTemplate.selectList(namespace + ".GetAllCourse", map, rowbounds);
 		
 		return cosArr;
+	}
+	
+	public List<String> getSubject(){
+		List<String> subArr = new ArrayList<String>();
+		
+		subArr = sqlSessionTemplate.selectList(namespace + ".GetSubject");
+		
+		return subArr;
 	}
 	
 }

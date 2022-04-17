@@ -80,7 +80,7 @@
 	  <header class="blog-header py-3">
 	    <div class="row flex-nowrap justify-content-between align-items-center">
 	      <div class="col-4 pt-1">
-	        <a class="link-secondary" href="#">Subscribe</a>
+	       <!--  <a class="link-secondary" href="#">Subscribe</a> -->
 	      </div>
 	      <div class="col-4 text-center">
 	        <a class="blog-header-logo text-dark title" href="home.us"><img src="<%=request.getContextPath() %>/resources/images/온강 로고.png" width="100" height="100"/></a>
@@ -98,7 +98,9 @@
 						</c:if>
 						<c:if test="${sessionScope.loginInfo.type != 'admin' }">
 							<span>${loginInfo.aname } 님 반갑습니다!</span>
-							<a href="#" class="header-sub-menu">정보수정</a> 
+							<a href="#" class="header-sub-menu">정보수정</a>
+							<a href="cartlist.stu" class="header-sub-menu">장바구니</a>
+							<a href="shlist.stu" class="header-sub-menu">구매목록</a>							
 						</c:if>
 						<a href="<%=request.getContextPath()%>/logout.jsp" class="header-sub-menu">로그아웃</a>
 					</div>

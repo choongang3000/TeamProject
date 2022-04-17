@@ -9,13 +9,11 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript">
-function do1(){
-	var res = document.forms[0].paymentMethod.value;
-	alert(res);
-}
-/* 카드결제 */
-function kg(){
-	  //class가 btn_payment인 태그를 선택했을 때 작동한다.
+function pm(){
+	var name = document.forms[0].paymentMethod.value;
+	
+	if(name == "kg"){
+		//alert(name);
 		var IMP = window.IMP;
 	  	IMP.init('imp61700942');/*'가맹점 식별코드'*/
 	  	//결제시 전달되는 정보
@@ -23,7 +21,7 @@ function kg(){
 				    pg : 'inicis', 
 				    pay_method : 'card',
 				    merchant_uid : 'merchant_' + new Date().getTime(),
-				    name : '주문명:결제테스트'/*상품명*/,
+				    name : ${totalcount} /*상품명 '주문명:결제테스트'*/,
 				    amount :  ${totalprice } /*상품 가격*/, 
 				    buyer_email : 'iamport@siot.do'/*구매자 이메일*/,
 				    buyer_name : '구매자이름',
@@ -45,15 +43,14 @@ function kg(){
 				        result ='1';
 				    }
 				    if(result=='0') {
-				    	location.href= "shlistdetail.stu";
+				    	/* location.href= "shlistdetail.stu"; */
+				    	document.forms[0].submit();
 				    }
 				    alert(msg);
 				});
-};
-
-/* 가상계좌 */
-function danal(){
-	  //class가 btn_payment인 태그를 선택했을 때 작동한다.
+	};
+	if(name == "danal"){
+		//alert(name);
 		var IMP = window.IMP;
 	  	IMP.init('imp61700942');/*'가맹점 식별코드'*/
 	  	//결제시 전달되는 정보
@@ -83,16 +80,15 @@ function danal(){
 				        result ='1';
 				    }
 				    if(result=='0') {
-				    	location.href="shlistdetail.stu";
+				    	//location.href= "shlistdetail.stu";
+				    	//location.href="buycos.stu";
+				    	document.forms[0].submit();
 				    }
 				    alert(msg);
 				});
-};
-
-/* 카카오페이 */
-function kakao(){
-
-        //class가 btn_payment인 태그를 선택했을 때 작동한다.
+	};
+	if(name == "kakao"){
+		//alert(name);
 		var IMP = window.IMP;
 	  	IMP.init('imp61700942');/*'가맹점 식별코드'*/
 	  	//결제시 전달되는 정보
@@ -122,12 +118,14 @@ function kakao(){
 				        result ='1';
 				    }
 				    if(result=='0') {
-				    	location.href= "shlistdetail.stu";
+				    	//location.href= "shlistdetail.stu";
+				    	//location.href= "buycos.stu";
+				    	document.forms[0].submit();
 				    }
 				    alert(msg);
 				});
+	};
 };
-
 /* 	
 결제수단 선택하면 결제수단 관련내용 출력되게하기
 function div_show(selectNum){
@@ -152,7 +150,7 @@ function div_show(selectNum){
 	}
 } //div_show
  */
- 
+
 </script>
 <style> /* 가운데정렬 다시 손봐야함!! */
 	div{
@@ -200,11 +198,14 @@ function div_show(selectNum){
       </div>
       
       <div class="col-md-7 col-lg-8">
-      <form class="needs-validation" method="post" action="buycos.stu" novalidate> <!-- form여깃음 -->
+      <!-- <form class="needs-validation" method="post" action="buycos.stu" novalidate> form여깃음 -->
+      <form class="needs-validation" method="get" action="buycos.stu" novalidate> <!-- form여깃음 -->
+      <input type="hidden" name="totalcount" value="${totalcount}">
+      <input type="hidden" value="${totalprice }" name="totalprice">
        <hr class="my-4">
        <br>
           <h4 class="mb-3">결제수단 선택</h4> <!-- 미완성3:결제수단 어떤거 선택할건지? -->
-         
+          
           <div class="my-3">
           
             <div class="form-check">
@@ -311,7 +312,7 @@ function div_show(selectNum){
 		  
           <br><br>
           <!-- <hr class="my-4"> -->
-          <button class="w-100 btn btn-primary btn-lg" onclick="do1()" type="button">결제하기</button>
+          <button class="w-100 btn btn-primary btn-lg" type="button" onClick="pm()">결제하기</button>
         </form>
 	 	<br><br>
       </div>
@@ -390,7 +391,5 @@ alert(msg);
 });
 });
 </script>
-
-
 출처: https://minaminaworld.tistory.com/78 [미나미 블로그] 
 -->

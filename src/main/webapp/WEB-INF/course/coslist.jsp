@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp" %>   
@@ -5,8 +6,9 @@
 
 <a href="start.jsp">시작페이지</a> <br>
 <a href="logout.jsp">로그아웃</a>
-
 <style type="text/css">
+
+/* COSListController / coslist.jsp / CoSDao / CoSBean / course.xml */
 
 		* { /* 기본적인 마진,패딩 없앰*/
 			margin:0;
@@ -15,10 +17,11 @@
 			list-style : none; /* 불릿 없애기 */
 		}
 		
-		
 		body { 
+				width:100%;
 				margin-top:30px;
 		}
+		
 		h1 {
 				font:20px "맑은 고딕",돋움,arial; 
 				color:#fff;
@@ -48,6 +51,7 @@
 		}
 		
 		#category-top{
+
 			    background-color:#365E43;
 			    border : 1px solid #365E43;
 			    width:200px;
@@ -83,7 +87,7 @@
 			   text-align:left;
 		}
 		
-		
+		/*
 		footer {
 				height: 120;
       			display:block;
@@ -93,6 +97,8 @@
 				width: 100%;
 				text-align: center;
       	}
+      	
+      	*/
       	a {
       			text-decoration : none; 
       	}
@@ -106,28 +112,29 @@
       			border : 1px solid gray;
 		      	background-color: gray;
       	}
+      	
+      	#foot{
+      			float:left;
+      			width:100%;
+      			text-align: center;
+      	}
 </style>
 
 <body>
 	<aside>
 		<table id="category">
-			<tr id="category-top">
-				<td><a href="subject-main.us"><font color="white"><b>전체강좌</b></font></a></td>
+ 		<tr id="category-top">
+				<td><a href="list.cos"><font color="white"><b>전체강좌</b></font></a></td>
 			</tr>
+			<c:forEach items="${subArr }" var="course">
+			<c:if test="${course != 'ETC' }">
 			<tr id="category-center">
-				<td><a href=""><font color="6C757D"><b>JAVA</b></font></a></td>
+				<td><a href="list.cos?cosubject=${course }"><font color="6C757D"><b>${course }</b></font></a></td>
 			</tr>
+			</c:if>
+			</c:forEach>
 			<tr id="category-center">
-				<td><a href=""><font color="6C757D"><b>DB</b></font></a></td>
-			</tr>
-			<tr id="category-center">
-				<td><a href=""><font color="6C757D"><b>JSP</b></font></a></td>
-			</tr>
-			<tr id="category-center">
-				<td><a href=""><font color="6C757D"><b>CSS</b></font></a></td>
-			</tr>
-			<tr id="category-center">
-				<td><a href=""><font color="6C757D"><b>HTML</b></font></a></td>
+				<td><a href="list.cos?cosubject=ETC"><font color="6C757D"><b>종합반</b></font></a></td>
 			</tr>
 		</table>
 	</aside>	
@@ -158,12 +165,12 @@
 			</tr>
 			<tr>
 				<!-- <th>상품번호</th> -->
-				<th>이미지</th>
-				<th>강의명</th>
+				<th align="center">이미지</th>
+				<th align="center">강의명</th>
 				<!-- <th>설명</th> -->
-				<th>가격</th>
-				<th>버튼</th>
-				<th>삭제|수정</th>
+				<th align="center">가격</th>
+				<th align="center">버튼</th>
+				<th align="center">삭제|수정</th>
 			</tr>
 			<c:forEach var="course" items="${list}">
 			<tr>
@@ -180,11 +187,11 @@
 					${course.cocontent }
 				</td> --%>
 				<td>
-					${course.coprice }원
+					<fmt:formatNumber value="${course.coprice}" pattern="#,###"/>원
 				</td>
 				<td>
-					<a href=""><button id="button1" type="button" class="btn btn-secondary btn-sm">수강신청 &nbsp<img src="<%=request.getContextPath() %>/resources/images/book-outline.svg" width="20" height="20"/></button></a> &nbsp
-					<a href=""><button id="button2" type="button" class="btn btn-secondary btn-sm">강의질문 &nbsp<img src="<%=request.getContextPath() %>/resources/images/질문게시판.svg" width="20" height="20"/></button></a>
+					<a href="detail.cos"><button id="button1" type="button" class="btn btn-secondary btn-sm">수강신청 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/book-outline.svg" width="20" height="20"/></button></a> &nbsp;
+					<a href="list.bst"><button id="button2" type="button" class="btn btn-secondary btn-sm">강의질문 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/질문게시판.svg" width="20" height="20"/></button></a>
 				</td>
 				<td colspan="2">
 					<input type="button" value="수정">
@@ -198,9 +205,14 @@
 			</tr>
 			</c:forEach>
 		</table>
+		${pageInfo.pagingHtml }
 	</div>
 </section>
-<br>
-	${pageInfo.pagingHtml }
-<br><br><br><br><br><br><br>
+
+	
+<div id=foot>
+<hr>
+<br><br>	
 <%@ include file="../user/usbottom.jsp"%>
+</div>
+</body>

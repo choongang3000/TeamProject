@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import course.model.COSBean;
 import course.model.COSDao;
+import teachers.model.TEBean;
 import utility.Paging;
 
 @Controller
@@ -45,11 +46,14 @@ public class COSListController {
 		
 		  
 		List<COSBean> list = cosdao.getCOSList(pageInfo, map);
+		
+		List<String> subArr = cosdao.getSubject();
 	 
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("list",list);
 		mav.addObject("totalCount",totalCount);
 		mav.addObject("pageInfo",pageInfo);
+		mav.addObject("subArr",subArr);
 		mav.setViewName(getPage);
 		return mav;
 	

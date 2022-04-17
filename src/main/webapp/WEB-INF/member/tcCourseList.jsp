@@ -19,10 +19,23 @@
 		margin-bottom: 20px;
 	}
 </style>
-<div class="py-4 text-center">
-	<h2>강의 목록</h2>
-</div>
 <center>
+<nav class="navbar navbar-light bg-light" style="width: 75%">
+	<div class="container-fluid">
+		<a class="navbar-brand">내 강의 목록</a>
+		<form action="tcCourseList.mem" method="get" class="d-flex">
+			<select class="form-select form-select-sm" name="whatColumn">
+				<option value="">과목 선택</option>
+				<c:forEach var="sub" items="${subArr }">
+				<option value="${sub }">${sub }</option>
+				</c:forEach>
+			</select>
+			&nbsp;
+			<input class="form-control me-2" type="search" placeholder="Search" name="keyword">
+			<button class="btn btn-outline-primary" type="submit">Search</button>
+		</form>
+	</div>
+</nav>
 <c:forEach var="cos" items="${cosArr}">
 <div class="card text-center col-sm-8">
   <div class="card-header">

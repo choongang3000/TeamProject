@@ -323,7 +323,7 @@
 				</a>
 			</div>
 			<div class="courses-box-detail-name">
-				<!-- 상품명 -->
+				<!-- 강의명/상품명 -->
 				<span>${bean.coname}</span>
 			</div>
 			<div class="course-box-detail-price">
@@ -351,8 +351,6 @@
 			</ul>
 		</div>
 		<div id="detail-img-text-box">${bean.cocontent}</div>
-
-
 	</div>
 </div>
 

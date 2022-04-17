@@ -3,6 +3,7 @@ package boarda.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
@@ -24,10 +25,14 @@ public class BAUpdateController {
 	
 	private final String command = "update.ba";
 	private String getPage = "updateForm";
-	private BABean bean;
+	private String gotoPage = "redirect:/list.ba";
+	private BABean babean;
 	
 	@Autowired
 	private BADao baDao;
+	
+	@Autowired
+	ServletContext servletContext;
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
 	public String doAction(
@@ -35,34 +40,26 @@ public class BAUpdateController {
 							@RequestParam(value="pageNumber", required=true) int pageNumber,
 							Model model) {
 		
-		bean = baDao.getBA(banum);
+		babean = baDao.getBA(banum);
 		
-		model.addAttribute("ba", bean);
+		model.addAttribute("babean", babean);
 		model.addAttribute("pageNumber",pageNumber);
 
 		return getPage;
 	}
 	
 	@RequestMapping(value=command,method=RequestMethod.POST)
-	public String doAction(@RequestParam(value="pageNumber",required = true) int pageNumber,
-								@Valid @ModelAttribute ("ba") BABean ba,
+	public ModelAndView doAction(@RequestParam(value="pageNumber",required = true) int pageNumber,
+								@Valid @ModelAttribute ("babean") BABean babean,
 								BindingResult result,
 								HttpServletResponse response) {
 		
 		response.setContentType("text/html;charset=UTF-8");
 		
-		if(result.hasErrors()) {
-			return getPage;
-		}
-		else {
-			try {
-				PrintWriter out = response.getWriter();
-				out.print("<script>alert('비밀번호가 일치하지 않습니다')</script>");
-				out.flush();
-			} catch (IOException e) {
-				System.out.println("BSUpdateController 비밀번호 일치 오류");
-			}
-			return getPage;
-		}
+		ModelAndView mav = new ModelAndView();
+		baDao.updateBA(babean);
+		mav.setViewName(gotoPage);
+		
+		return mav;
 	}
 }

@@ -1,18 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
-<%@ include file="adtop.jsp"%>
-<style>    
-	body {
-		width:1500px;
-		margin: 0 auto;
-	}
+<%@ include file="../fix/ad_top.jsp"%>
+<style>
+    	body{
+    		align: center;
+    		text-align: center;
+    		margin: auto;
+    	} 
+    	#container  {
+    		width:65%;
+			margin:auto;
+    	}
+    	
+    	#accordionFlushExample{
+    		height: 700px;
+    	}
+    	
 </style>
+<script src="<%=request.getContextPath()%>/resources/js/jquery.js"></script>
 <script>  
 	function insert() {
 		location.href = "insert.ba";
 	}
 	
+	$(document).ready(function(){
+	      $("a[id=navselect]").click(
+	         function(){$(this).addClass("active");},
+	         function(){$(this).removeClass("active");}         
+	      );
+	 });
+</script>
 <%
 	String[] heading = {"flush-headingOne", "flush-headingTwo", "flush-headingThree", "flush-headingFour",
 		"flush-headingFive", "flush-headingSix", "flush-headingSeven", "flush-headingEight", "flush-headingNine",
@@ -21,22 +39,29 @@
 		"flush-collapseFive", "flush-collapseSix", "flush-collapseSeven", "flush-collapseEight", "flush-collapseNine",
 		"flush-collapseTen"};
 %>
-</script>
 <c:set var="heading" value="<%=heading%>" />
 <c:set var="collapse" value="<%=collapse%>" />
 
 <body>
+<div id=container>
 <nav class="navbar navbar-light bg-light">
 	<div class="container-fluid">
 		<a class="navbar-brand">FAQ 자주 묻는 질문</a>
 
 		<form action="list.ba" method="get" class="d-flex">
-			<input class="form-control me-2" type="search" placeholder="Search"
-				aria-label="Search" name="keyword">
+			<input class="form-control me-2" type="search" placeholder="Search" name="keyword">
 			<button class="btn btn-outline-success" type="submit">Search</button>
 		</form>
 	</div>
 </nav>
+<ul class="nav nav-tabs">
+	<li class="nav-item"><a class="nav-link" id="navselect" href="list.ba">자주 찾는 질문</a></li>
+	<li class="nav-item"><a class="nav-link" id="navselect" href="list.ba?bacategory=회원">회원</a></li>
+	<li class="nav-item"><a class="nav-link" id="navselect" href="list.ba?bacategory=클래스이용">클래스 이용</a></li>
+	<li class="nav-item"><a class="nav-link" id="navselect" href="list.ba?bacategory=학습">학습</a></li>
+	<li class="nav-item"><a class="nav-link" id="navselect" href="list.ba?bacategory=강좌관리">강좌 관리</a></li>
+	<li class="nav-item"><a class="nav-link" id="navselect" href="list.ba?bacategory=기타">기타</a></li>
+</ul>
 <input class="btn btn-secondary btn-sm" type="button" value="삽입" onClick="insert()">
 총${totalCount}개
 <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -64,5 +89,8 @@
 		</div>
 	</c:forEach>
 </div>
+</div>
 <center>${pageInfo.pagingHtml}</center>
-</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>

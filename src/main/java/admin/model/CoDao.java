@@ -41,7 +41,7 @@ public class CoDao {
 		return cnt;
 	}
 	
-	public CoBean coursesCount(String conum) {
+	public CoBean coursesCount(String conum) { //강의 상세보기
 		CoBean cobean = sqlSessionTemplate.selectOne(namespace+".CoursesCount",conum);
 		return cobean;
 	}
@@ -62,6 +62,8 @@ public class CoDao {
 		int count = sqlSessionTemplate.selectOne(namespace+".GetCOSListCount",map);
 		return count;
 	}
+	
+	
 	
 	
 }

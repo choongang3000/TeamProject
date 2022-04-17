@@ -3,12 +3,6 @@
 <%@ include file="../common/common.jsp" %>
 <%@ include file="../admin/adtop.jsp" %>
 	
-	<script>
-	function buylist(){
-		location.href="shlist.stu";
-	}
-	</script>
-	
 	<style>
     	body{
     		align: center;
@@ -21,37 +15,49 @@
 	<br>
 	<div>구매일자: 2022.03.31</div>
 	<br>
-	<table border="0" align="center">
+	<table border="0" align="center" width=60%>
 		<tr>
-			<td colspan="3" align="center" bgcolor="#DCDCDC">구매상품</td>
+			<td colspan="4" align="center" bgcolor="#DCDCDC">구매상품</td>
 		</tr>
-		
-		<tr>
-			<td bgcolor="#DCDCDC">상품명</td>
-			<td bgcolor="#DCDCDC">구매가</td>
-			<td bgcolor="#DCDCDC">수강상태</td>
+		<tr align="center" style="border-bottom: 2px solid black;">
+			<th width=5%>No.</th>
+			<th width=65%>강의명</th>
+			<th width=20%>구매가</th>
+			<th width=10%>환불요청</th>
 			<!-- <td bgcolor="#DCDCDC">환불요청</td> -->
 		</tr>
-		
-		<tr>
-			<td>
+		<c:set var="number" value="1"/>
+		<c:set var="totalprice" value="0"/>
+		<c:forEach var="od" items="${odArr }">
+		<tr align="center" style="border-bottom: 1px solid lightgray">
+			<td>${number }</td>
+			<td style="padding-top:10px; padding-bottom:10px;">
+				<img src="" width="50" height="50">
 				<br>
-				<img src="" width="50" height="50"><br>
-				HTML 뽀개기(기초)
+				<b>${od.coteacher }[${od.cosubject }]</b>&nbsp;${od.coname }
 			</td>
-			<td>50,000원</td>
-			<td>수강중</td>
+			<td><fmt:formatNumber value="${od.coprice }" pattern="##,###,###"/>원</td>
+			<td><input type="button" value="환불요청"/></td>
 			<!-- <td>부분환불</td> -->
 		</tr>
-		<tr>
-			<td colspan="3" align="center" bgcolor="#DCDCDC">결제정보</td>
+		<c:set var="totalprice" value="${totalprice + od.coprice }"/>
+		<c:set var="number" value="${number +1 }"/>
+		</c:forEach>
+		<tr style="border-top: 2px solid black;">
+			<td colspan=4>&nbsp;</td>
 		</tr>
 		<tr>
-			
-			<td height="50">총 결제 개수<br>1개</td>
-			<td colspan="2">총 결제 금액<br>50,000원</td>
+			<td colspan="4" align="center" bgcolor="#DCDCDC" style="border-top: 1px solid black;">결제정보</td>
+		</tr>
+		<tr style="border-bottom:1px dotted lightgray">
+			<td height="25" colspan="2" >총 결제 개수</td>
+			<td colspan="2">총 결제 금액</td>
+		</tr>
+		<tr style="border-bottom:1px solid black">
+			<td height="25" colspan="2">${fn:length(odArr) }개</td>
+			<td colspan="2"><fmt:formatNumber value="${totalprice }" pattern="##,###,###"/>원</td>
 		</tr>
 	</table>
 	<br>
-<input type="button" value="목록" onClick="buylist()">
+<input type="button" value="목록" onClick="location.href='shlist.stu'">
 <%@ include file="../admin/adbottom.jsp" %>
