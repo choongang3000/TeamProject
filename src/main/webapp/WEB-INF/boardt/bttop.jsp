@@ -4,10 +4,19 @@
 <!DOCTYPE html>
 	<!-- ********************* 추가한 것 ******************** -->
     <style>
-    *{
-    	text-decoration: none;
-    }
+   	
+   	* { /* 기본적인 마진,패딩 없앰*/
+			
+			margin:0;
+			padding:0; 
+			text-decoration : none; /* 밑줄 없애기 */
+			list-style : none; /* 불릿 없애기 */
+		}
 
+	body { 
+				width:100%;
+				margin-top:30px;
+		}
     </style>
 	<!-- ************************************************** -->
     

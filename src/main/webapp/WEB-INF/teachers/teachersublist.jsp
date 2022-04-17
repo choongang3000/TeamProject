@@ -1,14 +1,9 @@
-<%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../common/common.jsp" %>   
-<%@ include file="../user/ustop.jsp"%> 
+<%@ include file="../common/common.jsp"%>
+<%@ include file="../user/ustop.jsp"%>
 
-<a href="start.jsp">시작페이지</a> <br>
-<a href="logout.jsp">로그아웃</a>
 <style type="text/css">
-
-/* COSListController / coslist.jsp / CoSDao / CoSBean / course.xml */
 
 		* { /* 기본적인 마진,패딩 없앰*/
 			margin:0;
@@ -20,6 +15,8 @@
 		body { 
 				width:100%;
 				margin-top:30px;
+				text-align:center;
+				
 		}
 		
 		h1 {
@@ -69,7 +66,7 @@
 		
 		#main-title {
 				float:left;
-				width:800px;
+				width:1200px;
 				text-align:center;
 				margin:80px auto;
 				background-color:#F6F6F6;
@@ -121,71 +118,33 @@
 </style>
 
 <body>
-	<aside>
-		<table id="category">
- 		<tr id="category-top">
-				<td><a href="list.cos"><font color="white"><b>전체강좌</b></font></a></td>
-			</tr>
-			<c:forEach items="${subArr }" var="course">
-			<c:if test="${course != 'ETC' }">
-			<tr id="category-center">
-				<td><a href="list.cos?cosubject=${course }"><font color="6C757D"><b>${course }</b></font></a></td>
-			</tr>
+			<div id="teacher-img">
+			<c:if test="${comp.cosubject != 'ETC' }">
+			${comp.cosubject } 강사 - ${comp.coteacher } 선생님 / ${comp.introduction }
 			</c:if>
-			</c:forEach>
-			<tr id="category-center">
-				<td><a href="list.cos?cosubject=ETC"><font color="6C757D"><b>종합반</b></font></a></td>
-			</tr>
-		</table>
-	</aside>	
-
+			<c:if test="${comp.cosubject == 'ETC' }">
+			종합반 강사 - ${comp.coteacher } 선생님 / ${comp.introduction }
+			</c:if>
+			<img  src="<%=request.getContextPath()%>/resources/images/${comp.coimage}" width=400 height=300>
+			</div>
 <section>
 	<div id="main-title">
 		<h1>강좌 리스트 화면(coslist.jsp)</h1>
-		<form action="list.cos" method="GET">
-			<select name="whatColumn">
-				<option value="">선택
-				<option value="coname">강의명
-				<option value="coteacher">선생님
-				<option value="cosubject">과목명
-			</select>
-			<input type="text" name="keyword">
-			<input type="submit" value="검색">
-		</form>
-		<table width="800">
+		<table width="1200" align="center">
 			<tr>
-				<td align="right" colspan="5">
-					<input type="button" value="추가하기" onclick="insert()">
-				</td>
-			</tr>
-			<tr>
-				<td colspan="5">
-					<br>
-				</td>
-			</tr>
-			<tr>
-				<!-- <th>상품번호</th> -->
-				<th align="center">이미지</th>
 				<th align="center">강의명</th>
-				<!-- <th>설명</th> -->
+				<th align="center">강의소개</th>
 				<th align="center">가격</th>
 				<th align="center">버튼</th>
-				<th align="center">삭제|수정</th>
 			</tr>
 			<c:forEach var="course" items="${list}">
 			<tr>
 				<td>
-					<img id="teacher-img" src="<%=request.getContextPath()%>/resources/images/${course.coimage}" width=80 height=80>
-				</td>
-				<%-- <td>
-					<c:out value="${course.conum }" />
-				</td>	 --%>			
-				<td>
 					<a href="detail.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }">${course.coname }</a>
 				</td>
-				<%-- <td>
+				<td>
 					${course.cocontent }
-				</td> --%>
+				</td>
 				<td>
 					<fmt:formatNumber value="${course.coprice}" pattern="#,###"/>원
 				</td>
@@ -193,13 +152,9 @@
 					<a href="detail.cos"><button id="button1" type="button" class="btn btn-secondary btn-sm">수강신청 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/book-outline.svg" width="20" height="20"/></button></a> &nbsp;
 					<a href="list.bst"><button id="button2" type="button" class="btn btn-secondary btn-sm">강의질문 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/질문게시판.svg" width="20" height="20"/></button></a>
 				</td>
-				<td colspan="2">
-					<input type="button" value="수정">
-					<input type="button" value="삭제">
-				</td>
 			</tr>
 			<tr>
-				<td colspan="5">
+				<td colspan="4">
 					<hr>
 				</td>
 			</tr>
@@ -208,7 +163,6 @@
 		${pageInfo.pagingHtml }
 	</div>
 </section>
-
 	
 <div id=foot>
 <hr>

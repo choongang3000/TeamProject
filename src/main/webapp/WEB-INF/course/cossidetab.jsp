@@ -1,4 +1,3 @@
-<%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp" %>   
@@ -6,9 +5,10 @@
 
 <a href="start.jsp">시작페이지</a> <br>
 <a href="logout.jsp">로그아웃</a>
-<style type="text/css">
 
-/* COSListController / coslist.jsp / CoSDao / CoSBean / course.xml */
+sidetab<br>
+
+<style type="text/css">
 
 		* { /* 기본적인 마진,패딩 없앰*/
 			margin:0;
@@ -119,22 +119,26 @@
       			text-align: center;
       	}
 </style>
-
 <body>
 	<aside>
 		<table id="category">
- 		<tr id="category-top">
+			<tr id="category-top">
 				<td><a href="list.cos"><font color="white"><b>전체강좌</b></font></a></td>
 			</tr>
-			<c:forEach items="${subArr }" var="course">
-			<c:if test="${course != 'ETC' }">
 			<tr id="category-center">
-				<td><a href="list.cos?cosubject=${course }"><font color="6C757D"><b>${course }</b></font></a></td>
+				<td><a href="side.cos"><font color="6C757D"><b>JAVA</b></font></a></td>
 			</tr>
-			</c:if>
-			</c:forEach>
 			<tr id="category-center">
-				<td><a href="list.cos?cosubject=ETC"><font color="6C757D"><b>종합반</b></font></a></td>
+				<td><a href=""><font color="6C757D"><b>DB</b></font></a></td>
+			</tr>
+			<tr id="category-center">
+				<td><a href=""><font color="6C757D"><b>JSP</b></font></a></td>
+			</tr>
+			<tr id="category-center">
+				<td><a href=""><font color="6C757D"><b>CSS</b></font></a></td>
+			</tr>
+			<tr id="category-center">
+				<td><a href=""><font color="6C757D"><b>HTML</b></font></a></td>
 			</tr>
 		</table>
 	</aside>	
@@ -173,6 +177,7 @@
 				<th align="center">삭제|수정</th>
 			</tr>
 			<c:forEach var="course" items="${list}">
+			<c:if test="${course=='JAVA'}">
 			<tr>
 				<td>
 					<img id="teacher-img" src="<%=request.getContextPath()%>/resources/images/${course.coimage}" width=80 height=80>
@@ -190,14 +195,15 @@
 					<fmt:formatNumber value="${course.coprice}" pattern="#,###"/>원
 				</td>
 				<td>
-					<a href="detail.cos"><button id="button1" type="button" class="btn btn-secondary btn-sm">수강신청 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/book-outline.svg" width="20" height="20"/></button></a> &nbsp;
-					<a href="list.bst"><button id="button2" type="button" class="btn btn-secondary btn-sm">강의질문 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/질문게시판.svg" width="20" height="20"/></button></a>
+					<a href=""><button id="button1" type="button" class="btn btn-secondary btn-sm">수강신청 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/book-outline.svg" width="20" height="20"/></button></a> &nbsp;
+					<a href=""><button id="button2" type="button" class="btn btn-secondary btn-sm">강의질문 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/질문게시판.svg" width="20" height="20"/></button></a>
 				</td>
 				<td colspan="2">
 					<input type="button" value="수정">
 					<input type="button" value="삭제">
 				</td>
 			</tr>
+			</c:if>
 			<tr>
 				<td colspan="5">
 					<hr>

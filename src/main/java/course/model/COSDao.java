@@ -1,5 +1,6 @@
 package course.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -50,5 +51,13 @@ public class COSDao {
 		int cnt = -1;
 		cnt = sqlSessionTemplate.delete(namespace+".DeleteCOS", num);
 		return cnt;
+	}
+	
+	public List<String> getSubject(){
+		List<String> subArr = new ArrayList<String>();
+		
+		subArr = sqlSessionTemplate.selectList(namespace + ".GetSubject");
+		
+		return subArr;
 	}
 }

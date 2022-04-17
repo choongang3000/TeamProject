@@ -9,6 +9,12 @@
 <!-- 		<if test="whatColumn =='subject'">
 			where subject like #{keyword}
 		</if> -->
+		<if test="subject != null">
+  		 where subject in
+		<foreach item="item" index="index" collection="subject.split(',')" open="(" separator="," close=")">
+    	 #{item}
+    	</foreach>
+    	</if>
 	</select>
 		
 	<select id="GetBoardList" resultType="BTBean">
