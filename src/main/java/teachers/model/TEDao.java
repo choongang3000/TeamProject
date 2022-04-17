@@ -56,11 +56,6 @@ public class TEDao {
 		cnt = sqlSessionTemplate.delete(namespace + ".DeleteTE", num);
 		return cnt;
 	}
-
-	public List<TEBean> getTEList() {
-		List<TEBean> list = sqlSessionTemplate.selectList(namespace + ".GetTEList");
-		return list;
-	}
 	
 	/* KJH - 강사별 강의목록 출력 (관련:TEsubListController/teachers.xml) */
 	public List<TEBean> getTESubList(TEBean bean) {

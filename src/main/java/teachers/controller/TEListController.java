@@ -45,7 +45,7 @@ public class TEListController { // 4/13 JH - TEBean, TEListController, TEDao, te
 	            map.put("cosubject", null);
 	         }
 	         else {
-	            map.put("cosubject", cosubject);
+	            map.put("cosubject", "%"+cosubject+"%");
 	         }
 	      }   
 	      else {
