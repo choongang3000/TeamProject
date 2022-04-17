@@ -6,45 +6,12 @@
 <%@include file="bttop.jsp"%><!-- 광고 이미지 붙인것 -->
 
 <Main>
-문제 갯수 : ${totalCount }개
 <style>
 
-	* { /* 기본적인 마진,패딩 없앰*/
-			
-			margin:0;
-			padding:0; 
-			text-decoration : none; /* 밑줄 없애기 */
-			list-style : none; /* 불릿 없애기 */
-	}
-	
-	body { 
-			width:100%;
-			margin-top:30px;
-			margin:auto;
-	}
-	
 	a {
 		text-decoration: none;
 	}
-	/* 
-	body { 
-		align: center;
-		width:100%;
-		margin-top:30px;
-		text-align:center;
-	}
-		
-	#myArea,#myform2{
-		text-align:center;
-	}
-	
-	#body{
-		align: center;
-		width:100%;
-		margin-top:30px;
-		text-align:center;
-	}
-	 */
+
 </style>
 <script src="<%= request.getContextPath()%>/resources/js/jquery.js"></script>
 <script type="text/javascript">
