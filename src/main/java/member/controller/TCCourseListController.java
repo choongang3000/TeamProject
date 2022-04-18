@@ -39,16 +39,32 @@ public class TCCourseListController {
 		
 		Map<String,String> map = new HashMap<String, String>();
 		map.put("coteacher", teacher.getAname());
+		
 		System.out.println("keyword >>" + keyword);
+		if(whatColumn == null) {
+			map.put("whatColumn", null);
+		}
+		else {
+			if(whatColumn.equals("") || keyword.equals("null")) {
+				map.put("whatColumn", null);
+			}
+			else {
+				map.put("whatColumn", whatColumn);							
+			}
+		}
+		
 		if(keyword == null) {
 			map.put("keyword", null);
 		}
 		else {
-			map.put("keyword", "%"+keyword+"%");			
+			if(keyword.equals("") || keyword.equals("null")) {
+				map.put("keyword", null);
+			}
+			else {				
+				map.put("keyword", "%"+keyword+"%");			
+			}
 		}
-		map.put("whatColumn", whatColumn);
 		
-		System.out.println("map!!! >>>> " + map);
 		
 		int totalcount = mdao.getCourseCount(map);
 		System.out.println("ÀüÃ¼ °¹¼ö : " + totalcount);
@@ -62,6 +78,9 @@ public class TCCourseListController {
 		request.setAttribute("subArr", subArr);
 		request.setAttribute("cosArr", cosArr);
 		request.setAttribute("pageInfo", pageInfo);
+		request.setAttribute("pageNumber", pageNumber);
+		request.setAttribute("whatColumn",whatColumn);
+		request.setAttribute("keyword",keyword);
 		
 		return getPage;
 	}

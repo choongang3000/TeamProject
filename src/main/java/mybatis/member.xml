@@ -77,6 +77,11 @@
  	<select id="GetSubject" resultType="String">
  		select subname from subjects order by subname
  	</select>
+ 	
+ 	<select id="GetCourseByConum" resultType="course.model.COSBean">
+ 		select * from courses where conum=#{conum}
+ 	</select>
+ 	
 </mapper>
 <!-- member.xml -->
 

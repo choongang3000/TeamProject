@@ -36,12 +36,18 @@
 		</form>
 	</div>
 </nav>
+<c:if test="${fn:length(cosArr) == 0 }">
+<div>
+	<br><br>
+	<h3>강의가 존재하지 않습니다</h3>
+</div>
+</c:if>
 <c:forEach var="cos" items="${cosArr}">
 <div class="card text-center col-sm-8">
   <div class="card-header">
     <ul class="nav nav-pills card-header-pills">
       <li class="nav-item">
-        <a class="nav-link" id="atag" href="#">자세히 보기</a>
+        <a class="nav-link" id="atag" href="tcCourseDetail.mem?conum=${cos.conum }&pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}">자세히 보기</a>
       </li>
       <!-- 
       <li class="nav-item">
