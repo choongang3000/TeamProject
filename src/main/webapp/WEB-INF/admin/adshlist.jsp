@@ -19,7 +19,7 @@
 	<td colspan="6">
 		<form action="shlist.ad" method="post">
 			조회할 회원 아이디 입력:
-			<input type="text" name="" size="20">
+			<input type="text" name="aid" size="20">
 			<input type="submit" value="검색"> 
 		</form>
     </td>
@@ -27,26 +27,20 @@
 
 <tr height="50">
 	<td>주문번호</td>
-	<td>고객명</td>
 	<td>아이디</td>
 	<td>주문일자</td>
 	<td>총금액</td>
 	<td>상세정보</td>
 </tr>
-
+<c:forEach var="list" items="${list }">
 <tr height="30">
-	<td>1</td>
-	<td>고객1</td>
-	<td>stu1</td>
-	<td>2022-03-31</td>
-	<td><fmt:formatNumber value="100000" pattern="#,###,###"/></td>
-	<td><a href="shlistdetail.ad">상세정보</a></td>
+	<td>${list.onum}</td>
+	<td>${list.aid }</td>
+	<td>${list.odate }</td>
+	<td><fmt:formatNumber value="${list.totprice }" pattern="#,###,###"/></td>
+	<td><a href="shlistdetail.ad?onum=${list.onum }">상세정보</a></td>
 </tr>
-
-<tr height="50">
-	<td colspan="4">총합</td>
-	<td>금액</td>
-</tr>
+</c:forEach>
 </table>
 
 </center>

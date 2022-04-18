@@ -16,6 +16,8 @@ public class STUAddCartController {
 	
 	private final String command = "addcart.stu";
 	private String gotoPage = "redirect:/cartlist.stu";
+	private String page = "cartlist.stu" ;
+	private String getPage = "redirect:/loginForm.mem";
 	
 	@RequestMapping(command)
 	public String doAction(HttpSession session,
@@ -23,8 +25,9 @@ public class STUAddCartController {
 		
 	
 		if(session.getAttribute("loginInfo") == null) {// 로그인 안했으면
-			session.setAttribute("destination", "로그인 하고 돌아올 위치의 url");
-			return "로그인 폼 위치로 가는 url";
+			//session.setAttribute("destination", "로그인 하고 돌아올 위치의 url"); => ? 어디로 이동할건지?
+			//return "로그인 폼 위치로 가는 url";
+			return getPage;
 		}
 		else {
 			

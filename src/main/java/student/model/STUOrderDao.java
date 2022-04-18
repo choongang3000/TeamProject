@@ -1,5 +1,6 @@
 package student.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -30,5 +31,11 @@ public class STUOrderDao {
 		
 		return list;
 	}
-
+	
+	public List<STUOrderBean> orderAll(){
+		List<STUOrderBean> list = new ArrayList<STUOrderBean>();
+		list = sqlSessionTemplate.selectList(namespace+".OrderAll");
+		return list;
+	}
+	
 }

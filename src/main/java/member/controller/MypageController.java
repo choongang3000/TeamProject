@@ -43,10 +43,10 @@ public class MypageController {
 			return "redirect:/loginForm.mem";
 		}
 		else if(mbean.getType().equals("admin")) { // 어드민 로그인
-			return "list.ad"; // adminpage
+			return "../admin/adhome"; // adminpage
 		}
 		else if(mbean.getType().equals("teacher")) { // 선생님 로그인
-			return "tcmypage"; // adminpage
+			return "tcmypage"; // tcmypage
 		}
 		else {// 회원 로그인 한 상태
 			return getPage;// mypage.jsp

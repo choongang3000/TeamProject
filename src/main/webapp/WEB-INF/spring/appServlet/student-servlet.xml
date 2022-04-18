@@ -22,5 +22,4 @@
 	</bean>
 	
 	<context:component-scan base-package="student" />
-
 </beans>

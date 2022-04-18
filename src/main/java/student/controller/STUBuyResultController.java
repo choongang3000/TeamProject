@@ -28,8 +28,7 @@ public class STUBuyResultController {
 	private STUOrderDeDao oddao;
 	
 	@RequestMapping(command)
-	public String doAction(HttpSession session,
-							HttpServletRequest request) {
+	public String doAction(HttpSession session,HttpServletRequest request) {
 		MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo");
 		
 		int maxOnum = orderdao.getMaxOnum(loginInfo.getId());

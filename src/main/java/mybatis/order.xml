@@ -18,4 +18,7 @@
 		select * from orders where aid=#{aid} order by onum desc
 	</select>
 	
+	<select id="OrderAll" resultType="student.model.STUOrderBean">
+		select * from orders order by onum desc
+	</select>
 </mapper>

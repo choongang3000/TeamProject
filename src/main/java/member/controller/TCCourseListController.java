@@ -30,8 +30,7 @@ public class TCCourseListController {
 	public String doAction(@RequestParam(value="pageNumber",required = false) String pageNumber,
 					       @RequestParam(value="whatColumn",required = false) String whatColumn,
 						   @RequestParam(value="keyword",required = false) String keyword,
-						   HttpSession session,
-						   HttpServletRequest request) {
+						   HttpSession session, HttpServletRequest request) {
 		
 		String url = request.getContextPath() +"/"+command;
 		
@@ -83,6 +82,7 @@ public class TCCourseListController {
 		request.setAttribute("keyword",keyword);
 		
 		return getPage;
+		
 	}
 	
 }
