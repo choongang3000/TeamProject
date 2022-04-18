@@ -25,5 +25,6 @@
 	<context:component-scan base-package="course" />
 	<context:component-scan base-package="teachers" />
 	<context:component-scan base-package="admin" />
+	<context:component-scan base-package="student" />
 
 </beans>

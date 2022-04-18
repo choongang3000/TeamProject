@@ -10,12 +10,15 @@
 		values(ord_seq.nextval, #{aid}, #{totprice} ,sysdate)
 	</insert>
 	
-	<select id="GetMaxOid" resultType="int">
-		select max(onum) from orders
+	<select id="GetMaxOnum" resultType="int">
+		select max(onum) from orders where aid=#{aid}
 	</select>
 	
 	<select id="OrderList" resultType="student.model.STUOrderBean">
 		select * from orders where aid=#{aid} order by onum desc
 	</select>
 	
+	<select id="OrderAll" resultType="student.model.STUOrderBean">
+		select * from orders order by onum desc
+	</select>
 </mapper>

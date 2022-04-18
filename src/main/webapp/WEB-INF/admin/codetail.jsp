@@ -83,4 +83,4 @@
 <input type="button" value="삭제" onClick="del()">
 </center>
 <br>
-<%@ include file="../admin/adbottom.jsp" %> 
+<%@ include file="../admin/adbottom.jsp" %>

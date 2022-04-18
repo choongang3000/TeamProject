@@ -9,8 +9,8 @@
 		select count(*) from teachers
 		</if>
 		<if test="cosubject != null">
-	    select * from teachers
-        where UPPER(subject) like UPPER(#{cosubject})
+		select * from teachers
+		where UPPER(subject) like UPPER(#{cosubject})
 		</if>
 	</select>
 

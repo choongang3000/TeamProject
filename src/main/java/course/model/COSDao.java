@@ -19,6 +19,7 @@ public class COSDao {
 	private String namespace="course.model.COSBean";
 	
 	public int totalCount(Map<String, String> map) {
+		
 		int count = sqlSessionTemplate.selectOne(namespace+".GetCOSListCount",map);
 		return count;
 	}

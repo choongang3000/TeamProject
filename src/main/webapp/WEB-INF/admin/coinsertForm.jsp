@@ -75,7 +75,7 @@
             <!-- 강의영상 -->
             <div class="col-12">
               <label for="covideo" class="form-label">강의 영상<span class="text-muted"></span></label>
-              <input type="file" class="form-control" name="upvideo" required>
+              <input type="file" class="form-control" name="upvideo" accept="video/mp4,video/mkv, video/x-m4v,video/*" required>
               <div class="invalid-feedback">
                 강의 영상을 넣어주세요.
               </div>
@@ -120,4 +120,4 @@
 
 </div>
 
-<%@ include file="../admin/adbottom.jsp" %> 
+<%@ include file="../admin/adbottom.jsp" %>
