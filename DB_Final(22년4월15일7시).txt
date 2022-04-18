@@ -517,7 +517,7 @@ create sequence boardt_seq
   nocache;
   
 insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
-values(boardt_seq.nextval,'ETC','문제10.png','12','1234','퀴즈10.png','정답확인10.png');
+values(boardt_seq.nextval,'JAVA','문제10.png','12','1234','퀴즈10.png','정답확인10.png');
 
 insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
 values(boardt_seq.nextval,'ETC','문제9.png','사각형','1234','퀴즈9.png','정답확인9.png');
@@ -544,7 +544,7 @@ insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
 values(boardt_seq.nextval,'ETC','문제2.png','캡슐화','1234','퀴즈2.png','정답확인2.png');
 
 insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
-values(boardt_seq.nextval,'JAVA','문제1.png','UML','1234','퀴즈1.png','정답확인1.png');
+values(boardt_seq.nextval,'ETC','문제1.png','UML','1234','퀴즈1.png','정답확인1.png');
 
 commit;  
 

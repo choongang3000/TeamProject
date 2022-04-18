@@ -39,19 +39,19 @@ public class COSListController {
 		Map<String, String> map=new HashMap<String, String>();
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");
+		
 		if(cosubject != null) {
-			if(cosubject.equals("")) {
-				map.put("cosubject", null);
-			}
-			else {
-				map.put("cosubject", cosubject);
-			}
-		}	
-		else {
-			map.put("cosubject", cosubject);
-		}
-		
-		
+	         if(cosubject.equals("")) {
+	            map.put("cosubject", null);
+	         }
+	         else {
+	            map.put("cosubject", cosubject);
+	         }
+	      }   
+	      else {
+	         map.put("cosubject", cosubject);
+	      }
+	
 		int totalCount=cosdao.totalCount(map);
 		System.out.println("totalCount:"+totalCount);
 		

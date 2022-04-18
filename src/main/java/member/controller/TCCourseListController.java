@@ -39,13 +39,10 @@ public class TCCourseListController {
 		
 		Map<String,String> map = new HashMap<String, String>();
 		map.put("coteacher", teacher.getAname());
-		if(keyword != null) {
-			map.put("keyword", "%"+keyword+"%");
-		}
-		else {
-			map.put("keyword", keyword);			
-		}
+		map.put("keyword",keyword);
 		map.put("whatColumn", whatColumn);
+		
+		System.out.println("map!!! >>>> " + map);
 		
 		int totalcount = mdao.getCourseCount(map);
 		

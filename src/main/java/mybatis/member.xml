@@ -61,7 +61,7 @@
  		and coname like #{keyword}
  		</if>
  	</select>
-
+	
  	<select id="GetAllCourse" resultType="course.model.COSBean">
  		select * from courses
  		where coteacher=#{coteacher}

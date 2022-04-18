@@ -5,11 +5,24 @@
 
 <mapper namespace="teachers.model.TEBean">
 	<select id="GetTEListCount" resultType="int">
+		<if test="cosubject == null">
 		select count(*) from teachers
+		</if>
+		<if test="cosubject != null">
+		select * from teachers
+		where UPPER(subject) like UPPER(#{cosubject})
+		</if>
 	</select>
 
 	<select id="GetTEList" resultType="teachers.model.TEBean">
-  		select * from teachers
+	  	<if test="cosubject == null">
+	  	select * from teachers
+	 	</if>
+	 	<if test="cosubject != null">
+		select * from teachers
+		where UPPER(subject) like UPPER(#{cosubject})
+		</if>
+		order by tnum
   	</select>
   	
   	<select id="GetTE" resultType="teachers.model.TEBean">

@@ -7,99 +7,99 @@
 
 	<select id="GetCOSListCount" resultType="int">
 
-		select count(*) from courses
-		<if test="cosubject == null">   
-		    <if test="whatColumn=='coname'">
-		      where UPPER(coname) like UPPER(#{keyword})
-		    </if>
-		    <if test="whatColumn=='coteacher'">
-		      where coteacher like UPPER(#{keyword})
-		    </if>
-		    <if test="whatColumn=='cosubject'">
-		      where cosubject like UPPER(#{keyword})
-		    </if>
-	    </if>
-	    
-	    <if test="cosubject != null">
-	      where cosubject=#{cosubject}
-		    <if test="whatColumn=='coname'">
-		      and UPPER(coname) like UPPER(#{keyword})
-		    </if>
-		    <if test="whatColumn=='coteacher'">
-		      and coteacher like UPPER(#{keyword})
-		    </if>
-		    <if test="whatColumn=='cosubject'">
-		      and cosubject like UPPER(#{keyword})
-		    </if>
-	    </if>
-		
-		order by conum desc
-<!-- 	
-		select count(*) from courses
-		
-		<if test="whatColumn=='coname'">
-			where coname like UPPER(#{keyword})
-		</if>
-		<if test="whatColumn=='coteacher'">
-			where coteacher like UPPER(#{keyword})
-		</if>
-		<if test="whatColumn=='cosubject'">
-			where cosubject like UPPER(#{keyword})
-		</if>
-		
-		<if test="cosubject != null">
-		    where cosubject=#{cosubject}
-		</if> 
-		
-		order by conum desc
-		-->
+      select count(*) from courses
+      <if test="cosubject == null">   
+          <if test="whatColumn=='coname'">
+            where UPPER(coname) like UPPER(#{keyword})
+          </if>
+          <if test="whatColumn=='coteacher'">
+            where UPPER(coteacher) like UPPER(#{keyword})
+          </if>
+          <if test="whatColumn=='cosubject'">
+            where UPPER(cosubject) like UPPER(#{keyword})
+          </if>
+       </if>
+       
+       <if test="cosubject != null">
+         where cosubject=#{cosubject}
+          <if test="whatColumn=='coname'">
+            and UPPER(coname) like UPPER(#{keyword})
+          </if>
+          <if test="whatColumn=='coteacher'">
+            and UPPER(coteacher) like UPPER(#{keyword})
+          </if>
+          <if test="whatColumn=='cosubject'">
+            and UPPER(cosubject) like UPPER(#{keyword})
+          </if>
+       </if>
+      
+      order by conum desc
+<!--    
+      select count(*) from courses
+      
+      <if test="whatColumn=='coname'">
+         where coname like UPPER(#{keyword})
+      </if>
+      <if test="whatColumn=='coteacher'">
+         where coteacher like UPPER(#{keyword})
+      </if>
+      <if test="whatColumn=='cosubject'">
+         where cosubject like UPPER(#{keyword})
+      </if>
+      
+      <if test="cosubject != null">
+          where cosubject=#{cosubject}
+      </if> 
+      
+      order by conum desc
+      -->
 		
 	</select>
   	
-  	<select id="GetCOSList" resultType="course.model.COSBean">
-		select * from courses
-		<if test="cosubject == null">   
-		    <if test="whatColumn=='coname'">
-		      where UPPER(coname) like UPPER(#{keyword})
-		    </if>
-		    <if test="whatColumn=='coteacher'">
-		      where coteacher like UPPER(#{keyword})
-		    </if>
-		    <if test="whatColumn=='cosubject'">
-		      where cosubject like UPPER(#{keyword})
-		    </if>
-	    </if>
-	    
-	    <if test="cosubject != null">
-		      where cosubject=#{cosubject}
-		    <if test="whatColumn=='coname'">
-		      and UPPER(coname) like UPPER(#{keyword})
-		    </if>
-		    <if test="whatColumn=='coteacher'">
-		      and coteacher like UPPER(#{keyword})
-		    </if>
-		    <if test="whatColumn=='cosubject'">
-		      and cosubject like UPPER(#{keyword})
-		    </if>
-	    </if>
-		
-		order by conum desc
+  	     <select id="GetCOSList" resultType="course.model.COSBean">
+      select * from courses
+      <if test="cosubject == null">   
+          <if test="whatColumn=='coname'">
+            where UPPER(coname) like UPPER(#{keyword})
+          </if>
+          <if test="whatColumn=='coteacher'">
+            where UPPER(coteacher) like UPPER(#{keyword})
+          </if>
+          <if test="whatColumn=='cosubject'">
+            where UPPER(cosubject) like UPPER(#{keyword})
+          </if>
+       </if>
+       
+       <if test="cosubject != null">
+         where cosubject=#{cosubject}
+          <if test="whatColumn=='coname'">
+            and UPPER(coname) like UPPER(#{keyword})
+          </if>
+          <if test="whatColumn=='coteacher'">
+            and UPPER(coteacher) like UPPER(#{keyword})
+          </if>
+          <if test="whatColumn=='cosubject'">
+            and UPPER(cosubject) like UPPER(#{keyword})
+          </if>
+       </if>
+      
+      order by conum desc
 
-<!--   	select * from courses
-  		<if test="whatColumn=='coname'">
-			where coname like UPPER(#{keyword})
-		</if>
-		<if test="whatColumn=='coteacher'">
-			where coteacher like UPPER(#{keyword})
-		</if>
-		<if test="whatColumn=='cosubject'">
-			where cosubject like UPPER(#{keyword})
-		</if>
-		<if test="cosubject != null">
-		    where cosubject=#{cosubject}
-		</if>
-		order by conum desc -->
-  	</select>
+<!--      select * from courses
+        <if test="whatColumn=='coname'">
+         where coname like UPPER(#{keyword})
+      </if>
+      <if test="whatColumn=='coteacher'">
+         where coteacher like UPPER(#{keyword})
+      </if>
+      <if test="whatColumn=='cosubject'">
+         where cosubject like UPPER(#{keyword})
+      </if>
+      <if test="cosubject != null">
+          where cosubject=#{cosubject}
+      </if>
+      order by conum desc -->
+     </select>
   	
   	<select id="GetCOS" resultType="course.model.COSBean">
   		select * from courses where conum=#{conum}

@@ -68,7 +68,7 @@ public class MainCotroller {
       
       String url1=request.getContextPath()+command1;
       String url2=request.getContextPath()+command1;
-      Paging pageInfo1=new Paging(pageNumber1, null, totalCount1, url1, whatColumn1, keyword1);
+      COSListPaging pageInfo1=new COSListPaging(pageNumber1, null, totalCount1, url1, whatColumn1, keyword1);
       COSListPaging pageInfo2=new COSListPaging(pageNumber2, null, totalCount2, url2, whatColumn2, keyword2);
       
         

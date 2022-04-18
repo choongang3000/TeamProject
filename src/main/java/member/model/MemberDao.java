@@ -102,6 +102,8 @@ private String namespace="member.model.Member";
 	
 	public List<COSBean> getAllCourse( Map<String,String> map, Paging pageInfo){
 		
+		System.out.println("여기!! map >> " + map);
+		
 		List<COSBean> cosArr = new ArrayList<COSBean>();
 		
 		RowBounds rowbounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());

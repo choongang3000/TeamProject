@@ -203,7 +203,7 @@
 					<input type="checkbox" value="${i }"  id="subchk" name="subject" onClick="subElse(this)" checked>${i } &nbsp
 					</c:if>
 					</c:forEach>
-					<input type="checkbox" value="${i }"  id="subchk" name="subject" onClick="subElse(this)" checked>IT종합 &nbsp
+					<input type="checkbox" value="ETC"  id="subchk" name="subject" onClick="subElse(this)" checked>IT종합 &nbsp
 				</td>
 			</tr>
 			<tr>
