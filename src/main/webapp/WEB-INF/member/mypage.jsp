@@ -38,7 +38,7 @@
       <div class="card-body">
         <h5 class="card-title">내 수강 목록</h5>
         <p class="card-text">수강 목록</p>
-        <a href="#" class="btn btn-primary">내 강의 목록</a>
+        <a href="shlist.stu" class="btn btn-primary">내 강의 목록</a>
       </div>
     </div>
   </div>
