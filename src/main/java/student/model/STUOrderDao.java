@@ -12,19 +12,20 @@ public class STUOrderDao {
 	private SqlSessionTemplate sqlSessionTemplate;
 	private String namespace="student.model.STUOrder";
 	
-	public void insertOrder(String oid) { 
-		sqlSessionTemplate.insert(namespace+".InsertOrder",oid);
-		/* return cnt; */
+	public int insertOrder(String aid) { 
+		int cnt = -1;
+		cnt = sqlSessionTemplate.insert(namespace+".InsertOrder",aid);
+		return cnt;
 	}
 
-	public int getMaxOid() {
-		int maxOid=sqlSessionTemplate.selectOne(namespace+".GetMaxOid");
-		System.out.println("maxOid1:" + maxOid);
-		return maxOid;
+	public int getMaxOnum() {
+		int maxOnum = sqlSessionTemplate.selectOne(namespace+".GetMaxOnum");
+		System.out.println("maxOnum:" + maxOnum);
+		return maxOnum;
 	}
 
-	public List<STUOrderBean> orderList(String oid) {
-		List<STUOrderBean> list=sqlSessionTemplate.selectList(namespace+".OrderList",oid);
+	public List<STUOrderBean> orderList(String aid) {
+		List<STUOrderBean> list=sqlSessionTemplate.selectList(namespace+".OrderList",aid);
 		return list;
 	}
 

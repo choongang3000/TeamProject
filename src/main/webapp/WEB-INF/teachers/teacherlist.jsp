@@ -84,7 +84,7 @@
 		      	 width:120px;
 		}
 
-		#foooo{
+		#foot{
       			width:100%;
       			text-align: center;
       	}
@@ -106,20 +106,15 @@
 			<tr id="category-top">
 				<td><a href="list.te"><font color="white"><b>과목별 선생님</b></font></a></td>
 			</tr>
+			<c:forEach items="${subArr }" var="course">
+			<c:if test="${course != 'ETC' }">
 			<tr id="category-center">
-				<td><a href=""><font color="6C757D"><b>JAVA</b></font></a></td>
+				<td><a href="list.te?cosubject=${course }"><font color="6C757D"><b>${course }</b></font></a></td>
 			</tr>
+			</c:if>
+			</c:forEach>
 			<tr id="category-center">
-				<td><a href=""><font color="6C757D"><b>DB</b></font></a></td>
-			</tr>
-			<tr id="category-center">
-				<td><a href=""><font color="6C757D"><b>JSP</b></font></a></td>
-			</tr>
-			<tr id="category-center">
-				<td><a href=""><font color="6C757D"><b>CSS</b></font></a></td>
-			</tr>
-			<tr id="category-center">
-				<td><a href=""><font color="6C757D"><b>HTML</b></font></a></td>
+				<td><a href="list.te?cosubject=ETC"><font color="6C757D"><b>종합반</b></font></a></td>
 			</tr>
 		</table>
 	</aside>	
@@ -128,35 +123,33 @@
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <%-- <c:forEach var="te" items="${list }"> --%>
       <c:forEach var="te" items="${list }">
  			 <div class ="container" id="div_teacher" align="center">
- 			 	<div align="center">
- 			 		
- 			 	</div><!-- 참,거짓 판별할 때 EL안에다가 써줘야함 -->
- 			 	<c:if test="${te.subject=='ETC'}">
-					<h5><b>일반</b>강사</h5></font>
+ 			 	<c:if test="${te.subject=='ETC'}"><!-- 참,거짓 판별할 때 EL안에다가 써줘야함 -->
+					<h5><b>종합반</b>강사</h5>
 				</c:if>
 				<c:if test="${te.subject !='ETC'}">
- 			 	<h5><b>${te.subject }</b>강사</h5></font>
+ 			 	<h5><b>${te.subject }</b>강사</h5>
  			 	</c:if>
- 			 	<div width="400" align="center">
+ 			 	<div align="center">
  			 		<img id="teacher-img" src="<%=request.getContextPath() %>/resources/images/${te.t_image}" width=180 height=250/>
 	 			 		<div class="card-body">
-	 			 		<h5><b>${te.tname }</b>선생님</h5></font>
+	 			 		<h5><b>${te.tname }</b>선생님</h5>
 	 			 			<p class="card-text">${te.introduction}</p>
-	 			 			<a href=""><button id="button3" type="button" class="btn btn-secondary btn-sm"><font color="white">강의 보러가기<img src="<%=request.getContextPath() %>/resources/images/하늘색이동화살표.png" width="40" height="20"/></font></a>
+	 			 			<a href="sublist.te?tname=${te.tname}"><button id="button3" type="button" class="btn btn-secondary btn-sm"><font color="white">강의 보러가기<img src="<%=request.getContextPath() %>/resources/images/하늘색이동화살표.png" width="40" height="20"/></font></button></a>
 	 			 		</div>
  			 	</div>
  			 </div>
        </c:forEach>
-       <hr>
       </div>
     </div>
+    <div align="center">${pageInfo.pagingHtml}</div>
+    <hr>
 </div>
 ${t_image }
 
-<div id=foooo>
-${pageInfo.pagingHtml}
+<div id=foot>
 <%@ include file="../user/usbottom.jsp"%>
 </div>
 </body>

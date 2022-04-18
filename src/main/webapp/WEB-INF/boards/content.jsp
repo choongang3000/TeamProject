@@ -111,19 +111,19 @@
 		</td>
 		<td align="center">
 			<div class="star-rating">
-				  <input type="radio" id="5-stars" name="rating" value="5" <c:if test="${5 eq bb.rating }">checked</c:if>>
+				  <input type="radio" id="5-stars" name="rating" value="5" onclick="return(false);" <c:if test="${5 eq bb.rating }">checked</c:if>>
 				  <label for="5-stars" class="star">&#9733;</label>
 				  
-				  <input type="radio" id="4-stars" name="rating" value="4" <c:if test="${4 eq bb.rating }">checked</c:if>>
+				  <input type="radio" id="4-stars" name="rating" value="4" onclick="return(false);" <c:if test="${4 eq bb.rating }">checked</c:if>>
 				  <label for="4-stars" class="star">&#9733;</label>
 				  
-				  <input type="radio" id="3-stars" name="rating" value="3" <c:if test="${3 eq bb.rating }">checked</c:if>>
+				  <input type="radio" id="3-stars" name="rating" value="3" onclick="return(false);" <c:if test="${3 eq bb.rating }">checked</c:if>>
 				  <label for="3-stars" class="star">&#9733;</label>
 				  
-				  <input type="radio" id="2-stars" name="rating" value="2" <c:if test="${2 eq bb.rating }">checked</c:if>>
+				  <input type="radio" id="2-stars" name="rating" value="2" onclick="return(false);" <c:if test="${2 eq bb.rating }">checked</c:if>>
 				  <label for="2-stars" class="star">&#9733;</label>
 				  
-				  <input type="radio" id="1-star" name="rating" value="1" <c:if test="${1 eq bb.rating }">checked</c:if>>
+				  <input type="radio" id="1-star" name="rating" value="1" onclick="return(false);" <c:if test="${1 eq bb.rating }">checked</c:if>>
 				  <label for="1-star" class="star">&#9733;</label>
 			</div>
 		</td>	
@@ -161,7 +161,9 @@
 		<td colspan="4">
 			<input class="btn btn-secondary btn-sm" type="submit" value="글수정" onClick="location.href='update.bs?num=${bb.num}&pageNumber=${pageNumber}'">
 			<input class="btn btn-secondary btn-sm" type="button" value="글삭제" onClick="location.href='delete.bs?num=${bb.num}&pageNumber=${pageNumber}'">
+			<%-- <c:if test=""> --%>
 			<input class="btn btn-secondary btn-sm" type="button" value="답글쓰기" onClick="location.href='reply.bs?ref=${bb.ref}&re_step=${bb.re_step}&re_level=${bb.re_level}&pageNumber=${pageNumber}'">
+			<%-- </c:if> --%>
 			<input class="btn btn-secondary btn-sm" type="button" value="글목록" onClick="location.href='list.bs?pageNumber=${pageNumber}'">
 		</td>
 	</tr>

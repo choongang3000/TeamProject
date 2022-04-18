@@ -3,6 +3,23 @@
 <%@ include file="../common/common.jsp"%>
 <%@ include file="ustop.jsp"%>
 <main>
+
+<style>
+   	
+      * {  /* 기본적인 마진,패딩 없앰*/
+ 			
+			margin:0;
+			padding:0; 
+			text-decoration : none;  밑줄 없애기 
+			list-style : none;  불릿 없애기 
+		}
+
+	body { 
+			width:100%;
+			margin-top:30px;
+		}
+</style>
+
 <!-- 강좌 광고 -->
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner" >

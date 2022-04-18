@@ -44,10 +44,10 @@ create table teachers(
 	tname varchar2(15) not null,
 	t_image varchar2(100),
 	subject varchar2(100) not null,
-	visa varchar2(10), --강사 비자코드
-  	tterm date not null,--강사 계약기간
-  	twageratio float not null, --강사 임금 비율
-  	introduction varchar2(100) --강사소개
+	visa varchar2(10), --강사 비자코드 f4
+  	tterm date not null,--강사 비자코드 f4
+  	twageratio float not null, --강사 비자코드 f4
+  	introduction varchar2(100) ---강사소개
 );
 
 insert into teachers values(tch_seq.nextval,'teacher1','제시','강사-큰이미지1(180x250).png','JAVA','F4','2022-4-1',0.4,'전 L사 개발자 팀장');
@@ -77,7 +77,7 @@ insert into subjects values(sub_seq.nextval, 'JSP');
 insert into subjects values(sub_seq.nextval, 'CSS');
 insert into subjects values(sub_seq.nextval, 'HTML');
 insert into subjects values(sub_seq.nextval, 'ETC');
---ETC는 기타과목
+--etc는 기타과목
 
 
 --강의 테이블
@@ -93,34 +93,257 @@ create table courses(
 	coname varchar2(100) not null, --강의명
 	coteacher varchar2(15) not null, --강의담당선생님
 	cosubject varchar2(30) not null, --강의과목
-	coimage varchar(100) not null, --강의이미지
+	coimage varchar(100) not null, ---강의이미지
 	covideo varchar2(100) not null, --강의영상
 	cocontent varchar2(100) not null, --강의소개내용
 	coprice number not null, --강의가격
 	coupload_date date default sysdate --강의업로드날짜
 );
+--강사 이미지1 제시,JAVA /이미지2 니콜라,DB / 이미지3 마이클,JSP / 이미지4 제니,CSS / 이미지5 샬럿,HTML / 이미지6 디올,종합반
+-- KJH : 사이드에서도 페이지 잘 넘어가는 것 보여줘야 하기 때문에 양을 늘림 (가장 예쁜 건 뒤로 빼서 첫 화면에 나오게 함)
 
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '자바 실전 프로그래밍6', '제시', 'JAVA', '강사1-작은이미지.png', 'video.jsp', '이력서에 JAVA 능숙이라고 당당하게 말할 수 있다 자바 실전 프로그래밍!', 150000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 DB 고급반6', '니콜라', 'DB', '강사2-작은이미지.png', 'video.jsp', 'DB 심화 과정반', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 JSP 초급반6', '마이클', 'JSP', '강사3-작은이미지.png', 'video.jsp', '프로그래밍 실습을 통해 기본적인 프로그래밍 능력 함양 과정', 120000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 JSP 개발 실무 향상 과정6', '마이클', 'JSP', '강사3-작은이미지.png', 'video.jsp', '자바 라이브러리를 활용한 응용프로그램 개발 등 실무 향상과정', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 개발 종합반6', '디올', 'ETC', '강사6-작은이미지.png', 'video.jsp', '스파르타로 기본 확실하게잡고 응용까지~', 90000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 CSS 초급반6', '제니', 'CSS', '강사4-작은이미지.png', 'video.jsp', '웹 표준에 맞게 반응형 페이지 제작 과정', 110000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 HTML5 초급반6', '샬럿', 'HTML', '강사5-작은이미지.png', 'video.jsp', 'UI 표준 및 지침을 반영해서 설계 구현 과정(초급 과정)', 110000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '데이터 분석 종합반6', '디올', 'ETC', '강사6-작은이미지.png', 'video.jsp', '데이터분석 왕초보 딱지 저리가~', 90000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, 'SW 앱 개발 종합반6', '디올', 'ETC', '강사6-작은이미지.png', 'video.jsp', '애플리케이션 설계 기반 전문가 양성 과정', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 HTML5 고급반6', '샬럿', 'HTML', '강사5-작은이미지.png', 'video.jsp', 'UI 표준 및 지침을 반영해서 설계 구현 과정(고급 과정)', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, 'GitHub 활용 및 CSS 중급반6', '제니', 'CSS', '강사4-작은이미지.png', 'video.jsp', '깃헙 사용 방법 및 CSS 능력 향상 과정', 110000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '일 능률 팍팍 SQL 활용반6', '니콜라', 'DB', '강사2-작은이미지.png', 'video.jsp', '일 어떻게 해야할지 감 안와? SQL 강의 듣고 감이 내려온다~', 70000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '비전공자를 위한 자바 프로그래밍 입문6', '제시', 'JAVA', '강사1-작은이미지.png', 'video.jsp', '초등학생도 듣는 자바 프로그래밍 입문 과정! 주저말고 일단 들어와~', 90000, '2022-04-06');
+
+--
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '자바 실전 프로그래밍5', '제시', 'JAVA', '강사1-작은이미지.png', 'video.jsp', '이력서에 JAVA 능숙이라고 당당하게 말할 수 있다 자바 실전 프로그래밍!', 150000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 DB 고급반5', '니콜라', 'DB', '강사2-작은이미지.png', 'video.jsp', 'DB 심화 과정반', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 JSP 초급반5', '마이클', 'JSP', '강사3-작은이미지.png', 'video.jsp', '프로그래밍 실습을 통해 기본적인 프로그래밍 능력 함양 과정', 120000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 JSP 개발 실무 향상 과정5', '마이클', 'JSP', '강사3-작은이미지.png', 'video.jsp', '자바 라이브러리를 활용한 응용프로그램 개발 등 실무 향상과정', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 개발 종합반5', '디올', 'ETC', '강사6-작은이미지.png', 'video.jsp', '스파르타로 기본 확실하게잡고 응용까지~', 90000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 CSS 초급반5', '제니', 'CSS', '강사4-작은이미지.png', 'video.jsp', '웹 표준에 맞게 반응형 페이지 제작 과정', 110000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 HTML5 초급반5', '샬럿', 'HTML', '강사5-작은이미지.png', 'video.jsp', 'UI 표준 및 지침을 반영해서 설계 구현 과정(초급 과정)', 110000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '데이터 분석 종합반5', '디올', 'ETC', '강사6-작은이미지.png', 'video.jsp', '데이터분석 왕초보 딱지 저리가~', 90000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, 'SW 앱 개발 종합반5', '디올', 'ETC', '강사6-작은이미지.png', 'video.jsp', '애플리케이션 설계 기반 전문가 양성 과정', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 HTML5 고급반5', '샬럿', 'HTML', '강사5-작은이미지.png', 'video.jsp', 'UI 표준 및 지침을 반영해서 설계 구현 과정(고급 과정)', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, 'GitHub 활용 및 CSS 중급반5', '제니', 'CSS', '강사4-작은이미지.png', 'video.jsp', '깃헙 사용 방법 및 CSS 능력 향상 과정', 110000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '일 능률 팍팍 SQL 활용반5', '니콜라', 'DB', '강사2-작은이미지.png', 'video.jsp', '일 어떻게 해야할지 감 안와? SQL 강의 듣고 감이 내려온다~', 70000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '비전공자를 위한 자바 프로그래밍 입문5', '제시', 'JAVA', '강사1-작은이미지.png', 'video.jsp', '초등학생도 듣는 자바 프로그래밍 입문 과정! 주저말고 일단 들어와~', 90000, '2022-04-06');
+
+--
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '자바 실전 프로그래밍4', '제시', 'JAVA', '강사1-작은이미지.png', 'video.jsp', '이력서에 JAVA 능숙이라고 당당하게 말할 수 있다 자바 실전 프로그래밍!', 150000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 DB 고급반4', '니콜라', 'DB', '강사2-작은이미지.png', 'video.jsp', 'DB 심화 과정반', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 JSP 초급반4', '마이클', 'JSP', '강사3-작은이미지.png', 'video.jsp', '프로그래밍 실습을 통해 기본적인 프로그래밍 능력 함양 과정', 120000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 JSP 개발 실무 향상 과정4', '마이클', 'JSP', '강사3-작은이미지.png', 'video.jsp', '자바 라이브러리를 활용한 응용프로그램 개발 등 실무 향상과정', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 개발 종합반4', '디올', 'ETC', '강사6-작은이미지.png', 'video.jsp', '스파르타로 기본 확실하게잡고 응용까지~', 90000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 CSS 초급반4', '제니', 'CSS', '강사4-작은이미지.png', 'video.jsp', '웹 표준에 맞게 반응형 페이지 제작 과정', 110000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 HTML5 초급반4', '샬럿', 'HTML', '강사5-작은이미지.png', 'video.jsp', 'UI 표준 및 지침을 반영해서 설계 구현 과정(초급 과정)', 110000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '데이터 분석 종합반4', '디올', 'ETC', '강사6-작은이미지.png', 'video.jsp', '데이터분석 왕초보 딱지 저리가~', 90000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, 'SW 앱 개발 종합반4', '디올', 'ETC', '강사6-작은이미지.png', 'video.jsp', '애플리케이션 설계 기반 전문가 양성 과정', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 HTML5 고급반4', '샬럿', 'HTML', '강사5-작은이미지.png', 'video.jsp', 'UI 표준 및 지침을 반영해서 설계 구현 과정(고급 과정)', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, 'GitHub 활용 및 CSS 중급반4', '제니', 'CSS', '강사4-작은이미지.png', 'video.jsp', '깃헙 사용 방법 및 CSS 능력 향상 과정', 110000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '일 능률 팍팍 SQL 활용반4', '니콜라', 'DB', '강사2-작은이미지.png', 'video.jsp', '일 어떻게 해야할지 감 안와? SQL 강의 듣고 감이 내려온다~', 70000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '비전공자를 위한 자바 프로그래밍 입문4', '제시', 'JAVA', '강사1-작은이미지.png', 'video.jsp', '초등학생도 듣는 자바 프로그래밍 입문 과정! 주저말고 일단 들어와~', 90000, '2022-04-06');
+
+--
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '자바 실전 프로그래밍3', '제시', 'JAVA', '강사1-작은이미지.png', 'video.jsp', '이력서에 JAVA 능숙이라고 당당하게 말할 수 있다 자바 실전 프로그래밍!', 150000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 DB 고급반3', '니콜라', 'DB', '강사2-작은이미지.png', 'video.jsp', 'DB 심화 과정반', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 JSP 초급반3', '마이클', 'JSP', '강사3-작은이미지.png', 'video.jsp', '프로그래밍 실습을 통해 기본적인 프로그래밍 능력 함양 과정', 120000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 JSP 개발 실무 향상 과정3', '마이클', 'JSP', '강사3-작은이미지.png', 'video.jsp', '자바 라이브러리를 활용한 응용프로그램 개발 등 실무 향상과정', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 개발 종합반3', '디올', 'ETC', '강사6-작은이미지.png', 'video.jsp', '스파르타로 기본 확실하게잡고 응용까지~', 90000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 CSS 초급반3', '제니', 'CSS', '강사4-작은이미지.png', 'video.jsp', '웹 표준에 맞게 반응형 페이지 제작 과정', 110000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 HTML5 초급반3', '샬럿', 'HTML', '강사5-작은이미지.png', 'video.jsp', 'UI 표준 및 지침을 반영해서 설계 구현 과정(초급 과정)', 110000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '데이터 분석 종합반3', '디올', 'ETC', '강사6-작은이미지.png', 'video.jsp', '데이터분석 왕초보 딱지 저리가~', 90000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, 'SW 앱 개발 종합반3', '디올', 'ETC', '강사6-작은이미지.png', 'video.jsp', '애플리케이션 설계 기반 전문가 양성 과정', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 HTML5 고급반3', '샬럿', 'HTML', '강사5-작은이미지.png', 'video.jsp', 'UI 표준 및 지침을 반영해서 설계 구현 과정(고급 과정)', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, 'GitHub 활용 및 CSS 중급반3', '제니', 'CSS', '강사4-작은이미지.png', 'video.jsp', '깃헙 사용 방법 및 CSS 능력 향상 과정', 110000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '일 능률 팍팍 SQL 활용반3', '니콜라', 'DB', '강사2-작은이미지.png', 'video.jsp', '일 어떻게 해야할지 감 안와? SQL 강의 듣고 감이 내려온다~', 70000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '비전공자를 위한 자바 프로그래밍 입문3', '제시', 'JAVA', '강사1-작은이미지.png', 'video.jsp', '초등학생도 듣는 자바 프로그래밍 입문 과정! 주저말고 일단 들어와~', 90000, '2022-04-06');
+
+--
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '자바 실전 프로그래밍2', '제시', 'JAVA', '강사1-작은이미지.png', 'video.jsp', '이력서에 JAVA 능숙이라고 당당하게 말할 수 있다 자바 실전 프로그래밍!', 150000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 DB 고급반2', '니콜라', 'DB', '강사2-작은이미지.png', 'video.jsp', 'DB 심화 과정반', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 JSP 초급반2', '마이클', 'JSP', '강사3-작은이미지.png', 'video.jsp', '프로그래밍 실습을 통해 기본적인 프로그래밍 능력 함양 과정', 120000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 JSP 개발 실무 향상 과정2', '마이클', 'JSP', '강사3-작은이미지.png', 'video.jsp', '자바 라이브러리를 활용한 응용프로그램 개발 등 실무 향상과정', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 개발 종합반2', '디올', 'ETC', '강사6-작은이미지.png', 'video.jsp', '스파르타로 기본 확실하게잡고 응용까지~', 90000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 CSS 초급반2', '제니', 'CSS', '강사4-작은이미지.png', 'video.jsp', '웹 표준에 맞게 반응형 페이지 제작 과정', 110000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 HTML5 초급반2', '샬럿', 'HTML', '강사5-작은이미지.png', 'video.jsp', 'UI 표준 및 지침을 반영해서 설계 구현 과정(초급 과정)', 110000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '데이터 분석 종합반2', '디올', 'ETC', '강사6-작은이미지.png', 'video.jsp', '데이터분석 왕초보 딱지 저리가~', 90000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, 'SW 앱 개발 종합반2', '디올', 'ETC', '강사6-작은이미지.png', 'video.jsp', '애플리케이션 설계 기반 전문가 양성 과정', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 HTML5 고급반2', '샬럿', 'HTML', '강사5-작은이미지.png', 'video.jsp', 'UI 표준 및 지침을 반영해서 설계 구현 과정(고급 과정)', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, 'GitHub 활용 및 CSS 중급반2', '제니', 'CSS', '강사4-작은이미지.png', 'video.jsp', '깃헙 사용 방법 및 CSS 능력 향상 과정', 110000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '일 능률 팍팍 SQL 활용반2', '니콜라', 'DB', '강사2-작은이미지.png', 'video.jsp', '일 어떻게 해야할지 감 안와? SQL 강의 듣고 감이 내려온다~', 70000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '비전공자를 위한 자바 프로그래밍 입문2', '제시', 'JAVA', '강사1-작은이미지.png', 'video.jsp', '초등학생도 듣는 자바 프로그래밍 입문 과정! 주저말고 일단 들어와~', 90000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '자바 실전 프로그래밍', '제시', 'JAVA', '강사1-작은이미지.png', 'video.jsp', '이력서에 JAVA 능숙이라고 당당하게 말할 수 있다 자바 실전 프로그래밍!', 150000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 DB 고급반', '니콜라', 'DB', '강사2-작은이미지.png', 'video.jsp', 'DB 심화 과정반', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 JSP 초급반', '마이클', 'JSP', '강사3-작은이미지.png', 'video.jsp', '프로그래밍 실습을 통해 기본적인 프로그래밍 능력 함양 과정', 120000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 JSP 개발 실무 향상 과정', '마이클', 'JSP', '강사3-작은이미지.png', 'video.jsp', '자바 라이브러리를 활용한 응용프로그램 개발 등 실무 향상과정', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 개발 종합반', '디올', 'ETC', '강사6-작은이미지.png', 'video.jsp', '스파르타로 기본 확실하게잡고 응용까지~', 90000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 CSS 초급반', '제니', 'CSS', '강사4-작은이미지.png', 'video.jsp', '웹 표준에 맞게 반응형 페이지 제작 과정', 110000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 HTML5 초급반', '샬럿', 'HTML', '강사5-작은이미지.png', 'video.jsp', 'UI 표준 및 지침을 반영해서 설계 구현 과정(초급 과정)', 110000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '데이터 분석 종합반', '디올', 'ETC', '강사6-작은이미지.png', 'video.jsp', '데이터분석 왕초보 딱지 저리가~', 90000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, 'SW 앱 개발 종합반', '디올', 'ETC', '강사6-작은이미지.png', 'video.jsp', '애플리케이션 설계 기반 전문가 양성 과정', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '웹 HTML5 고급반', '샬럿', 'HTML', '강사5-작은이미지.png', 'video.jsp', 'UI 표준 및 지침을 반영해서 설계 구현 과정(고급 과정)', 200000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, 'GitHub 활용 및 CSS 중급반', '제니', 'CSS', '강사4-작은이미지.png', 'video.jsp', '깃헙 사용 방법 및 CSS 능력 향상 과정', 110000, '2022-04-06');
+
+insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+values(cos_seq.nextval, '일 능률 팍팍 SQL 활용반', '니콜라', 'DB', '강사2-작은이미지.png', 'video.jsp', '일 어떻게 해야할지 감 안와? SQL 강의 듣고 감이 내려온다~', 70000, '2022-04-06');
 
 insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
 values(cos_seq.nextval, '비전공자를 위한 자바 프로그래밍 입문', '제시', 'JAVA', '강사1-작은이미지.png', 'video.jsp', '초등학생도 듣는 자바 프로그래밍 입문 과정! 주저말고 일단 들어와~', 90000, '2022-04-06');
 
-insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
-values(cos_seq.nextval, '자바 실전 프로그래밍', '제시', 'JAVA', '강사2-작은이미지.png', 'video.jsp', '이력서에 JAVA 능숙이라고 당당하게 말할 수 있다 자바 실전 프로그래밍!', 90000, '2022-04-06');
-
-insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
-values(cos_seq.nextval, '일 능률 팍팍 SQL', '니콜라', 'DB', '강사1-작은이미지.png', 'video.jsp', '일 어떻게 해야할지 감 안와? SQL 강의 듣고 감이 내려온다~', 70000, '2022-04-06');
-
-insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
-values(cos_seq.nextval, '웹 개발 종합반', '디올', 'ETC', '강사2-작은이미지.png', 'video.jsp', '스파르타로 기본 확실하게잡고 응용까지~', 90000, '2022-04-06');
-
-insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
-values(cos_seq.nextval, '데이터 분석 종합반', '니콜라', 'DB', '강사1-작은이미지.png', 'video.jsp', '데이터분석 왕초보 딱지 저리가~', 90000, '2022-04-06');
-
---insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
---values(cos_seq.nextval, '', '샬럿', 'DB', '강사1-작은이미지.png', 'video.jsp', '', 90000, '2022-04-06');
-
---insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
---values(cos_seq.nextval, '', '제니', 'DB', '강사1-작은이미지.png', 'video.jsp', '', 90000, '2022-04-06');
 
 
 --주문 테이블
@@ -235,14 +458,14 @@ create sequence boards_seq
   maxvalue 10000
   nocache;
   
-insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image,rating)
-values(boards_seq.nextval,'학생1','stu@naver.com','짱이에요','1234','2015-1-1',1,0,0,'선생님 감사해용',null,5);
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
+values(boards_seq.nextval,'학생1','stu@naver.com','짱이에요','1234','2015-1-1',1,0,0,'선생님 감사해용',null);
 
-insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image,rating)
-values(boards_seq.nextval,'학생2','stu2@gmail.com','감사해요','1234','2018-10-5',2,0,0,'성생님 짱이에요!',null,4);
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
+values(boards_seq.nextval,'학생2','stu2@gmail.com','감사해요','1234','2018-10-5',2,0,0,'성생님 짱이에요!',null);
 
-insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image,rating)
-values(boards_seq.nextval,'선생님','tc@daum.net','자랑스럽다','1234','2015-10-6',2,1,1,'수고했어~!',null,null);
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image)
+values(boards_seq.nextval,'선생님','tc@daum.net','자랑스럽다','1234','2015-10-6',2,1,1,'수고했어~!',null);
 
 commit;
 
@@ -292,9 +515,9 @@ create sequence boardt_seq
   minvalue 1
   maxvalue 10000
   nocache;
-
+  
 insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
-values(boardt_seq.nextval,'ETC','문제10.png','12','1234','퀴즈10.png','정답확인10.png');
+values(boardt_seq.nextval,'JAVA','문제10.png','12','1234','퀴즈10.png','정답확인10.png');
 
 insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
 values(boardt_seq.nextval,'ETC','문제9.png','사각형','1234','퀴즈9.png','정답확인9.png');
@@ -321,7 +544,7 @@ insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
 values(boardt_seq.nextval,'ETC','문제2.png','캡슐화','1234','퀴즈2.png','정답확인2.png');
 
 insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
-values(boardt_seq.nextval,'JAVA','문제1.png','UML','1234','퀴즈1.png','정답확인1.png');
+values(boardt_seq.nextval,'ETC','문제1.png','UML','1234','퀴즈1.png','정답확인1.png');
 
 commit;  
 

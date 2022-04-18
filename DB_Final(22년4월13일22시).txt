@@ -151,7 +151,7 @@ DROP TABLE orders CASCADE CONSTRAINTS;
 
   create table orders(
   onum number primary key,--주문번호
-  aid varchar2(10) references accounts(id) on delete set null, --주문자id
+  aid varchar2(50) references accounts(id) on delete set null, --주문자id
   totprice number not null, --주문전체금액
   odate date default sysdate  --주문날짜
 );
@@ -170,7 +170,7 @@ nocache ;
 drop table cosord_details purge ;
 create table cosord_details(
   odnum number primary key, --상세주문번호
-  oid varchar2(50),
+  aid varchar2(50),
   onum number references orders(onum) on delete cascade, --주문목록의 주문번호
   conum number references courses(conum) on delete set null, --강의번호
   oddate date default sysdate --주문테이블의 주문날짜와 같음
@@ -293,7 +293,6 @@ insert into boarda values(ba_seq.nextval, '강좌관리', '동영상 파일의 �
 insert into boarda values(ba_seq.nextval, '강좌관리', 'EBS 프로그램을 소장하고 싶어요', '외화나 애니메이션 등 EBS에서 저작권을 가지고 있지 않은 프로그램의 구입은 어려울 수 있는 점 양해 부탁드립니다', null, null);
 insert into boarda values(ba_seq.nextval, '기타', '동영상 파일의 크기 제한이 있나요?', '제작한 영상은 400MB 이하로 보내 주세요', null, null);
 insert into boarda values(ba_seq.nextval, '기타', '웹 서비스란 정확히 어떤 건가요?', '모바일웹 서비스란 일반 휴대폰 및 네트워크에 접속이 가능한 모바일 단말기에서 인터넷 웹사이트에 접속하는 것을 말합니다.', null, null);
-
 
 commit;
 

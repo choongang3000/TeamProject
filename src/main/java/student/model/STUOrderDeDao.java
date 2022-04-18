@@ -12,7 +12,7 @@ public class STUOrderDeDao {
 	private String namespace="student.model.STUOrderDe";
 
 	public void insertOrderDetail(STUOrderDeBean odBean) {
-		System.out.println(odBean.getOid());
+		System.out.println(odBean.getAid());
 		System.out.println(odBean.getOnum());
 		sqlSessionTemplate.insert(namespace+".InsertOrderDetail",odBean);
 	}

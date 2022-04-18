@@ -7,12 +7,11 @@
 
 <Main>
 <style>
-	a {text-decoration: none;
+
+	a {
+		text-decoration: none;
 	}
-	
-	#myArea,#myform2{
-		text-align:center;
-	}
+
 </style>
 <script src="<%= request.getContextPath()%>/resources/js/jquery.js"></script>
 <script type="text/javascript">
@@ -185,9 +184,13 @@
 		}//yearselect
 		*/
 </script>
+
+<div id="body">
+
 <body>
+<center>
 	<br>
-	<form action="list.bt">
+	<form id="myArea" action="list.bt">
 		<table id="allselect" width="700" border="1" align="center" style="background-color:#EAEAEA">
 			<tr height="80">
 				<td align="right">과목</td>
@@ -196,13 +199,17 @@
 					<!-- <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> -->
 					<input type="checkbox" value="${i }" name="subjectall" onClick="subAll(this)" checked>전체
 					<c:forEach var="i" items="${Subjects }"> <!-- items sub가져와서.. i변수에 넣고.. jstl로 접근...-->
+					<c:if test="${i != 'ETC'}"><!-- 참,거짓 판별할 때 EL안에다가 써줘야함 -->
 					<input type="checkbox" value="${i }"  id="subchk" name="subject" onClick="subElse(this)" checked>${i } &nbsp
+					</c:if>
 					</c:forEach>
+					<input type="checkbox" value="ETC"  id="subchk" name="subject" onClick="subElse(this)" checked>IT종합 &nbsp
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right">
-					<input type="submit" value="검색" ><!-- onClick="allselect(this)" -->
+					<input type="submit" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked><!-- onClick="allselect(this)" -->
+					<label class="btn btn-outline-success" for="success-outlined">검색</label>
 				</td>
 			</tr>
 		</table>
@@ -216,19 +223,27 @@
 
 
 <!-- **************************************** -->
-	<table  width="700" border="1" align="center">
-		<tr>
-			<td align="right" colspan="4">
-				<form action="delete.bt?num=${bt.num }&pageNumber=${pageInfo.pageNumber}"><!--  action="delete.bt"?num=${bt.num }&pageNumber=${pageInfo.pageNumber} -->
-					<a>체크박스로 삭제,수정 작동 구현 보류 / 현재 추가 버튼만 사용됨 ▶</a>
-					<input type="submit" value="삭제" onClick="selectDelete()">
-					<input type="button" value="수정" onClick="update('${bt.num}','${pageInfo.pageNumber}')">
-					<input type="button" value="추가" onClick="getinsert()">
-				</form>
-			</td>
-			<!-- insert.bt get요청 => B_T_InsertController -->
-		</tr>
-	</table>
+<c:choose>
+	<c:when test="${sessionScope.loginInfo != null}">
+		<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
+			<table id="myform2" width="700" border="1" align="center">
+				<tr>
+					<td align="right" colspan="4">
+						<form action="delete.bt?num=${bt.num }&pageNumber=${pageInfo.pageNumber}"><!--  action="delete.bt"?num=${bt.num }&pageNumber=${pageInfo.pageNumber} -->
+							<a>체크박스로 삭제,수정 작동 구현 보류 / 현재 추가 버튼만 사용됨 ▶</a>
+							<input type="submit" value="삭제" onClick="selectDelete()">
+							<input type="button" value="수정" onClick="update('${bt.num}','${pageInfo.pageNumber}')">
+							<input type="button" value="추가" onClick="getinsert()">
+						</form>
+					</td>
+					<!-- insert.bt get요청 => B_T_InsertController -->
+				</tr>
+			</table>
+		</c:if>
+		<c:if test="${sessionScope.loginInfo.type != 'admin' }">	
+		</c:if>
+	</c:when>
+</c:choose>		
 
 	<%-- (  총 레코드 건수 - ((보여줄 페이지 넘버-1)*한 페이지에 보여줄 건수)  )
 		  5개라고 가정 - ((2-1)*5) => 0페이지
@@ -239,52 +254,92 @@
 				<c:set var="page" value="${page -1 }" />
 	--%>	
 	<table id="myform2" width="700" align="center" action="post">
-		<tr>
-			<th><input type="checkbox" name="allcheck" onClick="allRowCheck(this)"></th>
-			<!-- allcheck를 눌렀을 때 allRowCheck()함수 호출. 지금 클릭한 바로 이거 this=이름이 allcheck인 checkbox를 넘긴다.-->
-			<!-- <th>번호</th> -->
-			<th>이미지</th>
-			<th>문제</th>
-			<th>답</th>
-			<th>삭제</th>
-			<th>수정</th>
-		</tr>
+	 <c:choose>	
+		<c:when test="${sessionScope.loginInfo != null}">
+			<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
+				<tr>
+					<th><input type="checkbox" name="allcheck" onClick="allRowCheck(this)"></th>
+					<!-- allcheck를 눌렀을 때 allRowCheck()함수 호출. 지금 클릭한 바로 이거 this=이름이 allcheck인 checkbox를 넘긴다.-->
+					<!-- <th>번호</th> -->
+					<th>이미지</th>
+					<th>문제</th>
+					<th>답</th>
+					<th>삭제</th>
+					<th>수정</th>
+				</tr>
+			</c:if>
+		</c:when>
+	</c:choose>	
+		<c:if test="${totalCount == 0 }">
+			<tr>
+				<td colspan=6 align="center">등록된 문제가 없습니다</td>
+			</tr>
+		</c:if>
+		<c:if test="${totalCount != 0 }">		
 		<c:forEach var="bt" items="${BTList }">
 		<tr>
-			<td><input type="checkbox" name="rowcheck" value="${bt.num }"></td>
-			<%-- <td>${bt.num }</td> --%>
-			<td> 
-				<!-- 처음에 암호화(?)시킨걸 저장하려는 images 폴더에 파일을 다 넣어두긴 해야함. -->
-				<img src="<%=request.getContextPath()%>/resources/images/${bt.quizimg}" width=200 height=200>
-			</td>
-			<td>
-				<a href="detail.bt?num=${bt.num }&pageNumber=${pageInfo.pageNumber}">
-					<img src="<%=request.getContextPath() %>/resources/images/${bt.examfile}" width=500 height=200>
-				</a>
-			</td>
-			<td>
-				<c:forEach var="ans" items="${Answer }">
-					<c:if test="${ans.num == bt.num }">
-						<c:set var="result" value="${ans.answer }"/>
+			<c:choose>	
+				<c:when test="${sessionScope.loginInfo != null}">
+					<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
+						<td><input type="checkbox" name="rowcheck" value="${bt.num }"></td>
 					</c:if>
-				</c:forEach>
-				<img src="<%=request.getContextPath() %>/resources/images/${bt.movingimg}" width=200 height=200 onclick="answer('${result}')">
-			</td>
-			<td>
-			<%-- 	<c:if test="loginInfo.type == 'teacher' || loginInfo.type =='admin'"> --%>
-				<a href="delete.bt?num=${bt.num }&pageNumber=${pageInfo.pageNumber}">삭제</a>
-			<%-- 	</c:if> --%>
-			</td>
-			<td><a href="update.bt?num=${bt.num }&pageNumber=${pageInfo.pageNumber}">수정</a></td>
+				</c:when>
+			</c:choose>			
+						<%-- <td>${bt.num }</td> --%>
+						<td> 
+							<!-- 처음에 암호화(?)시킨걸 저장하려는 images 폴더에 파일을 다 넣어두긴 해야함. -->
+							<img src="<%=request.getContextPath()%>/resources/images/${bt.quizimg}" width=200 height=200>
+						</td>
+						<td>
+							<c:choose>	
+								<c:when test="${sessionScope.loginInfo != null}">
+									<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
+										<a href="detail.bt?num=${bt.num }&pageNumber=${pageInfo.pageNumber}">
+									</c:if>
+								</c:when>
+							</c:choose>		
+											<img src="<%=request.getContextPath() %>/resources/images/${bt.examfile}" width=500 height=200>
+										</a>
+											
+						</td>
+						<td>
+							<c:forEach var="ans" items="${Answer }">
+								<c:if test="${ans.num == bt.num }">
+									<c:set var="result" value="${ans.answer }"/>
+								</c:if>
+							</c:forEach>
+							<img src="<%=request.getContextPath() %>/resources/images/${bt.movingimg}" width=200 height=200 onclick="answer('${result}')">
+						</td>
+				<c:choose>	
+					<c:when test="${sessionScope.loginInfo != null}">
+						<c:if test="${sessionScope.loginInfo.type eq 'admin' }">			
+						<td>
+						<%-- 	<c:if test="loginInfo.type == 'teacher' || loginInfo.type =='admin'"> --%>
+							<a href="delete.bt?num=${bt.num }&pageNumber=${pageInfo.pageNumber}">삭제</a>
+						<%-- 	</c:if> --%>
+						</td>
+						<td><a href="update.bt?num=${bt.num }&pageNumber=${pageInfo.pageNumber}">수정</a></td>
+						</c:if>
+					</c:when>
+				</c:choose>		
 		</tr>	
 		</c:forEach>
+		</c:if>
 	</table>
 	<br>
+	</center>
 </body>	
+
+</div>
 	<!-- 페이지 번호 설정 -->
 	<center>
+	<c:if test="${BTList == null }">
+	</c:if>
+	<c:if test="${BTList != null }">
 	${pageInfo.pagingHtml}
+	</c:if>
 	</center>
 </center>
 <br><br><br>
+
 <%@include file="../user/usbottom.jsp"%>

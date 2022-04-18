@@ -5,11 +5,24 @@
 
 <mapper namespace="teachers.model.TEBean">
 	<select id="GetTEListCount" resultType="int">
+		<if test="cosubject == null">
 		select count(*) from teachers
+		</if>
+		<if test="cosubject != null">
+	    select * from teachers
+        where UPPER(subject) like UPPER(#{cosubject})
+		</if>
 	</select>
 
 	<select id="GetTEList" resultType="teachers.model.TEBean">
-  		select * from teachers
+	  	<if test="cosubject == null">
+	  	select * from teachers
+	 	</if>
+	 	<if test="cosubject != null">
+		select * from teachers
+        where UPPER(subject) like UPPER(#{cosubject})
+		</if>
+		order by tnum
   	</select>
   	
   	<select id="GetTE" resultType="teachers.model.TEBean">
@@ -27,7 +40,27 @@
   	<delete id="DeleteTE">
   		delete teachers where tnum=#{tnum}
   	</delete>
+  	
+  	<select id="GetTeSubList" resultType="teachers.model.TEBean">
+  		select c.coname, c.coteacher, c.cosubject, c.coimage, c.covideo, c.cocontent, c.coprice, c.conum, t.introduction
+		from(select coname, coteacher, cosubject, coimage, covideo, cocontent, coprice, conum
+		from courses
+		where coteacher =#{tname}) c, teachers t
+		where c.coteacher =t.tname
+  	</select>
+  <!-- 
+   	 <select id="GetTeSubList" resultType="teachers.model.TEBean">
+  		select * from teachers
+		where tname=#{tname}
+  	</select>
+  	  -->
 </mapper>
 
 <!-- order.xml -->
+
+<!--   		select  c.coteacher, c.cosubject , c.coprice, t.tname, t.subject, t.introduction, t.t_image
+		from (select coteacher, cosubject , coprice
+		from courses
+		where coteacher = #{tname}) c, teachers t
+ 		where c.coteacher = t.tname -->
 

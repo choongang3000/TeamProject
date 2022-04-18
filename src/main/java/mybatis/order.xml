@@ -3,11 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="student.model.STUOrder">
+<mapper namespace="student.model.STUOrder">
   
 	<insert id="InsertOrder">
-		insert into orders(onum, oid, totprice, odate) 
-		values(ord_seq.nextval, #{oid}, #{totprice} ,sysdate)
+		insert into orders(onum, aid, totprice, odate) 
+		values(ord_seq.nextval, #{aid}, #{totprice} ,sysdate)
 	</insert>
 	
 	<select id="GetMaxOid" resultType="int">
@@ -15,7 +15,7 @@
 	</select>
 	
 	<select id="OrderList" resultType="student.model.STUOrderBean">
-		select * from orders where oid=#{oid} order by onum desc
+		select * from orders where aid=#{aid} order by onum desc
 	</select>
 	
 </mapper>
