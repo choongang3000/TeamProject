@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
-<%@ include file="../fix/ad_top.jsp"%>
+<%@ include file="../user/ustop.jsp"%>
 <style>
 	body{
 		width:70%;

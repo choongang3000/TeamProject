@@ -25,6 +25,9 @@
 	<context:component-scan base-package="course" />
 	<context:component-scan base-package="teachers" />
 	<context:component-scan base-package="admin" />
+<<<<<<< HEAD
 	<context:component-scan base-package="student" />
 
+=======
+>>>>>>> branch 'merged' of https://github.com/choongang3000/TeamProject.git
 </beans>

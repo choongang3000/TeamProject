@@ -22,5 +22,6 @@
 	</bean>
 	
 	<context:component-scan base-package="boarda" />
+	<context:component-scan base-package="board" />
 
 </beans>

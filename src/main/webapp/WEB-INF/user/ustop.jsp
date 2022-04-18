@@ -121,7 +121,7 @@
 	      <!-- 강의 jsp는 course폴더에 있음 -->
 	      <a class="p-2 link-secondary top_nav" href="list.te">선생님 &nbsp<img src="<%=request.getContextPath() %>/resources/images/computer-mouse-solid.svg" width="20" height="20"/></a>
 	      <a class="p-2 link-secondary top_nav" href="list.bt">Quiz &nbsp<img src="<%=request.getContextPath() %>/resources/images/quiz-bell.svg" width="20" height="20"/></a>
-	      <a class="p-2 link-secondary top_nav" href="list.ba">FAQ 게시판 &nbsp<img src="<%=request.getContextPath() %>/resources/images/computer-mouse-solid.svg" width="20" height="20"/></a>
+	      <a class="p-2 link-secondary top_nav" href="userlist.ba">FAQ 게시판 &nbsp<img src="<%=request.getContextPath() %>/resources/images/computer-mouse-solid.svg" width="20" height="20"/></a>
 	      <a class="p-2 link-secondary top_nav" href="mypage.mem">마이페이지 &nbsp<img src="<%=request.getContextPath() %>/resources/images/mypage.svg" width="20" height="20"/></a>
 	    </nav>
 	  </div>

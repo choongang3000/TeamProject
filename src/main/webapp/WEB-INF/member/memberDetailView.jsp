@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="./../common/common.jsp"%>
- 
+<%@ include file="../user/ustop.jsp"%>
 <!--  회원정보<br> -->
  
 <center>
@@ -45,8 +45,8 @@
     </tr>
     <tr>
     		<td colspan="2">
-    			<a href="list.prd">뒤로가기</a>
-    			 <input class="btn btn-secondary btn-sm" type="submit" value="내 정보 관리" onClick="location.href='update.mem?anum=${loginInfo.anum}'">내 정보 수정</a>
+    			<input class="btn btn-secondary btn-sm" type="button" value="뒤로가기" onClick="history.back()">
+    			<input class="btn btn-secondary btn-sm" type="submit" value="내 정보 관리" onClick="location.href='update.mem?anum=${loginInfo.anum}'"></a>
     		</td>
     </tr>
     
