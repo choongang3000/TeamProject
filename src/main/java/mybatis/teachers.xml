@@ -20,7 +20,7 @@
 	 	</if>
 	 	<if test="cosubject != null">
 		select * from teachers
-		where UPPER(subject) like UPPER(#{cosubject})
+        where UPPER(subject) like UPPER(#{cosubject})
 		</if>
 		order by tnum
   	</select>

@@ -33,6 +33,7 @@ public class USHomeListController {
 
 	@Autowired
 	private TEDao tedao;
+	
 	@Autowired
 	private COSDao cosdao;
 
