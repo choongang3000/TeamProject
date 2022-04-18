@@ -39,12 +39,19 @@ public class TCCourseListController {
 		
 		Map<String,String> map = new HashMap<String, String>();
 		map.put("coteacher", teacher.getAname());
-		map.put("keyword",keyword);
+		System.out.println("keyword >>" + keyword);
+		if(keyword == null) {
+			map.put("keyword", null);
+		}
+		else {
+			map.put("keyword", "%"+keyword+"%");			
+		}
 		map.put("whatColumn", whatColumn);
 		
 		System.out.println("map!!! >>>> " + map);
 		
 		int totalcount = mdao.getCourseCount(map);
+		System.out.println("ÀüÃ¼ °¹¼ö : " + totalcount);
 		
 		Paging pageInfo = new Paging(pageNumber, "5", totalcount, url, whatColumn, keyword);
 		
