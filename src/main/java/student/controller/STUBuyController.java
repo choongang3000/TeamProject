@@ -1,6 +1,7 @@
 package student.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import member.model.MemberBean;
+import student.model.STUOrderBean;
 import student.model.STUOrderDao;
 import student.model.STUOrderDeBean;
 import student.model.STUOrderDeDao;
@@ -22,7 +24,7 @@ import student.model.StuCartBean;
 public class STUBuyController {
 	
 	private final String command = "buycos.stu";
-	private String getPage = "stushlist";
+	private String gotoPage = "redirect:/buyresult.stu";
 	//private String gotoPage = "stushlistdetail";
 	
 	@Autowired 
@@ -32,7 +34,32 @@ public class STUBuyController {
 	private STUOrderDeDao oddao;
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
-	public String doAction(StuCartBean cartbean,HttpServletRequest request,HttpSession session) {
+	public String doAction(@RequestParam(value="totalprice", required=true) int totalprice,
+							StuCartBean cartbean,
+							HttpServletRequest request,
+							HttpSession session) {
+		
+		MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo");
+		
+		STUOrderBean obean = new STUOrderBean();
+		obean.setAid(loginInfo.getId());
+		obean.setTotprice(totalprice);
+		
+		int cnt = orderdao.insertOrder(obean);
+		
+		int maxOnum = orderdao.getMaxOnum(loginInfo.getId());
+		
+		ArrayList<Integer> mycart = (ArrayList<Integer>)session.getAttribute("mycart");
+		
+		for(int conum : mycart) {
+			STUOrderDeBean odbean = new STUOrderDeBean();
+			odbean.setAid(loginInfo.getId());
+			odbean.setOnum(maxOnum);
+			odbean.setConum(conum);
+			
+			oddao.insertOrderDetail(odbean);
+		}
+		
 		/* 
 		ArrayList<StuCartBean> cartArr =  (ArrayList<StuCartBean>)session.getAttribute("cartArr");
 		
@@ -50,14 +77,10 @@ public class STUBuyController {
 		request.setAttribute("cartArr", cartArr);
 		*/
 		
-		System.out.println(cartbean.getConame()); //null
-		System.out.println(cartbean.getCoprice()); //0
-		System.out.println(cartbean.getCoteacher()); //null
-		
 		session.removeAttribute("mycart");
 	    session.removeAttribute("cartArr");
-		
-		return getPage;
+	    
+		return gotoPage;
 	}
 
 	

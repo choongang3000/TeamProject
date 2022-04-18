@@ -351,8 +351,6 @@
 			</ul>
 		</div>
 		<div id="detail-img-text-box">${bean.cocontent}</div>
-
-
 	</div>
 </div>
 

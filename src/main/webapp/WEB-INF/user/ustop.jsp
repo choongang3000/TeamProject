@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="../common/common.jsp" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -96,7 +98,9 @@
 						</c:if>
 						<c:if test="${sessionScope.loginInfo.type != 'admin' }">
 							<span>${loginInfo.aname } 님 반갑습니다!</span>
-							<a href="#" class="header-sub-menu">정보수정</a> 
+							<a href="#" class="header-sub-menu">정보수정</a>
+							<a href="cartlist.stu" class="header-sub-menu">장바구니</a>
+							<a href="shlist.stu" class="header-sub-menu">구매목록</a>							
 						</c:if>
 						<a href="<%=request.getContextPath()%>/logout.jsp" class="header-sub-menu">로그아웃</a>
 					</div>
@@ -111,7 +115,7 @@
 	    </div>
 	  </header>
 	
-	  <div class="nav-scroller py-1 mb-2">
+	  <div class="nav-scroller py-1 mb-2 border-bottom">
 	    <nav class="nav d-flex justify-content-between">
 	      <a class="p-2 link-secondary top_nav" href="list.cos">강의 &nbsp<img src="<%=request.getContextPath() %>/resources/images/computer-mouse-solid.svg" width="20" height="20"/></a>
 	      <!-- 강의 jsp는 course폴더에 있음 -->

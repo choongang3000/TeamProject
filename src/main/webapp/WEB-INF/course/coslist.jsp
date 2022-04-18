@@ -171,7 +171,6 @@
 			
 				<h1>강좌 리스트</h1>
 		<form action="list.cos" method="GET">
-			
 			<select name="whatColumn">
 				<option value="">선택
 				<option value="coname">강의명

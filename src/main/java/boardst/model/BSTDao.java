@@ -19,8 +19,8 @@ public class BSTDao {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	public int getTotalCount() {
-		int totalcount = sqlSessionTemplate.selectOne(namespace + ".GetTotalCount");
+	public int getTotalCount(Map<String, String> map) {
+		int totalcount = sqlSessionTemplate.selectOne(namespace + ".GetTotalCount",map);
 		
 		return totalcount;
 	}
@@ -112,6 +112,22 @@ public class BSTDao {
 		cnt = sqlSessionTemplate.update(namespace + ".UpdateCheck_Delete", num);
 		
 		return cnt;
+	}
+	
+	public List<String> getSubjectArr() {
+		List<String> subjectArr = new ArrayList<String>();
+		
+		subjectArr = sqlSessionTemplate.selectList(namespace + ".GetSubjectArr");
+		
+		return subjectArr;
+	}
+
+	public List<String> getTeacherArr() {
+		List<String> teacherArr = new ArrayList<String>();
+		
+		teacherArr = sqlSessionTemplate.selectList(namespace + ".GetTeacherArr");
+		
+		return teacherArr;
 	}
 	
 }

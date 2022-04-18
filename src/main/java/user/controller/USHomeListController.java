@@ -33,6 +33,7 @@ public class USHomeListController {
 
 	@Autowired
 	private TEDao tedao;
+	
 	@Autowired
 	private COSDao cosdao;
 
@@ -47,7 +48,7 @@ public class USHomeListController {
 			HttpServletRequest request,
 			HttpSession session) {
 		
-		 MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo"); 
+		MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo"); 
 
 		Map<String, String> map1 = new HashMap<String, String>();
 		Map<String, String> map2 = new HashMap<String, String>();
@@ -67,10 +68,10 @@ public class USHomeListController {
 		COSListPaging pageInfo1=new COSListPaging(pageNumber1, null, totalCount1, url1, whatColumn1, keyword1);
 		COSListPaging pageInfo2=new COSListPaging(pageNumber2, null, totalCount2, url2, whatColumn2, keyword2);
 
-
+		
 		List<TEBean> teList = tedao.getTEList(pageInfo1, map1); 
 		List<COSBean> cosList = cosdao.getCOSList(pageInfo2, map2);
-
+		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("teList", teList);
 		mav.addObject("cosList", cosList);

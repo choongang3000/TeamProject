@@ -45,10 +45,14 @@ boardst/boardst_detail<br>
 	<table border=1 class="table table-striped" style="width:60%">
 		<tr>
 			<td align=left>
+				<c:if test="${loginInfo.type=='student' }">
 				<input type="button" value="삭제" class="btn btn-outline-danger btn-sm" onClick="return delete_board()">
+				</c:if>
 			</td>
 			<td align=right>
+				<c:if test="${loginInfo.type=='student' }">
 				<input type="button" value="수정" class="btn btn-secondary btn-sm" onClick="location.href='update.bst?num=${board.num}&pageNumber=${pageNumber }'">
+				</c:if>
 				<input type="button" value="목록으로" class="btn btn-secondary btn-sm" onClick="location.href='list.bst?pageNumber=${pageNumber}'">
 			</td>
 		</tr>
@@ -82,11 +86,14 @@ boardst/boardst_detail<br>
 		</tr>
 	</table>
 	<!-- 답글 테이블 -->
+	
 	<c:if test="${reply ne null }"> <!-- 선생님이 답변을 달았을때 -->
 		<table border=1 class="table" style="width:60%; margin-top: 50px;">
 			<tr class="table-light">
+				<c:if test="${loginInfo.type == 'teacher'}">
 				<td align=left><input type="button" value="답변 삭제" class="btn btn-outline-danger btn-sm" onClick="return delete_reply()"></td>
 				<td align=right><input type="button" value="답변 수정" class="btn btn-secondary btn-sm" onClick="location.href='updateReply.bst?replyNum=${reply.num}&pageNumber=${pageNumber}&num=${board.num}'"></td>
+				</c:if>
 			</tr>
 			<tr>
 				<th width=200 style="text-align: center;" class="table-active">${reply.teachid }</th>
@@ -103,6 +110,7 @@ boardst/boardst_detail<br>
 			</tr>
 		</table>
 	</c:if>
+	<c:if test="${loginInfo.type == 'teacher' }">
 	<c:if test="${reply eq null }"> <!-- 답변X 일때 -->
 		<form action="reply.bst?num=${board.num }&pageNumber=${pageNumber}" method="post">
 		<table style="width:60%; margin-top:50px; border:none;">
@@ -115,7 +123,7 @@ boardst/boardst_detail<br>
 	  repdate date default sysdate 
 	  -->
 			<input type="hidden" name="pnum" value="${board.num }">
-			<input type="hidden" name="teachid" value="아이유"> <!-- 여기 나중에 수정 필요 -->
+			<input type="hidden" name="teachid" value="${loginInfo.aname }"> <!-- 여기 나중에 수정 필요 -->
 			<tr>
 				<td>
 					<div class="form-floating">
@@ -133,6 +141,6 @@ boardst/boardst_detail<br>
 		</table>
 		</form>
 	</c:if>
-	
+	</c:if>
 </center>
 <%@ include file="bottom.jsp" %>

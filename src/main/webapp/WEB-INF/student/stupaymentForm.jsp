@@ -150,14 +150,13 @@ function div_show(selectNum){
 	}
 } //div_show
  */
- 
+
 </script>
 <style> /* 가운데정렬 다시 손봐야함!! */
 	div{
 		margin:auto;
 	}	
 </style>
-
 
 <link href="form-validation.css" rel="stylesheet">
 <div class="container">
@@ -173,7 +172,6 @@ function div_show(selectNum){
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-primary">구매상품</span>
           <span class="badge bg-primary rounded-pill">구매수량(${totalcount })</span>
-          <input type="hidden" name="totalcount" value="${totalcount}">
         </h4>
         
         <ul class="list-group mb-3">
@@ -182,14 +180,9 @@ function div_show(selectNum){
             <div>
               <h6 class="my-0">${cart.coname }</h6>
               <small class="text-muted">${cart.coteacher }의 ${cart.cosubject }</small>
-              <input type="hidden" name="coname" value="${cart.coname}">
-              <input type="hidden" name="coteacher" value="${cart.coteacher}">
-              <input type="hidden" name="cosubject" value="${cart.cosubject}">
-              <input type="hidden" name="coimage" value="${cart.coimage}">
             </div>
             <span class="text-muted">
             <fmt:formatNumber value="${cart.coprice}" pattern="#,###,###"/>원
-            <input type="hidden" name="coprice" value="${cart.coprice}">
             <%-- ${cart.coprice}원 --%>
             </span>
           </li>
@@ -198,7 +191,6 @@ function div_show(selectNum){
             <span>최종 결제금액</span>
             <strong>
             <fmt:formatNumber value="${totalprice }" pattern="#,###,###"/>원
-            <input type="hidden" name="totalprice" value="${totalprice}">
             <%-- ${totalprice }원 --%>
             </strong>
           </li>
@@ -208,10 +200,12 @@ function div_show(selectNum){
       <div class="col-md-7 col-lg-8">
       <!-- <form class="needs-validation" method="post" action="buycos.stu" novalidate> form여깃음 -->
       <form class="needs-validation" method="get" action="buycos.stu" novalidate> <!-- form여깃음 -->
+      <input type="hidden" name="totalcount" value="${totalcount}">
+      <input type="hidden" value="${totalprice }" name="totalprice">
        <hr class="my-4">
        <br>
           <h4 class="mb-3">결제수단 선택</h4> <!-- 미완성3:결제수단 어떤거 선택할건지? -->
-         
+          
           <div class="my-3">
           
             <div class="form-check">

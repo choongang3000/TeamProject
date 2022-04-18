@@ -12,20 +12,22 @@ public class STUOrderDao {
 	private SqlSessionTemplate sqlSessionTemplate;
 	private String namespace="student.model.STUOrder";
 	
-	public int insertOrder(String aid) { 
+	public int insertOrder(STUOrderBean obean) { 
 		int cnt = -1;
-		cnt = sqlSessionTemplate.insert(namespace+".InsertOrder",aid);
+		cnt = sqlSessionTemplate.insert(namespace+".InsertOrder", obean);
 		return cnt;
 	}
 
-	public int getMaxOnum() {
-		int maxOnum = sqlSessionTemplate.selectOne(namespace+".GetMaxOnum");
-		System.out.println("maxOnum:" + maxOnum);
+	public int getMaxOnum(String aid) {
+		
+		int maxOnum = sqlSessionTemplate.selectOne(namespace+".GetMaxOnum",aid);
+		
 		return maxOnum;
 	}
 
 	public List<STUOrderBean> orderList(String aid) {
 		List<STUOrderBean> list=sqlSessionTemplate.selectList(namespace+".OrderList",aid);
+		
 		return list;
 	}
 
