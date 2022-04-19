@@ -1,4 +1,4 @@
-package admin.controller;
+package course.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,24 +20,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import admin.model.CoBean;
-import admin.model.CoDao;
-import admin.model.SubBean;
-import admin.model.SubDao;
+import course.model.CoBean2;
+import course.model.CoDao2;
+import course.model.SubBean2;
+import course.model.SubDao2;
+
+
 
 @Controller
-public class ADCoInsertController {
-	private final String command = "coinsert.ad";
-	private String getPage = "coinsertForm";
-	private String gotoPage = "redirect:/colist.ad";
-	//private String gotoPage2 = "redirect:/list.cos";
+public class ADCoInsertController2 {
+	private final String command = "coinsert.cos";
+	private String getPage = "coinsertForm2";
+	private String gotoPage = "redirect:/list.cos";
 			
 	@Inject
-	private SubDao subdao;
+	private SubDao2 subdao;
 	
 	@Inject
-	@Qualifier("myCoDao")
-	private CoDao codao;
+	@Qualifier("myCoDao2")
+	private CoDao2 codao;
 	
 	@Autowired
 	ServletContext servletContext;
@@ -46,14 +47,14 @@ public class ADCoInsertController {
 	@RequestMapping(value=command, method=RequestMethod.GET)
 	public String doAction(HttpServletRequest request) {
 		
-		List<SubBean> sublist = subdao.subjectAll();
+		List<SubBean2> sublist = subdao.subjectAll();
 		request.setAttribute("sublist", sublist);
 		
 		return getPage;
 	}
 	
 	@RequestMapping(value=command, method=RequestMethod.POST)
-	public ModelAndView doAction(@Valid CoBean cobean, BindingResult result,
+	public ModelAndView doAction(@Valid CoBean2 cobean, BindingResult result,
 			HttpServletRequest request) {
 
 		
@@ -99,7 +100,6 @@ public class ADCoInsertController {
 			}
 			 System.out.println("강의 insert 성공");
 			 mav.setViewName(gotoPage);
-			 //mav.setViewName(gotoPage2);
 		
 		} //cnt>0
 		
@@ -112,5 +112,4 @@ public class ADCoInsertController {
 		
 		return mav;
 	}
-	
 }

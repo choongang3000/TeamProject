@@ -12,9 +12,35 @@
 		text-decoration: none;
 	}
 
+	#b-update{
+    	border-radius : 3px;
+    	border : 1px solid blue;
+    	background-color: blue;
+    	color: white;
+    	height: 32px;
+    	width: 40px;
+    }
+    #b-delete{
+    	border-radius : 3px;
+    	border : 1px solid red;
+    	background-color: red;
+    	color: white;
+    	height: 32px;
+    	width: 40px;
+    }
+
+	
 </style>
 <script src="<%= request.getContextPath()%>/resources/js/jquery.js"></script>
 <script type="text/javascript">
+
+	function upd(){
+		location.href= "update.bt?num=${bt.num }&pageNumber=${pageInfo.pageNumber}";
+	}
+	
+	function del(){
+		location.href= "delete.bt?num=${bt.num }&pageNumber=${pageInfo.pageNumber}";
+	} 
 
 	function getinsert(){
 		location.href = "insert.bt"; 
@@ -22,7 +48,7 @@
 	
 	function update(num,pageNumber){
  		//alert(2);
- 		location.href="update.bt?num=${bt.num }&pageNumber=${pageInfo.pageNumber}";
+ 		location.href= "update.bt?num=${bt.num }&pageNumber=${pageInfo.pageNumber}";
 	}
 	
 	function answer(result){
@@ -105,84 +131,8 @@
 		}
 	   }
 	
-	function subElse(elsesubck){//과목 선택하면 실행됨
-	     var elseck1 = elsesubck.checked;//true
-	     if(elseck1 == false){ //false
-	       $("input[name=subjectall]").removeAttr("checked");
-	     } 
-		}
-	
-	
-	
 
-	
-	
-	/*
-	//가운데 시간 띄우기
-	 function showTime(){
-		now = new Date();
-		hours = now.getHours();
-		if(hours>=12){ //4시면 hours = 16 들어오므로 12 빼기
-			clock = "현재 시간 : 오후 " + (hours-12) + "시"
-		}
-		else{
-			clock = "현재 시간 : 오전 " + hours + "시";
-		}
-		minutes = now.getMinutes();
-		if(minutes<10){ //10분보다 작으면 0을 뒤에 붙이기
-			clock += "0" + minutes + "분";
-		}
-		else{ //10분보다 작으면 0을 붙이지 않음
-			clock += minutes + "분";
-			
-		}
-		seconds = now.getSeconds();
-		if(seconds<10){ //10초보다 작으면 0을 뒤에 붙이기
-			clock += "0" + seconds + "초";
-		}
-		else{ //10초보다 작으면 0을 붙이지 않음
-			clock += seconds + "초";
-			
-		}
-		
-		var area = document.getElementById("myArea"); //이 자리 정보를 area 변수에 넣고
-		area.innerHTML = clock; //clock 변수를 넣어줌
-	}
-	 */
-	//../images
-	//이미지를 띄우기
-	//window.onload = function(){
-		
-		//setInterval(showTime,1000) //id가 myArea인 div 영역에 1초에 한 번씩 시간 나오게 하기
-		
-		
-	//function showimg(){	
-	/*
-		window.onload = function(){	
-		var arrimage = ['국어.png','영어.png','수학.png'];
-		var cnt = 0;
-		//var image = window.setInterval(function(){//윈도우 객체 안에 window.setInterval 함수가 있음. 정의할 땐 중괄호 필요
-		var area = document.getElementById("myimg"); //id가 myimg
-		
-		if(cnt == 4){
-			cnt = 0;
-		}
-		var result = "<img src='../webapp/images/" + arrimage[cnt++] + "'/> ";
-			
-		area.innerHTML = result;
-		} 
-				
-		function yearselect(){//연도선택 -> 월 리스트 조회
-			//var before = $('#beforeyear').val();
-			//var after = $('#afteryear').val();
-			//if(before>after){
-				alert(연도를 확인해 주세요);
-			//	return false;
-			//}else{
-			//	commonUtil.ajaxCall('')
-			//}
-		}//yearselect
-		*/
+
 </script>
 
 <div id="body">
@@ -223,7 +173,7 @@
 
 
 <!-- **************************************** -->
-<c:choose>
+<%-- <c:choose>
 	<c:when test="${sessionScope.loginInfo != null}">
 		<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
 			<table id="myform2" width="700" border="1" align="center">
@@ -243,7 +193,7 @@
 		<c:if test="${sessionScope.loginInfo.type != 'admin' }">	
 		</c:if>
 	</c:when>
-</c:choose>		
+</c:choose>		 --%>
 
 	<%-- (  총 레코드 건수 - ((보여줄 페이지 넘버-1)*한 페이지에 보여줄 건수)  )
 		  5개라고 가정 - ((2-1)*5) => 0페이지
@@ -253,39 +203,39 @@
 		  <td align="center">${page}</td>
 				<c:set var="page" value="${page -1 }" />
 	--%>	
-	<table id="myform2" width="700" align="center" action="post">
+	<table id="myform2" width="900" align="center" action="post">
 	 <c:choose>	
 		<c:when test="${sessionScope.loginInfo != null}">
 			<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
-				<tr>
-					<th><input type="checkbox" name="allcheck" onClick="allRowCheck(this)"></th>
+				<tr align="center">
+					<!-- <th><input type="checkbox" name="allcheck" onClick="allRowCheck(this)"></th>-->
 					<!-- allcheck를 눌렀을 때 allRowCheck()함수 호출. 지금 클릭한 바로 이거 this=이름이 allcheck인 checkbox를 넘긴다.-->
-					<!-- <th>번호</th> -->
+					<th></th>
 					<th>이미지</th>
 					<th>문제</th>
 					<th>답</th>
-					<th>삭제</th>
-					<th>수정</th>
+					<!-- <th>수정|삭제</th>-->
 				</tr>
 			</c:if>
 		</c:when>
 	</c:choose>	
 		<c:if test="${totalCount == 0 }">
 			<tr>
-				<td colspan=6 align="center">등록된 문제가 없습니다</td>
+				<td colspan=4 align="center">등록된 문제가 없습니다</td>
 			</tr>
 		</c:if>
 		<c:if test="${totalCount != 0 }">		
 		<c:forEach var="bt" items="${BTList }">
 		<tr>
-			<c:choose>	
+			<%--<c:choose>	
 				<c:when test="${sessionScope.loginInfo != null}">
 					<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
 						<td><input type="checkbox" name="rowcheck" value="${bt.num }"></td>
 					</c:if>
 				</c:when>
-			</c:choose>			
-						<%-- <td>${bt.num }</td> --%>
+			</c:choose>
+			--%>			
+						<td><input type="hidden" value=${bt.num }></td>
 						<td> 
 							<!-- 처음에 암호화(?)시킨걸 저장하려는 images 폴더에 파일을 다 넣어두긴 해야함. -->
 							<img src="<%=request.getContextPath()%>/resources/images/${bt.quizimg}" width=200 height=200>
@@ -313,12 +263,12 @@
 				<c:choose>	
 					<c:when test="${sessionScope.loginInfo != null}">
 						<c:if test="${sessionScope.loginInfo.type eq 'admin' }">			
-						<td>
-						<%-- 	<c:if test="loginInfo.type == 'teacher' || loginInfo.type =='admin'"> --%>
-							<a href="delete.bt?num=${bt.num }&pageNumber=${pageInfo.pageNumber}">삭제</a>
-						<%-- 	</c:if> --%>
+						<td width="5%">
+<%--						<input id="b-update" type="button" value="수정" onClick="upd()">&nbsp;
+							<input id="b-delete" type="button" value="삭제" onClick="del()"> --%>
+							<a href="update.bt?num=${bt.num }&pageNumber=${pageInfo.pageNumber}"><input id="b-update" type="button" value="수정"></a>&nbsp;
+							<a href="delete.bt?num=${bt.num }&pageNumber=${pageInfo.pageNumber}"><input id="b-delete" type="button" value="삭제"></a>
 						</td>
-						<td><a href="update.bt?num=${bt.num }&pageNumber=${pageInfo.pageNumber}">수정</a></td>
 						</c:if>
 					</c:when>
 				</c:choose>		
