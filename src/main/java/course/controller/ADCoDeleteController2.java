@@ -5,7 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.mail.Session;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -39,7 +42,7 @@ public class ADCoDeleteController2 {
 			@RequestParam(value="pageNumber", required=true) String pageNumber,
 			@RequestParam(value="cosubject", required=false) String cosubject,
 			@RequestParam(value="conum", required=true) String conum,
-			HttpServletRequest request) {
+			HttpServletRequest request,  HttpSession session) {
 		
 		int cnt = codao.deleteCourses(conum);
 		/*
@@ -57,6 +60,7 @@ public class ADCoDeleteController2 {
 		COSListPaging pageInfo=new COSListPaging(pageNumber, null, totalCount, url, whatColumn, keyword);
 		List<COSBean> list = cosdao.getCOSList(pageInfo, map);
 		*/
-		return "redirect:/list.cos?pageNumber=" + pageNumber + "&cosubject=" + cosubject + "&whatColumn=" + whatColumn + "&keyword=" + keyword; 
+		session.setAttribute("keyword_fromdel", keyword);
+		return "redirect:/list.cos?pageNumber=" + pageNumber + "&cosubject=" + cosubject + "&whatColumn=" + whatColumn; 
 		}
 }

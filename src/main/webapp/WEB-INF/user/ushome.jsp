@@ -24,21 +24,22 @@
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner" >
   	<div class="carousel-item active">
-      <img src="<%=request.getContextPath() %>/resources/images/퀴즈8.png" class="d-block w-100" alt="..." width=1500 height=400>
+      <img src="<%=request.getContextPath() %>/resources/images/메인광고1.png" class="d-block w-100" alt="..." width=1500 height=400>
       <div class="carousel-caption d-none d-md-block">
-        <h5>ON강 사용 방법</h5>
+<!--         <h5>ON강 사용 방법</h5>
         <p>ON강을 더 잘 사용할 수 있는 방법?</p>
-        <p><a href="#" class="btn btn-primary">보러가기</a><p>
+        <p><a href="#" class="btn btn-primary">보러가기</a><p> -->
       </div>
     </div>
   	<c:forEach var="cos" items="${cosList }">
     <div class="carousel-item">
-      <img src="<%=request.getContextPath()%>/resources/images/${cos.coimage}" class="d-block w-100" alt="..."  width=1500 height=400>
+    <%--   <img src="<%=request.getContextPath()%>/resources/images/${cos.coimage}" class="d-block w-100" alt="..."  width=1500 height=400> --%>
+      <img src="<%=request.getContextPath()%>/resources/images/메인광고2.png" class="d-block w-100" alt="..."  width=1500 height=400>
       <div class="carousel-caption d-none d-md-block">
       	
-        <h5>${cos.coname}</h5>
+<%--         <h5>${cos.coname}</h5>
         <p>${cos.cocontent}</p>
-        <p><a href="detail.cos?conum=${cos.conum }&pageNumber=${pageInfo.pageNumber }" class="btn btn-primary">보러가기</a><p>
+        <p><a href="detail.cos?conum=${cos.conum }&pageNumber=${pageInfo.pageNumber }" class="btn btn-primary">보러가기</a><p> --%>
       </div>
     </div>
   </c:forEach>

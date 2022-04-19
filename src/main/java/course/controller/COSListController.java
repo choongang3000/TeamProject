@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,11 +36,35 @@ public class COSListController {
 			@RequestParam(value="keyword", required=false) String keyword,
 			@RequestParam(value="pageNumber", required=false) String pageNumber,
 			@RequestParam(value="cosubject", required=false) String cosubject,
-			HttpServletRequest request) {
+			HttpServletRequest request, HttpSession session) {
 		
 		Map<String, String> map=new HashMap<String, String>();
 		map.put("whatColumn", whatColumn);
+		/*
 		map.put("keyword", "%"+keyword+"%");
+		 */
+		if(keyword == null) {
+	         if(session.getAttribute("keyword_fromdel") != null) {
+	            String keyword_fromdel = (String)session.getAttribute("keyword_fromdel");
+	            map.put("keyword", "%"+keyword_fromdel+"%");
+	            keyword = keyword_fromdel;
+	            session.removeAttribute("keyword_fromdel");
+	         }
+	         else {
+	            map.put("keyword", "%%");
+	         }   
+	      }
+	      else {
+	         if(keyword.equals("null")) {
+	            map.put("keyword", "%%");
+	         }
+	         else if(keyword.equals("")) {
+	            map.put("keyword","%%");
+	         }
+	         else {
+	            map.put("keyword", "%"+keyword+"%");
+	         }
+	      }
 		
 		if(cosubject != null) {
 	         if(cosubject.equals("")) {
