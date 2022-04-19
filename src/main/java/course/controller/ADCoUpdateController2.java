@@ -3,7 +3,9 @@ package course.controller;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -21,10 +23,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import course.model.COSBean;
 import course.model.CoBean2;
 import course.model.CoDao2;
 import course.model.SubBean2;
 import course.model.SubDao2;
+import utility.COSListPaging;
 
 @Controller
 public class ADCoUpdateController2 {
@@ -52,7 +56,10 @@ public class ADCoUpdateController2 {
 	}
 	
 	@RequestMapping(value=command, method=RequestMethod.POST)
-	public ModelAndView doAction(@Valid CoBean2 cobean, BindingResult result) {
+	public ModelAndView doAction(
+			@RequestParam(value="whatColumn",required = false) String whatColumn,
+			@RequestParam(value="pageNumber", required=true) String pageNumber,
+			@Valid CoBean2 cobean, BindingResult result) {
 		
 		ModelAndView mav = new ModelAndView();
 		
@@ -80,6 +87,23 @@ public class ADCoUpdateController2 {
 		
 		int cnt = codao.updateCourses(cobean);
 		
+		//여기서부터..
+		/*
+		Map<String, String> map=new HashMap<String, String>();
+		int totalCount=codao.totalCount(map);
+		
+		String url ;
+		if(cosubject != null) {
+			url = request.getContextPath()+command+"?cosubject="+cosubject;
+		}
+		else {
+			url = request.getContextPath()+command;
+		}
+		COSListPaging pageInfo=new COSListPaging(pageNumber, null, totalCount, url, whatColumn, keyword);
+		List<COSBean> list = cosdao.getCOSList(pageInfo, map);
+		
+		*/
+		
 		//업데이트 성공
 		if(cnt > 0) { 
 			 File imagef = new File(uploadPath,imageName);
@@ -96,6 +120,8 @@ public class ADCoUpdateController2 {
 				System.out.println("Courses 삽입 오류2");
 			}
 			 System.out.println("강의 update 성공");
+			
+			 /*mav.addObject("pageInfo",pageInfo);*/
 			 mav.setViewName(gotoPage); //redirect:/colist.ad
 			 return mav;
 			 
