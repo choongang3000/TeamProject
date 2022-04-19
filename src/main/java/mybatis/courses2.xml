@@ -3,10 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
- <mapper namespace = "course.model.COBean2">
+ <mapper namespace = "course.model.CoBean2">
  
  	<!-- 강의목록 전체조회 -->
- 	<select id="CoursesAll" resultType="course.model.COBean2">
+ 	<select id="CoursesAll" resultType="course.model.CoBean2">
  		select * from courses
  	    <if test="whatColumn == 'coname'">
  			where coname like UPPER(#{keyword})
@@ -19,7 +19,7 @@
  		</if>
  		order by conum
  	</select>
- 	<select id="CoursesAllpage" resultType="course.model.COBean2">
+ 	<select id="CoursesAllpage" resultType="course.model.CoBean2">
  		select * from courses
  	    <if test="whatColumn == 'coname'">
  			where coname like UPPER(#{keyword})
@@ -41,7 +41,7 @@
  	</insert>
  	
  	<!-- 강의 정보 상세보기 -->
- 	<select id="CoursesCount" resultType="course.model.COBean2">
+ 	<select id="CoursesCount" resultType="course.model.CoBean2">
  		select * from courses where conum=#{conum}
  	</select>
  	

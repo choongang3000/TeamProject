@@ -17,7 +17,7 @@ import utility.Paging;
 @Component("myCoDao2")
 public class CoDao2 {
 	
-	private String namespace = "course.model.COBean2";
+	private String namespace = "course.model.CoBean2";
 	
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;

@@ -1,40 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
-<%@ include file="../fix/ad_top.jsp"%>
+<%@ include file="../user/ustop.jsp"%>
 
 <style type="text/css">
 #container {
 	width: 65%;
 	margin: auto;
-}
+	}
+	.col-sm-5{
+		margin-top: 10px;
+		margin-bottom: 20px;
+	}
 </style>
 <div id="container">
-<div class="row">
-  <div class="col-sm-6">
+<div class="row justify-content-center">
+  <div class="col-sm-5">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">내 정보 관리</h5>
-        <p class="card-text">내 정보 수정</p>
-        <a href="memdetail.mem?anum=${loginInfo.anum}" class="btn btn-primary">내 정보 관리</a>
+        <p class="card-text">내 정보 관리, 수정</p>
+        <input class="btn btn-primary" type="button" value="내 정보 관리" onClick="location.href='memdetail.mem?anum=${loginInfo.anum}'">
       </div>
     </div>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-5">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">내가 작성한 글 관리</h5>
-        <p class="card-text">내가 작성한 글, 댓글 관리</p>
-        <a href="boards_list.jsp" class="btn btn-primary">내가 작성한 글 관리</a>
+        <h5 class="card-title">내 게시물 관리</h5>
+        <p class="card-text">내 질문, 댓글 관리</p>
+        <a href="#" class="btn btn-primary">질문 게시글 관리</a>
       </div>
     </div>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-5">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">내 강의 목록</h5>
-        <p class="card-text">강의 목록</p>
-        <a href="<%=request.getContextPath()%>wishList.jsp" class="btn btn-primary">내 강의 목록</a>
+        <h5 class="card-title">내 수강 목록</h5>
+        <p class="card-text">수강 목록</p>
+        <a href="shlist.stu" class="btn btn-primary">내 강의 목록</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-5">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">ㅇㅅㅇ</h5>
+        <p class="card-text">ㅇㅅㅇ</p>
+        <a href="#" class="btn btn-primary">ㅇㅅㅇ</a>
       </div>
     </div>
   </div>

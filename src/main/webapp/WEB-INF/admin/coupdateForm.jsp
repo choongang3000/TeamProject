@@ -15,6 +15,7 @@
 </head>
 <body class="bg-light">
 <div class="container">
+
   <main>
     <div class="py-5 text-center">
       <h2>강의 정보 수정</h2>
@@ -98,7 +99,7 @@
             	<c:set var="vid" value="${fn:substring(cobean.covideo,37,lenvid)}"/>
             	<c:out value="${fn:substring(cobean.covideo,37,lenvid)}"/>
             	<br>
-              <input type="file" class="form-control" name="upvideo" value="<%=request.getContextPath()%>/resources/${cobean.covideo}" required>
+              <input type="file" class="form-control" name="upvideo" value="<%=request.getContextPath()%>/resources/${cobean.covideo}" accept="video/mp4,video/mkv, video/x-m4v,video/*" required>
               <br>
               <div class="invalid-feedback">
                 강의 영상을 넣어주세요.

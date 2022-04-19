@@ -3,7 +3,7 @@
 <style>
 	  
 </style>
-<footer class="container">
+<footer class="container border-top">
             <div class="faddress">
                 <p>서울 마포구 신촌로 176 온강빌딩 | 대표자:삼천조 | 사업자등록번호 : 110-95-12345 | 통신판매번호 : 제 1234-서울마포-00001호 | 학원설립/운영 등록번호 : 제123456789호 온강
                 <p>개인정보관리책임자 : 이상고 | ongang@ongang.co.kr | TEL : 02-123-4568 | FAX : 02-123-4569 |<a href="bottom.us" ><font color="blue"> 개인정보 취급방침</font></a><br></p>

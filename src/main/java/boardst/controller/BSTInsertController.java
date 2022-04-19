@@ -2,6 +2,7 @@ package boardst.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
@@ -34,6 +35,10 @@ public class BSTInsertController {
 	public String doAction(@RequestParam(value="pageNumber") String pageNumber,
 							HttpServletRequest request) {
 		
+		List<String> subjectArr = bstdao.getSubjectArr();
+		List<String> teacherArr = bstdao.getTeacherArr();
+		request.setAttribute("subjectArr", subjectArr);
+		request.setAttribute("teacherArr", teacherArr);
 		request.setAttribute("pageNumber", pageNumber);
 		
 		return getPage;

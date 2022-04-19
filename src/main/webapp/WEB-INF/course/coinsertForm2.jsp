@@ -25,7 +25,7 @@
     <div class="row g-5">
       <div class="d-block mx-auto mb-6">
         <h4 class="mb-3">강의 정보</h4>
-        <form:form commandName="CoBean" class="needs-validation" method="post" action="coinsert.ad" enctype="multipart/form-data">
+        <form:form commandName="CoBean2" class="needs-validation" method="post" action="coinsert.cos" enctype="multipart/form-data">
           <div class="row g-3">
             
             <!-- 강의명 -->

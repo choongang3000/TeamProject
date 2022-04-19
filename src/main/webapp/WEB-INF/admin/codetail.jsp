@@ -49,7 +49,7 @@
 	<tr>
 		<td width="150" height="300">강의이미지</td>
 		<td colspan="3">
-			<img src="<%=request.getContextPath() %>/resources/${cobean.coimage}">
+			<img src="<%=request.getContextPath() %>/resources/images/${cobean.coimage}">
 		</td>
 	</tr>
 	<tr>
@@ -83,4 +83,4 @@
 <input type="button" value="삭제" onClick="del()">
 </center>
 <br>
-<%@ include file="../admin/adbottom.jsp" %> 
+<%@ include file="../admin/adbottom.jsp" %>

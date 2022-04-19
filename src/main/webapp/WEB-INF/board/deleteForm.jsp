@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<c:choose>
+	<c:when test="${sessionScope.loginInfo.type eq 'admin' }">
+		<%@ include file="../admin/adtop.jsp" %>
+	</c:when>
+	<c:otherwise>
+		<%@ include file="../user/ustop.jsp"%>
+	</c:otherwise>
+</c:choose>
 <head>					<!-- 헤드 -->
 <meta charset="UTF-8">
 

@@ -1,26 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="../common/common.jsp" %>
 <%@ include file="top.jsp" %>
+
 boardst/boardst_insertForm.jsp<br>
- &nbsp;
+&nbsp;
 <center>
 	<form action="insert.bst" method="post" enctype="multipart/form-data">
-	<input type="hidden" name="stuid" value="kim"> <!-- 추가 수정필요 -->
+	<input type="hidden" name="stuid" value="${loginInfo.id }"> <!-- 추가 수정필요 -->
 	<table class="table table-striped" style="width:60%" border=1>
 		<tr>
 			<td>
 				<select name="subject" class="form-select" style="width:15%; display: inline;"> <!-- 추가 수정필요 -->
 					<option value="">과목 선택</option>
-					<option value="국어">국어</option>
-					<option value="영어">영어</option>
-					<option value="수학">수학</option>
-					<option value="과학">과학</option>
-					<option value="사회">사회</option>
+					<c:forEach var="sub" items="${subjectArr }">
+					<option value="${sub }">${sub }</option>
+					</c:forEach>					
 				</select>
 				&nbsp;
 				<select name="teacher" class="form-select" style="width:15%;  display: inline;"> <!-- 추가 수정필요 -->
 					<option value="">선생님 선택</option>
-					<option value="아이유">아이유</option>
+					<c:forEach var="tc" items="${teacherArr}">
+					<option value="${tc }">${tc }</option>
+					</c:forEach>
 				</select>
 				<input type="text" class="form-control" name="title" placeholder="제목 입력" style="width:100%; display:inline; margin-top:10px;">
 			</td>

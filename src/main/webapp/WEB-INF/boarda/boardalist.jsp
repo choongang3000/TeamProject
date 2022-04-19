@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
-<%@ include file="../fix/ad_top.jsp"%>
+<c:choose>
+	<c:when test="${sessionScope.loginInfo.type eq 'admin' }">
+		<%@ include file="../admin/adtop.jsp" %>
+	</c:when>
+	<c:otherwise>
+		<%@ include file="../user/ustop.jsp"%>
+	</c:otherwise>
+</c:choose>
 <style>
     	body{
     		align: center;
@@ -12,11 +19,17 @@
     		width:65%;
 			margin:auto;
     	}
-    	
-    	#accordionFlushExample{
-    		height: 700px;
+    	.count{
+    		text-align : left;
+    		margin : 20px 20px;
     	}
-    	
+    	.accordion-button{
+    		background-color:#D9E5FF;
+    	}
+    	.accordion-collapse{
+    		text-align : left;
+    		margin : 20px 20px;
+    	}
 </style>
 <script src="<%=request.getContextPath()%>/resources/js/jquery.js"></script>
 <script>  
@@ -62,8 +75,10 @@
 	<li class="nav-item"><a class="nav-link" id="navselect" href="list.ba?bacategory=강좌관리">강좌 관리</a></li>
 	<li class="nav-item"><a class="nav-link" id="navselect" href="list.ba?bacategory=기타">기타</a></li>
 </ul>
-<input class="btn btn-secondary btn-sm" type="button" value="삽입" onClick="insert()">
-총${totalCount}개
+<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
+		<input class="btn btn-secondary btn-sm" type="button" value="삽입" onClick="insert()">
+</c:if>
+<div class="count">총${totalCount}개</div>
 <div class="accordion accordion-flush" id="accordionFlushExample">
 	<c:forEach var="i" begin="0" end="${fn:length(list)-1 }">
 		<div class="accordion-item">
@@ -82,8 +97,10 @@
 					<%-- <c:if test="${list[i].bafile != null }">
 						파일 출력 설정 위치 
 					</c:if> --%>
-					<input class="btn btn-secondary btn-sm" type="submit" value="수정" onClick="location.href='update.ba?banum=${list[i].banum}&pageNumber=${pageInfo.pageNumber}'">
+					<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
+						<input class="btn btn-secondary btn-sm" type="submit" value="수정" onClick="location.href='update.ba?banum=${list[i].banum}&pageNumber=${pageInfo.pageNumber}'">
 					<input class="btn btn-secondary btn-sm" type="submit" value="삭제" onClick="location.href='delete.ba?banum=${list[i].banum}&pageNumber=${pageInfo.pageNumber}'">
+					</c:if>
 				</div>
 			</div>
 		</div>
@@ -94,3 +111,4 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
 </html>
+<%@ include file="boarda_bottom.jsp"%>

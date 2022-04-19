@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -54,7 +55,8 @@ public class ADCoInsertController2 {
 	}
 	
 	@RequestMapping(value=command, method=RequestMethod.POST)
-	public ModelAndView doAction(@Valid CoBean2 cobean, BindingResult result,
+	public ModelAndView doAction(
+			@Valid CoBean2 cobean, BindingResult result,
 			HttpServletRequest request) {
 
 		

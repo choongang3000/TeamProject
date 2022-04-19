@@ -9,6 +9,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import admin.model.TeacherBean;
+import admin.model.TeacherDao;
+import course.model.COSBean;
 import member.model.MemberBean;
 import utility.Paging;
 
@@ -64,6 +67,7 @@ private String namespace="member.model.Member";
 
 	}
 	
+	
 	public List<MemberBean> memberAll() {
 		List<MemberBean> mlist = new ArrayList<MemberBean>();
 		mlist = sqlSessionTemplate.selectList(namespace+".MemberAll");
@@ -82,5 +86,45 @@ private String namespace="member.model.Member";
 	public void deleteMember(MemberBean mb) {
 		 sqlSessionTemplate.delete(namespace + ".DeleteMember", mb);
 	}
-
+	
+	public TeacherBean getTeacherData(String anum) {
+		TeacherBean tbean = sqlSessionTemplate.selectOne(namespace + ".GetTeacherData",anum);
+		
+		return tbean;
+	}
+	
+	public int getCourseCount(Map<String,String> map) {
+		
+		int totalcount = sqlSessionTemplate.selectOne(namespace + ".GetCourseCount", map);
+		
+		return totalcount;
+	}
+	
+	public List<COSBean> getAllCourse( Map<String,String> map, Paging pageInfo){
+		
+		System.out.println("여기!! map >> " + map);
+		
+		List<COSBean> cosArr = new ArrayList<COSBean>();
+		
+		RowBounds rowbounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
+		
+		cosArr = sqlSessionTemplate.selectList(namespace + ".GetAllCourse", map, rowbounds);
+		
+		return cosArr;
+	}
+	
+	public List<String> getSubject(){
+		List<String> subArr = new ArrayList<String>();
+		
+		subArr = sqlSessionTemplate.selectList(namespace + ".GetSubject");
+		
+		return subArr;
+	}
+	
+	public COSBean getCourseByConum(int conum) {
+		COSBean course = sqlSessionTemplate.selectOne(namespace + ".GetCourseByConum", conum);
+		
+		return course;
+	}
+	
 }

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="../common/common.jsp" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -92,13 +94,24 @@
 					<div id="header-main-menu">
 						<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
 							<span>관리자님 반갑습니다!</span>
+							<a href="<%=request.getContextPath()%>/logout.jsp" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/로그아웃.png" title="로그아웃" width="20" height="20"/></a>
+							<br>
 							<a href="list.ad" class="header-sub-menu">관리자 홈으로 가기</a>
 						</c:if>
-						<c:if test="${sessionScope.loginInfo.type != 'admin' }">
-							<span>${loginInfo.aname } 님 반갑습니다!</span>
-							<a href="#" class="header-sub-menu">정보수정</a> 
+						<c:if test="${sessionScope.loginInfo.type eq 'teacher' }">
+							<span>${loginInfo.aname } 선생님 반갑습니다!</span>
+							<a href="<%=request.getContextPath()%>/logout.jsp" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/로그아웃.png" title="로그아웃" width="20" height="20"/></a>
+							<br>
+							<a href="tcInfo.mem?anum=${loginInfo.anum}" class="header-sub-menu">정보수정</a>					
 						</c:if>
-						<a href="<%=request.getContextPath()%>/logout.jsp" class="header-sub-menu">로그아웃</a>
+						<c:if test="${sessionScope.loginInfo.type eq 'student' }">
+							<span>${loginInfo.aname } 님 반갑습니다!</span>
+							<a href="<%=request.getContextPath()%>/logout.jsp" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/로그아웃.png" title="로그아웃" width="20" height="20"/></a>
+							<br>
+							<a href="memdetail.mem?anum=${loginInfo.anum}" class="header-sub-menu">정보수정</a>
+							<a href="cartlist.stu" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/카트_small.png" title="장바구니" width="20" height="20"/></a>
+							<a href="shlist.stu" class="header-sub-menu">구매목록</a>							
+						</c:if>
 					</div>
 				</c:when>
 				<c:otherwise>
@@ -111,13 +124,13 @@
 	    </div>
 	  </header>
 	
-	  <div class="nav-scroller py-1 mb-2">
+	  <div class="nav-scroller py-1 mb-2 border-bottom">
 	    <nav class="nav d-flex justify-content-between">
 	      <a class="p-2 link-secondary top_nav" href="list.cos">강의 &nbsp<img src="<%=request.getContextPath() %>/resources/images/computer-mouse-solid.svg" width="20" height="20"/></a>
 	      <!-- 강의 jsp는 course폴더에 있음 -->
 	      <a class="p-2 link-secondary top_nav" href="list.te">선생님 &nbsp<img src="<%=request.getContextPath() %>/resources/images/computer-mouse-solid.svg" width="20" height="20"/></a>
 	      <a class="p-2 link-secondary top_nav" href="list.bt">Quiz &nbsp<img src="<%=request.getContextPath() %>/resources/images/quiz-bell.svg" width="20" height="20"/></a>
-	      <a class="p-2 link-secondary top_nav" href="list.ba">FAQ 게시판 &nbsp<img src="<%=request.getContextPath() %>/resources/images/computer-mouse-solid.svg" width="20" height="20"/></a>
+	      <a class="p-2 link-secondary top_nav" href="userlist.ba">FAQ 게시판 &nbsp<img src="<%=request.getContextPath() %>/resources/images/computer-mouse-solid.svg" width="20" height="20"/></a>
 	      <a class="p-2 link-secondary top_nav" href="mypage.mem">마이페이지 &nbsp<img src="<%=request.getContextPath() %>/resources/images/mypage.svg" width="20" height="20"/></a>
 	    </nav>
 	  </div>

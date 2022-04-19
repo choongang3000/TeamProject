@@ -2,7 +2,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp" %>
-On강<br>
+<c:choose>
+	<c:when test="${sessionScope.loginInfo.type eq 'admin' }">
+		<%@ include file="../admin/adtop.jsp" %>
+	</c:when>
+	<c:otherwise>
+		<%@ include file="../user/ustop.jsp"%>
+	</c:otherwise>
+</c:choose>
 <head><!-- 헤드 -->
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -15,7 +22,15 @@ On강<br>
 	table{
 		margin:auto;
 	}
-
+	
+	#container  {
+    		width:65%;
+			margin:auto;
+    	}
+    
+    .title{
+    	text-align:left;
+    }
 </style>
 
 </head>  <!-- 헤드 -->
@@ -23,8 +38,10 @@ On강<br>
 <%@ include file="color.jsp" %> <!-- include 지시어 : 내용을 복붙 -->
 
 <body bgcolor="<%= bodyback_c %>"> <!-- 바디 -->
-
-고객센터 QnA테스트 (전체 글:${totalCount }) <br>
+<div id=container>
+<div class="title">
+<h3>고객센터 QnA (전체 글:${totalCount })</h3>
+</div>
 <table width="700" border="1"  class="table table-striped">
 	<tr>
 		<td align="right"><a href="insert.bod" class="btn btn-primary">글쓰기</a></td>
@@ -69,4 +86,6 @@ On강<br>
 </center>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <!-- 부트스트랩2 -->
+</div>
 </body>
+<%@include file="../user/usbottom.jsp"%>

@@ -29,7 +29,7 @@
 	<select id="SearchIdByBean" resultType="MyMember">
 		select * from accounts where aname=#{aname} and email=#{email}
 	</select>
-	
+ 	
 	<select id="MemberAll" resultType="MyMember">
  		select * from accounts order by anum
  	</select>
@@ -45,6 +45,43 @@
  	<delete id="DeleteMember">
  		delete accounts where id=#{id} and pw=#{pw}
  	</delete>
+ 	
+ 	<select id="GetTeacherData" resultType="admin.model.TeacherBean">
+ 		select anum,tnum,aname,tname,type,id,tid,pw,rrn1,rrn2,email,phone1,phone2,phone3,addr,joindate,t_image,subject,visa,tterm,twageratio,introduction
+		from accounts,teachers where id=tid and anum=#{anum}
+ 	</select>
+ 	
+ 	<select id="GetCourseCount" resultType="int">
+ 		select count(*) from courses
+ 		where coteacher=#{coteacher}
+ 		<if test="whatColumn != null">
+ 		and cosubject=#{whatColumn}
+ 		</if>
+ 		<if test="keyword != null">
+ 		and coname like #{keyword}
+ 		</if>
+ 	</select>
+	
+ 	<select id="GetAllCourse" resultType="course.model.COSBean">
+ 		select * from courses
+ 		where coteacher=#{coteacher}
+ 		<if test="whatColumn != null">
+ 		and cosubject=#{whatColumn}
+ 		</if>
+ 		<if test="keyword != null">
+ 		and coname like #{keyword}
+ 		</if>
+ 		order by conum desc
+ 	</select>
+ 	
+ 	<select id="GetSubject" resultType="String">
+ 		select subname from subjects order by subname
+ 	</select>
+ 	
+ 	<select id="GetCourseByConum" resultType="course.model.COSBean">
+ 		select * from courses where conum=#{conum}
+ 	</select>
+ 	
 </mapper>
 <!-- member.xml -->
 
