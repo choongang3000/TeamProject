@@ -13,8 +13,8 @@ import teachers.model.TEBean;
 import teachers.model.TEDao;
 
 @Controller
-public class TCListController { //★★ 
-	
+public class TCListController { //필요없는것같은데일단삭제보류
+	/*
 	@Autowired
 	private TEDao tedao;
 	
@@ -31,5 +31,5 @@ public class TCListController { //★★
 		mav.setViewName(getPage);
 		return mav;
 		
-	}
+	}*/
 }

@@ -1,4 +1,4 @@
-package admin.controller;
+package course.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,72 +7,67 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import javax.servlet.ServletContext;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import admin.model.CoBean;
-import admin.model.CoDao;
-import admin.model.SubBean;
-import admin.model.SubDao;
+import course.model.CoBean2;
+import course.model.CoDao2;
+import course.model.SubBean2;
+import course.model.SubDao2;
 
 @Controller
-public class ADCoInsertController {
-	private final String command = "coinsert.ad";
-	private String getPage = "coinsertForm";
-	private String gotoPage = "redirect:/colist.ad";
-	//private String gotoPage2 = "redirect:/list.cos";
-			
-	@Inject
-	private SubDao subdao;
+public class ADCoUpdateController2 {
+	private final String command = "coupdate.cos";
+	private String getPage = "coupdateForm2";
+	private String gotoPage = "redirect:/list.cos";
 	
 	@Inject
-	@Qualifier("myCoDao")
-	private CoDao codao;
+	@Qualifier("myCoDao2")
+	private CoDao2 codao;
+	
+	@Inject
+	private SubDao2 subdao;
 	
 	@Autowired
 	ServletContext servletContext;
 	
-	
-	@RequestMapping(value=command, method=RequestMethod.GET)
-	public String doAction(HttpServletRequest request) {
-		
-		List<SubBean> sublist = subdao.subjectAll();
-		request.setAttribute("sublist", sublist);
-		
+	@RequestMapping(value=command,method=RequestMethod.GET)
+	public String doAction(@RequestParam(value="conum", required=true) String conum,Model model) {
+		List<SubBean2> sublist = subdao.subjectAll();
+		CoBean2 cobean = codao.coursesCount(conum);
+		model.addAttribute("cobean",cobean);
+		model.addAttribute("sublist",sublist);
 		return getPage;
 	}
 	
 	@RequestMapping(value=command, method=RequestMethod.POST)
-	public ModelAndView doAction(@Valid CoBean cobean, BindingResult result,
-			HttpServletRequest request) {
-
+	public ModelAndView doAction(@Valid CoBean2 cobean, BindingResult result) {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		//날짜
-		Timestamp date =  new Timestamp(System.currentTimeMillis());
-		cobean.setCoupload_date(date);
+		System.out.println("update 넘어옴");
 		
 		//이미지, 영상
-		String uploadPath = servletContext.getRealPath("/resources/images");
+		String uploadPath = servletContext.getRealPath("/resources");
 		
 		//유효성검사 에러
 		if(result.hasErrors()) {
-			System.out.println("강의 insert 유효성에러");
+			System.out.println("유효성검사");
 			mav.setViewName(getPage);
 			return mav;
 		}
-		
+
 		MultipartFile upimage = cobean.getUpimage();
 		MultipartFile upvideo = cobean.getUpvideo();
 		
@@ -83,10 +78,13 @@ public class ADCoInsertController {
 		cobean.setCoimage(imageName);
 		cobean.setCovideo(videoName);
 		
-		int cnt = codao.insertCourses(cobean);
-		if(cnt > 0) {
+		int cnt = codao.updateCourses(cobean);
+		
+		//업데이트 성공
+		if(cnt > 0) { 
 			 File imagef = new File(uploadPath,imageName);
 			 File videof = new File(uploadPath,videoName);
+			 System.out.println("cnt>0");
 			 
 			 try {
 				 upimage.transferTo(imagef);
@@ -97,20 +95,19 @@ public class ADCoInsertController {
 			} catch (IOException e) {
 				System.out.println("Courses 삽입 오류2");
 			}
-			 System.out.println("강의 insert 성공");
-			 mav.setViewName(gotoPage);
-			 //mav.setViewName(gotoPage2);
-		
-		} //cnt>0
-		
-		
-		 else {
-			 codao.insertCourses(cobean);
-			 System.out.println("강의 insert 실패");
-			 mav.setViewName(getPage);
-		 }
+			 System.out.println("강의 update 성공");
+			 mav.setViewName(gotoPage); //redirect:/colist.ad
+			 return mav;
+			 
+		}//cnt>0
+
+		//업데이트 실패
+		else {
+			codao.updateCourses(cobean);
+			mav.setViewName(getPage+"?conum="+cobean.getConum()); //coupdateForm
+			System.out.println("강의 update 실패");
+		}//업데이트 실패
 		
 		return mav;
 	}
-	
 }
