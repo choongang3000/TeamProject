@@ -77,6 +77,8 @@ public class COSListController {
 		mav.addObject("totalCount",totalCount);
 		mav.addObject("subArr",subArr);
 		mav.addObject("cosubject",cosubject);
+		mav.addObject("whatColumn",whatColumn); /* whatColumn이랑 keyword 들고가서 뿌려주고.. delete 버튼 누르면 가져가기 */
+		mav.addObject("keyword",keyword);
 		mav.setViewName(getPage);
 		return mav;
 	

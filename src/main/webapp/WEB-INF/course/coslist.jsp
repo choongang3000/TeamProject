@@ -241,8 +241,8 @@
 				<c:when test="${sessionScope.loginInfo != null}">
 				<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
 				<td>
-					&nbsp;<a href="coupdate.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&"><input id="b-update" type="button" value="수정"></a>&nbsp;
-					<a href="codelete.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }"><input id="b-delete" type="button" value="삭제"></a>
+					&nbsp;<a href="coupdate.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}"><input id="b-update" type="button" value="수정"></a>&nbsp;
+					<a href="codelete.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}&whatColumn=${whatColumn}&keyword=${keyword}"><input id="b-delete" type="button" value="삭제"></a>
 				</td>
 				</c:if>
 				</c:when>
