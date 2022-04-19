@@ -94,24 +94,34 @@
 					<div id="header-main-menu">
 						<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
 							<span>관리자님 반갑습니다!</span>
-							<a href="<%=request.getContextPath()%>/logout.jsp" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/로그아웃.png" title="로그아웃" width="20" height="20"/></a>
+							<a href="logout.mem" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/로그아웃.png" title="로그아웃" width="20" height="20"/></a>
 							<br>
 							<a href="list.ad" class="header-sub-menu">관리자 홈으로 가기</a>
 						</c:if>
 						<c:if test="${sessionScope.loginInfo.type eq 'teacher' }">
 							<span>${loginInfo.aname } 선생님 반갑습니다!</span>
-							<a href="<%=request.getContextPath()%>/logout.jsp" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/로그아웃.png" title="로그아웃" width="20" height="20"/></a>
+							<a href="logout.mem" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/로그아웃.png" title="로그아웃" width="20" height="20"/></a>
 							<br>
 							<a href="tcInfo.mem?anum=${loginInfo.anum}" class="header-sub-menu">정보수정</a>					
 						</c:if>
 						<c:if test="${sessionScope.loginInfo.type eq 'student' }">
 							<span>${loginInfo.aname } 님 반갑습니다!</span>
-							<a href="<%=request.getContextPath()%>/logout.jsp" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/로그아웃.png" title="로그아웃" width="20" height="20"/></a>
+							<a href="logout.mem" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/로그아웃.png" title="로그아웃" width="20" height="20"/></a>
 							<br>
 							<a href="memdetail.mem?anum=${loginInfo.anum}" class="header-sub-menu">정보수정</a>
 							<a href="cartlist.stu" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/카트_small.png" title="장바구니" width="20" height="20"/></a>
 							<a href="shlist.stu" class="header-sub-menu">구매목록</a>							
 						</c:if>
+					</div>
+				</c:when>
+				<c:when test="${userId ne null}">
+					<div id="header-main-menu">
+						<span>(카카오)${userName} 님 반갑습니다!</span>
+						<a href="logout.mem" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/로그아웃.png" title="로그아웃" width="20" height="20"/></a>
+						<br>
+						<a href="memdetail.mem?anum=${loginInfo.anum}" class="header-sub-menu">정보수정</a>
+						<a href="cartlist.stu" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/카트_small.png" title="장바구니" width="20" height="20"/></a>
+						<a href="shlist.stu" class="header-sub-menu">구매목록</a>							
 					</div>
 				</c:when>
 				<c:otherwise>
