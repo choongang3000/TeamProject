@@ -68,7 +68,7 @@
 	}
 
 	.star-rating {
-	  border:solid 1px #ccc;
+	  /* border:solid 1px #ccc; */
 	  display:flex;
 	  flex-direction: row-reverse;
 	  font-size:1.5em;
@@ -134,17 +134,49 @@
 		<tr>
 			<td align="center" width="100" bgcolor="#DCDCDC">이름</td>
 			<td>
-				<input type="text" name="writer" class="form-control" id="floatingInput" placeholder="작성자를 입력해주세요">
+				<input type="text" name="writer" class="form-control" id="floatingInput" value="${loginInfo.aname }" readonly>
 				<form:errors cssClass="err" path="writer"/>
 			</td>
 		</tr>
 		<tr>
 			<td align="center" bgcolor="#DCDCDC">제목</td>
 			<td>
-				<input type="text" name="subject" class="form-control" id="floatingInput" placeholder="제목을 입력해주세요">
+				<input type="text" name="title" class="form-control" id="floatingInput" placeholder="제목을 입력해주세요" required>
 				<form:errors cssClass="err" path="subject"/>
 			</td>
 		</tr>
+		
+		<tr>
+			<td align="center" bgcolor="#DCDCDC">강의명</td>
+			<td>
+				<!-- <input type="text" name="coname" class="form-control" id="floatingInput" placeholder="제목을 입력해주세요"> -->
+				 
+					<select name="coname" class="form-control" id="floatingInput" required>
+					<option value="">강의선택</option>
+					<c:forEach var="colist" items="${colist }">
+						<option value="${colist.coname }">${colist.coname }</option>
+					</c:forEach>
+					</select>
+					<form:errors cssClass="err" path="coname"/>
+				
+			</td>
+		</tr>
+		<tr>
+			<td align="center" bgcolor="#DCDCDC">선생님</td>
+			<td>
+				<!-- <input type="text" name="coteacher" class="form-control" id="floatingInput" placeholder="제목을 입력해주세요"> -->
+				
+					<select name="coteacher" class="form-control" id="floatingInput" required>
+					<option value="">선생님선택</option>
+					<c:forEach var="telist" items="${telist }">
+						<option value="${telist.tname }">${telist.tname }</option>
+					</c:forEach>
+					</select>
+					<form:errors cssClass="err" path="coteacher"/>
+				
+			</td>
+		</tr>
+		
 		<tr>
 			<td align="center" bgcolor="#DCDCDC">Email</td>
 			<td><input type="text" name="email" class="form-control" id="floatingInput" placeholder="이메일을 입력해주세요"></td>
@@ -158,13 +190,13 @@
 		<tr>
 			<td align="center" bgcolor="#DCDCDC">내용</td>
 			<td>
-				<textarea name="content" rows="15" cols="50" class="form-control" placeholder="내용을 입력해주세요" id="floatingTextarea" style="resize:none;"></textarea>
+				<textarea name="content" rows="15" cols="50" class="form-control" placeholder="내용을 입력해주세요" id="floatingTextarea" style="resize:none;" required></textarea>
 				<form:errors cssClass="err" path="content"></form:errors>
 			</td>
 		</tr>
 		<tr>
-			<td align="center" bgcolor="#DCDCDC">별점주기</td>
-			<td>	
+			<td align="center" bgcolor="#DCDCDC" >별점주기</td>
+			<td class="form-control" id="floatingInput">	
 				<div class="star-rating"> <!-- 별점작업:사이즈 처리, 값 넘겨주기(select, update에 어떻게 처리할건지 생각해) -->
 				  <input type="radio" id="5-stars" name="rating" value="5"/>
 				  <label for="5-stars" class="star">&#9733;</label>
@@ -182,7 +214,7 @@
 		<tr>
 			<td align="center" bgcolor="#DCDCDC">비밀번호</td>
 			<td>
-				<input type="password" name="passwd" class="form-control" id="floatingPassword" placeholder="비밀번호 입력해주세요">
+				<input type="password" name="passwd" class="form-control" id="floatingPassword" placeholder="비밀번호 입력해주세요" required>
 				<form:errors cssClass="err" path="passwd" />
 			</td>
 		</tr>

@@ -33,7 +33,7 @@
    
    <br><br>
    
-   <table border="0" width="80%" height="60%" align="center">
+   <table border="0" width="100%" height="70%" align="center">
 	    <tr height="30">
 			<td colspan="9" align="right">
 				<input type="button" value="강의추가" onClick="insert()" class="btn btn-secondary btn-sm">

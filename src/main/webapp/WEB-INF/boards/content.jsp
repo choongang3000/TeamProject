@@ -16,7 +16,7 @@
 		width:300px;
 	}
 	.star-rating {
-	  border:solid 1px #ccc;
+	  /* border:solid 1px #ccc; */
 	  display:flex;
 	  flex-direction: row-reverse;
 	  font-size:1.5em;
@@ -104,7 +104,14 @@
 			<fmt:formatDate value="${bb.reg_date }" pattern="yyyy/MM/dd HH:mm" type="both"/> <!-- 작성일 -->
 		</td>	
 	</tr>
-
+	
+	<tr height="40" style="border-top: solid black 1px">
+		<td align="center" bgcolor="#DCDCDC">과목명</td>
+		<td align="center">${bb.coname}</td>
+		<td align="center" bgcolor="#DCDCDC">선생님</td>
+		<td align="center">${bb.coteacher}</td>
+	</tr>
+	
 	<tr height="40" style="border-top: solid black 1px">
 		<td align="center" bgcolor="#DCDCDC">
 			별점
@@ -131,7 +138,7 @@
 			글제목
 		</td>	
 		<td align="center">
-			${bb.subject } <!-- 글제목 -->
+			${bb.title } <!-- 글제목 -->
 		</td>	
 	</tr>
 	
@@ -159,13 +166,14 @@
 	</tr>
 	<tr align="center" height="50" style="border-top: solid black 1px">
 		<td colspan="4">
+		<br>
 			<input class="btn btn-secondary btn-sm" type="submit" value="글수정" onClick="location.href='update.bs?num=${bb.num}&pageNumber=${pageNumber}'">
 			<input class="btn btn-secondary btn-sm" type="button" value="글삭제" onClick="location.href='delete.bs?num=${bb.num}&pageNumber=${pageNumber}'">
-			<%-- <c:if test=""> --%>
-			<input class="btn btn-secondary btn-sm" type="button" value="답글쓰기" onClick="location.href='reply.bs?ref=${bb.ref}&re_step=${bb.re_step}&re_level=${bb.re_level}&pageNumber=${pageNumber}'">
-			<%-- </c:if> --%>
 			<input class="btn btn-secondary btn-sm" type="button" value="글목록" onClick="location.href='list.bs?pageNumber=${pageNumber}'">
+			<%-- <c:if test="">
+			<input class="btn btn-secondary btn-sm" type="button" value="답글쓰기" onClick="location.href='reply.bs?ref=${bb.ref}&re_step=${bb.re_step}&re_level=${bb.re_level}&pageNumber=${pageNumber}'">
+			</c:if> --%>
 		</td>
 	</tr>
 </table>
-<%@ include file="../admin/adbottom.jsp" %>     
+<%@ include file="../admin/adbottom.jsp" %>

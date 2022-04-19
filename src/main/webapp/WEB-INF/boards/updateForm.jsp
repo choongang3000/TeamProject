@@ -60,7 +60,7 @@
 		font-weight:bold;
 	}
 	.star-rating {
-	  border:solid 1px #ccc;
+	  /* border:solid 1px #ccc; */
 	  display:flex;
 	  flex-direction: row-reverse;
 	  font-size:1.5em;
@@ -132,8 +132,38 @@
 		<tr>
 			<td align="center" bgcolor="#DCDCDC">제목</td>
 			<td>
-				<input type="text" name="subject" value="${bb.subject}" class="form-control" id="floatingInput" placeholder="작성자를 입력해주세요">
-				<form:errors path="subject" cssClass="err"></form:errors>				
+				<input type="text" name="title" value="${bb.title}" class="form-control" id="floatingInput" placeholder="제목을 입력해주세요">
+				<form:errors path="title" cssClass="err"></form:errors>				
+			</td>
+		</tr>
+		<tr>
+			<td align="center" bgcolor="#DCDCDC">강의명</td>
+			<td>
+				<!-- <input type="text" name="coname" class="form-control" id="floatingInput" placeholder="제목을 입력해주세요"> -->
+				 
+					<select name="coname" class="form-control" id="floatingInput" required>
+					<option value="">강의선택</option>
+					<c:forEach var="colist" items="${colist }">
+						<option value="${colist.coname }" <c:if test="${colist.coname == bb.coname }">selected</c:if>>${colist.coname }</option>
+					</c:forEach>
+					</select>
+					<form:errors cssClass="err" path="coname"/>
+				
+			</td>
+		</tr>
+		<tr>
+			<td align="center" bgcolor="#DCDCDC">선생님</td>
+			<td>
+				<!-- <input type="text" name="coteacher" class="form-control" id="floatingInput" placeholder="제목을 입력해주세요"> -->
+				
+					<select name="coteacher" class="form-control" id="floatingInput" required>
+					<option value="">선생님선택</option>
+					<c:forEach var="telist" items="${telist }">
+						<option value="${telist.tname }" <c:if test="${telist.tname == bb.coteacher }">selected</c:if>>${telist.tname }</option>
+					</c:forEach>
+					</select>
+					<form:errors cssClass="err" path="coteacher"/>
+				
 			</td>
 		</tr>
 		<tr>
@@ -156,7 +186,7 @@
 		<tr>
 			<td align="center" bgcolor="#DCDCDC">내용</td>
 			<td>
-				<textarea name="content" rows="15" cols="50" class="form-control" placeholder="내용을 입력해주세요" id="floatingTextarea" style="resize:none;">${bb.content}</textarea>
+				<textarea name="content" rows="15" cols="50" class="form-control" placeholder="내용을 입력해주세요" id="floatingTextarea" style="resize:none;" required>${bb.content}</textarea>
 				<form:errors path="content" cssClass="err"></form:errors>			
 			</td>
 		</tr>
@@ -184,7 +214,7 @@
 		<tr>
 			<td align="center" bgcolor="#DCDCDC">비밀번호</td>
 			<td>
-				<input type="password" name="passwd" class="form-control" id="floatingPassword" placeholder="비밀번호 입력해주세요">
+				<input type="password" name="passwd" class="form-control" id="floatingPassword" placeholder="비밀번호 입력해주세요" required>
 				<form:errors path="passwd" cssClass="err"></form:errors>
 			</td>
 		</tr>

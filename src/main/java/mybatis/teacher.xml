@@ -86,4 +86,7 @@
  	<select id="Check_id" resultType="int">
  		select count(*) from accounts where id=#{id}
  	</select>
+ 	<select id="SelectTeacher" resultType="admin.model.TeacherBean">
+ 		select * from teachers order by tnum
+ 	</select>
  </mapper>

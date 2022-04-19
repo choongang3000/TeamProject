@@ -3,9 +3,12 @@ package boards.controller;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import javax.servlet.ServletContext;
 
@@ -17,8 +20,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import admin.model.CoBean;
+import admin.model.CoDao;
+import admin.model.TeacherBean;
+import admin.model.TeacherDao;
 import boards.model.BSBean;
 import boards.model.BSDao;
+import member.model.MemberBean;
 
 @Controller
 public class BSInsertController {
@@ -28,25 +36,46 @@ public class BSInsertController {
 	
 	@Inject
 	private BSDao bsdao;
+	
+	@Inject
+	private CoDao codao;
+	
+	@Inject
+	private TeacherDao tdao;
+	
 	@Autowired
 	ServletContext servletContext;
 
 	
 	@RequestMapping(value=command, method=RequestMethod.GET)
-	public String doAction() {
+	public String doAction(HttpServletRequest request, HttpSession session) {
+		MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo");
+		
+		//강의정보 가져오기
+		List<CoBean> colist = new ArrayList<CoBean>();
+		colist = codao.coursesList();
+		request.setAttribute("colist", colist);
+		
+		//선생님 정보 가져오기
+		List<TeacherBean> telist = new ArrayList<TeacherBean>();
+		telist = tdao.selectTeacher();
+		request.setAttribute("telist", telist);
+		
 		return getPage;
 	}
 	
 	@RequestMapping(value=command, method=RequestMethod.POST)
-	public ModelAndView doAction(@Valid BSBean bsbean,BindingResult result,HttpServletRequest request) {
-		
+	public ModelAndView doAction(@Valid BSBean bsbean,BindingResult result,HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		
+		MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo");
+		/* mav.addObject(loginInfo,"loginInfo"); */
 		
 		//날짜
 		Timestamp reg_date =  new Timestamp(System.currentTimeMillis());
 		bsbean.setReg_date(reg_date);
 		
-		//ip주소
+		//ip주소 => 사용안함
 		//String ip = request.getRemoteAddr();
 		//bsbean.setIp(ip);
 		/* bsbean.setIp(request.getRemoteAddr()); */

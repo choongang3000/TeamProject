@@ -63,4 +63,5 @@ public class CoDao2 {
 		int count = sqlSessionTemplate.selectOne(namespace+".GetCOSListCount",map);
 		return count;
 	}
+	
 }

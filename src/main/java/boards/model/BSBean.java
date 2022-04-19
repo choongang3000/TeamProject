@@ -15,7 +15,7 @@ public class BSBean {
 	private String email;
 	
 	@NotBlank(message = "제목을 입력해주세요.")
-	private String subject; //text
+	private String title; //text
 	
 	@NotBlank(message = "비밀번호를 입력해주세요.")
 	private	String passwd; //password
@@ -31,6 +31,25 @@ public class BSBean {
 	
 	private String rating;
 	
+	@NotBlank(message = "강의명을 선택해주세요.")
+	private String coname;
+	
+	@NotBlank(message = "선생님을 선택해주세요.")
+	private String coteacher;
+	
+	
+	public String getConame() {
+		return coname;
+	}
+	public void setConame(String coname) {
+		this.coname = coname;
+	}
+	public String getCoteacher() {
+		return coteacher;
+	}
+	public void setCoteacher(String coteacher) {
+		this.coteacher = coteacher;
+	}
 	private String image;
 	private MultipartFile upload;
 	
@@ -74,11 +93,11 @@ public class BSBean {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getSubject() {
-		return subject;
+	public String getTitle() {
+		return title;
 	}
-	public void setSubject(String subject) {
-		this.subject = subject;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getPasswd() {
 		return passwd;

@@ -177,9 +177,7 @@
 
 <section>
 	<div id="main-title">
-
-			
-				<h1>강좌 리스트</h1>
+		<h1>강좌 리스트</h1>
 		<form action="list.cos" method="GET">
 			<select name="whatColumn">
 				<option value="">선택
@@ -233,7 +231,7 @@
 					<a href="detail.cos"><button id="button1" type="button" class="btn btn-secondary btn-sm">수강신청 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/book-outline.svg" width="20" height="20"/></button></a> &nbsp;
 					<a href="list.bst"><button id="button2" type="button" class="btn btn-secondary btn-sm">강의질문 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/질문게시판.svg" width="20" height="20"/></button></a>
 				</td>
-				<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
+				<c:if test="${sessionScope.loginInfo.type eq 'admin'}">
 				<td>
 					&nbsp;<a href="coupdate.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}"><input id="b-update" type="button" value="수정"></a>&nbsp;
 					<a href="codelete.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}&whatColumn=${whatColumn}&keyword=${keyword}"><input id="b-delete" type="button" value="삭제"></a>

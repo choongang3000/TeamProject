@@ -70,12 +70,12 @@ public class BSDao {
 		cnt = sqlSessionTemplate.delete(namespace + ".DeleteArticle", num);
 		return cnt;
 	}
-	
+/*	
 	public void replyArticle(BSBean bb) {
 		sqlSessionTemplate.update(namespace+".ReplyArticle1",bb);
 		sqlSessionTemplate.insert(namespace+".ReplyArticle2",bb);
 	}
-	
+*/	
 	/*
 	public int replyArticle_1(BSBean bb) {
 		int cnt = -1;
