@@ -26,6 +26,7 @@ public class COSListController {
 	
 	private final String command = "/list.cos";
 	private String getPage = "coslist";
+	private String getPage2 = "redirect:/loginForm.mem";
 	
 	@Autowired
 	private COSDao cosdao;
@@ -105,10 +106,17 @@ public class COSListController {
 		mav.addObject("cosubject",cosubject);
 		mav.addObject("whatColumn",whatColumn); /* whatColumn이랑 keyword 들고가서 뿌려주고.. delete 버튼 누르면 가져가기 */
 		mav.addObject("keyword",keyword);
-		mav.setViewName(getPage);
-		return mav;
-	
+		
+		
+		if(session.getAttribute("loginInfo") == null) {//로그인 안했으면
+			mav.setViewName(getPage2);
+			return mav; //loginForm.mem요청
+		}
+		else {
+			mav.setViewName(getPage);
+			return mav;
+		}
+		
 	}
-
 	
 }

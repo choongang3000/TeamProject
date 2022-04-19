@@ -3,25 +3,55 @@
 <%@ include file="../common/common.jsp"%>
 <%@ include file="../user/ustop.jsp"%>
 <style>
-    	body{
+ /*  	
+      * {  기본적인 마진,패딩 없앰
+ 			
+			margin:0;
+			padding:0; 
+			text-decoration : none;  밑줄 없애기 
+			list-style : none;  불릿 없애기 
+		}
+
+	body { 
+			width:100%;
+			margin-top:30px;
+			
+	body{
+    		margin-top:30px;
     		align: center;
     		text-align: center;
     		margin: auto;
     	} 
+*/
+
+   		* {  기본적인 마진,패딩 없앰
+ 			
+			margin:0;
+			padding:0; 
+			text-decoration : none;  밑줄 없애기 
+			list-style : none;  불릿 없애기 
+		}
+
+		body { 
+			width:100%;
+			margin-top:30px;
+		}
+		
     	#container  {
     		width:65%;
 			margin:auto;
     	}
+    	
     	.count{
     		text-align : left;
-    		margin : 20px 20px;
+    		/*margin : 20px 20px;*/
     	}
     	.accordion-button{
     		background-color:#D9E5FF;
     	}
     	.accordion-collapse{
     		text-align : left;
-    		margin : 20px 20px;
+    		margin : 20px 20px; 
     	}
 </style>
 <script src="<%=request.getContextPath()%>/resources/js/jquery.js"></script>

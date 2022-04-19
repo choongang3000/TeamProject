@@ -138,7 +138,7 @@
 					<fmt:formatNumber value="${course.coprice}" pattern="#,###"/>원 &nbsp;&nbsp;&nbsp;
 				</td>
 				<td>
-					<a href="detail.cos"><button id="button1" type="button" class="btn btn-secondary btn-sm">수강신청 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/book-outline.svg" width="20" height="20"/></button></a> &nbsp;
+					<a href="detail.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }"><button id="button1" type="button" class="btn btn-secondary btn-sm">수강신청 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/book-outline.svg" width="20" height="20"/></button></a> &nbsp;
 					<a href="list.bst"><button id="button2" type="button" class="btn btn-secondary btn-sm">강의질문 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/질문게시판.svg" width="20" height="20"/></button></a>
 				</td>
 			</tr>

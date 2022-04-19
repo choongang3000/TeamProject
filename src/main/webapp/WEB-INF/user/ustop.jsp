@@ -116,8 +116,8 @@
 				</c:when>
 				<c:otherwise>
 					<div id="header-main-menu">
-						<a href="loginForm.mem" class="header-sub-menu">로그인</a> 
-						<a href="register.mem" class="header-sub-menu">회원가입</a>
+						<a href="loginForm.mem" class="header-sub-menu"><img src="<%=request.getContextPath()%>/resources/images/로그인 아이콘.png" width="80" height="80"></a>&nbsp;
+						<a href="register.mem" class="header-sub-menu"><img src="<%=request.getContextPath()%>/resources/images/회원가입 아이콘.png" width="80" height="80"></a>
 					</div>
 				</c:otherwise>
 			</c:choose>
