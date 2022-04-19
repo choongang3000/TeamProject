@@ -67,14 +67,18 @@ public class COSListController {
 		  
 		List<COSBean> list = cosdao.getCOSList(pageInfo, map);
 		List<String> subArr = cosdao.getSubject();
+		COSBean comp = list.get(0);//KJH : 수정,삭제 때 번호 하나만 넘겨야하니깐 설정해줬음
 
 		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("list",list);
+		mav.addObject("comp",comp);
 		mav.addObject("pageInfo",pageInfo);
 		mav.addObject("totalCount",totalCount);
 		mav.addObject("subArr",subArr);
 		mav.addObject("cosubject",cosubject);
+		mav.addObject("whatColumn",whatColumn); /* whatColumn이랑 keyword 들고가서 뿌려주고.. delete 버튼 누르면 가져가기 */
+		mav.addObject("keyword",keyword);
 		mav.setViewName(getPage);
 		return mav;
 	

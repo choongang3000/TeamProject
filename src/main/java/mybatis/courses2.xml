@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace = "course.model.CoBean2">
+ 
+ 	<!-- 강의목록 전체조회 -->
+ 	<select id="CoursesAll" resultType="course.model.CoBean2">
+ 		select * from courses
+ 	    <if test="whatColumn == 'coname'">
+ 			where coname like UPPER(#{keyword})
+ 		</if>
+ 		<if test="whatColumn == 'coteacher'">
+ 			where coteacher like UPPER(#{keyword})
+ 		</if>
+ 		<if test="whatColumn == 'cosubject'">
+ 			where cosubject like UPPER(#{keyword})
+ 		</if>
+ 		order by conum
+ 	</select>
+ 	<select id="CoursesAllpage" resultType="course.model.CoBean2">
+ 		select * from courses
+ 	    <if test="whatColumn == 'coname'">
+ 			where coname like UPPER(#{keyword})
+ 		</if>
+ 		<if test="whatColumn == 'coteacher'">
+ 			where coteacher like UPPER(#{keyword})
+ 		</if>
+ 		<if test="whatColumn == 'cosubject'">
+ 			where cosubject like UPPER(#{keyword})
+ 		</if>
+ 		order by conum
+ 	</select>
+ 	
+ 	<!-- 강의삽입 -->
+ 	<insert id="InsertCourses">
+ 		insert into
+ 		courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date)
+ 		values(cos_seq.nextval,UPPER(#{coname}),UPPER(#{coteacher}),#{cosubject},#{coimage},#{covideo},#{cocontent},#{coprice},#{coupload_date})
+ 	</insert>
+ 	
+ 	<!-- 강의 정보 상세보기 -->
+ 	<select id="CoursesCount" resultType="course.model.CoBean2">
+ 		select * from courses where conum=#{conum}
+ 	</select>
+ 	
+ 	<!-- 강의 수정하기 -->
+ 	<update id="UpdateCourses">
+ 		update courses set
+ 		coname=UPPER(#{coname}), coteacher=UPPER(#{coteacher}), cosubject=#{cosubject},
+ 		coimage=#{coimage}, covideo=#{covideo},
+ 		cocontent=#{cocontent}, coprice=#{coprice}, coupload_date=sysdate
+ 		where conum=#{conum}
+ 	</update>
+ 	
+ 	<!-- 강의 삭제하기 -->
+ 	<delete id="DeleteCourses">
+ 		delete courses where conum=#{conum}
+ 	</delete>
+ 	
+ 	<select id="GetCOSListCount" resultType="int">
+		select count(*) from courses
+		<if test="whatColumn == 'coname'">
+			where coname UPPER(#{keyword})
+		</if>
+		<if test="whatColumn == 'coteacher'">
+ 			where coteacher like UPPER(#{keyword})
+ 		</if>
+		<if test="whatColumn == 'cosubject'">
+			where cosubject like UPPER(#{keyword})
+		</if>
+		order by conum desc
+	</select>
+ </mapper>

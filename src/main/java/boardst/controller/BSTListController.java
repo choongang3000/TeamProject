@@ -1,5 +1,5 @@
 package boardst.controller;
-
+	
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,10 +16,10 @@ import boardst.model.BSTBean;
 import boardst.model.BSTDao;
 import member.model.MemberBean;
 import utility.Paging;
-
+	
 @Controller
 public class BSTListController {
-
+	
 	private final String command = "list.bst";
 	private String getPage = "boardst_list";
 	

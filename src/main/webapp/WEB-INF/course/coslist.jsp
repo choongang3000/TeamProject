@@ -13,6 +13,16 @@
 </c:choose> --%>
 <!-- <a href="start.jsp">시작페이지</a> <br>
 <a href="logout.jsp">로그아웃</a> -->
+
+
+<script type="text/javascript">
+
+		function insert(){
+			location.href = "coinsert.cos"; 
+		}//insert
+		
+</script>
+
 <style type="text/css">
 
 
@@ -149,7 +159,7 @@
 <body>
 	<aside>
 		<table id="category">
- 		<tr id="category-top">
+ 			<tr id="category-top">
 				<td><a href="list.cos"><font color="white"><b>전체강좌</b></font></a></td>
 			</tr>
 			<c:forEach items="${subArr }" var="course">
@@ -225,7 +235,8 @@
 				</td>
 				<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
 				<td>
-					&nbsp;<input id="b-update" type="button" value="수정">&nbsp;<input id="b-delete" type="button" value="삭제">
+					&nbsp;<a href="coupdate.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}"><input id="b-update" type="button" value="수정"></a>&nbsp;
+					<a href="codelete.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}&whatColumn=${whatColumn}&keyword=${keyword}"><input id="b-delete" type="button" value="삭제"></a>
 				</td>
 				</c:if>
 			</tr>
