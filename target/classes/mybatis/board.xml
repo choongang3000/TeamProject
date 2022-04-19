@@ -5,14 +5,20 @@
 
 <mapper namespace="board.xml">
 	<select id="GetArticleCount" resultType="int">
-		select count(*) from board
+			select count(*) from board
+		<if test="writer != null">
+			 where writer=#{writer}
+		</if>
 	</select>
 	
 	<select id="GetArticles" resultType="board.Csmodel.boardCsBean">
 		select num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content 
 		from (select rownum as rank, num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content
 		from (select num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content
-		from board 
+		from board
+		<if test="writer != null">
+			 where writer=#{writer}
+		</if>
 		order by ref desc, re_step asc )) 
 	</select>
 	
@@ -49,4 +55,5 @@
 		insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content)
 		values(board_seq.nextval,#{writer},#{email},#{subject},#{passwd},#{reg_date},#{ref},#{re_step}+1,#{re_level}+1,#{content})
 	</insert>
+	
 </mapper>
