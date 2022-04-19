@@ -21,7 +21,7 @@ function pm(){
 				    pg : 'inicis', 
 				    pay_method : 'card',
 				    merchant_uid : 'merchant_' + new Date().getTime(),
-				    name : '주문명:결제테스트' /* '주문명:결제테스트'*/,
+				    name : /* '주문명:결제테스트'*/,
 				    amount :  ${totalprice } /*상품 가격*/, 
 				    buyer_email : 'iamport@siot.do'/*구매자 이메일*/,
 				    buyer_name : '구매자이름',
@@ -126,6 +126,7 @@ function pm(){
 				});
 	};
 };
+
 /* 	
 결제수단 선택하면 결제수단 관련내용 출력되게하기
 function div_show(selectNum){

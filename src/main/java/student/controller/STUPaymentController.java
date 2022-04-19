@@ -39,18 +39,21 @@ public class STUPaymentController {
 		
 		int totalprice = 0;
 		int totalcount = 0;
+		//String coname = "";
 		
 		for(StuCartBean cart : cartArr) {
 			totalcount += 1;
 			totalprice += cart.getCoprice();
+			//coname += cart.getConame();
 		}
-
+		
 		request.setAttribute("totalcount",totalcount);
 		request.setAttribute("totalprice",totalprice);
-	
+		//request.setAttribute("coname", coname);
 		
 		return getPage;
 	}
+	
 /*
 	@RequestMapping(value=command,method=RequestMethod.POST)
 	public String doAction2(StuCartBean cartbean, HttpSession session, HttpServletRequest request, @RequestParam("totprice") int totalprice) {

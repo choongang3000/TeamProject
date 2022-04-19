@@ -185,7 +185,7 @@ public class Paging {
 			System.out.println("_pageNumber:"+_pageNumber); // null
 			_pageNumber = "1" ;
 		}
-		this.pageNumber = Integer.parseInt( _pageNumber ) ; 
+		this.pageNumber = Integer.parseInt( _pageNumber ) ;
 
 		if( _pageSize == null || _pageSize.equals("null") || _pageSize.equals("") ){
 			_pageSize = "10" ; // 한 페이지에 보여줄 레코드 갯수

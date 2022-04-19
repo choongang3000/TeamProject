@@ -121,4 +121,10 @@ private String namespace="member.model.Member";
 		return subArr;
 	}
 	
+	public COSBean getCourseByConum(int conum) {
+		COSBean course = sqlSessionTemplate.selectOne(namespace + ".GetCourseByConum", conum);
+		
+		return course;
+	}
+	
 }
