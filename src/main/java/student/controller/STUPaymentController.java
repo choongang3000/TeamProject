@@ -39,17 +39,14 @@ public class STUPaymentController {
 		
 		int totalprice = 0;
 		int totalcount = 0;
-		//String coname = "";
 		
 		for(StuCartBean cart : cartArr) {
 			totalcount += 1;
 			totalprice += cart.getCoprice();
-			//coname += cart.getConame();
 		}
 		
 		request.setAttribute("totalcount",totalcount);
 		request.setAttribute("totalprice",totalprice);
-		//request.setAttribute("coname", coname);
 		
 		return getPage;
 	}

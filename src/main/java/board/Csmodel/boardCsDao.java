@@ -2,12 +2,15 @@ package board.Csmodel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import course.model.COSBean;
+import utility.COSListPaging;
 import utility.Paging;
 
 @Component("boardDao")
@@ -18,19 +21,18 @@ public class boardCsDao {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	public int getArticleCount() {
-		int articlecount = sqlSessionTemplate.selectOne(namespace + ".GetArticleCount");
-		
+	public int getArticlesCount(Map<String, String> map) {
+		int articlecount = sqlSessionTemplate.selectOne(namespace + ".GetArticleCount",map);
 		return articlecount;
 	}
 	
-	public List<boardCsBean> getArticles(Paging pageInfo){
+	public List<boardCsBean> getArticles(Paging pageInfo, Map<String, String> map){
 		
 		RowBounds rowbounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
 		
 		List<boardCsBean> list = new ArrayList<boardCsBean>();
 		
-		list = sqlSessionTemplate.selectList(namespace + ".GetArticles", null,rowbounds);
+		list = sqlSessionTemplate.selectList(namespace + ".GetArticles",map,rowbounds);
 		
 		return list;
 	}
@@ -98,6 +100,5 @@ public class boardCsDao {
 		
 		return cnt;
 	}
-	
 	
 }

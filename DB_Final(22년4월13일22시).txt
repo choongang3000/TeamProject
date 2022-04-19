@@ -258,6 +258,12 @@ insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level
 values(boards_seq.nextval,'학생1','stu@naver.com','짱이에요','1234','2015-1-1',1,0,0,'선생님 감사해용',null,5);
 
 insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image,rating)
+values(boards_seq.nextval,'학생','stu@naver.com','학생 질문','1234','2015-1-1',1,0,0,'선생님 감사해용',null,5);
+
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image,rating)
+values(boards_seq.nextval,'학생','stu@naver.com','학생 질문3','1234','2015-1-1',1,0,0,'선생님 감사해용',null,5);
+
+insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image,rating)
 values(boards_seq.nextval,'학생2','stu2@gmail.com','감사해요','1234','2018-10-5',2,0,0,'성생님 짱이에요!',null,4);
 
 insert into boards(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,image,rating)
@@ -380,6 +386,9 @@ create sequence board_seq
 	
 insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content)
 values(board_seq.nextval,'학생2','stu@naver.com','질문있어요','1234','2022-4-10',1,0,0,'내용1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content)
+values(board_seq.nextval,'학생','stu@naver.com','학생질문','1234','2022-4-10',1,0,0,'내용1');
 
 insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content)
 values(board_seq.nextval,'학생1','stu2@gmail.com','도와주세요!','1234','2022-4-5',2,0,0,'내용2');

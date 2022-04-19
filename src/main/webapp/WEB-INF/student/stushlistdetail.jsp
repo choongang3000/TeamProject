@@ -23,7 +23,6 @@
 			<th width=5%>No.</th>
 			<th width=65%>강의명</th>
 			<th width=20%>구매가</th>
-			<th width=10%>환불요청</th>
 			<!-- <td bgcolor="#DCDCDC">환불요청</td> -->
 		</tr>
 		<c:set var="number" value="1"/>
@@ -37,7 +36,6 @@
 				<b>${od.coteacher }[${od.cosubject }]</b>&nbsp;${od.coname }
 			</td>
 			<td><fmt:formatNumber value="${od.coprice }" pattern="##,###,###"/>원</td>
-			<td><input type="button" value="환불요청"/></td>
 			<!-- <td>부분환불</td> -->
 		</tr>
 		<c:set var="totalprice" value="${totalprice + od.coprice }"/>
@@ -50,12 +48,12 @@
 			<td colspan="4" align="center" bgcolor="#DCDCDC" style="border-top: 1px solid black;">결제정보</td>
 		</tr>
 		<tr style="border-bottom:1px dotted lightgray">
-			<td height="25" colspan="2" >총 결제 개수</td>
+			<td height="25" colspan="2">총 결제 개수</td>
 			<td colspan="2">총 결제 금액</td>
 		</tr>
 		<tr style="border-bottom:1px solid black">
 			<td height="25" colspan="2">${fn:length(odArr) }개</td>
-			<td colspan="2"><fmt:formatNumber value="${totalprice }" pattern="##,###,###"/>원</td>
+			<td colspan="1"><fmt:formatNumber value="${totalprice }" pattern="##,###,###"/>원</td>
 		</tr>
 	</table>
 	<br>

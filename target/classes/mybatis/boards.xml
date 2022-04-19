@@ -13,6 +13,9 @@
 		<if test="whatColumn =='subject'">
 			where subject like #{keyword}
 		</if>
+		<if test="writer != null">
+			 where writer=#{writer}
+		</if>
 	</select>
 
 	<select id="GetArticles" resultType="boards.model.BSBean">
@@ -25,6 +28,9 @@
 		</if>
 		<if test="whatColumn =='subject'">
 			where subject like #{keyword}
+		</if>
+		<if test="writer != null">
+			 where writer=#{writer}
 		</if>
 		order by ref desc, re_step asc)
 	</select>

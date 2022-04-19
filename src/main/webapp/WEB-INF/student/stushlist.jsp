@@ -23,7 +23,6 @@
 	<th>주문강의</th>
 	<th>총금액</th>
 	<th>주문일자</th>
-	<th>환불</th>
 	<th>상세정보</th>
 </tr>
 <c:if test="${fn:length(obArr) == 0 }">
@@ -46,7 +45,6 @@
 	
 	<td><fmt:formatNumber value="${ob.obean.totprice }" pattern="#,###,###"/>원</td>
 	<td><fmt:formatDate value="${ob.obean.odate }" type="both" pattern="yyyy/MM/dd HH:mm"/></td>
-	<td><input type="button" value="환불" onClick="cancelPay()"></td> 
 	<td><a href="shlistdetail.stu?onum=${ob.obean.onum }">주문상세보기</a></td>
 </tr>
 <c:set var="number" value="${number + 1 }"/>
