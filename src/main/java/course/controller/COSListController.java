@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,18 +28,40 @@ public class COSListController {
 	
 	@Autowired
 	private COSDao cosdao;
-
+	
 	@RequestMapping(value=command,method=RequestMethod.GET)
 	public ModelAndView doAction(
 			@RequestParam(value="whatColumn",required = false) String whatColumn,
 			@RequestParam(value="keyword", required=false) String keyword,
 			@RequestParam(value="pageNumber", required=false) String pageNumber,
 			@RequestParam(value="cosubject", required=false) String cosubject,
-			HttpServletRequest request) {
-		
+			HttpServletRequest request,
+			HttpSession session) {
+			
 		Map<String, String> map=new HashMap<String, String>();
 		map.put("whatColumn", whatColumn);
-		map.put("keyword", "%"+keyword+"%");
+		if(keyword == null) {
+			if(session.getAttribute("keyword_fromdel") != null) {
+				String keyword_fromdel = (String)session.getAttribute("keyword_fromdel");
+				map.put("keyword", "%"+keyword_fromdel+"%");
+				keyword = keyword_fromdel;
+				session.removeAttribute("keyword_fromdel");
+			}
+			else {
+				map.put("keyword", "%%");
+			}
+		}
+		else {
+			if(keyword.equals("null")) {
+				map.put("keyword", "%%");
+			}
+			else if(keyword.equals("")) {
+				map.put("keyword","%%");
+			}
+			else {
+				map.put("keyword", "%"+keyword+"%");
+			}
+		}
 		
 		if(cosubject != null) {
 	         if(cosubject.equals("")) {
@@ -64,11 +87,11 @@ public class COSListController {
 		}
 		
 		COSListPaging pageInfo=new COSListPaging(pageNumber, null, totalCount, url, whatColumn, keyword);
-		  
+		
 		List<COSBean> list = cosdao.getCOSList(pageInfo, map);
 		List<String> subArr = cosdao.getSubject();
 		COSBean comp = list.get(0);//KJH : 수정,삭제 때 번호 하나만 넘겨야하니깐 설정해줬음
-
+		
 		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("list",list);
@@ -81,7 +104,7 @@ public class COSListController {
 		mav.addObject("keyword",keyword);
 		mav.setViewName(getPage);
 		return mav;
-	
+			
 	}
 
 	
