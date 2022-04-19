@@ -13,7 +13,7 @@
 </style>
 
 <!-- loginForm.mem => MemberLoginController로 이동 -->
-<form:form method="post" action="loginForm.mem" modelAttribute="loginBean">
+<form:form method="post" action="loginForm.mem" commandname="loginBean">
 	<center>
 	<table border="1" width="300" height="150px" class="table table-borderless" style="width:400px">
 		<tr>
