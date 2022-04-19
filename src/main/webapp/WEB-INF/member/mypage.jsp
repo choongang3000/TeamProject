@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
 <%@ include file="../user/ustop.jsp"%>
 
@@ -7,49 +7,54 @@
 #container {
 	width: 65%;
 	margin: auto;
-	}
-	.col-sm-5{
-		margin-top: 10px;
-		margin-bottom: 20px;
-	}
+}
+
+.col-sm-5 {
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
 </style>
 <div id="container">
-<div class="row justify-content-center">
-  <div class="col-sm-5">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">내 정보 관리</h5>
-        <p class="card-text">내 정보 관리, 수정</p>
-        <input class="btn btn-primary" type="button" value="내 정보 관리" onClick="location.href='memdetail.mem?anum=${loginInfo.anum}'">
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-5">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">내 게시물 관리</h5>
-        <p class="card-text">내 질문, 댓글 관리</p>
-        <a href="#" class="btn btn-primary">질문 게시글 관리</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-5">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">내 수강 목록</h5>
-        <p class="card-text">수강 목록</p>
-        <a href="shlist.stu" class="btn btn-primary">내 강의 목록</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-5">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">ㅇㅅㅇ</h5>
-        <p class="card-text">ㅇㅅㅇ</p>
-        <a href="#" class="btn btn-primary">ㅇㅅㅇ</a>
-      </div>
-    </div>
-  </div>
+	<div class="row justify-content-center">
+		<div class="col-sm-5">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">내 정보 관리</h5>
+					<p class="card-text">내 정보 관리, 수정</p>
+					<input class="btn btn-primary" type="button" value="내 정보 관리" onClick="location.href='memdetail.mem?anum=${loginInfo.anum}'">
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-5">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">내 게시물 관리</h5>
+					<p class="card-text">내 질문, 댓글 관리</p>
+					<div class="btn-group" role="group" aria-label="Basic example">
+						<button type="button" onClick="location.href='list.bs?aname=${loginInfo.aname}'" class="btn btn-primary">수업 질문</button>
+						<button type="button" onClick="location.href='memdetail.mem?anum=${loginInfo.anum}'" class="btn btn-primary">수강 후기</button>
+						<button type="button" onClick="location.href='list.bod?aname=${loginInfo.aname}'" class="btn btn-primary">1:1 문의</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	<div class="col-sm-5">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">내 수강 목록</h5>
+				<p class="card-text">수강 목록</p>
+				<a href="shlist.stu" class="btn btn-primary">내 강의 목록</a>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-5">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">ㅇㅅㅇ</h5>
+				<p class="card-text">ㅇㅅㅇ</p>
+				<a href="#" class="btn btn-primary">ㅇㅅㅇ</a>
+			</div>
+		</div>
+	</div>
 </div>
 </div>

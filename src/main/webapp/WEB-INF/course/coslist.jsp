@@ -202,13 +202,9 @@
 					<th align="center" width="40%"><!-- | 강의명 | --></th>
 					<th align="center"><!-- | 가격 | --></th>
 					<th align="center"><!-- 버튼 --></th>
-				<c:choose>	
-				<c:when test="${sessionScope.loginInfo != null}">
 				<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
 					<th align="right"><input id="b-insert" type="button" value="추가하기" onclick="insert()"></th>
 				</c:if>
-				</c:when>
-				</c:choose>
 			</tr>
 			<tr>
 				<td colspan="5">
@@ -237,16 +233,12 @@
 					<a href="detail.cos"><button id="button1" type="button" class="btn btn-secondary btn-sm">수강신청 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/book-outline.svg" width="20" height="20"/></button></a> &nbsp;
 					<a href="list.bst"><button id="button2" type="button" class="btn btn-secondary btn-sm">강의질문 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/질문게시판.svg" width="20" height="20"/></button></a>
 				</td>
-				<c:choose>
-				<c:when test="${sessionScope.loginInfo != null}">
 				<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
 				<td>
 					&nbsp;<a href="coupdate.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}"><input id="b-update" type="button" value="수정"></a>&nbsp;
 					<a href="codelete.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}&whatColumn=${whatColumn}&keyword=${keyword}"><input id="b-delete" type="button" value="삭제"></a>
 				</td>
 				</c:if>
-				</c:when>
-				</c:choose>
 			</tr>
 			<tr>
 				<td colspan="5">

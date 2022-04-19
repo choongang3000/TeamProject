@@ -58,7 +58,7 @@
 		<!-- <td align="center">IP</td> -->
 	</tr>
 	<c:set var="contentNum" value="${(totalCount - ((pageInfo.pageNumber-1)*pageInfo.pageSize)) }"/>
-	<c:forEach var="bd" items="${boardArr }">
+	<c:forEach var="bd" items="${boardArr}">
 	<tr>
 		<td align="center">${contentNum}</td>
 		<c:set var="contentNum" value="${contentNum -1 }"/>

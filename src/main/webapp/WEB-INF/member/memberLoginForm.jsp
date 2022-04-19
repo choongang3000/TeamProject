@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
 <%@ include file="membertop.jsp" %>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
 	a{
 		text-decoration: none;
@@ -13,7 +13,7 @@
 </style>
 
 <!-- loginForm.mem => MemberLoginController로 이동 -->
-<form:form method="post" action="loginForm.mem" commandName="loginBean">
+<form:form method="post" action="loginForm.mem" commandname="loginBean">
 	<center>
 	<table border="1" width="300" height="150px" class="table table-borderless" style="width:400px">
 		<tr>
@@ -43,4 +43,5 @@
 	</table>
 	</center>
 </form:form>
+<%@ include file="kakaologin.jsp" %>
 <%@ include file="memberbottom.jsp" %>
