@@ -72,4 +72,8 @@
 		</if>
 		order by conum desc
 	</select>
+	
+	<select id="CoursesList" resultType="course.model.CoBean2">
+		select * from courses order by conum
+	</select>
  </mapper>

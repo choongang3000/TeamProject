@@ -12,6 +12,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import admin.model.CoBean;
 import utility.Paging;
 
 @Component("myCoDao2")
@@ -62,6 +63,12 @@ public class CoDao2 {
 	public int totalCount(Map<String, String> map) {
 		int count = sqlSessionTemplate.selectOne(namespace+".GetCOSListCount",map);
 		return count;
+	}
+	
+	public List<CoBean2> coursesList(){
+		List<CoBean2> colist = new ArrayList<CoBean2>();
+		colist = sqlSessionTemplate.selectList(namespace+".CoursesList");
+		return colist;
 	}
 	
 }
