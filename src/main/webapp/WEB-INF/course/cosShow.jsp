@@ -10,6 +10,20 @@
 	}
 </script>
 
+<style>
+	* { /* 기본적인 마진,패딩 없앰*/
+		margin:0;
+		padding:0; 
+		text-decoration : none; /* 밑줄 없애기 */
+		list-style : none; /* 불릿 없애기 */
+	}
+		
+	body { 
+		width:100%;
+		margin-top:30px;
+	}
+</style>
+
 <br>
 <center>
 
@@ -21,11 +35,12 @@
 	
 	<br>
 	
-	<div> <!-- 강의영상출력 -->
+	<div id="covideo"> <!-- 강의영상출력 -->
+				<%-- poster="<%=request.getContextPath()%>/resources/images/온강 로고.png" --%>
 		<video
 				src="<%=request.getContextPath() %>/resources/images/${course.covideo}"
-				poster="<%=request.getContextPath()%>/resources/images/온강 로고.png"
-				width="800"
+				poster="<%=request.getContextPath()%>/resources/images/로고짤.gif"
+				width="500"
 				controls>
 		</video>
 	</div>

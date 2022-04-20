@@ -40,7 +40,7 @@
   <div class="card-header">
     <ul class="nav nav-pills card-header-pills">
       <li class="nav-item">
-        <a class="nav-link" id="atag" href="show.cos?conum=${cos.conum }&pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}">강의 보러가기</a>
+        <a class="nav-link" id="atag" href="tcCourseDetail.mem?conum=${cos.conum }&pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}">강의 보러가기</a>
       </li>
       <!-- 
       <li class="nav-item">
