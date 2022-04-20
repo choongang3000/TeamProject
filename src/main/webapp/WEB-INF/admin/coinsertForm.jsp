@@ -43,7 +43,14 @@
             <!-- 담당선생님 -->
             <div class="col-sm-4">
               <label for="coteacher" class="form-label">담당 선생님</label>
-              <input type="text" name="coteacher" class="form-control" required>
+              <!-- <input type="text" name="coteacher" class="form-control" required> -->
+              <select name="coteacher" class="form-control" id="floatingInput" required>
+			  <option value="">선생님선택</option>
+					<c:forEach var="telist" items="${telist }">
+						<option value="${telist.tname }">${telist.tname }</option>
+					</c:forEach>
+			  </select>
+			  <form:errors cssClass="err" path="coteacher"/>
               <div class="invalid-feedback">
               	담당 선생님 성명을 작성해주세요.
               </div>

@@ -35,4 +35,5 @@ public class SubDao2 {
 	public void deleteSubject(String subnum) {
 		sqlSessionTemplate.delete(namespace+".DeleteSubject",subnum);
 	}
+	
 }

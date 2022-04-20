@@ -112,5 +112,13 @@ public class TeacherDao {
 		
 	}
 	
+	public List<TeacherBean> selectTeacher(){
+		List<TeacherBean> teacherArr = new ArrayList<TeacherBean>();
+				
+		teacherArr = sqlSessionTemplate.selectList(namespace + ".SelectTeacher");
+		
+		return teacherArr;
+	}
+	
 	
 }

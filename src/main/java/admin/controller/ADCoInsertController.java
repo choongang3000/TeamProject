@@ -3,6 +3,7 @@ package admin.controller;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,6 +25,8 @@ import admin.model.CoBean;
 import admin.model.CoDao;
 import admin.model.SubBean;
 import admin.model.SubDao;
+import admin.model.TeacherBean;
+import admin.model.TeacherDao;
 
 @Controller
 public class ADCoInsertController {
@@ -39,12 +42,20 @@ public class ADCoInsertController {
 	@Qualifier("myCoDao")
 	private CoDao codao;
 	
+	@Inject
+	private TeacherDao tdao;
+	
 	@Autowired
 	ServletContext servletContext;
 	
 	
 	@RequestMapping(value=command, method=RequestMethod.GET)
 	public String doAction(HttpServletRequest request) {
+		
+		//선생님 정보 가져오기
+		List<TeacherBean> telist = new ArrayList<TeacherBean>();
+		telist = tdao.selectTeacher();
+		request.setAttribute("telist", telist);
 		
 		List<SubBean> sublist = subdao.subjectAll();
 		request.setAttribute("sublist", sublist);
@@ -53,8 +64,7 @@ public class ADCoInsertController {
 	}
 	
 	@RequestMapping(value=command, method=RequestMethod.POST)
-	public ModelAndView doAction(@Valid CoBean cobean, BindingResult result,
-			HttpServletRequest request) {
+	public ModelAndView doAction(@Valid CoBean cobean, BindingResult result,HttpServletRequest request) {
 
 		
 		ModelAndView mav = new ModelAndView();

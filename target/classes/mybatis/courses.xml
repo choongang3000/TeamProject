@@ -19,6 +19,7 @@
  		</if>
  		order by conum
  	</select>
+ 	
  	<select id="CoursesAllpage" resultType="admin.model.CoBean">
  		select * from courses
  	    <if test="whatColumn == 'coname'">
@@ -73,4 +74,9 @@
 		order by conum desc
 	</select>
 	
+	<select id="CoursesList" resultType="admin.model.CoBean">
+		select * from courses order by conum
+	</select>
+	
  </mapper>
+ 

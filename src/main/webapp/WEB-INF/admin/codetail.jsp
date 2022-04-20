@@ -17,15 +17,18 @@
 
 <style>
 	body{
-		width:70%;
+		width:80%;
 		margin:auto;
+		align:center;
+		text-align:center;
 	}
 	table{
 		text-align:center;
+		align:center;
 	}
 	img{
-		width:50%;
-		height:30%;
+		width:20%;
+		height:20%;
 	}
 </style>
 
@@ -33,7 +36,7 @@
 <h2>강의 정보</h2>
 
 <br>
-<table border="0" align="center" width="70%">
+<table border="0" align="center" width="80%">
 	<tr>
 		<td width="150" height="50">강의번호</td>
 		<td>${cobean.conum }</td>
@@ -47,7 +50,7 @@
 		<td>${cobean.cosubject }</td>
 	</tr>
 	<tr>
-		<td width="150" height="300">강의이미지</td>
+		<td width="150" height="150">강의이미지</td>
 		<td colspan="3">
 			<img src="<%=request.getContextPath() %>/resources/images/${cobean.coimage}">
 		</td>

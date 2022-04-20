@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,13 +26,12 @@ public class BSListController {
 	@Inject
 	private BSDao bsdao ;
 	
-	@RequestMapping(value=command)
+	@RequestMapping(value=command, method=RequestMethod.GET)
 	public String doAction(@RequestParam(value="aname", required=false) String writer,
 						@RequestParam(value="pageNumber",required = false) String pageNumber, 
 					       @RequestParam(value="whatColumn",required = false) String whatColumn,
 						   @RequestParam(value="keyword",required = false) String keyword,
-						   HttpServletRequest request,
-						   HttpSession session) {
+						   HttpServletRequest request, HttpSession session) {
 		
 		MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo");
 		
@@ -72,4 +72,5 @@ public class BSListController {
 		
 		return getPage;
 	}
+	
 }

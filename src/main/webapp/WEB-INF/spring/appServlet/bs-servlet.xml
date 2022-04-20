@@ -20,7 +20,10 @@
 		<property name="maxInMemorySize" value="10240"/>
 		<property name="defaultEncoding" value="UTF-8"/>
 	</bean>
-	
+	<!-- 이거헷갈리네... -->
 	<context:component-scan base-package="boards" />
-
+	<context:component-scan base-package="courses" />
+	<context:component-scan base-package="admin" />
+	<context:component-scan base-package="student" />
+	<context:component-scan base-package="member" />
 </beans>

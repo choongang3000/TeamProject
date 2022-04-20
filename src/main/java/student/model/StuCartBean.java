@@ -22,6 +22,7 @@ public class StuCartBean {
 		this.coimage = coimage;
 		this.coprice = coprice;
 	}
+	
 	public int getConum() {
 		return conum;
 	}

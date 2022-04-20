@@ -35,9 +35,7 @@ public class STUBuyController {
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
 	public String doAction(@RequestParam(value="totalprice", required=true) int totalprice,
-							StuCartBean cartbean,
-							HttpServletRequest request,
-							HttpSession session) {
+							StuCartBean cartbean, HttpServletRequest request, HttpSession session) {
 		
 		MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo");
 		
@@ -60,6 +58,11 @@ public class STUBuyController {
 			oddao.insertOrderDetail(odbean);
 		}
 		
+		session.removeAttribute("mycart");
+		session.removeAttribute("cartArr");
+		
+		return gotoPage;
+		
 		/* 
 		ArrayList<StuCartBean> cartArr =  (ArrayList<StuCartBean>)session.getAttribute("cartArr");
 		
@@ -76,13 +79,7 @@ public class STUBuyController {
 		
 		request.setAttribute("cartArr", cartArr);
 		*/
-		
-		session.removeAttribute("mycart");
-	    session.removeAttribute("cartArr");
-	    
-		return gotoPage;
 	}
-
 	
 }
 

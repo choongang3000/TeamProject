@@ -48,8 +48,7 @@ public class MainCotroller {
          @RequestParam(value="keyword", required=false) String keyword2,
          @RequestParam(value="pageNumber", required=false) String pageNumber1,
          @RequestParam(value="pageNumber", required=false) String pageNumber2,
-         HttpServletRequest request,
-         HttpSession session) {
+         HttpServletRequest request, HttpSession session) {
       
 	  MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo"); 
 	   

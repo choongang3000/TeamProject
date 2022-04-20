@@ -108,7 +108,7 @@
 			<select name="whatColumn" class="form-control">
 				<option value="all">전체글
 				<option value="writer">작성자
-				<option value="subject">제목
+				<option value="title">제목
 			</select>
 
 		<input type="text" name="keyword" class="form-control">
@@ -120,15 +120,16 @@
 <table class="table table-hover" border="0" align="center">
 
 	<tr height="30"> <!-- 글쓰기 -->
-		<td colspan="5" align="right">
-			<input type="button" value="글쓰기" onClick="insert()" class="btn btn-secondary btn-sm"  >
+		<td colspan="6" align="right">
+			<input type="button" value="글쓰기" onClick="insert()" class="btn btn-secondary btn-sm">
 		</td>
 	<tr>
 	
 	<tr height="40" bgcolor="#DCDCDC"> <!-- 목록제목 -->
 		<td align="center">번호</td>
 		<td align="center">제목</td>
-		<td align="center">작성자</td>
+		<td align="center">강의명</td>
+		<td align="center">작성자</td> <!-- 추후 삭제예정 -->
 		<td align="center">작성일</td>
 		<td align="center">조회수</td>
 	</tr>
@@ -147,21 +148,26 @@
 				<img src="<%=request.getContextPath() %>/resources/images/re.gif">
 			</c:if>
 			
-			<a href="detail.bs?num=${list.num }&pageNumber=${pageInfo.pageNumber}">${list.subject }</a> <!-- 글 상세보기 -->
+			<a href="detail.bs?num=${list.num }&pageNumber=${pageInfo.pageNumber}">${list.title }</a> <!-- 글제목(글 상세보기) -->
 			
 			<c:if test="${list.readcount >= 10 }"> <!-- 조회수 10명 이상일 경우 HOT이미지 -->
 				<img src="<%=request.getContextPath() %>/resources/images/hot.gif">
 			</c:if>	
 		</td>
+		<td align="center">${list.coname}</td> <!-- 강의명 -->
 		<td align="center">${list.writer}</td> <!-- 작성자 -->
 		<td align="center"><fmt:formatDate value="${list.reg_date}" type="both" pattern="yy/MM/dd HH:mm"/></td> <!-- 날짜 -->
 		<td align="center">${list.readcount}</td> <!-- 조회수 -->
 	</tr>	
 	</c:forEach>
-
 	</table>
+	<%-- <c:forEach var="colist" items="colist">
+		<td align="center">${colist.coname }</td><!-- 과목명 -->
+	</c:forEach> --%>
 <br>
- <!-- 하단페이지 -->
+
+<!-- 하단페이지 -->
 ${pageInfo.pagingHtml }
 </center>
-<%@ include file="../admin/adbottom.jsp" %> 
+
+<%@ include file="../admin/adbottom.jsp" %>

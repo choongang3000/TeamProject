@@ -44,13 +44,13 @@ public class STUPaymentController {
 			totalcount += 1;
 			totalprice += cart.getCoprice();
 		}
-
+		
 		request.setAttribute("totalcount",totalcount);
 		request.setAttribute("totalprice",totalprice);
-	
 		
 		return getPage;
 	}
+	
 /*
 	@RequestMapping(value=command,method=RequestMethod.POST)
 	public String doAction2(StuCartBean cartbean, HttpSession session, HttpServletRequest request, @RequestParam("totprice") int totalprice) {

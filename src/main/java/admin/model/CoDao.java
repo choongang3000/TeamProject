@@ -63,7 +63,10 @@ public class CoDao {
 		return count;
 	}
 	
-	
-	
+	public List<CoBean> coursesList(){
+		List<CoBean> colist = new ArrayList<CoBean>();
+		colist = sqlSessionTemplate.selectList(namespace+".CoursesList");
+		return colist;
+	}
 	
 }

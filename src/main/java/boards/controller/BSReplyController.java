@@ -1,3 +1,4 @@
+/* 사용안함
 package boards.controller;
 
 import java.sql.Timestamp;
@@ -85,3 +86,4 @@ public class BSReplyController {
 		//return "redirect:/list.bs";
 	}
 }
+*/

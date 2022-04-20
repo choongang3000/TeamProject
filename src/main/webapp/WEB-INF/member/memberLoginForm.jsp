@@ -49,6 +49,10 @@
 			<td>
 				<div class="d-grid gap-1 col-12 mx-auto">
 				  <button class="btn btn-primary" type="submit">로그인</button>
+				  <!-- 카카오 로그인 시작 -->
+				  <a href="https://kauth.kakao.com/oauth/authorize?client_id=ab47803f90790112e45956f811b8e370&redirect_uri=http://localhost:8080/ex/kakao.mem&response_type=code">
+				  	<img height="40px" src="<%=request.getContextPath() %>/resources/images/icon/kakao_login_medium_wide.png"/>
+				  </a>
 				</div>
 			</td>
 		</tr>

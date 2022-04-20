@@ -10,8 +10,8 @@
 		<if test="whatColumn == 'writer'">
 			where writer like #{keyword}
 		</if>
-		<if test="whatColumn =='subject'">
-			where subject like #{keyword}
+		<if test="whatColumn =='title'">
+			where title like #{keyword}
 		</if>
 		<if test="writer != null">
 			 where writer=#{writer}
@@ -19,15 +19,15 @@
 	</select>
 
 	<select id="GetArticles" resultType="boards.model.BSBean">
-		select num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, image, rating 
-		from (select rownum as rank, num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, image, rating 
-		from (select num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, image, rating 
+		select num, writer, email, title, passwd, reg_date, readcount, ref, re_step, re_level, content, image, rating, coname, coteacher 
+		from (select rownum as rank, num, writer, email, title, passwd, reg_date, readcount, ref, re_step, re_level, content, image, rating, coname, coteacher 
+		from (select num, writer, email, title, passwd, reg_date, readcount, ref, re_step, re_level, content, image, rating, coname, coteacher 
 		from boards)
 		<if test="whatColumn == 'writer'">
 			where writer like #{keyword}
 		</if>
-		<if test="whatColumn =='subject'">
-			where subject like #{keyword}
+		<if test="whatColumn =='title'">
+			where title like #{keyword}
 		</if>
 		<if test="writer != null">
 			 where writer=#{writer}
@@ -36,8 +36,8 @@
 	</select>
 	
 	<insert id="InsertBS">
- 		insert into boards(num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, image, rating)
- 		values(boards_seq.nextval,#{writer},#{email},#{subject},#{passwd},#{reg_date},#{readcount},boards_seq.currval,0,0,#{content},#{image},#{rating})
+ 		insert into boards(num, writer, email, title, passwd, reg_date, readcount, ref, re_step, re_level, content, image, rating, coname, coteacher)
+ 		values(boards_seq.nextval,#{writer},#{email},#{title},#{passwd},#{reg_date},#{readcount},boards_seq.currval,0,0,#{content},#{image},#{rating},#{coname},#{coteacher})
  	</insert>
 	<!-- 
 	<insert id="InsertArticle">
@@ -57,17 +57,17 @@
 		select passwd from boards where num=#{num}
 	</select>
 	
-	<update id="UpdateArticle">
-		update boards set writer=#{writer}, email=#{email}, subject=#{subject}, content=#{content}, rating=#{rating} where num=#{num}
+	<update id="UpdateArticle"><!-- num, writer, email, title, passwd, reg_date, readcount, ref, re_step, re_level, content, image, rating, coname, coteacher -->
+		update boards set writer=#{writer}, email=#{email}, title=#{title}, content=#{content}, image=#{image}, rating=#{rating}, coname=#{coname}, coteacher=#{coteacher} where num=#{num}
 	</update>
 	
 	<delete id="DeleteArticle">
 		delete boards where num=#{num}
 	</delete>
-	
+	<!-- 
 	<update id="ReplyArticle1">
 		update boards set re_step = re_step+1 where ref=#{ref} and re_step>#{re_step}
-		<!-- update boards set re_step = re_step+1 where ref = #{ref} and re_step > #{re_step} -->
+		update boards set re_step = re_step+1 where ref = #{ref} and re_step > #{re_step}
 	</update>
 
 	<insert id="ReplyArticle2">
@@ -75,4 +75,5 @@
 		values(boards_seq.nextval,#{writer},#{email},#{subject},#{passwd},#{reg_date},#{ref},#{re_step}+1,#{re_level}+1,#{content},#{image})
 	</insert>
 	
+ --> 
  </mapper>
