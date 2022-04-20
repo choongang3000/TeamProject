@@ -31,20 +31,23 @@ public class STUCartListController {
 		ArrayList<StuCartBean> cartArr = new ArrayList<StuCartBean>();
 		
 		int totalprice = 0;
-		for(int conum: mycart) {
+		if(mycart != null) {
+			for(int conum: mycart) {
+				
+				CoBean cobean = scdao.getCourseByConum(conum);
+				
+				StuCartBean cart = new StuCartBean(conum, cobean.getConame(), cobean.getCoteacher(), cobean.getCosubject(), cobean.getCoimage() , cobean.getCoprice()); 
+				
+				totalprice += cobean.getCoprice();
+				
+				cartArr.add(cart);
+			}
 			
-			CoBean cobean = scdao.getCourseByConum(conum);
-			
-			StuCartBean cart = new StuCartBean(conum, cobean.getConame(), cobean.getCoteacher(), cobean.getCosubject(), cobean.getCoimage() , cobean.getCoprice()); 
-			
-			totalprice += cobean.getCoprice();
-			
-			cartArr.add(cart);
+			request.setAttribute("totalprice", totalprice);
+			request.setAttribute("cartArr", cartArr);
+			session.setAttribute("cartArr", cartArr);
 		}
 		
-		request.setAttribute("totalprice", totalprice);
-		request.setAttribute("cartArr", cartArr);
-		session.setAttribute("cartArr", cartArr);
 		return getPage;
 	}
 }

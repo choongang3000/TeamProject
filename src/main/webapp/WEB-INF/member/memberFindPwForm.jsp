@@ -10,9 +10,22 @@
 	a:hover{
 		text-decoration: underline;
 	}
+	.wrapper {
+	  display: grid;
+	  place-items: center;
+	  min-height: 100vh;
+	}
+	
+	.content {
+	  font-size: 2rem;
+	  padding: 3rem;
+	  border-radius: 1rem;
+	}
 </style>
 
 <!-- loginForm.mem => MemberLoginController로 이동 -->
+<div class="wrapper">
+<div class="content">
 <form:form method="post" action="findpw.mem" commandName="loginBean">
 	<center>
 	<table border="1" width="300" height="150px" class="table table-borderless" style="width:400px">
@@ -43,4 +56,6 @@
 	</table>
 	</center>
 </form:form>
+</div>
+</div>
 <%@ include file="memberbottom.jsp" %>

@@ -57,8 +57,8 @@
 		<td colspan="3">
 			<br>
 			<video
-				src="<%=request.getContextPath() %>/resources/${cobean.covideo}"
-				poster="<%=request.getContextPath()%>/resources/${cobean.covideo}"
+				src="<%=request.getContextPath() %>/resources/images/${cobean.covideo}"
+				poster="<%=request.getContextPath()%>/resources/images/${cobean.covideo}"
 				width="500"
 				controls autoplay>
 			</video>

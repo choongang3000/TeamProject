@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
 <%@ include file="membertop.jsp" %>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
 	a{
 		text-decoration: none;
@@ -10,11 +10,23 @@
 	a:hover{
 		text-decoration: underline;
 	}
+	.wrapper {
+	  display: grid;
+	  place-items: center;
+	  min-height: 100vh;
+	}
+	
+	.content {
+	  font-size: 2rem;
+	  padding: 3rem;
+	  border-radius: 1rem;
+	}
 </style>
 
 <!-- loginForm.mem => MemberLoginController로 이동 -->
-<form:form method="post" action="loginForm.mem" commandName="loginBean">
-	<center>
+<div class="wrapper">
+<div class="content">
+<form:form method="post" action="loginForm.mem" commandname="loginBean">
 	<table border="1" width="300" height="150px" class="table table-borderless" style="width:400px">
 		<tr>
 			<td><h2>On_인터넷 강의 로그인</h2></td>
@@ -41,6 +53,8 @@
 			</td>
 		</tr>
 	</table>
-	</center>
 </form:form>
+<%@ include file="kakaologin.jsp" %>
+</div>
+</div>
 <%@ include file="memberbottom.jsp" %>
