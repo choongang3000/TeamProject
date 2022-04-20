@@ -24,11 +24,11 @@ public class STUPaymentController {
 	private String getPage = "stupaymentForm";
 	private String gotoPage = "redirect:/buycos.stu";
 	
-	  @Autowired 
-	  private STUOrderDao orderdao;
+	  //@Autowired 
+	  //private STUOrderDao orderdao;
 	 
-	  @Autowired 
-	  private STUOrderDeDao oddao;
+	  //@Autowired 
+	  //private STUOrderDeDao oddao;
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
 	public String doAction1(HttpSession session,HttpServletRequest request) {

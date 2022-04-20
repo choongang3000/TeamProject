@@ -19,7 +19,7 @@ import member.model.MemberDao;
 public class MemberFindIdController {
 	
 	private final String command = "findid.mem";
-	private String getPage = "memberFindIdForm";
+	private String getPage = "memberFindIdForm2";
 	
 	@Autowired
 	private MemberDao mdao;

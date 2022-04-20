@@ -24,15 +24,12 @@ public class STUOrderDao {
 	}
 
 	public int getMaxOnum(String aid) {
-		
 		int maxOnum = sqlSessionTemplate.selectOne(namespace+".GetMaxOnum",aid);
-		
 		return maxOnum;
 	}
 
 	public List<STUOrderBean> orderList(String aid) {
 		List<STUOrderBean> list=sqlSessionTemplate.selectList(namespace+".OrderList",aid);
-		
 		return list;
 	}
 	
