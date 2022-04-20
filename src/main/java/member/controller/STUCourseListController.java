@@ -28,38 +28,10 @@ public class STUCourseListController {
 	
 	@RequestMapping(command)
 	public String doAction(HttpSession session,
-							HttpServletRequest request,
-							@RequestParam(value="pageNumber", required=false) String pageNumber,
-							@RequestParam(value="whatColumn", required=false) String whatColumn,
-							@RequestParam(value="keyword", required=false) String keyword) {
+							HttpServletRequest request) {
+		
 		MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo");
 		String aid = loginInfo.getId();
-		
-		Map<String,String> map = new HashMap<String, String>();
-		if(whatColumn == null) {
-			map.put("whatColumn", null);
-		}
-		else {
-			if(whatColumn.equals("") || keyword.equals("null")) {
-				map.put("whatColumn", null);
-			}
-			else {
-				map.put("whatColumn", whatColumn);							
-			}
-		}
-		
-		if(keyword == null) {
-			map.put("keyword", null);
-		}
-		else {
-			if(keyword.equals("") || keyword.equals("null")) {
-				map.put("keyword", null);
-			}
-			else {				
-				map.put("keyword", "%"+keyword+"%");			
-			}
-		}
-		
 		
 		List<Integer> onumArr = mdao.getAllConum(aid);
 		
@@ -71,7 +43,6 @@ public class STUCourseListController {
 				cosArr.add(cobean);
 			}
 		}
-		
 		
 		request.setAttribute("cosArr", cosArr);
 		

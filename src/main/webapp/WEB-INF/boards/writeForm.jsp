@@ -134,7 +134,7 @@
 		<tr>
 			<td align="center" width="100" bgcolor="#DCDCDC">이름</td>
 			<td>
-				<input type="text" name="writer" class="form-control" id="floatingInput" value="${loginInfo.aname }" readonly>
+				<input type="text" name="writer" class="form-control" id="floatingInput" value="${loginInfo.id }" readonly>
 				<form:errors cssClass="err" path="writer"/>
 			</td>
 		</tr>

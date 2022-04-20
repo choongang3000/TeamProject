@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp" %>
-
-<%@ include file="../admin/adtop.jsp" %>
+<%@ include file="../user/ustop.jsp" %>
 <!-- list.jsp<br> -->
 
 <script>
@@ -169,5 +168,5 @@
 <!-- 하단페이지 -->
 ${pageInfo.pagingHtml }
 </center>
-
-<%@ include file="../admin/adbottom.jsp" %>
+<br><br>
+<%@ include file="../user/usbottom.jsp" %>

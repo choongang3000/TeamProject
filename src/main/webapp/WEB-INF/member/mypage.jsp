@@ -32,7 +32,7 @@
 					<p class="card-text">내 질문, 댓글 관리</p>
 					<div class="btn-group" role="group" aria-label="Basic example">
 						<button type="button" onClick="location.href='list.bst'" class="btn btn-primary">수업 질문</button>
-						<button type="button" onClick="location.href='list.bs?aname=${loginInfo.aname}'" class="btn btn-primary">수강 후기</button>
+						<button type="button" onClick="location.href='list.bs'" class="btn btn-primary">수강 후기</button>
 						<button type="button" onClick="location.href='list.bod?aname=${loginInfo.aname}'" class="btn btn-primary">1:1 문의</button>
 					</div>
 				</div>
