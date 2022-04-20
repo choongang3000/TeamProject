@@ -1,5 +1,6 @@
 package member.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,30 +16,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 import course.model.COSBean;
 import member.model.MemberBean;
 import member.model.MemberDao;
-import utility.Paging;
 
 @Controller
-public class TCCourseListController {
-	
-	private final String command = "tcCourseList.mem";
-	private String getPage = "tcCourseList";
+public class STUCourseListController {
+
+	private final String command = "stucolist.mem";
+	private String getPage = "stuCourseList";
 	
 	@Autowired
 	private MemberDao mdao;
 	
 	@RequestMapping(command)
-	public String doAction(@RequestParam(value="pageNumber",required = false) String pageNumber,
-					       @RequestParam(value="whatColumn",required = false) String whatColumn,
-						   @RequestParam(value="keyword",required = false) String keyword,
-						   HttpSession session, HttpServletRequest request) {
-		
-		String url = request.getContextPath() +"/"+command;
-		
-		MemberBean teacher = (MemberBean)session.getAttribute("loginInfo");
+	public String doAction(HttpSession session,
+							HttpServletRequest request,
+							@RequestParam(value="pageNumber", required=false) String pageNumber,
+							@RequestParam(value="whatColumn", required=false) String whatColumn,
+							@RequestParam(value="keyword", required=false) String keyword) {
+		MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo");
+		String aid = loginInfo.getId();
 		
 		Map<String,String> map = new HashMap<String, String>();
-		map.put("coteacher", teacher.getAname());
-		
 		if(whatColumn == null) {
 			map.put("whatColumn", null);
 		}
@@ -64,24 +61,20 @@ public class TCCourseListController {
 		}
 		
 		
-		int totalcount = mdao.getCourseCount(map);
-		System.out.println("ÀüÃ¼ °¹¼ö : " + totalcount);
+		List<Integer> onumArr = mdao.getAllConum(aid);
 		
-		Paging pageInfo = new Paging(pageNumber, "5", totalcount, url, whatColumn, keyword);
+		ArrayList<COSBean> cosArr = new ArrayList<COSBean>();
+		if(onumArr.size() != 0) {
+			for(Integer conum : onumArr) {
+				COSBean cobean = mdao.getCourseByConum(conum);
+				
+				cosArr.add(cobean);
+			}
+		}
 		
-		List<COSBean> cosArr = mdao.getAllCourse(map, pageInfo);
 		
-		List<String> subArr = mdao.getSubject();
-		
-		request.setAttribute("subArr", subArr);
 		request.setAttribute("cosArr", cosArr);
-		request.setAttribute("pageInfo", pageInfo);
-		request.setAttribute("pageNumber", pageNumber);
-		request.setAttribute("whatColumn",whatColumn);
-		request.setAttribute("keyword",keyword);
 		
 		return getPage;
-		
 	}
-	
 }

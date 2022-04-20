@@ -127,4 +127,10 @@ private String namespace="member.model.Member";
 		return course;
 	}
 	
+	public List<Integer> getAllConum(String aid){
+		List<Integer> onumArr = sqlSessionTemplate.selectList(namespace + ".GetAllConum",aid);
+		
+		return onumArr;
+	}
+	
 }
