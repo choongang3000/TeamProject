@@ -24,7 +24,7 @@ public class STUBuyResultController {
 	@Autowired 
 	private STUOrderDao orderdao;
 	 
-	@Autowired 
+	@Autowired
 	private STUOrderDeDao oddao;
 	
 	@RequestMapping(command)

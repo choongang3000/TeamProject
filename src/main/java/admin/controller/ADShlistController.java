@@ -54,7 +54,7 @@ public class ADShlistController {
 		int totalcount = odao.getOrderCount(map);
 		String url = request.getContextPath() + "/" + command;
 		
-		Paging pageInfo = new Paging(pageNumber, "2", totalcount, url, null, keyword);
+		Paging pageInfo = new Paging(pageNumber, "10", totalcount, url, null, keyword);
 		
 		List<STUOrderBean> list = odao.orderAll(map,pageInfo);
 		
