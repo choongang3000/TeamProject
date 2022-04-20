@@ -25,6 +25,11 @@
 				<th width=170>작성일</th>
 				<th width=100>상태</th>
 			</tr>
+			<c:if test="${fn:length(boardArr) == 0 }">
+				<tr>
+					<td colspan=6 style="text-align: center; vertical-align: middle;" height=100px>작성한 질문이 없습니다</td>
+				</tr>
+			</c:if>
 			<c:set var="contentNum" value="${(totalCount - ((pageInfo.pageNumber-1)*pageInfo.pageSize)) }"/>
 			<c:forEach var="bd" items="${boardArr}">
 			<tr>

@@ -47,7 +47,7 @@
  				<div class="mb-3">
  					<div id="emailHelp" class="form-text">탈퇴할 아이디와 비밀번호를 입력해 주세요.</div>
     				<label for="id" class="form-label">아이디</label>
-    				<input type="text" class="form-control" id="id" name="id" aria-describedby="emailHelp" required>
+    				<input type="text" class="form-control" id="id" name="id" aria-describedby="emailHelp" value="${loginInfo.id }" readonly required>
   				</div>
   				<div class="mb-3">
    					<label for="pw" class="form-label">비밀번호</label>

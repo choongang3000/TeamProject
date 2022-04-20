@@ -21,4 +21,5 @@ start.jsp <br>
 <br><br><br>
 [기능구현=완성되면 삭제예정]<br>
 <a href="loginForm.mem">로그인</a><br>
+<a href="show.cos?conum=1">강의 보기</a><br>
 </center>

@@ -21,6 +21,7 @@
 		</if>
 	-->
 	</select>
+	
 	<select id="GetAllBoard" resultType="boardst.model.BSTBean">
 		select * from board_st
 		<if test="type == 'teacher'">

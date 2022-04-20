@@ -36,17 +36,17 @@
     		</td>
     	</tr>
     	</c:forEach>
-    	<c:forEach var="od" items="${odArr }">
-    	<c:set var="totalcount" value="0"/>
     	<c:set var="totalprice" value="0"/>
+    	<c:set var="totalcount" value="0"/>
+    	<c:forEach var="od" items="${odArr }">
     	<c:set var="totalprice" value="${totalprice + od.coprice }"/>
+    	</c:forEach>
     	<tr>
     		<td bgcolor="#DCDCDC">총 개수</td>
     		<td>${fn:length(odArr) }개</td>
     		<td bgcolor="#DCDCDC">총 금액</td>
     		<td colspan="2"><fmt:formatNumber value="${totalprice }" pattern="##,###,###"/>원</td>
     	</tr>
-    	</c:forEach>
     </table>
     <br><br>
     <input type="button" value="뒤로가기" onClick="history.back()">

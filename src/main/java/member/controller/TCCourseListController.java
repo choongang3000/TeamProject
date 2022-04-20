@@ -39,7 +39,6 @@ public class TCCourseListController {
 		Map<String,String> map = new HashMap<String, String>();
 		map.put("coteacher", teacher.getAname());
 		
-		System.out.println("keyword >>" + keyword);
 		if(whatColumn == null) {
 			map.put("whatColumn", null);
 		}

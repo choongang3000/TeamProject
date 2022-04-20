@@ -54,7 +54,7 @@ public class MemberLoginController {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			out.print("<script>alert('해당 아이디가 존재하지 않습니다.');</script>");
+			out.print("<script>alert('아이디가 존재하지 않습니다');</script>");
 			out.flush();
 			return getPage;
 		}//if
@@ -64,7 +64,7 @@ public class MemberLoginController {
 			if(mbean.getPw().equals(bean.getPw())) {
 				session.setAttribute("loginInfo", mbean);
 				String destination = (String)session.getAttribute("destination");
-				return "redirect:/home.us"; // 여기 수정 destination으로
+				return "redirect:/home.us"; // �뿬湲� �닔�젙 destination�쑝濡�
 			}
 			else {
 				try {
@@ -88,7 +88,7 @@ public class MemberLoginController {
         HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
         System.out.println("login Controller : " + userInfo);
         
-//      클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
+//      �겢�씪�씠�뼵�듃�쓽 �씠硫붿씪�씠 議댁옱�븷 �븣 �꽭�뀡�뿉 �빐�떦 �씠硫붿씪怨� �넗�겙 �벑濡�
         if (userInfo.get("email") != null) {
             session.setAttribute("userId", userInfo.get("email"));
             session.setAttribute("userName", userInfo.get("nickname"));

@@ -26,6 +26,8 @@ import course.model.CoDao2;
 import course.model.SubBean2;
 import course.model.SubDao2;
 
+
+
 @Controller
 public class ADCoInsertController2 {
 	private final String command = "coinsert.cos";
@@ -53,7 +55,10 @@ public class ADCoInsertController2 {
 	}
 	
 	@RequestMapping(value=command, method=RequestMethod.POST)
-	public ModelAndView doAction(@Valid CoBean2 cobean, BindingResult result, HttpServletRequest request) {
+	public ModelAndView doAction(
+			@Valid CoBean2 cobean, BindingResult result,
+			HttpServletRequest request) {
+
 		
 		ModelAndView mav = new ModelAndView();
 		

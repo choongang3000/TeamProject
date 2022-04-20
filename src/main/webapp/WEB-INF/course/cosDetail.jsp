@@ -328,7 +328,7 @@
 			</div>
 			<div class="course-box-detail-price">
 				<!-- 가격 -->
-				<span class="course-box-detail-price-figure">${bean.coprice}</span>
+				<span class="course-box-detail-price-figure"><fmt:formatNumber value="${bean.coprice}" pattern="###,###"/></span>
 				<span>원</span>
 			</div>
 			<div class="course-box-detail-allPrice">
@@ -337,7 +337,7 @@
 				</span>
 			</div>
 			<!-- 버튼 시작 -->
-			<button type="button" class="buy-btn" onclick="#">결제하기</button>
+			<button type="button" class="buy-btn" onclick="location.href='payment.stu'">결제하기</button>
 			<button type="button" class="cart-btn" onclick="location.href='addcart.stu?conum=${bean.conum}'"><img src="<%=request.getContextPath() %>/resources/images/icon/카트_large.png" /></button>
 			<button type="button" class="cart-btn" onclick="list()"><img src="<%=request.getContextPath() %>/resources/images/icon/목록.png" /></button>
 			<!-- 버튼 끝 -->

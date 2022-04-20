@@ -54,7 +54,7 @@
     	<c:forEach var="list" items="${colist }">
     	<tr>
     		<td>${list.conum }</td>
-    		<td><a href="codetail.ad?conum=${list.conum }">${list.coname }</a></td>
+    		<td><a href="codetail.ad?conum=${list.conum }&pageNumber=${pageInfo.pageNumber}">${list.coname }</a></td>
     		<td>${list.coteacher }</td>
     		<td>${list.cosubject }</td>
     		<td>
@@ -77,5 +77,5 @@
     	</tr>
     	</c:forEach>
     </table>
-   
+${pageInfo.pagingHtml }
 <%@ include file="../admin/adbottom.jsp" %> 

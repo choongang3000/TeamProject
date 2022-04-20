@@ -1,6 +1,8 @@
 package boards.controller;
 
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import boards.model.BSBean;
 import boards.model.BSDao;
+import member.model.MemberBean;
 
 @Controller
 public class BSDetailController {
@@ -25,7 +28,10 @@ public class BSDetailController {
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
 	public ModelAndView doAction(@RequestParam(value="num", required=false) String num,
-			@RequestParam(value="pageNumber", required=false) String pageNumber) {
+			@RequestParam(value="pageNumber", required=false) String pageNumber,
+			HttpSession session) {
+		
+		MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo");
 		
 		bsdao.addReadCount(num);
 		
@@ -39,7 +45,9 @@ public class BSDetailController {
 		mav.addObject("bb",bsbean);
 		mav.addObject("pageNumber",pageNumber);
 		//mav.addObject("cobean",cobean);
+		mav.addObject("loginInfo", loginInfo);
 		mav.setViewName(getPage);
+		
 		return mav;
 		
 	}

@@ -345,8 +345,7 @@ insert into courses(conum,coname,coteacher,cosubject,coimage,covideo,cocontent,c
 values(cos_seq.nextval, '비전공자를 위한 자바 프로그래밍 입문', '제시', 'JAVA', '강사1-작은이미지.png', 'video.jsp', '초등학생도 듣는 자바 프로그래밍 입문 과정! 주저말고 일단 들어와~', 90000, '2022-04-06');
 
 
-
---주문 테이블
+--주문 테이블(주문목록)
 drop sequence ord_seq;
 create sequence ord_seq 
 start with 1 
@@ -356,10 +355,10 @@ nocache ;
 DROP TABLE orders CASCADE CONSTRAINTS;
 
   create table orders(
-  onum number primary key,
-  aid varchar2(10) references accounts(id) on delete set null,
-  totprice number not null,
-  orderdate date default sysdate
+  onum number primary key,--주문번호
+  aid varchar2(50) references accounts(id) on delete set null, --주문자id
+  totprice number not null, --주문전체금액
+  odate date default sysdate  --주문날짜
 );
 
 
@@ -375,12 +374,12 @@ nocache ;
 
 drop table cosord_details purge ;
 create table cosord_details(
-  odnum number primary key,
-  onum number references orders(onum) on delete cascade,
-  conum number references courses(conum) on delete set null
+  odnum number primary key, --상세주문번호
+  aid varchar2(50),
+  onum number references orders(onum) on delete cascade, --주문목록의 주문번호
+  conum number references courses(conum) on delete set null, --강의번호
+  oddate date default sysdate --주문테이블의 주문날짜와 같음
 ); 
-
-
 
 -- 1:1 질문 게시판(권준)
 drop sequence bst_seq;
@@ -499,7 +498,7 @@ drop table boardt cascade constraints;
 
 create table boardt(-- subject 마다 선택해서 검색하기/정답확인 이미지를 누르면 이벤트 발생
 	num number not null primary key, -- 번호
-	subject varchar2(30) references subjects(subname) on delete cascade, -- 과목 / 과목별로 조회할거임.
+	subject varchar2(30) not null, -- 과목 / 과목별로 조회할거임.references subjects(subname) on delete cascade
 	examfile varchar2(100) not null, -- 문제 이미지 파일
 	answer varchar2(30) not null, -- 답
 	passwd varchar2(12) not null, -- 비밀번호

@@ -82,6 +82,10 @@
  		select * from courses where conum=#{conum}
  	</select>
  	
+ 	<select id="GetAllConum" resultType="int">
+ 		select distinct conum from cosord_details where aid=#{aid}
+ 	</select>
+ 	
 </mapper>
 <!-- member.xml -->
 

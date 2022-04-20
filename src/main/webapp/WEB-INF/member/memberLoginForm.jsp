@@ -10,11 +10,23 @@
 	a:hover{
 		text-decoration: underline;
 	}
+	.wrapper {
+	  display: grid;
+	  place-items: center;
+	  min-height: 100vh;
+	}
+	
+	.content {
+	  font-size: 2rem;
+	  padding: 3rem;
+	  border-radius: 1rem;
+	}
 </style>
 
 <!-- loginForm.mem => MemberLoginController로 이동 -->
+<div class="wrapper">
+<div class="content">
 <form:form method="post" action="loginForm.mem" commandname="loginBean">
-	<center>
 	<table border="1" width="300" height="150px" class="table table-borderless" style="width:400px">
 		<tr>
 			<td><h2>On_인터넷 강의 로그인</h2></td>
@@ -39,12 +51,12 @@
 				  <button class="btn btn-primary" type="submit">로그인</button>
 				  <!-- 카카오 로그인 시작 -->
 				  <a href="https://kauth.kakao.com/oauth/authorize?client_id=ab47803f90790112e45956f811b8e370&redirect_uri=http://localhost:8080/ex/kakao.mem&response_type=code">
-				  	<img height="40px" src="<%=request.getContextPath() %>/resources/images/icon/kakao_login_medium_wide.png"/>
+				  	<img src="<%=request.getContextPath() %>/resources/images/icon/kakao_login_medium_wide.png"/>
 				  </a>
 				</div>
 			</td>
 		</tr>
 	</table>
-	</center>
 </form:form>
+</div>
 <%@ include file="memberbottom.jsp" %>

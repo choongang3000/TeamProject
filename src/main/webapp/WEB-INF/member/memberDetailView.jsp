@@ -12,7 +12,7 @@ body {
 <link href="form-validation.css" rel="stylesheet">
 </head>
 
-<body class="bg-light">
+<body>
 	<main>
 		<div class="row g-5">
 			<div class="d-block mx-auto mb-6">
@@ -97,14 +97,16 @@ body {
 						</div>
 						
 						<div class="col-12"></div>
-						
+						<br>
 						<div class="d-grid gap-2 col-6 mx-auto">
-  							<button class="btn btn-primary" type="button" onClick="history.back()">뒤로가기</button>
-  							<button class="btn btn-primary" type="button" onClick="location.href='update.mem?anum=${loginInfo.anum}'">내 정보 관리</button>
+  							<button class="btn btn-secondary" type="button" onClick="history.back()">뒤로가기</button>
+  							<button class="btn btn-primary" type="button" onClick="location.href='update.mem?anum=${loginInfo.anum}'">내 정보 수정</button>
 						</div>
 					</div>
 			</div>
 		</div>
 	</main>
+	<br>
+	<br>
 
 <%@ include file="../user/usbottom.jsp"%>

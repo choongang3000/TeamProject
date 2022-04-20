@@ -10,26 +10,40 @@
 	</c:otherwise>
 </c:choose>
 <style>
-    	body{
-    		align: center;
-    		text-align: center;
-    		margin: auto;
-    	} 
-    	#container  {
+
+		* { /* 기본적인 마진,패딩 없앰*/
+			margin:0;
+			padding:0; 
+			text-decoration : none; /* 밑줄 없애기 */
+			list-style : none; /* 불릿 없애기 */
+			/*position : absolute;*/
+		}
+		
+		body { 
+				margin-top:30px;
+		}
+
+
+	   	#container  {
     		width:65%;
 			margin:auto;
     	}
+    	
     	.count{
     		text-align : left;
-    		margin : 20px 20px;
+    	/*	margin : 20px 20px;	*/
+    		margin : auto;
     	}
     	.accordion-button{
     		background-color:#D9E5FF;
     	}
     	.accordion-collapse{
     		text-align : left;
-    		margin : 20px 20px;
+	   	/*	margin : 20px 20px; */
+    		margin : auto;
     	}
+    	
+    	
 </style>
 <script src="<%=request.getContextPath()%>/resources/js/jquery.js"></script>
 <script>  

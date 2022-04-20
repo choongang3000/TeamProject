@@ -60,9 +60,9 @@
 		<td colspan="3">
 			<br>
 			<video
-				src="<%=request.getContextPath() %>/resources/${cobean.covideo}"
-				poster="<%=request.getContextPath()%>/resources/${cobean.covideo}"
-				width="500"
+				src="<%=request.getContextPath() %>/resources/images/${cobean.covideo}"
+				poster="<%=request.getContextPath()%>/resources/images/로고짤.gif"
+				width="500" height="282"
 				controls autoplay>
 			</video>
 			<br>
