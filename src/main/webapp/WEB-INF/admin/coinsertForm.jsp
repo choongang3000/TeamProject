@@ -44,7 +44,7 @@
             <div class="col-sm-4">
               <label for="coteacher" class="form-label">담당 선생님</label>
               <!-- <input type="text" name="coteacher" class="form-control" required> -->
-              <select name="coteacher" class="form-control" id="floatingInput" required>
+              <select name="coteacher" class="form-select" id="floatingInput" required>
 			  <option value="">선생님선택</option>
 					<c:forEach var="telist" items="${telist }">
 						<option value="${telist.tname }">${telist.tname }</option>

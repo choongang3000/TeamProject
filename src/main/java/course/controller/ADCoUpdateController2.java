@@ -3,6 +3,7 @@ package course.controller;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import admin.model.TeacherBean;
+import admin.model.TeacherDao;
 import course.model.COSBean;
 import course.model.CoBean2;
 import course.model.CoDao2;
@@ -44,10 +47,18 @@ public class ADCoUpdateController2 {
 	private SubDao2 subdao;
 	
 	@Autowired
+	private TeacherDao tdao;
+	
+	@Autowired
 	ServletContext servletContext;
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
 	public String doAction(@RequestParam(value="conum", required=true) String conum,Model model) {
+		//선생님 정보 가져오기
+		List<TeacherBean> telist = new ArrayList<TeacherBean>();
+		telist = tdao.selectTeacher();
+		model.addAttribute("telist",telist);
+		
 		List<SubBean2> sublist = subdao.subjectAll();
 		CoBean2 cobean = codao.coursesCount(conum);
 		model.addAttribute("cobean",cobean);
