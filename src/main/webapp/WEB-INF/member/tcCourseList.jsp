@@ -22,7 +22,7 @@
 <center>
 <nav class="navbar navbar-light bg-light" style="width: 75%">
 	<div class="container-fluid">
-		<a class="navbar-brand">내 강의 목록</a>
+		<a class="navbar-brand"><b>내 강의 목록</b></a>
 		<form action="tcCourseList.mem" method="get" class="d-flex">
 			<select class="form-select form-select-sm" name="whatColumn">
 				<option value="">과목 선택</option>

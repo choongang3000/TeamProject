@@ -50,22 +50,18 @@ public class BSListController {
 		
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");
-
+		
 		int totalCount = bsdao.getArticleCount(map);
 		
 		String url ;
-		if(writer != null) {
-			url = request.getContextPath()+command+"?writer="+writer;
-		}
-		else {
-			url = request.getContextPath()+command;
-		}
+		url = request.getContextPath()+command;
 		
 		Paging pageInfo = new Paging(pageNumber,null,totalCount,url,whatColumn,keyword);
 		
 		List<BSBean> list = bsdao.getArticles(map,pageInfo);
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("writer",writer);
+		request.setAttribute("loginInfo", loginInfo);
 		request.setAttribute("totalCount",totalCount);
 		request.setAttribute("pageInfo",pageInfo);
 		request.setAttribute("list",list);

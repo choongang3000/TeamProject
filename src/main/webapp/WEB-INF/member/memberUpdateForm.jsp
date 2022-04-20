@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
-<%@ include file="../fix/ad_top.jsp"%>
+<%@ include file="../user/ustop.jsp"%>
 <script src="<%=request.getContextPath()%>/resources/js/jquery.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script> 
@@ -87,15 +87,15 @@ body {
 <link href="form-validation.css" rel="stylesheet">
 </head>
 
-<body class="bg-light">
+<body>
 	<main>
 		<div class="py-5 text-center">
-			<h2>학생 정보 수정</h2>
+			<h2>내 정보 수정</h2>
 		</div>
 
 		<div class="row g-5">
 			<div class="d-block mx-auto mb-6">
-				<h4 class="mb-3">학생 정보 ${loginInfo.anum}</h4>
+				<h4 class="mb-3">내 정보</h4>
 				<form:form class="needs-validation" action="update.mem" method="post" commandName="mbean">
 					<div class="row g-3">
 
@@ -204,23 +204,16 @@ body {
 								<input type="text" class="form-control" name="addr_last" placeholder="나머지 주소 작성" value="${fn:split(mbean.addr,'|')[2] }">
 							</div>
 						</div>
-
+						<div style="height: 20px;"></div>
 						<div class="d-grid gap-2 col-6 mx-auto">
   							<button class="btn btn-primary" type="submit">수정하기</button>
-  							<button class="btn btn-primary" type="button" onClick="location.href='delete.mem?anum=${loginInfo.anum}'">회원 탈퇴</button>
+  							<button class="btn btn-outline-danger" type="button" onClick="location.href='delete.mem?anum=${loginInfo.anum}'">회원 탈퇴</button>
 						</div>
 					</div>
 				</form:form>
 			</div>
 		</div>
 	</main>
+	<br><br>
 
-	<footer class="my-5 pt-5 text-muted text-center text-small">
-		<p class="mb-1">&copy; 2017–2021 Company Name</p>
-		<ul class="list-inline">
-			<li class="list-inline-item"><a href="#">Privacy</a></li>
-			<li class="list-inline-item"><a href="#">Terms</a></li>
-			<li class="list-inline-item"><a href="#">Support</a></li>
-		</ul>
-	</footer>
-	<%@ include file="memberbottom.jsp"%>
+	<%@ include file="../user/usbottom.jsp"%>

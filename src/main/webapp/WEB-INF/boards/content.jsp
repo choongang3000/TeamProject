@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp" %>
 
-<%@ include file="../admin/adtop.jsp" %>
+<%@ include file="../user/ustop.jsp" %>
    <!--  content.jsp<br> -->
 <style type="text/css">
 	body{
@@ -12,11 +12,7 @@
 		margin:auto;
 		width:800px;
 	}
-	img{
-		width:300px;
-	}
 	.star-rating {
-	  /* border:solid 1px #ccc; */
 	  display:flex;
 	  flex-direction: row-reverse;
 	  font-size:1.5em;
@@ -159,7 +155,7 @@
 	<tr height="300" style="border-top: solid black 1px">
 		<td align="center" bgcolor="#DCDCDC"> 
 			글내용
-		</td>	
+		</td>
 		<td colspan="3" align="center">
 			${bb.content } <!-- 글내용 -->
 		</td>
@@ -167,8 +163,10 @@
 	<tr align="center" height="50" style="border-top: solid black 1px">
 		<td colspan="4">
 		<br>
+			<c:if test="${loginInfo.id == bb.writer}">
 			<input class="btn btn-secondary btn-sm" type="submit" value="글수정" onClick="location.href='update.bs?num=${bb.num}&pageNumber=${pageNumber}'">
 			<input class="btn btn-secondary btn-sm" type="button" value="글삭제" onClick="location.href='delete.bs?num=${bb.num}&pageNumber=${pageNumber}'">
+			</c:if>
 			<input class="btn btn-secondary btn-sm" type="button" value="글목록" onClick="location.href='list.bs?pageNumber=${pageNumber}'">
 			<%-- <c:if test="">
 			<input class="btn btn-secondary btn-sm" type="button" value="답글쓰기" onClick="location.href='reply.bs?ref=${bb.ref}&re_step=${bb.re_step}&re_level=${bb.re_level}&pageNumber=${pageNumber}'">
@@ -176,4 +174,5 @@
 		</td>
 	</tr>
 </table>
-<%@ include file="../admin/adbottom.jsp" %>
+<br>
+<%@ include file="../user/usbottom.jsp" %>

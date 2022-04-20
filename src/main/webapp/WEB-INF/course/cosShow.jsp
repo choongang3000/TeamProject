@@ -24,9 +24,9 @@
 	<div> <!-- 강의영상출력 -->
 		<video
 				src="<%=request.getContextPath() %>/resources/images/${course.covideo}"
-				poster="<%=request.getContextPath()%>/resources/images/${course.covideo}"
+				poster="<%=request.getContextPath()%>/resources/images/온강 로고.png"
 				width="800"
-				controls autoplay>
+				controls>
 		</video>
 	</div>
 	
