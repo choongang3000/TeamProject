@@ -328,7 +328,7 @@
 			</div>
 			<div class="course-box-detail-price">
 				<!-- 가격 -->
-				<span class="course-box-detail-price-figure">${bean.coprice}</span>
+				<span class="course-box-detail-price-figure"><fmt:formatNumber value="${bean.coprice}" pattern="###,###"/></span>
 				<span>원</span>
 			</div>
 			<div class="course-box-detail-allPrice">
