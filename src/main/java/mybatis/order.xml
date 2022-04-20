@@ -19,6 +19,17 @@
 	</select>
 	
 	<select id="OrderAll" resultType="student.model.STUOrderBean">
-		select * from orders order by onum desc
+		select * from orders 
+		<if test="keyword != null">
+			where aid like #{keyword}
+		</if>
+		order by onum desc
+	</select>
+	
+	<select id="GetOrderCount" resultType="int">
+		select count(*) from orders
+		<if test="keyword != null">
+			where aid like #{keyword}
+		</if>
 	</select>
 </mapper>

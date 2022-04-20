@@ -155,7 +155,7 @@
 	<tr height="300" style="border-top: solid black 1px">
 		<td align="center" bgcolor="#DCDCDC"> 
 			글내용
-		</td>	
+		</td>
 		<td colspan="3" align="center">
 			${bb.content } <!-- 글내용 -->
 		</td>

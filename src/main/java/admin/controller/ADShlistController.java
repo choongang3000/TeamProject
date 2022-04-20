@@ -1,7 +1,9 @@
 package admin.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,38 +20,49 @@ import student.model.STUOrderBindBean;
 import student.model.STUOrderDao;
 import student.model.STUOrderDeBean;
 import student.model.STUOrderDeDao;
+import utility.Paging;
 
 @Controller
 public class ADShlistController {
 	
 	private final String command = "shlist.ad";
 	private String getPage = "adshlist";
-	private String gotoPage = "redirect:/adshlist";
 	
 //	@Autowired(required=true)
 	@Autowired
 	private STUOrderDao odao;
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
-	public String doAction(HttpServletRequest request) {
+	public String doAction(HttpServletRequest request,
+							@RequestParam(value="keyword", required=false) String keyword,
+							@RequestParam(value="pageNumber", required=false) String pageNumber) {
 		
-		List<STUOrderBean> list = new ArrayList<STUOrderBean>();
-		list = odao.orderAll();
+		Map<String,String> map = new HashMap<String,String>();
+		if(keyword == null) {
+			map.put("keyword", null);
+		}
+		else {
+			if(keyword.equals("") || keyword.equals("null")) {
+				map.put("keyword", null);
+			}
+			else {
+				map.put("keyword", "%"+keyword+"%");
+			}
+		}
 		
+		
+		int totalcount = odao.getOrderCount(map);
+		String url = request.getContextPath() + "/" + command;
+		
+		Paging pageInfo = new Paging(pageNumber, "2", totalcount, url, null, keyword);
+		
+		List<STUOrderBean> list = odao.orderAll(map,pageInfo);
+		
+		request.setAttribute("totalcount", totalcount);
+		request.setAttribute("pageInfo", pageInfo);
 		request.setAttribute("list", list);
+		
 		return getPage;
 	}
-	
-	
-	 @RequestMapping(value=command,method=RequestMethod.POST)
-	 public String doAction(@RequestParam(value="aid", required=true) String aidpost, HttpServletRequest request) {
-
-			List<STUOrderBean> list = new ArrayList<STUOrderBean>();
-			list = odao.orderList(aidpost);
-			
-			request.setAttribute("list", list);
-			
-			return getPage;
-	 }
 
 }

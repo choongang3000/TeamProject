@@ -17,32 +17,42 @@
 <table border="0" align="center">
 <tr height="100">
 	<td colspan="6">
-		<form action="shlist.ad" method="post">
+		<form action="shlist.ad" method="get">
 			조회할 회원 아이디 입력:
-			<input type="text" name="aid" size="20">
+			<input type="text" name="keyword" size="20">
 			<input type="submit" value="검색"> 
 		</form>
     </td>
 </tr>
 
 <tr height="50">
-	<td>주문번호</td>
-	<td>아이디</td>
-	<td>주문일자</td>
-	<td>총금액</td>
-	<td>상세정보</td>
+	<th>NO.</th>
+	<th>주문번호</th>
+	<th>아이디</th>
+	<th>주문일자</th>
+	<th>총금액</th>
+	<th>상세정보</th>
 </tr>
+<c:if test="${fn:length(list) == 0 }">
+<tr>
+	<th colspan=6>주문내역이 존재하지 않습니다</th>
+</tr>
+</c:if>
+<c:set var="totalcount" value="${totalcount - ((pageInfo.pageNumber-1) * pageInfo.pageSize) }"/>
 <c:forEach var="list" items="${list }">
 <tr height="30">
+	<td>${totalcount }</td>
 	<td>${list.onum}</td>
 	<td>${list.aid }</td>
 	<td>${list.odate }</td>
 	<td><fmt:formatNumber value="${list.totprice }" pattern="#,###,###"/></td>
 	<td><a href="shlistdetail.ad?onum=${list.onum }">상세정보</a></td>
 </tr>
+<c:set var="totalcount" value="${totalcount-1 }"/>
 </c:forEach>
 </table>
-
+<br>
+${pageInfo.pagingHtml }
 </center>
-
+<br>
 <%@ include file="../admin/adbottom.jsp" %>
