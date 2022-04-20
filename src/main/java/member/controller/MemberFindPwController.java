@@ -19,7 +19,7 @@ import member.model.MemberDao;
 public class MemberFindPwController {
 	
 	private final String command = "findpw.mem";
-	private String getPage = "memberFindPwForm";
+	private String getPage = "memberFindPwForm2";
 	
 	@Autowired
 	private MemberDao mdao;

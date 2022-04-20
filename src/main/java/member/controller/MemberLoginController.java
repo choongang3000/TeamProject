@@ -23,7 +23,7 @@ import member.model.MemberDao;
 public class MemberLoginController {
 
 	private final String command = "loginForm.mem";
-	private final String getPage = "memberLoginForm";
+	private final String getPage = "memberLoginForm2";
 	private final String gotoPage = "redirect:/home.us";
 	// /WEB-INF/member/memberLoginForm.jsp
 

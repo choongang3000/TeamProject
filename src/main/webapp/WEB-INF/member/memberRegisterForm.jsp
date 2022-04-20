@@ -140,7 +140,7 @@
 
 <style>
 	body{
-		width:60%;
+		width:50%;
 		margin:auto;
 	}
 </style>
@@ -164,7 +164,7 @@
               <label for="id" class="form-label">아이디*</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
-                <input type="text" name="id" class="form-control" value="${membean.id }" required>
+                <input type="text" name="id" class="form-control" value="${membean.id }">
               </div>
             </div>
             
@@ -223,7 +223,7 @@
               </div>
             </div>
             
-            <div class="col-1">
+            <div class="col-2">
             </div>
             
             <div class="col-6">
