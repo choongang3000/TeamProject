@@ -33,6 +33,7 @@ public class BTListController {
 			//@RequestParam(value="keyword",required=false) String keyword,
 			//@RequestParam Map map, Model model,
 			@RequestParam(value="pageNumber",required=false) String pageNumber,
+			@RequestParam(value="subject",required=false) String subject,
 			HttpServletRequest request,
 			BTBean btbean,BindingResult result){
 			
@@ -42,6 +43,18 @@ public class BTListController {
 			//null 또는 "" 공백이 넘어오는 것은 전체조회로 설정 필요
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("subject",btbean.getSubject());
+			
+			if(subject != null) {
+				if(subject.equals("")) {
+					map.put("subject", null);
+				}
+				else {
+					map.put("subject", subject);
+				}
+			}
+			else {
+				map.put("subject", subject);
+			}
 			
 			int totalCount = btdao.getTotalCount(map);
 			
@@ -70,6 +83,7 @@ public class BTListController {
 			mav.addObject("pageInfo", pageInfo);
 			mav.addObject("Subjects", sub);
 			mav.addObject("Answer", answer);
+			mav.addObject("subject", subject);
 			
 			mav.setViewName(getPage); 
 			

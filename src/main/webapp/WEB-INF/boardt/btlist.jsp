@@ -131,12 +131,17 @@
 		if(suball == false){ //클릭하면 false
 	      $("input[id=subchk]").removeAttr("checked");//전체 선택을 클릭하면 과목별 체크를 풀어라
 		}
-		else{ //클릭하면 true
-		  $('input:checkbox[id="subchk"]').attr("checked", true);
+		else{
+		  $('input:checkbox[id="subchk"]').attr("checked", true);//true이면 subchk를 전체 체크해라
 		}
 	   }
 	
-
+	function subElse(elsesubck){
+	    var elseck1 = elsesubck.checked; //subElse를 체크한 결과를 elseck1에 담아라. true
+	    if(elseck1 == false){ //true가 아니라 false라면(전체선택말고 과목별로 선택을 했다면)
+	       $("input[name=subjectall]").removeAttr("checked");//input타입의 name이 subjectall인 것의 특정 속성(체크한 것)을 제거해라
+	      }
+	    }
 
 </script>
 
@@ -144,14 +149,13 @@
 
 <body>
 <center>
-<%-- 	<br>
+	<%-- <br>
 	<form id="myArea" action="list.bt">
 		<table id="allselect" width="700" border="1" align="center" style="background-color:#EAEAEA">
 			<tr height="80">
 				<td align="right">과목</td>
 				<!-- <div class="form-check form-check-inline"> -->
 				<td align="center"><!-- 칼럼에는 subject이 있음 -->
-					<!-- <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> -->
 					<input type="checkbox" value="${i }" name="subjectall" onClick="subAll(this)" checked>전체
 					<c:forEach var="i" items="${Subjects }"> <!-- items sub가져와서.. i변수에 넣고.. jstl로 접근...-->
 					<c:if test="${i != 'ETC'}"><!-- 참,거짓 판별할 때 EL안에다가 써줘야함 -->
@@ -169,11 +173,11 @@
 			</tr>
 		</table>
 	</form>
-	<br><br>
-	 --%>
+	<br><br> --%>
+	 
 	<br>
-	<form id="myArea" action="list.bt">
-		<table id="allselect" width="700" border="1" align="center" style="background-color:#F6F6F6">
+	<form id="myArea" action="list.bt?subject=${subject }&pageNumber=${pageInfo.pageNumber}">
+		<table id="allselect" width="700" align="center" style="background-color:#F6F6F6">
 			<tr height="80" border="1">
 				<td align="center">
 					<div class="form-check form-check-inline">
@@ -200,9 +204,12 @@
 					<label class="btn btn-outline-success" for="success-outlined">검색</label>
 				</td>
 			</tr>
+			<tr height="30px">
+				<td colspan="2"></td>
+			</tr>
 		</table>
 	</form>
-	<br><br>		
+	<br><br>	
 	
 	<!-- 아래 div 확인용 - 확인 다하면 지우기 -->
 	<div id='result'>
