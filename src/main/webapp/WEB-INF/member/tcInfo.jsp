@@ -197,14 +197,14 @@
             
             <hr class="my-4">
 			<center>
-			  <button class="btn btn-primary" type="button" onClick="history.back()" style="width:40%">마이페이지로 돌아가기</button>
+			  <button type="button" class="btn btn-primary" onClick="history.back()" style="width:40%"> 마이페이지로 돌아가기 </button>
 			</center>
 		</div>
         </form>
       </div>
     </div>
   </main>
-  
+  <!-- 
   <footer class="my-5 pt-5 text-muted text-center text-small">
     <p class="mb-1">&copy; 2017–2021 Company Name</p>
     <ul class="list-inline">
@@ -213,4 +213,5 @@
       <li class="list-inline-item"><a href="#">Support</a></li>
     </ul>
   </footer>
+   -->
 <%@ include file="../user/usbottom.jsp" %>
