@@ -28,8 +28,13 @@
     	height: 32px;
     	width: 40px;
     }
-
 	
+		
+	#button1{ /* 검색 버튼 색상 설정 */
+    	border : 1px solid #35BCAE;
+	   	background-color:#35BCAE;
+    }
+
 </style>
 <script src="<%= request.getContextPath()%>/resources/js/jquery.js"></script>
 <script type="text/javascript">
@@ -139,7 +144,7 @@
 
 <body>
 <center>
-	<br>
+<%-- 	<br>
 	<form id="myArea" action="list.bt">
 		<table id="allselect" width="700" border="1" align="center" style="background-color:#EAEAEA">
 			<tr height="80">
@@ -150,10 +155,10 @@
 					<input type="checkbox" value="${i }" name="subjectall" onClick="subAll(this)" checked>전체
 					<c:forEach var="i" items="${Subjects }"> <!-- items sub가져와서.. i변수에 넣고.. jstl로 접근...-->
 					<c:if test="${i != 'ETC'}"><!-- 참,거짓 판별할 때 EL안에다가 써줘야함 -->
-					<input type="checkbox" value="${i }"  id="subchk" name="subject" onClick="subElse(this)" checked>${i } &nbsp
+					<input type="checkbox" value="${i }"  id="subchk" name="subject" onClick="subElse(this)" checked>${i } &nbsp;
 					</c:if>
 					</c:forEach>
-					<input type="checkbox" value="ETC"  id="subchk" name="subject" onClick="subElse(this)" checked>IT종합 &nbsp
+					<input type="checkbox" value="ETC"  id="subchk" name="subject" onClick="subElse(this)" checked>IT종합 &nbsp;
 				</td>
 			</tr>
 			<tr>
@@ -165,6 +170,39 @@
 		</table>
 	</form>
 	<br><br>
+	 --%>
+	<br>
+	<form id="myArea" action="list.bt">
+		<table id="allselect" width="700" border="1" align="center" style="background-color:#F6F6F6">
+			<tr height="80" border="1">
+				<td align="center">
+					<div class="form-check form-check-inline">
+					  <input class="form-check-input" type="checkbox" value="${i }" name="subjectall" onClick="subAll(this)" checked>
+					  <label class="form-check-label" for="inlineCheckbox1">전체</label>
+					</div>
+					<c:forEach var="i" items="${Subjects }">
+					<c:if test="${i != 'ETC'}">
+					<div class="form-check form-check-inline">
+					  <input class="form-check-input" type="checkbox" value="${i }" id="subchk" name="subject" onClick="subElse(this)" checked>
+					  <label class="form-check-label" for="inlineCheckbox2">${i }</label>
+					</div>
+					</c:if>
+					</c:forEach>
+					<div class="form-check form-check-inline">
+					  <input class="form-check-input" type="checkbox" value="ETC" id="subchk" name="subject" onClick="subElse(this)" checked>
+					  <label class="form-check-label" for="inlineCheckbox3">IT종합&nbsp;</label>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked><!-- onClick="allselect(this)" -->
+					<label class="btn btn-outline-success" for="success-outlined">검색</label>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<br><br>		
 	
 	<!-- 아래 div 확인용 - 확인 다하면 지우기 -->
 	<div id='result'>
