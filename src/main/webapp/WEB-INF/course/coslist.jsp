@@ -247,11 +247,6 @@
 				</td>
 				</c:if>
 			</tr>
-			<tr>
-				<td colspan="5">
-					<hr>
-				</td>
-			</tr>
 			</c:forEach>
 		</table>
 		${pageInfo.pagingHtml }
@@ -260,7 +255,6 @@
 
 	
 <div id=foot>
-<hr>
 <br><br>	
 <%@ include file="../user/usbottom.jsp"%>
 </div>

@@ -145,7 +145,6 @@
       </div>
     </div>
     <div align="center">${pageInfo.pagingHtml}</div>
-    <hr>
 </div>
 ${t_image }
 
