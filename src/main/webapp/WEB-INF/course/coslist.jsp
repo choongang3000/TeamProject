@@ -154,6 +154,15 @@
       			height: 32px;
       			width: 80px;
       	}
+      	
+      	#searchbutton{
+      			border-radius : 3px;
+      			border : 1px solid #365E43;
+      			background-color: #365E43;
+      			color: white;
+      			height: 32px;
+      			width: 40px;
+      	}
 </style>
 
 <body>
@@ -191,7 +200,7 @@
 			</select>
 			<input type="hidden" name="cosubject" value="${cosubject }">
 			<input type="text" name="keyword">
-			<input type="submit" value="검색">
+			<input type="submit" value="검색" id="searchbutton">
 		</form>
 		<table width="920">
 		
