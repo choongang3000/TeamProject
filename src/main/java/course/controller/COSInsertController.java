@@ -31,8 +31,8 @@ public class COSInsertController {
 	private final String command = "insert.cos";
 	private String getPage = "cosInsertForm";
 	private String gotoPage="redirect:/list.cos";
-	//@Inject
-	//private TeacherDao tdao;
+	@Inject
+	private TeacherDao tdao;
 	
 	@Autowired
 	private COSDao cosdao;
@@ -42,12 +42,12 @@ public class COSInsertController {
 	
 	@RequestMapping(value=command, method = RequestMethod.GET)
 	public String doAction(HttpSession session,HttpServletRequest request) {
-		/*
+		
 		//선생님 정보 가져오기
 		List<TeacherBean> telist = new ArrayList<TeacherBean>();
 		telist = tdao.selectTeacher();
-		request.setAttribute("telist", telist);
-		*/
+		request.setAttribute("telist", telist);	
+		
 		System.out.println("loginInfo:"+session.getAttribute("loginInfo"));
 		
 		if(session.getAttribute("loginInfo") == null) {

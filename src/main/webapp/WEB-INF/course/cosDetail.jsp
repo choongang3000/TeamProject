@@ -19,96 +19,77 @@
 	height: auto;
 	display: flex;
 }
-
 .course-box-info {
 	margin-bottom: 40px;
 }
-
 .swiper-container {
 	width: 600px;
 	height: auto;
 }
-
 .swiper-container img {
 	width: 580px;
 	height: auto;
 	padding: 10px;
 	margin: 0 auto;
 }
-
 .course-info-desciption {
 	padding-left: 25px;
 	float: left;
 	font-size: 14px;
 	font-weight: 500;
 }
-
 .course-box-detail {
 	width: 600px;
 	height: auto;
 	padding: 10px 10px;
 	margin: auto auto;
 }
-
 .course-box-detail div {
 	line-height: 36px;
 }
-
 .course-box-detail-company-color {
 	color: #1E1E1E;
 	font-size: 34px;
 }
-
 .course-box-detail-company>a {
 	text-decoration: none;
 }
-
 .course-box-detail-company i {
 	align-content: center;
 }
-
 .course-box-detail-price {
 	margin-top: 10px;
 }
-
 .course-box-detail-name>span {
 	font-size: 24px;
 }
-
 .course-box-detail-price-figure {
 	font-size: 27px;
 	font-weight: 800;
 }
-
 .course-btm-e1e1e1 {
 	padding: 7px 0px;
 	border-bottom: 1px solid #E1E1E1;
 }
-
 .course-box-detail-soldCount-figure {
 	font-size: 14px;
 }
-
 .course-box-detail-postInfo-title {
 	color: #777777;
 	font-size: 14px;
 	margin-right: 15px;
 }
-
 .course-box-detail-postInfo-content {
 	font-size: 14px;
 }
-
 .course-box-detail-realInfo-title {
 	color: #777777;
 	font-size: 14px;
 	margin-right: 15px;
 }
-
 .course-box-detail-realInfo-content {
 	font-size: 14px;
 }
-
 .course-box-detail-realInfo-popover {
 	color: black;
 	font-size: 20px;
@@ -117,24 +98,20 @@
 	margin-right: 70px;
 	cursor: pointer;
 }
-
 #realInfo-box {
 	background-color: #F7F7F7;
 	width: 100%;
 	height: auto;
 	text-align: center;
 }
-
 .course-box-detail-allPrice {
 	height: 80px;
 	margin-top: 30px;
 }
-
 .course-box-detail-allPrice-title {
 	font-size: 15px;
 	font-weight: 700;
 }
-
 .course-box-detail-allPrice-figure {
 	font-size: 28px;
 	color: red;
@@ -143,7 +120,6 @@
 	font-style: italic;
 	margin-right: 70px;
 }
-
 .buy-btn {
 	width: 60%;
 	height: 60px;
@@ -160,7 +136,6 @@
 	text-align: center;
 	vertical-align: middle;
 }
-
 .cart-btn {
 	margin: 0 auto;
 	width: 10%;
@@ -168,7 +143,6 @@
 	border: 0px;
 	background-color: white;
 }
-
 .fav-btn {
 	width: 10%;
 	height: 60px;
@@ -178,12 +152,10 @@
 	border-radius: 6px;
 	vertical-align: middle;
 }
-
 .wrap-detail-info {
 	position: relative;
 	padding-top: 0px;
 }
-
 .tab-detail-info {
 	max-width: 1230px;
 	height: 80px;
@@ -191,7 +163,6 @@
 	top: 0px;
 	bottom: auto;
 }
-
 .tab {
 	text-decoration: none;
 	list-style: none;
@@ -200,7 +171,6 @@
 	padding: 0px;
 	background-color: white;
 }
-
 .tab>li {
 	width: 25%;
 	height: 80px;
@@ -209,24 +179,20 @@
 	font-size: 20px;
 	border-bottom: 4px solid #f2f2f2;
 }
-
 .tab>li>a {
 	font-weight: 500;
 	color: #9a9a9e;
 	text-decoration: none;
 }
-
 #detail-img-text-box {
 	height: auto;
 	margin: 150px 0px;
 	text-align: center;
 }
-
 #detail-review-box {
 	min-height: 360px;
 	border-bottom: 1px solid #A4A4A8;
 }
-
 .detail-review-header {
 	margin-top: 140px;
 	height: 54px;
@@ -235,12 +201,10 @@
 	font-weight: 500;
 	font-size: 26px;
 }
-
 #detail-qna-box {
 	min-height: 360px;
 	border-bottom: 1px solid #A4A4A8;
 }
-
 .detail-qna-header {
 	margin-top: 140px;
 	height: 54px;
@@ -249,12 +213,10 @@
 	font-weight: 500;
 	font-size: 26px;
 }
-
 #detail-purchaseInfo-box {
 	min-height: 360px;
 	border-bottom: 1px solid #A4A4A8;
 }
-
 .detail-purchaseInfo-header {
 	margin-top: 140px;
 	height: 54px;
@@ -263,7 +225,6 @@
 	font-weight: 500;
 	font-size: 26px;
 }
-
 #addressInfo-box {
 	background-color: #F7F7F7;
 	width: 100%;
@@ -273,15 +234,12 @@
 	margin-bottom: 100px;
 	line-height: 3;
 }
-
 .product-insert-table {
 	height: 200px;
 }
-
 .product-insert-table>tr {
 	height: 30px;
 }
-
 .rank-font {
 	color: blue;
 	font-size: 12px;
@@ -289,7 +247,6 @@
 	width: 3%;
 	height: 3%;
 }
-
 .detail-sticky-go-to-top-btn-box {
 	width: 20px;
 	height: 20px;
@@ -297,12 +254,10 @@
 	float: right;
 	top: 95%;
 }
-
 .detail-sticky-go-to-top-btn-img {
 	width: 100%;
 	height: 100%;
 }
-
 </style>
 
 <div class="course-detail">
@@ -328,7 +283,7 @@
 			</div>
 			<div class="course-box-detail-price">
 				<!-- 가격 -->
-				<span class="course-box-detail-price-figure"><fmt:formatNumber value="${bean.coprice}" pattern="###,###"/></span>
+				<span class="course-box-detail-price-figure">${bean.coprice}</span>
 				<span>원</span>
 			</div>
 			<div class="course-box-detail-allPrice">
@@ -337,7 +292,7 @@
 				</span>
 			</div>
 			<!-- 버튼 시작 -->
-			<button type="button" class="buy-btn" onclick="location.href='payment.stu'">결제하기</button>
+			<button type="button" class="buy-btn" onclick="location.href='buydirect.stu?conum=${bean.conum}'">결제하기</button>
 			<button type="button" class="cart-btn" onclick="location.href='addcart.stu?conum=${bean.conum}'"><img src="<%=request.getContextPath() %>/resources/images/icon/카트_large.png" /></button>
 			<button type="button" class="cart-btn" onclick="list()"><img src="<%=request.getContextPath() %>/resources/images/icon/목록.png" /></button>
 			<!-- 버튼 끝 -->

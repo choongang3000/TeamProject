@@ -29,7 +29,7 @@ public class STUBuyController {
 	
 	@Autowired 
 	private STUOrderDao orderdao;
-	 
+	
 	@Autowired 
 	private STUOrderDeDao oddao;
 	

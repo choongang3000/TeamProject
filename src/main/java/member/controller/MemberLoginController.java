@@ -23,7 +23,7 @@ import member.model.MemberDao;
 public class MemberLoginController {
 
 	private final String command = "loginForm.mem";
-	private final String getPage = "memberLoginForm";
+	private final String getPage = "memberLoginForm2";
 	private final String gotoPage = "redirect:/home.us";
 	// /WEB-INF/member/memberLoginForm.jsp
 
@@ -64,8 +64,15 @@ public class MemberLoginController {
 			if(mbean.getPw().equals(bean.getPw())) {
 				session.setAttribute("loginInfo", mbean);
 				String destination = (String)session.getAttribute("destination");
-				return "redirect:/home.us"; // �뿬湲� �닔�젙 destination�쑝濡�
-			}
+				if(destination != null) {
+					session.removeAttribute(destination);
+					return destination;
+				}
+				else {
+					return "redirect:/home.us"; // �뿬湲� �닔�젙 destination�쑝濡�
+			
+				}
+			}	
 			else {
 				try {
 					out=response.getWriter();
