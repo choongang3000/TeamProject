@@ -60,6 +60,7 @@
             <label for="floatingPassword">이메일</label>
           </div>
           <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">아이디 찾기</button>
+        </form:form>
            <hr class="my-4">
            <h2 class="fs-5 fw-bold mb-3">기타</h2>
           <button class="w-100 py-2 mb-2 btn btn-outline-dark rounded-4" onClick="login()">
@@ -71,7 +72,6 @@
           <button class="w-100 py-2 mb-2 btn btn-outline-dark rounded-4" onClick="register()">
             <svg class="bi me-1" width="16" height="16"></svg>회원가입
           </button>
-        </form:form>
       </div>
     </div>
   </div>

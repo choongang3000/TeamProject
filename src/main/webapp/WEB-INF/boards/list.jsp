@@ -33,15 +33,6 @@
  </script>
     
 <style>
-	body{
-		margin:auto;
-		text-align:center;
-		width:70%;
-	}
-	table{
-		margin:auto;
-		
-	}
 	.star-rating {
 	  border:solid 1px #ccc;
 	  display:flex;
@@ -97,7 +88,7 @@
 		font-size:65px;
 	}	 
 </style> 
-
+<%-- 
 <br><br>
 <h2 align="center">수강 후기 게시판(전체글:${totalCount })</h2>
 <center>
@@ -116,22 +107,48 @@
 		</div>
 	</form>
 </div>
-
-<table class="table table-hover" border="0" align="center">
+ --%>
+<center>
+<nav class="navbar navbar-light bg-light" style="width: 85%">
+	<div class="container-fluid">
+		<a class="navbar-brand"><b>&nbsp;수강 후기 게시판</b></a>
+		<form action="list.bs" method="get" class="d-flex">
+			<select class="form-select form-select-sm" name="whatColumn" style="height:35px; width:100px;">
+				<option value="all">전체글
+				<option value="coname">강의명
+				<option value="writer">작성자
+				<option value="title">제목
+			</select>
+			&nbsp;
+			<input class="form-control me-2" type="text" placeholder="Search" name="keyword" style="height:35px; width:120px;">
+			<button class="btn btn-outline-primary" type="submit" style="height:35px; width:70px;">검색</button>
+		</form>
+	</div>
+</nav>
+<c:if test="${fn:length(list) == 0 }">
+<div>
+	<br><br>
+	<h3>강의가 존재하지 않습니다</h3>
+</div>
+</c:if>
+<table class="table" border="0" align="center" style="width:80%">
 
 	<tr height="30"> <!-- 글쓰기 -->
-		<td colspan="6" align="right">
-			<input type="button" value="글쓰기" onClick="insert()" class="btn btn-secondary btn-sm">
+		<td colspan="7" align="right">
+			<c:if test="${loginInfo != null }">
+			<input type="button" value="후기 작성" onClick="insert()" class="btn btn-secondary btn-sm">
+			</c:if>
 		</td>
 	<tr>
 	
-	<tr height="40" bgcolor="#DCDCDC"> <!-- 목록제목 -->
-		<td align="center">번호</td>
-		<td align="center">제목</td>
-		<td align="center">강의명</td>
-		<td align="center">작성자</td> <!-- 추후 삭제예정 -->
-		<td align="center">작성일</td>
-		<td align="center">조회수</td>
+	<tr height="40" bgcolor="#DCDCDC" style="border-bottom: 3px double black;"> <!-- 목록제목 -->
+		<td align="center" width=5%><b>번호</b></td>
+		<td align="center" width=20%><b>제목</b></td>
+		<td align="center"><b>강의명</b></td>
+		<td align="center"><b>강의평가</b></td>
+		<td align="center"><b>작성자</b></td> <!-- 추후 삭제예정 -->
+		<td align="center"><b>작성일</b></td>
+		<td align="center"><b>조회수</b></td>
 	</tr>
 	
 	<c:set var="contentNum" value="${(totalCount - ((pageInfo.pageNumber-1)*pageInfo.pageSize)) }"/> <!-- 글번호 계산 -->
@@ -154,9 +171,27 @@
 				<img src="<%=request.getContextPath() %>/resources/images/hot.gif">
 			</c:if>	
 		</td>
-		<td align="center">${list.coname}</td> <!-- 강의명 -->
+		<td align="center">${list.coname} [${list.coteacher }]</td> <!-- 강의명 -->
+		<c:if test="${list.rating == null }">
+			<td align="center">미평가</td> 				
+		</c:if>
+		<c:if test="${list.rating == '1' }">
+			<td align="center"><font color="#ffd400">★</font></td>				
+		</c:if>
+		<c:if test="${list.rating == '2' }">
+			<td align="center"><font color="#ffd400">★★</font></td> 					
+		</c:if>
+		<c:if test="${list.rating == '3' }">
+			<td align="center"><font color="#ffd400">★★★</font></td> 				
+		</c:if>
+		<c:if test="${list.rating == '4' }">
+			<td align="center"><font color="#ffd400">★★★★</font></td> 					
+		</c:if>
+		<c:if test="${list.rating == '5' }">
+			<td align="center"><font color="#ffd400">★★★★★</font></td> 				
+		</c:if>
 		<td align="center">${list.writer}</td> <!-- 작성자 -->
-		<td align="center"><fmt:formatDate value="${list.reg_date}" type="both" pattern="yy/MM/dd HH:mm"/></td> <!-- 날짜 -->
+		<td align="center"><fmt:formatDate value="${list.reg_date}" type="both" pattern="yy-MM-dd HH:mm"/></td> <!-- 날짜 -->
 		<td align="center">${list.readcount}</td> <!-- 조회수 -->
 	</tr>	
 	</c:forEach>

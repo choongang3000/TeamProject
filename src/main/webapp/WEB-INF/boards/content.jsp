@@ -5,13 +5,6 @@
 <%@ include file="../user/ustop.jsp" %>
    <!--  content.jsp<br> -->
 <style type="text/css">
-	body{
-		text-align:center;
-	}
-	table{
-		margin:auto;
-		width:800px;
-	}
 	.star-rating {
 	  display:flex;
 	  flex-direction: row-reverse;
@@ -66,113 +59,69 @@
 		font-size:65px;
 	}	 	
 </style>
-
-<br><br>
-<h3>수강후기</h3>
+<center>
+<nav class="navbar navbar-light bg-light" style="width: 75%">
+	<div class="container-fluid">
+		<a class="navbar-brand"><b>&nbsp;수강 후기</b></a>
+	</div>
+</nav>
 <br>
-<table width="60%">
-	<tr height="40" style="border-top: solid black 1px">
-		<td align="center" bgcolor="#DCDCDC">
-			글번호
-		</td>
-		<td align="center">
-			${bb.num } <!-- 글번호 -->
-		</td>
-		<td align="center" bgcolor="#DCDCDC">
-			조회수
-		</td>
-		<td align="center">
-			${bb.readcount } <!-- 조회수 -->
-		</td>
+<table class="table" style="width:60%">
+	<tr style="height:40px" class="bg-light">
+		<td align=left width=70%>&nbsp;&nbsp;${bb.title } <font color="lightgray">|</font> <b>${bb.coname}[${bb.coteacher}]</b></td>
+		<td align=right><font color="gray">작성일</font>&nbsp;<fmt:formatDate value="${bb.reg_date }" pattern="yyyy-MM-dd HH:mm" type="both"/>&nbsp;&nbsp;</td>
 	</tr>
-	
-	<tr height="40" style="border-top: solid black 1px">
-		<td align="center" bgcolor="#DCDCDC">
-			작성자
-		</td>
-		<td align="center">
-			${bb.writer } <!-- 작성자 -->
-		</td>
-		<td align="center" bgcolor="#DCDCDC">
-			작성일 
-		</td>	
-		<td align="center">
-			<fmt:formatDate value="${bb.reg_date }" pattern="yyyy/MM/dd HH:mm" type="both"/> <!-- 작성일 -->
-		</td>	
+	<tr style="height:30px">
+		<td align=left><font color="gray">&nbsp;&nbsp;작성자</font>&nbsp;${bb.writer }</td>
+		<td align=right><font color="gray">조회 수</font> ${bb.readcount }&nbsp;&nbsp;</td>
 	</tr>
-	
-	<tr height="40" style="border-top: solid black 1px">
-		<td align="center" bgcolor="#DCDCDC">과목명</td>
-		<td align="center">${bb.coname}</td>
-		<td align="center" bgcolor="#DCDCDC">선생님</td>
-		<td align="center">${bb.coteacher}</td>
+	<tr style="height:30px" class="bg-light">
+		<c:if test="${bb.rating == null }">
+			<td colspan=2>&nbsp;&nbsp;<font color="gray">별점</font>&nbsp;미평가</td>
+		</c:if>
+		<c:if test="${bb.rating == '1' }">
+			<td colspan=2>&nbsp;&nbsp;<font color="gray">별점</font>&nbsp;<font color="#ffd400">★</font></td>
+		</c:if>
+		<c:if test="${bb.rating == '2' }">
+			<td colspan=2>&nbsp;&nbsp;<font color="gray">별점</font>&nbsp;<font color="#ffd400">★★</font></td>
+		</c:if>
+		<c:if test="${bb.rating == '3' }">
+			<td colspan=2>&nbsp;&nbsp;<font color="gray">별점</font>&nbsp;<font color="#ffd400">★★★</font></td>
+		</c:if>
+		<c:if test="${bb.rating == '4' }">
+			<td colspan=2>&nbsp;&nbsp;<font color="gray">별점</font>&nbsp;<font color="#ffd400">★★★★</font></td>
+		</c:if>
+		<c:if test="${bb.rating == '5' }">
+			<td colspan=2>&nbsp;&nbsp;<font color="gray">별점</font>&nbsp;<font color="#ffd400">★★★★★</font></td>
+		</c:if>
 	</tr>
-	
-	<tr height="40" style="border-top: solid black 1px">
-		<td align="center" bgcolor="#DCDCDC">
-			별점
-		</td>
-		<td align="center">
-			<div class="star-rating">
-				  <input type="radio" id="5-stars" name="rating" value="5" onclick="return(false);" <c:if test="${5 eq bb.rating }">checked</c:if>>
-				  <label for="5-stars" class="star">&#9733;</label>
-				  
-				  <input type="radio" id="4-stars" name="rating" value="4" onclick="return(false);" <c:if test="${4 eq bb.rating }">checked</c:if>>
-				  <label for="4-stars" class="star">&#9733;</label>
-				  
-				  <input type="radio" id="3-stars" name="rating" value="3" onclick="return(false);" <c:if test="${3 eq bb.rating }">checked</c:if>>
-				  <label for="3-stars" class="star">&#9733;</label>
-				  
-				  <input type="radio" id="2-stars" name="rating" value="2" onclick="return(false);" <c:if test="${2 eq bb.rating }">checked</c:if>>
-				  <label for="2-stars" class="star">&#9733;</label>
-				  
-				  <input type="radio" id="1-star" name="rating" value="1" onclick="return(false);" <c:if test="${1 eq bb.rating }">checked</c:if>>
-				  <label for="1-star" class="star">&#9733;</label>
-			</div>
-		</td>	
-		<td align="center" bgcolor="#DCDCDC">
-			글제목
-		</td>	
-		<td align="center">
-			${bb.title } <!-- 글제목 -->
-		</td>	
-	</tr>
-	
-	<tr height="400" style="border-top: solid black 1px">
-		<td align="center" bgcolor="#DCDCDC">
-			이미지
-		</td>
-		<td colspan="3" align="center">
-			<c:if test='${imageName != null }'>
+	<c:if test='${imageName != null }'>
+	<tr>
+		<td colspan="2" align="center">
 				<img src="<%=request.getContextPath() %>/resources/${imageName}"> <!-- 이미지 -->
-			</c:if>
-			<c:if test='${imageName == null }'>
-				이미지 없음
-			</c:if>
 		</td>
 	</tr>
-	
-	<tr height="300" style="border-top: solid black 1px">
-		<td align="center" bgcolor="#DCDCDC"> 
-			글내용
-		</td>
-		<td colspan="3" align="center">
-			${bb.content } <!-- 글내용 -->
+	</c:if>
+	<tr>
+		<td colspan="2" align="center">
+			<textarea style="width:100%; height:300px; resize:none;" disabled style="resize: none;">${bb.content }</textarea>
 		</td>
 	</tr>
-	<tr align="center" height="50" style="border-top: solid black 1px">
-		<td colspan="4">
-		<br>
+	<tr align="center" style="border-top: solid black 1px; height:60px; vertical-align: middle;" class="bg-light">
+		<td colspan="2">
 			<c:if test="${loginInfo.id == bb.writer}">
-			<input class="btn btn-secondary btn-sm" type="submit" value="글수정" onClick="location.href='update.bs?num=${bb.num}&pageNumber=${pageNumber}'">
-			<input class="btn btn-secondary btn-sm" type="button" value="글삭제" onClick="location.href='delete.bs?num=${bb.num}&pageNumber=${pageNumber}'">
+			<input class="btn btn-primary" type="submit" value="후기 수정" onClick="location.href='update.bs?num=${bb.num}&pageNumber=${pageNumber}'">
 			</c:if>
-			<input class="btn btn-secondary btn-sm" type="button" value="글목록" onClick="location.href='list.bs?pageNumber=${pageNumber}'">
+			<input class="btn btn-secondary" type="button" value="후기 목록" onClick="location.href='list.bs?pageNumber=${pageNumber}'">
+			<c:if test="${loginInfo.id == bb.writer}">
+			<input class="btn btn-outline-danger" type="button" value="삭제" onClick="location.href='delete.bs?num=${bb.num}&pageNumber=${pageNumber}'">
+			</c:if>
 			<%-- <c:if test="">
 			<input class="btn btn-secondary btn-sm" type="button" value="답글쓰기" onClick="location.href='reply.bs?ref=${bb.ref}&re_step=${bb.re_step}&re_level=${bb.re_level}&pageNumber=${pageNumber}'">
 			</c:if> --%>
 		</td>
 	</tr>
 </table>
+</center>
 <br>
 <%@ include file="../user/usbottom.jsp" %>

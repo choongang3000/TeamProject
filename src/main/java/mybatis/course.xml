@@ -127,5 +127,8 @@
   		order by subname
   	</select>
   	
+  	<select id="GetOrderDetails" resultType="int">
+  		select distinct conum from cosord_details where aid=#{aid}
+  	</select>
   	
 </mapper>

@@ -22,6 +22,25 @@
 		width:100%;
 		margin-top:30px;
 	}
+	
+	#button1{ /* 강의목록 버튼 색상 설정 */
+    	border : 1px solid #35BCAE;
+	   	background-color:#35BCAE;
+    }
+      	
+    #button2{ /* 뒤로가기 버튼 색상 설정 */
+    	border : 1px solid gray;
+	   	background-color: gray;
+    }
+    
+    .text-muted{
+    	font-size: 20px;
+    }
+    
+    center{
+    	background-color: #F6F6F6;
+    	height : 50%
+    }
 </style>
 
 <br>
@@ -30,7 +49,7 @@
 <br>
 
 	<div> <!-- 강의이름&선생님 -->
-		<h2>${course.coteacher}의 ${course.coname }</h2>
+		<p class="text-muted">${course.coteacher}의 ${course.coname }</p>
 	</div>
 	
 	<br>
@@ -48,13 +67,14 @@
 	<br>
 	
 	<div>
-		<input type="button" value="뒤로가기" onClick="history.back();">
-		<input type="button" value="강의목록" onClick="gotolist()">
+		<!-- <input type="button" value="뒤로가기" onClick="history.back();"> -->
+		<!-- <input type="button" value="강의목록" onClick="gotolist()"> -->
+		<a onclick="history.back();"><button id="button2" type="button" class="btn btn-secondary btn-sm">뒤로가기 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/icon/뒤로가기(흰색).svg" width="20" height="20"/></button></a>
+		<a onclick="gotolist()"><button id="button1" type="button" class="btn btn-secondary btn-sm">강의목록 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/icon/과목.png" width="20" height="20"/></button></a>
 	</div>
 
 </center>
 <br>
-<hr>
 <%@ include file="../user/usbottom.jsp" %>
 
 

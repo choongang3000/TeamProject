@@ -132,14 +132,14 @@
 	<table border="0" width="40%" height="60%">
 
 		<tr>
-			<td align="center" width="100" bgcolor="#DCDCDC">이름</td>
+			<td align="center" width="100" bgcolor="#DCDCDC" style="border-bottom: 1px solid white;">이름</td>
 			<td>
 				<input type="text" name="writer" class="form-control" id="floatingInput" value="${loginInfo.id }" readonly>
 				<form:errors cssClass="err" path="writer"/>
 			</td>
 		</tr>
 		<tr>
-			<td align="center" bgcolor="#DCDCDC">제목</td>
+			<td align="center" bgcolor="#DCDCDC" style="border-bottom: 1px solid white;">제목</td>
 			<td>
 				<input type="text" name="title" class="form-control" id="floatingInput" placeholder="제목을 입력해주세요" required>
 				<form:errors cssClass="err" path="subject"/>
@@ -147,7 +147,7 @@
 		</tr>
 		
 		<tr>
-			<td align="center" bgcolor="#DCDCDC">강의명</td>
+			<td align="center" bgcolor="#DCDCDC" style="border-bottom: 1px solid white;">강의명</td>
 			<td>
 				<!-- <input type="text" name="coname" class="form-control" id="floatingInput" placeholder="제목을 입력해주세요"> -->
 				 
@@ -162,7 +162,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td align="center" bgcolor="#DCDCDC">선생님</td>
+			<td align="center" bgcolor="#DCDCDC" style="border-bottom: 1px solid white;">선생님</td>
 			<td>
 				<!-- <input type="text" name="coteacher" class="form-control" id="floatingInput" placeholder="제목을 입력해주세요"> -->
 				
@@ -178,24 +178,24 @@
 		</tr>
 		
 		<tr>
-			<td align="center" bgcolor="#DCDCDC">Email</td>
+			<td align="center" bgcolor="#DCDCDC" style="border-bottom: 1px solid white;">Email</td>
 			<td><input type="text" name="email" class="form-control" id="floatingInput" placeholder="이메일을 입력해주세요"></td>
 		</tr>
 		<tr>
-			<td align="center" bgcolor="#DCDCDC">이미지</td>
+			<td align="center" bgcolor="#DCDCDC" style="border-bottom: 1px solid white;">이미지</td>
 			<td>
 				<input class="form-control" id="formFile" type="file" name="upload" value="파일선택"> <!-- 여기는 글자x 이미지o(화일)가 들어갑니다. -->
 			</td>
 		</tr>
 		<tr>
-			<td align="center" bgcolor="#DCDCDC">내용</td>
+			<td align="center" bgcolor="#DCDCDC" style="border-bottom: 1px solid white;">내용</td>
 			<td>
 				<textarea name="content" rows="15" cols="50" class="form-control" placeholder="내용을 입력해주세요" id="floatingTextarea" style="resize:none;" required></textarea>
 				<form:errors cssClass="err" path="content"></form:errors>
 			</td>
 		</tr>
 		<tr>
-			<td align="center" bgcolor="#DCDCDC" >별점주기</td>
+			<td align="center" bgcolor="#DCDCDC" style="border-bottom: 1px solid white;">별점주기</td>
 			<td class="form-control" id="floatingInput">	
 				<div class="star-rating"> <!-- 별점작업:사이즈 처리, 값 넘겨주기(select, update에 어떻게 처리할건지 생각해) -->
 				  <input type="radio" id="5-stars" name="rating" value="5"/>
@@ -212,7 +212,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td align="center" bgcolor="#DCDCDC">비밀번호</td>
+			<td align="center" bgcolor="#DCDCDC" style="border-bottom: 1px solid white;">비밀번호</td>
 			<td>
 				<input type="password" name="passwd" class="form-control" id="floatingPassword" placeholder="비밀번호 입력해주세요" required>
 				<form:errors cssClass="err" path="passwd" />
