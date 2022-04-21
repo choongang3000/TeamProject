@@ -16,7 +16,6 @@ public class STUAddCartController {
 	
 	private final String command = "addcart.stu";
 	private String gotoPage = "redirect:/cartlist.stu";
-	private String page = "cartlist.stu" ;
 	private String getPage = "redirect:/loginForm.mem";
 	
 	@RequestMapping(command)

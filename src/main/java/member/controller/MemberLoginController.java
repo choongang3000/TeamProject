@@ -64,8 +64,14 @@ public class MemberLoginController {
 			if(mbean.getPw().equals(bean.getPw())) {
 				session.setAttribute("loginInfo", mbean);
 				String destination = (String)session.getAttribute("destination");
-				return "redirect:/home.us"; // �뿬湲� �닔�젙 destination�쑝濡�
-			}
+				if(destination != null) {
+					return destination;
+				}
+				else {
+					return "redirect:/home.us"; // �뿬湲� �닔�젙 destination�쑝濡�
+			
+				}
+			}	
 			else {
 				try {
 					out=response.getWriter();

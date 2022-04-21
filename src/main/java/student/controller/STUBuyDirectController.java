@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import admin.model.CoBean;
+import member.model.MemberBean;
 import student.model.StuCartBean;
 import student.model.StuCartDao;
 
@@ -26,7 +27,19 @@ public class STUBuyDirectController {
 	public String doAction(@RequestParam(value="conum", required=false ) int conum,
 							HttpSession session) {
 		
-		session.removeAttribute("cartArr");
+		MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo");
+		if(loginInfo == null) {
+			session.setAttribute("destination", "redirect:/buydirect.stu?conum=" + conum);
+			return "redirect:/loginForm.mem";
+		}
+		
+		session.removeAttribute("mycart");
+		
+		ArrayList<Integer> mycart = new ArrayList<Integer>();
+		
+		mycart.add(conum); 	
+		
+		session.removeAttribute("cartArr");		
 		
 		ArrayList<StuCartBean> cartArr = new ArrayList<StuCartBean>();
 		
@@ -43,6 +56,7 @@ public class STUBuyDirectController {
 		cartArr.add(cartbean);
 		
 		session.setAttribute("cartArr", cartArr);
+		session.setAttribute("mycart", mycart);
 		
 		return gotoPage;
 	}
