@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp" %>
-<%@ include file="top.jsp" %>
-boardst/boardst_detail<br>
+<%@ include file="../user/ustop.jsp" %>
 <script src="<%=request.getContextPath()%>/resources/js/jquery.js"></script>
 <script type="text/javascript">
 	function delete_board(){
@@ -40,7 +39,7 @@ boardst/boardst_detail<br>
 	}
 	
 </script>
-
+<br>
 <center>
 	<table border=1 class="table table-striped" style="width:60%">
 		<tr>
@@ -51,7 +50,7 @@ boardst/boardst_detail<br>
 			</td>
 			<td align=right>
 				<c:if test="${loginInfo.type=='student' }">
-				<input type="button" value="수정" class="btn btn-secondary btn-sm" onClick="location.href='update.bst?num=${board.num}&pageNumber=${pageNumber }'">
+				<input type="button" value="수정" class="btn btn-primary btn-sm" onClick="location.href='update.bst?num=${board.num}&pageNumber=${pageNumber }'">
 				</c:if>
 				<input type="button" value="목록으로" class="btn btn-secondary btn-sm" onClick="location.href='list.bst?pageNumber=${pageNumber}'">
 			</td>
@@ -92,7 +91,7 @@ boardst/boardst_detail<br>
 			<tr class="table-light">
 				<c:if test="${loginInfo.type == 'teacher'}">
 				<td align=left><input type="button" value="답변 삭제" class="btn btn-outline-danger btn-sm" onClick="return delete_reply()"></td>
-				<td align=right><input type="button" value="답변 수정" class="btn btn-secondary btn-sm" onClick="location.href='updateReply.bst?replyNum=${reply.num}&pageNumber=${pageNumber}&num=${board.num}'"></td>
+				<td align=right><input type="button" value="답변 수정" class="btn btn-primary btn-sm" onClick="location.href='updateReply.bst?replyNum=${reply.num}&pageNumber=${pageNumber}&num=${board.num}'"></td>
 				</c:if>
 			</tr>
 			<tr>
@@ -127,7 +126,7 @@ boardst/boardst_detail<br>
 			<tr>
 				<td>
 					<div class="form-floating">
-					  <textarea class="form-control" name="content" id="floatingTextarea2" style="height:300px; width:100%; resize:none;"></textarea>
+					  <textarea class="form-control" name="content" id="floatingTextarea2" style="height:300px; width:100%; resize:none;" required></textarea>
 					  <label for="floatingTextarea2">답변 작성</label>
 					</div>
 				</td>
@@ -143,4 +142,4 @@ boardst/boardst_detail<br>
 	</c:if>
 	</c:if>
 </center>
-<%@ include file="bottom.jsp" %>
+<%@ include file="../user/usbottom.jsp" %>

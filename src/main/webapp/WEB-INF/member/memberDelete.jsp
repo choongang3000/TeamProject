@@ -22,10 +22,11 @@
 		width:50%;
 	}
 </style>
-
+<br>
+<center>
 <div id="container">
 	<div id="content">
-		<h2>탈퇴 안내</h2>
+		<h2><b>탈퇴 안내</b></h2>
 		<p class="context"">회원 탈퇴를 신청하기 전에 안내 사항을 꼭 확인해 주세요.</p>
 	</div>
 	<div id="section_delete">
@@ -40,12 +41,12 @@
 		<p class="dropout_dsc">회원정보 및 강의 결제 내역, 1:1 문의 등 개인형 서비스 이용기록은 모두
 			삭제되며, 삭제된 데이터는 복구되지 않습니다.</p>
 	</div>
-
+	
 	<div class="row g-5">
 		<div class="d-block mx-auto mb-6">
 			<form:form  action="delete.mem" method="post" commandName="mbean">
  				<div class="mb-3">
- 					<div id="emailHelp" class="form-text">탈퇴할 아이디와 비밀번호를 입력해 주세요.</div>
+ 					<div id="emailHelp" class="form-text">탈퇴할 아이디의 비밀번호를 입력해 주세요.</div>
     				<label for="id" class="form-label">아이디</label>
     				<input type="text" class="form-control" id="id" name="id" aria-describedby="emailHelp" value="${loginInfo.id }" readonly required>
   				</div>
@@ -55,9 +56,11 @@
   				</div>
   				<div class="d-grid gap-2 col-6 mx-auto">
   					<div id="emailHelp" class="form-text">정말 탈퇴하시겠습니까?</div>
- 					<button class="btn btn-primary" type="submit">탈퇴</button>
+ 					<button class="btn btn-danger" type="submit">탈퇴</button>
 				</div>
 			</form:form>
 		</div>
 	</div>
 </div>
+</center>
+<%@ include file="../user/usbottom.jsp"%>

@@ -63,14 +63,9 @@ public class BTListController {
 			if(subject != null) {
 				String[] subArr = subject.split(",");
 	
-				if(subArr.length > 0) {
-					url = request.getContextPath() + command + "?subject=" + subArr[0];
-					for(int i=0; i<subArr.length-1; i++) {
-						url += "&subject=" + subArr[i+1];
-					}
-				}
-				else {
-					url = request.getContextPath() + command;
+				url = request.getContextPath() + command + "?subject=" + subArr[0];
+				for(int i=0; i<subArr.length-1; i++) {
+					url += "&subject=" + subArr[i+1];
 				}
 			}
 			else {				

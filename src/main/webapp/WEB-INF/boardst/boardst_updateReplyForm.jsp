@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp" %>
-<%@ include file="top.jsp" %>
-boardst/boardst_updateReplyForm.jsp<br>
-
+<%@ include file="../user/ustop.jsp" %>
 <center>
 	<table border=1 class="table table-striped" style="width:60%">
 		<tr>
@@ -49,7 +47,7 @@ boardst/boardst_updateReplyForm.jsp<br>
 		<tr>
 			<td>
 				<div class="form-floating">
-					<textarea class="form-control" name="content" id="floatingTextarea2" style="height:300px; width:100%; resize:none;">${reply.content }</textarea>
+					<textarea class="form-control" name="content" id="floatingTextarea2" style="height:300px; width:100%; resize:none;" required>${reply.content }</textarea>
 					<label for="floatingTextarea2">답변 수정</label>
 				</div>
 			</td>
@@ -64,4 +62,4 @@ boardst/boardst_updateReplyForm.jsp<br>
 	</form>
 	
 </center>
-<%@ include file="bottom.jsp" %>
+<%@ include file="../user/usbottom.jsp" %>
