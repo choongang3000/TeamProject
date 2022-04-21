@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import admin.model.CoBean;
 import admin.model.CoDao;
+import utility.Paging;
 
 @Controller
 public class ADCoListController {
@@ -27,7 +28,8 @@ public class ADCoListController {
 	private CoDao codao;
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
-	public String doAction(@RequestParam(value="whatColumn",required = false) String whatColumn,
+	public String doAction(@RequestParam(value="pageNumber",required = false) String pageNumber,
+							@RequestParam(value="whatColumn",required = false) String whatColumn,
 			   			   @RequestParam(value="keyword",required = false) String keyword,
 			   			   HttpServletRequest request) {
 		
@@ -38,11 +40,16 @@ public class ADCoListController {
 		//System.out.println("keyword:"+keyword.toUpperCase());
 		//System.out.println("keyword2"+keyword2);
 		
-		List<CoBean> colist = codao.coursesAll(map);
+		String url = request.getContextPath() + "/" + command;
+		
+		int totalCount = codao.totalCount(map);
+		Paging pageInfo = new Paging(pageNumber,null,totalCount,url,whatColumn,keyword);
+		List<CoBean> colist = codao.coursesAllpage(pageInfo,map);
+		
+		request.setAttribute("pageInfo",pageInfo);
 		request.setAttribute("colist", colist);
 		
 		return getPage;
 	}
 
 }
-

@@ -61,8 +61,8 @@
 			<br>
 			<video
 				src="<%=request.getContextPath() %>/resources/images/${cobean.covideo}"
-				poster="<%=request.getContextPath()%>/resources/images/${cobean.covideo}"
-				width="500"
+				poster="<%=request.getContextPath()%>/resources/images/로고짤.gif"
+				width="500" height="282"
 				controls autoplay>
 			</video>
 			<br>

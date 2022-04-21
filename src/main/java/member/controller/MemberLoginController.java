@@ -23,7 +23,7 @@ import member.model.MemberDao;
 public class MemberLoginController {
 
 	private final String command = "loginForm.mem";
-	private final String getPage = "memberLoginForm";
+	private final String getPage = "memberLoginForm2";
 	private final String gotoPage = "redirect:/home.us";
 	// /WEB-INF/member/memberLoginForm.jsp
 
@@ -65,6 +65,7 @@ public class MemberLoginController {
 				session.setAttribute("loginInfo", mbean);
 				String destination = (String)session.getAttribute("destination");
 				if(destination != null) {
+					session.removeAttribute(destination);
 					return destination;
 				}
 				else {

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -25,6 +26,7 @@ public class COSListController {
 	
 	private final String command = "/list.cos";
 	private String getPage = "coslist";
+	private String getPage2 = "redirect:/loginForm.mem";
 	
 	@Autowired
 	private COSDao cosdao;
@@ -35,11 +37,36 @@ public class COSListController {
 			@RequestParam(value="keyword", required=false) String keyword,
 			@RequestParam(value="pageNumber", required=false) String pageNumber,
 			@RequestParam(value="cosubject", required=false) String cosubject,
-			HttpServletRequest request,
-			HttpSession session) {
+			HttpServletRequest request, HttpSession session) {
+		
 			
 		Map<String, String> map=new HashMap<String, String>();
 		map.put("whatColumn", whatColumn);
+		/*
+		map.put("keyword", "%"+keyword+"%");
+		 */
+		if(keyword == null) {
+	         if(session.getAttribute("keyword_fromdel") != null) {
+	            String keyword_fromdel = (String)session.getAttribute("keyword_fromdel");
+	            map.put("keyword", "%"+keyword_fromdel+"%");
+	            keyword = keyword_fromdel;
+	            session.removeAttribute("keyword_fromdel");
+	         }
+	         else {
+	            map.put("keyword", "%%");
+	         }   
+	      }
+	      else {
+	         if(keyword.equals("null")) {
+	            map.put("keyword", "%%");
+	         }
+	         else if(keyword.equals("")) {
+	            map.put("keyword","%%");
+	         }
+	         else {
+	            map.put("keyword", "%"+keyword+"%");
+	         }
+	      }
 		if(keyword == null) {
 			if(session.getAttribute("keyword_fromdel") != null) {
 				String keyword_fromdel = (String)session.getAttribute("keyword_fromdel");
@@ -104,8 +131,17 @@ public class COSListController {
 		mav.addObject("keyword",keyword);
 		mav.setViewName(getPage);
 		return mav;
-			
+		/*
+		
+		if(session.getAttribute("loginInfo") == null) {//로그인 안했으면
+			mav.setViewName(getPage2);
+			return mav; //loginForm.mem요청
+		}
+		else {
+			mav.setViewName(getPage);
+			return mav;
+		}
+		*/
 	}
-
 	
 }

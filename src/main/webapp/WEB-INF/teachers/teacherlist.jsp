@@ -137,7 +137,7 @@
 	 			 		<div class="card-body">
 	 			 		<h5><b>${te.tname }</b>선생님</h5>
 	 			 			<p class="card-text">${te.introduction}</p>
-	 			 			<a href="sublist.te?tname=${te.tname}"><button id="button3" type="button" class="btn btn-secondary btn-sm"><font color="white">강의 보러가기<img src="<%=request.getContextPath() %>/resources/images/하늘색이동화살표.png" width="40" height="20"/></font></button></a>
+	 			 			<a href="sublist.te?tname=${te.tname}"><button id="button3" type="button" class="btn btn-secondary btn-sm"><font color="white">강의 보러가기<img src="<%=request.getContextPath() %>/resources/images/icon/하늘색이동화살표.png" width="40" height="20"/></font></button></a>
 	 			 		</div>
  			 	</div>
  			 </div>
