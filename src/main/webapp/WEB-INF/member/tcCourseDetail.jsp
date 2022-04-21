@@ -40,7 +40,7 @@
 			<br>
 			<video
 				src="<%=request.getContextPath() %>/resources/${course.covideo}"
-				poster="<%=request.getContextPath()%>/resources/${course.covideo}"
+				poster="<%=request.getContextPath()%>/resources/images/로고짤.gif"
 				width="500"
 				controls autoplay>
 			</video>
@@ -63,7 +63,9 @@
 <table style="width:60%">
 	<tr>
 		<td align=right>
-			<input type="button" value="돌아가기" onClick="location.href='tcCourseList.mem?pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}'" >
+			<%-- <input type="button" value="돌아가기" onClick="location.href='tcCourseList.mem?pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}'" >
+		 --%>
+		 	<input type="button" value="돌아가기" onClick="location.href='stucolist.mem'" >
 		</td>
 	</tr>
 </table>

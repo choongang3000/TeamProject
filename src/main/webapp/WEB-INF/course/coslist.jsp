@@ -147,7 +147,7 @@
       			background-color: #365E43;
       			color: white;
       			height: 32px;
-      			width: 40px;
+      			width: 60px;
       	}
 </style>
 
