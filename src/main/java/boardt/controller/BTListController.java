@@ -59,14 +59,19 @@ public class BTListController {
 			
 			int totalCount = btdao.getTotalCount(map);
 			
-			String[] subArr = subject.split(",");
 			String url;
-			if(subArr.length > 0) {
-				url = request.getContextPath() + command + "?subject=" + subArr[0];
-				for(int i=0; i<subArr.length-1; i++) {
-					url += "&subject=" + subArr[i+1];
+			if(subject != null) {
+				String[] subArr = subject.split(",");
+	
+				if(subArr.length > 0) {
+					url = request.getContextPath() + command + "?subject=" + subArr[0];
+					for(int i=0; i<subArr.length-1; i++) {
+						url += "&subject=" + subArr[i+1];
+					}
 				}
-				System.out.println(url);
+				else {
+					url = request.getContextPath() + command;
+				}
 			}
 			else {				
 				url = request.getContextPath() + command; // ex//list.bd
