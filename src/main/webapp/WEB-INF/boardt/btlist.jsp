@@ -176,7 +176,7 @@
 	<br><br> --%>
 	 
 	<br>
-	<form id="myArea" action="list.bt?subject=${subject }&pageNumber=${pageInfo.pageNumber}">
+	<form id="myArea" action="list.bt">
 		<table id="allselect" width="700" align="center" style="background-color:#F6F6F6">
 			<tr height="80" border="1">
 				<td align="center">

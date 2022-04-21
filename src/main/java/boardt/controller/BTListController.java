@@ -36,41 +36,45 @@ public class BTListController {
 			@RequestParam(value="subject",required=false) String subject,
 			HttpServletRequest request,
 			BTBean btbean,BindingResult result){
+			System.out.println("요기~~>>" + subject);
 			
-			System.out.println("출력추울력~~~~~" + btbean.getSubject());
 			//만약 여러개를 선택해서 값들이 ,로 연결되어있다면 btbean.getSubject().split(",") 이 값을 String[] (받을변수 이름) 으로 배열로 받아서 쓸 수도 있어
 			//contains 함수를 쓰면 중간에 ,가 끼어있어도 찾아내서 포함되어있다고 알 수 있어
 			//null 또는 "" 공백이 넘어오는 것은 전체조회로 설정 필요
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("subject",btbean.getSubject());
 			
-			if(subject != null) {
-				if(subject.equals("")) {
-					map.put("subject", null);
+			if(subject != null) { //과목이 null이 아닐때
+				if(subject.equals("")) { //공백일 경우엔
+					map.put("subject", null); //null을 넣어주고
 				}
 				else {
-					map.put("subject", subject);
+					map.put("subject", subject); //공백도 아니면 제대로 subject을 map에 넣어주고
 				}
 			}
-			else {
-				map.put("subject", subject);
+			else { //과목이 null일 땐
+				map.put("subject", subject); //바로 subject을 map에 넣어줘
 			}
 			
 			int totalCount = btdao.getTotalCount(map);
 			
-			String[] subArr = subject.split(",");
-		    String url;
-		    
-		    if(subArr.length > 0) {
-		    	url = request.getContextPath() + command + "?subject=" + subArr[0];
-		        for(int i=0; i<subArr.length-1; i++) {
-		        	url += "&subject=" + subArr[i+1];
-		        }
-		            System.out.println(url);
-		        }
-		        else {            
-		            url = request.getContextPath() + command; // ex//list.bd
-		        }
+			String url;
+			if(subject != null ) {
+				String[] subArr = subject.split(",");
+			
+			if(subArr.length > 0) {
+				url = request.getContextPath() + command + "?subject=" + subArr[0];
+				for(int i=0; i<subArr.length-1; i++) {
+					url += "&subject=" + subArr[i+1];
+				 }
+            }
+            else {
+               url = request.getContextPath() + command;
+            	}
+			}
+			else {            
+				url = request.getContextPath() + command; // ex//list.bd
+			}
 			//(pageNumber,null,totalCount,url,whatColumn,keyword);키워드 검색할 때 시도
 			//pageNumber,pageSize,totalCount,url,whatColumn,keyword);칼럼
 			
