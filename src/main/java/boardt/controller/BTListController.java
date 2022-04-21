@@ -41,10 +41,11 @@ public class BTListController {
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("subject",btbean.getSubject());
 			
+			int totalCount = btdao.getTotalCount(map);
+			
 			String url;
 	         if(subject != null) {
-	            String[] subArr = subject.split(","); //split함수는 나눌려는 문자열에 해당 문자가 없으면 그냥 배열 1개짜리 값을 줌
-	            //subArr 객체에 subject 그대로 들어감
+	            String[] subArr = subject.split(",");
 	   
 	            url = request.getContextPath() + command + "?subject=" + subArr[0];
 	            for(int i=0; i<subArr.length-1; i++) {
@@ -54,7 +55,6 @@ public class BTListController {
 	         else {            
 	            url = request.getContextPath() + command; // ex//list.bd
 	         }
-	         
 			
 			COSListPaging pageInfo = new COSListPaging(pageNumber,null,totalCount,url,null,null);//체크박스로 시도
 			List<BTBean> BTList = btdao.getBoardList(pageInfo,map);

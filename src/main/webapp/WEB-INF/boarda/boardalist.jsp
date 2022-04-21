@@ -11,21 +11,8 @@
 </c:choose>
 <style>
 
-		* { /* 기본적인 마진,패딩 없앰*/
-			margin:0;
-			padding:0; 
-			text-decoration : none; /* 밑줄 없애기 */
-			list-style : none; /* 불릿 없애기 */
-			/*position : absolute;*/
-		}
-		
-		body { 
-				margin-top:30px;
-		}
-
-
 	   	#container  {
-    		width:65%;
+    		width:1200px;
 			margin:auto;
     	}
     	
@@ -37,12 +24,12 @@
     	.accordion-button{
     		background-color:#D9E5FF;
     	}
+
     	.accordion-collapse{
     		text-align : left;
 	   	/*	margin : 20px 20px; */
     		margin : auto;
     	}
-    	
     	
 </style>
 <script src="<%=request.getContextPath()%>/resources/js/jquery.js"></script>
@@ -69,18 +56,25 @@
 <c:set var="heading" value="<%=heading%>" />
 <c:set var="collapse" value="<%=collapse%>" />
 
-<body>
+<!-- <body> -->
+<center>
+<br><h2>FAQ 자주 묻는 질문</h2><br>
+</center>
 <div id=container>
 <nav class="navbar navbar-light bg-light">
 	<div class="container-fluid">
-		<a class="navbar-brand">FAQ 자주 묻는 질문</a>
-
+		<%-- <div class="count">총${totalCount}개</div> --%>
+		<%-- <a class="navbar-brand">총 ${totalCount}개</a> --%>
+		<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
+			<input class="btn btn-secondary btn-sm" type="button" value="질문삽입" onClick="insert()">
+		</c:if>
 		<form action="list.ba" method="get" class="d-flex">
 			<input class="form-control me-2" type="search" placeholder="Search" name="keyword">
 			<button class="btn btn-outline-success" type="submit">Search</button>
 		</form>
 	</div>
 </nav>
+<br>
 <ul class="nav nav-tabs">
 	<li class="nav-item"><a class="nav-link" id="navselect" href="list.ba">자주 찾는 질문</a></li>
 	<li class="nav-item"><a class="nav-link" id="navselect" href="list.ba?bacategory=회원">회원</a></li>
@@ -89,10 +83,6 @@
 	<li class="nav-item"><a class="nav-link" id="navselect" href="list.ba?bacategory=강좌관리">강좌 관리</a></li>
 	<li class="nav-item"><a class="nav-link" id="navselect" href="list.ba?bacategory=기타">기타</a></li>
 </ul>
-<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
-		<input class="btn btn-secondary btn-sm" type="button" value="삽입" onClick="insert()">
-</c:if>
-<div class="count">총${totalCount}개</div>
 <div class="accordion accordion-flush" id="accordionFlushExample">
 	<c:forEach var="i" begin="0" end="${fn:length(list)-1 }">
 		<div class="accordion-item">
@@ -106,7 +96,7 @@
 				<div class="accordion-body">
 					${list[i].bacontent }
 					<c:if test="${list[i].baimage != null }">
-						<img src="<%request.getContextPath(); %>/resources/images/re.gif" width="" height="">
+						<img src="<%request.getContextPath(); %>/resources/images/re.gif">
 					</c:if>
 					<%-- <c:if test="${list[i].bafile != null }">
 						파일 출력 설정 위치 
@@ -121,8 +111,21 @@
 	</c:forEach>
 </div>
 </div>
+<br>
 <center>${pageInfo.pagingHtml}</center>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  </body>
+  <!-- </body> -->
 </html>
-<%@ include file="boarda_bottom.jsp"%>
+<%-- 
+<c:when test="${sessionScope.loginInfo.type eq 'admin' }">
+	
+</c:when>
+ --%>
+<c:choose>
+	<c:when test="${sessionScope.loginInfo.type eq 'admin' }">
+		<%@ include file="../admin/adbottom.jsp" %>
+	</c:when>
+	<c:otherwise>
+		<%@ include file="boarda_bottom.jsp"%>
+	</c:otherwise>
+</c:choose>

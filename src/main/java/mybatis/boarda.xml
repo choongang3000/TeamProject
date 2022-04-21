@@ -59,7 +59,7 @@
   	
   	<insert id="InsertBA">
   		insert into boarda(banum,bacategory,basubject,bacontent,baimage,bafile)
-  		values(seqba.nextval,#{bacategory},#{basubject},#{bacontent},#{baimage},#{bafile})
+  		values(ba_seq.nextval,#{bacategory},#{basubject},#{bacontent},#{baimage},#{bafile})
   	</insert>
 
   	<update id="UpdateBA">
