@@ -50,7 +50,6 @@ public class BAListController {
 		
 		  
 		List<BABean> list = badao.getBAList(pageInfo, map);
-		System.out.println("¿©±â!!!!!!! >>> " + list.size());
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("list",list);
 		mav.addObject("totalCount",totalCount);

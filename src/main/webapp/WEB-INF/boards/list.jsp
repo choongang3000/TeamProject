@@ -134,7 +134,9 @@
 
 	<tr height="30"> <!-- 글쓰기 -->
 		<td colspan="7" align="right">
+			<c:if test="${loginInfo != null }">
 			<input type="button" value="후기 작성" onClick="insert()" class="btn btn-secondary btn-sm">
+			</c:if>
 		</td>
 	<tr>
 	
