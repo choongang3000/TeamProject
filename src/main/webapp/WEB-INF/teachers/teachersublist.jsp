@@ -137,10 +137,12 @@
 				<td align="right">
 					<fmt:formatNumber value="${course.coprice}" pattern="#,###"/>원 &nbsp;&nbsp;&nbsp;
 				</td>
-				<td>
-					<a href="detail.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }"><button id="button1" type="button" class="btn btn-secondary btn-sm">수강신청 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/icon/book-outline.svg" width="20" height="20"/></button></a> &nbsp;
-					<a href="goshow.cos?conum=${course.conum }"><button id="button2" type="button" class="btn btn-secondary btn-sm">강의이동 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/icon/재생 아이콘.png" width="20" height="20"/></button></a>
-				</td>
+				<c:if test="${sessionScope.loginInfo.type eq 'student'}">
+					<td>
+						<a href="detail.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }"><button id="button1" type="button" class="btn btn-secondary btn-sm">수강신청 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/icon/book-outline.svg" width="20" height="20"/></button></a> &nbsp;
+						<a href="goshow.cos?conum=${course.conum }"><button id="button2" type="button" class="btn btn-secondary btn-sm">강의이동 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/icon/재생 아이콘.png" width="20" height="20"/></button></a>
+					</td>
+				</c:if>
 			</tr>
 			<tr>
 				<td colspan="4">

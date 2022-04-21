@@ -13,6 +13,7 @@
 <style>
 	.table{
 		width:1300px;
+		/*text-align: center;*/
 	}
 	
 	

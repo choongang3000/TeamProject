@@ -4,19 +4,22 @@
 <%@ include file="../user/ustop.jsp"%>
 <!--  회원정보<br> -->
 <style>
-body {
+main {
 	width: 60%;
 	margin: auto;
 }
 </style>
 <link href="form-validation.css" rel="stylesheet">
 </head>
-
-<body>
+	<br>
 	<main>
+		<div class="py-5 text-center">
+			<h2><b>내 정보 확인</b></h2>
+		</div>
+		
 		<div class="row g-5">
 			<div class="d-block mx-auto mb-6">
-				<h2 class="mb-3">학생 정보</h2>
+				<h4 class="mb-3">내 정보</h4>
 					<div class="row g-3">
 
 						<input type="hidden" name="anum" value="${mbean.anum }"> 

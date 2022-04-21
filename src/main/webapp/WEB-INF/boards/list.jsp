@@ -109,7 +109,7 @@
 </div>
  --%>
 <center>
-<nav class="navbar navbar-light bg-light" style="width: 85%">
+<nav class="navbar navbar-light bg-light" style="width: 1200px">
 	<div class="container-fluid">
 		<a class="navbar-brand"><b>&nbsp;수강 후기 게시판</b></a>
 		<form action="list.bs" method="get" class="d-flex">
@@ -131,15 +131,7 @@
 	<h3>강의가 존재하지 않습니다</h3>
 </div>
 </c:if>
-<table class="table" border="0" align="center" style="width:80%">
-
-	<tr height="30"> <!-- 글쓰기 -->
-		<td colspan="7" align="right">
-			<c:if test="${loginInfo != null }">
-			<input type="button" value="후기 작성" onClick="insert()" class="btn btn-secondary btn-sm">
-			</c:if>
-		</td>
-	<tr>
+<table class="table" border="0" align="center" style="width:1200px">
 	
 	<tr height="40" bgcolor="#DCDCDC" style="border-bottom: 3px double black;"> <!-- 목록제목 -->
 		<td align="center" width=5%><b>번호</b></td>
@@ -195,6 +187,13 @@
 		<td align="center">${list.readcount}</td> <!-- 조회수 -->
 	</tr>	
 	</c:forEach>
+	<tr height="30"> <!-- 글쓰기 -->
+		<td colspan="7" align="right">
+			<c:if test="${loginInfo != null }">
+			<input type="button" value="후기 작성" onClick="insert()" class="btn btn-secondary btn-sm">
+			</c:if>
+		</td>
+	<tr>
 	</table>
 	<%-- <c:forEach var="colist" items="colist">
 		<td align="center">${colist.coname }</td><!-- 과목명 -->

@@ -49,9 +49,14 @@
 
     var checked = false;
     var check_res = false;
+    var check_pw = false;
 
     $(function(){
 
+    	$("input[name=pw]").keydown(function(){
+    		check_pw = false;
+    	})
+    	
     	$("input[name=id]").keydown(function(){
     		$("#idspan").css("display","none");
     		checked = false;
@@ -90,16 +95,17 @@
     	var regexp = /^[a-z0-9]{3,12}$/;
     	var chk_num =  pw.search(/^[0-9]{3,12}$/);	
     	var chk_eng =  pw.search(/^[a-z]{3,12}$/);
-    	
 
     	if(pw.search(regexp) == -1){
     		alert("3~12자리의 영소문자/숫자를 조합해 주세요");
+    		return false;
     	}
     	if(chk_num == 0 || chk_eng == 0){
     		alert("3~12자리의 영소문자/숫자를 조합해 주세요");
     		return false;
     	}
     	
+    	check_pw = true;
     }
 
 
@@ -130,6 +136,11 @@
     		$("input[name=id]").select();
     		return false;
     	}
+
+    	if(check_pw == false){
+    		alert("잘못된 비밀번호 형식입니다.");
+    		return false;
+    	}
     	
     }
     
@@ -157,9 +168,9 @@
       <div class="d-block mx-auto mb-6">
 		<form:form class="needs-validation" action="register.mem" method="post" commandName="membean">
           <div class="row g-3">	
-          
+          	
 			<input type="hidden" name="type" value="student">
-	
+			
 			<div class="col-4">
               <label for="id" class="form-label">아이디*</label>
               <div class="input-group has-validation">
@@ -190,7 +201,7 @@
                 <input type="password" name="pw" class="form-control" onBlur="return pw_check()" value="${membean.pw }" required>
               </div>
             </div>
-	
+			
 			 <div class="col-8">
             </div>
 			

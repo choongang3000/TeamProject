@@ -44,17 +44,19 @@ public class BTListController {
 			int totalCount = btdao.getTotalCount(map);
 			
 			String url;
-	         if(subject != null) {
-	            String[] subArr = subject.split(",");
-	   
-	            url = request.getContextPath() + command + "?subject=" + subArr[0];
-	            for(int i=0; i<subArr.length-1; i++) {
-	               url += "&subject=" + subArr[i+1];
-	            }
-	         }
-	         else {            
-	            url = request.getContextPath() + command; // ex//list.bd
-	         }
+			if(subject != null) {
+				String[] subArr = subject.split(",");
+	
+				url = request.getContextPath() + command + "?subject=" + subArr[0];
+				for(int i=0; i<subArr.length-1; i++) {
+					url += "&subject=" + subArr[i+1];
+				}
+			}
+			else {				
+				url = request.getContextPath() + command; // ex//list.bd
+			}
+			//(pageNumber,null,totalCount,url,whatColumn,keyword);키워드 검색할 때 시도
+			//pageNumber,pageSize,totalCount,url,whatColumn,keyword);칼럼
 			
 			COSListPaging pageInfo = new COSListPaging(pageNumber,null,totalCount,url,null,null);//체크박스로 시도
 			List<BTBean> BTList = btdao.getBoardList(pageInfo,map);

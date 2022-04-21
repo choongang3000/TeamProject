@@ -45,7 +45,14 @@
 
     var checked = false;
     var check_res = false;
-
+    var check_pw = false;
+    
+    $(function(){
+    	$("input[name=pw]").keydown(function(){
+    		check_pw = false;
+    	})
+    })	
+    
     function pw_check(){
     	
     	var pw = $("input[name=pw]").val();
@@ -57,12 +64,14 @@
 
     	if(pw.search(regexp) == -1){
     		alert("3~12자리의 영소문자/숫자를 조합해 주세요");
+    		return false;
     	}
     	if(chk_num == 0 || chk_eng == 0){
     		alert("3~12자리의 영소문자/숫자를 조합해 주세요");
     		return false;
     	}
     	
+    	check_pw = true; 
     }
 
 
@@ -75,11 +84,20 @@
     	}
     }
     
+function check(){
+    	
+    	if(check_pw == false){
+    		alert("잘못된 비밀번호 형식입니다.");
+    		return false;
+    	}
+    	
+    }
+    
     
 </script>
 
 <style>
-body {
+main {
 	width: 60%;
 	margin: auto;
 }
@@ -87,10 +105,9 @@ body {
 <link href="form-validation.css" rel="stylesheet">
 </head>
 
-<body>
 	<main>
 		<div class="py-5 text-center">
-			<h2>내 정보 수정</h2>
+			<h2><b>내 정보 수정</b></h2>
 		</div>
 
 		<div class="row g-5">
@@ -206,7 +223,7 @@ body {
 						</div>
 						<div style="height: 20px;"></div>
 						<div class="d-grid gap-2 col-6 mx-auto">
-  							<button class="btn btn-primary" type="submit">수정하기</button>
+  							<button class="btn btn-primary" type="submit" onClick="return check()">수정하기</button>
   							<button class="btn btn-outline-danger" type="button" onClick="location.href='delete.mem?anum=${loginInfo.anum}'">회원 탈퇴</button>
 						</div>
 					</div>
@@ -215,5 +232,4 @@ body {
 		</div>
 	</main>
 	<br><br>
-
 	<%@ include file="../user/usbottom.jsp"%>
