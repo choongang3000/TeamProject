@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import utility.BTPaging;
+import utility.COSListPaging;
 
 //import utility.BTPaging;
 
@@ -27,7 +28,7 @@ public class BTDao {
 	}
 	
 	
-	public List<BTBean> getBoardList(BTPaging pageInfo, Map<String,String> map){
+	public List<BTBean> getBoardList(COSListPaging pageInfo, Map<String,String> map){
 		List<BTBean> lists = new ArrayList<BTBean>(); //여러개 갖고 올거니까 ArrayList 준비
 		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit()); //내가 지금 선택한 페이지에 따라(pageinfo) 몇개를 건너뛰어야하는지 Offset에 들어가게됨. 4개 건너뛰고 2개 갖고 오는 설정으로 RowBounds를 갖고오고..
 		//lists = sqlSessionTemplate.selectList(namespace + ".GetBoardList",rowBounds); 
