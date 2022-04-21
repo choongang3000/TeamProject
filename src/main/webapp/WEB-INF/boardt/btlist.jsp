@@ -18,7 +18,7 @@
     	background-color: blue;
     	color: white;
     	height: 32px;
-    	width: 40px;
+    	width: 50px;
     }
     #b-delete{
     	border-radius : 3px;
@@ -26,7 +26,7 @@
     	background-color: red;
     	color: white;
     	height: 32px;
-    	width: 40px;
+    	width: 50px;
     }
 	
 		
@@ -176,7 +176,7 @@
 	<br><br> --%>
 	 
 	<br>
-	<form id="myArea" action="list.bt?subject=${subject }&pageNumber=${pageInfo.pageNumber}">
+	<form id="myArea" action="list.bt">
 		<table id="allselect" width="700" align="center" style="background-color:#F6F6F6">
 			<tr height="80" border="1">
 				<td align="center">
@@ -248,10 +248,11 @@
 		  <td align="center">${page}</td>
 				<c:set var="page" value="${page -1 }" />
 	--%>	
-	<table id="myform2" width="900" align="center" action="post">
-	 <c:choose>	
+	<table id="myform2" width="800" align="center" action="post" cellpadding = 0;	cellspacing = 0;>
+<%-- 	 <c:choose>	
 		<c:when test="${sessionScope.loginInfo != null}">
-			<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
+			<c:if test="${sessionScope.loginInfo.type eq 'admin'}"> --%>
+				<c:if test="${loginInfo.type != 'student'}">
 				<tr align="center">
 					<!-- <th><input type="checkbox" name="allcheck" onClick="allRowCheck(this)"></th>-->
 					<!-- allcheck를 눌렀을 때 allRowCheck()함수 호출. 지금 클릭한 바로 이거 this=이름이 allcheck인 checkbox를 넘긴다.-->
@@ -261,9 +262,9 @@
 					<th>답</th>
 					<!-- <th>수정|삭제</th>-->
 				</tr>
-			</c:if>
-		</c:when>
-	</c:choose>	
+				</c:if>
+<%-- 		</c:when>
+	</c:choose>	 --%>
 		<c:if test="${totalCount == 0 }">
 			<tr>
 				<td colspan=4 align="center">등록된 문제가 없습니다</td>
@@ -286,13 +287,9 @@
 							<img src="<%=request.getContextPath()%>/resources/images/${bt.quizimg}" width=200 height=200>
 						</td>
 						<td>
-							<c:choose>	
-								<c:when test="${sessionScope.loginInfo != null}">
-									<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
+									<c:if test="${loginInfo.type != 'student'}">
 										<a href="detail.bt?num=${bt.num }&pageNumber=${pageInfo.pageNumber}">
 									</c:if>
-								</c:when>
-							</c:choose>		
 											<img src="<%=request.getContextPath() %>/resources/images/${bt.examfile}" width=500 height=200>
 										</a>
 											
@@ -305,9 +302,7 @@
 							</c:forEach>
 							<img src="<%=request.getContextPath() %>/resources/images/${bt.movingimg}" width=200 height=200 onclick="answer('${result}')">
 						</td>
-				<c:choose>	
-					<c:when test="${sessionScope.loginInfo != null}">
-						<c:if test="${sessionScope.loginInfo.type eq 'admin' }">			
+						<c:if test="${loginInfo.type != 'student'}">
 						<td width="5%">
 <%--						<input id="b-update" type="button" value="수정" onClick="upd()">&nbsp;
 							<input id="b-delete" type="button" value="삭제" onClick="del()"> --%>
@@ -315,8 +310,6 @@
 							<a href="delete.bt?num=${bt.num }&pageNumber=${pageInfo.pageNumber}"><input id="b-delete" type="button" value="삭제"></a>
 						</td>
 						</c:if>
-					</c:when>
-				</c:choose>		
 		</tr>	
 		</c:forEach>
 		</c:if>

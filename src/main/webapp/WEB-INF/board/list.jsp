@@ -21,10 +21,11 @@
 	}
 	table{
 		margin:auto;
+		text-align: center;
 	}
 	
 	#container  {
-    		width:65%;
+    		width:1200px;
 			margin:auto;
     	}
     
@@ -39,22 +40,21 @@
 
 <body bgcolor="<%= bodyback_c %>"> <!-- 바디 -->
 <div id=container>
-<div class="title">
-<h3>고객센터 QnA (전체 글:${totalCount })</h3>
-</div>
-<table width="700" border="1"  class="table table-striped">
-	<tr>
-		<td align="right"><a href="insert.bod" class="btn btn-primary">글쓰기</a></td>
-	</tr>
-</table>
+<!-- <div class="title"> -->
+<br><h3>고객센터 QnA<%-- (전체 글:${totalCount }) --%></h3><br>
+<!-- </div> -->
+<!-- <table width="700" border="1"  class="table table-striped"> -->
 
-<table width="700" border="1" class="table table-striped">
+<table width="700" border="0" class="table table-striped">
 	<tr>
-		<td align="center">번호</td>
-		<td align="center">제목</td>
-		<td align="center">작성자</td>
-		<td align="center">작성일</td>
-		<td align="center">조회</td>
+		<td colspan="5" align="right"><a href="insert.bod" class="btn btn-secondary btn-sm">글쓰기</a></td>
+	</tr>
+	<tr height="30px" style="border-bottom: 2px solid black; text-align: center">
+		<th align="center">번호</th>
+		<th align="center">제목</th>
+		<th align="center">작성자</th>
+		<th align="center">작성일</th>
+		<th align="center">조회</th>
 		<!-- <td align="center">IP</td> -->
 	</tr>
 	<c:set var="contentNum" value="${(totalCount - ((pageInfo.pageNumber-1)*pageInfo.pageSize)) }"/>
@@ -88,4 +88,12 @@
 <!-- 부트스트랩2 -->
 </div>
 </body>
-<%@include file="../user/usbottom.jsp"%>
+
+<c:choose>
+	<c:when test="${sessionScope.loginInfo.type eq 'admin' }">
+		<%@ include file="../admin/adbottom.jsp" %>
+	</c:when>
+	<c:otherwise>
+		<%@ include file="../user/usbottom.jsp" %>
+	</c:otherwise>
+</c:choose>

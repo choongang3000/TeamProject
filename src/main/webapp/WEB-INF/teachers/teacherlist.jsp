@@ -4,18 +4,7 @@
 
 <style type="text/css">
 
-		* { /* 기본적인 마진,패딩 없앰*/
-			
-			margin:0;
-			padding:0; 
-			text-decoration : none; /* 밑줄 없애기 */
-			list-style : none; /* 불릿 없애기 */
-		}
-		
-		body { 
-				width:100%;
-				margin-top:30px;
-		}
+
 		h1 {
 				font:20px "맑은 고딕",돋움,arial; 
 				color:#fff;
@@ -145,7 +134,6 @@
       </div>
     </div>
     <div align="center">${pageInfo.pagingHtml}</div>
-    <hr>
 </div>
 ${t_image }
 

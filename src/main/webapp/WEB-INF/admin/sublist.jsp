@@ -4,49 +4,57 @@
 <%@ include file="../admin/adtop.jsp" %>
     <!-- sublist.jsp<br> -->
     <style>
-    	body{
-    		margin: auto;
-    	}
-    	table{
-    		margin: auto;
+    	.table{
+    		width:1200px;
     		text-align: center;
     	}
     
     </style>
-    
+    <script>
+    	function update(){
+    		location.href="subupdate.ad?subnum=${list.subnum }";
+    	}
+    	
+    	function delete(){
+    		location.href="subdelete.ad?subnum=${list.subnum }";
+    	}
+    </script>
     <center>
+    <br>
     <h2>과목 카테고리</h2>
     
     <br>
     
-    <form action="subinsert.ad" method="post">
-    	과목명 <input type="text" name="subname">
-    	<input type="submit" value="과목추가">
+    <form action="subinsert.ad" method="post" class="btn-group">
+    	<input type="text" name="subname" placeholder="추가할 과목명 입력" class="form-control">
+    	<input type="submit" value="과목추가" class="btn btn-secondary btn-sm">
     </form>
     
-    <br>
+    <!-- <br> -->
     
-    <form action="subupdate.ad" method="post">
+    <form action="subupdate.ad" method="post" class="btn-group">
     	<input type="hidden" name="subnum" value="${subbean.subnum }">
-    	수정명 <input type="text" name="subname" value="${subbean.subname }">
-    	<input type="submit" value="과목수정">
+    	<input type="text" name="subname" value="${subbean.subname }" placeholder="수정할 과목명 입력" class="form-control">
+    	<input type="submit" value="과목수정" class="btn btn-secondary btn-sm">
     </form>
     
     <br><br>
     
-    <table border="0" width="60%" align="center">
-    	<tr height="30px">
-    		<td>번호</td>
-    		<td>과목명</td>
-    		<td>수정</td>
-    		<td>삭제</td>
+    <table border="0" width="60%" align="center" class="table table-striped" id="table">
+    	<tr height="30px" style="border-bottom: 2px solid black; text-align: center">
+    		<th>번호</th>
+    		<th>과목명</th>
+    		<th>수정</th>
+    		<th>삭제</th>
     	</tr>
     	<c:forEach var="list" items="${sublist }">
     	<tr height="10px">
 	    	<td>${list.subnum }</td>
 	    	<td>${list.subname }</td>
+	    	<!-- <td><input type="button" value="수정" class="btn btn-secondary btn-sm" onClick="update()"></td> -->
+	    	<!-- <td><input type="button" value="삭제" class="btn btn-secondary btn-sm" onClick="delete()"></td> -->
 	    	<td><a href="subupdate.ad?subnum=${list.subnum }">수정</a></td>
-    		<td><a href="subdelete.ad?subnum=${list.subnum }">삭제</a></td>	
+    		<td><a href="subdelete.ad?subnum=${list.subnum }">삭제</a></td>
     	</tr>
     	</c:forEach>
     </table> 

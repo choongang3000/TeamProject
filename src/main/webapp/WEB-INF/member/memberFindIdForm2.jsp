@@ -5,14 +5,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 	function login(){
+		//alert("로그인");
 		location.href="loginForm.mem";
 	}
 	
 	function findPw(){
+		//alert("비번찾기");
 		location.href="findpw.mem";
 	}
 	
 	function register(){
+		//alert("회원가입");
 		location.href="register.mem";
 	}
 </script>
