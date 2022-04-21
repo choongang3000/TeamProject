@@ -29,7 +29,8 @@
 		$('.make_star svg:nth-child(-n+' + targetNum +')').css({color:'#F05522'});
 	});
 	
- */</script>
+ */
+ </script>
     
 <style>
 	body{

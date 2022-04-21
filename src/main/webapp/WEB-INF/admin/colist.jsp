@@ -2,21 +2,24 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp" %>
 <%@ include file="../admin/adtop.jsp" %>
-  <!-- colist.jsp<br> -->
+<!-- colist.jsp<br> -->
 <script>
 	function insert(){
 		//alert(1)
 		location.href="coinsert.ad";
 	}
 </script>
+
 <style>
-	body{
-		width:70%;
-		margin:auto;
+	.table{
+		width:1300px;
 	}
+	
+	
 </style>
+
   <center>
-  <h2>강의 목록</h2><br><br>
+  <br><h2>강의 목록</h2><br>
   	<form method="get" action="colist.ad" class="btn-group">
 		<div class="input-group">
 			<select name="whatColumn" class="form-control"> <!-- 미완성(대소문자 구분하는법) -->
@@ -31,30 +34,32 @@
 	</form>
    </center>
    
-   <br><br>
-   
-   <table border="0" width="100%" height="70%" align="center">
-	    <tr height="30">
+   <br>
+   <center>
+   <table border="0" align="center" class="table table-striped" id="table">
+	    <tr>
 			<td colspan="9" align="right">
 				<input type="button" value="강의추가" onClick="insert()" class="btn btn-secondary btn-sm">
 			</td>
 		<tr>
-    	<tr>
-    		<td>번호</td>
-    		<td>강의명</td>
-    		<td>담당선생님</td>
-    		<td>강의과목</td>
-    		<td>강의이미지</td>
-    		<td>강의영상</td>
-    		<td>강의소개</td>
-    		<td>강의가격</td>
-    		<td>업로드날짜</td>
+    	<tr height="30px" style="border-bottom: 2px solid black; text-align: center">
+    		<th>번호</th>
+    		<th>강의명</th>
+    		<th>선생님</th>
+    		<th>과목</th>
+    		<th>이미지</th>
+    		<th>영상</th>
+    		<th>소개</th>
+    		<th>가격</th>
+    		<th>날짜</th>
     	</tr>
     	<!-- conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date -->
     	<c:forEach var="list" items="${colist }">
     	<tr>
     		<td>${list.conum }</td>
-    		<td><a href="codetail.ad?conum=${list.conum }&pageNumber=${pageInfo.pageNumber}">${list.coname }</a></td>
+    		<td>
+    			<a href="codetail.ad?conum=${list.conum }&pageNumber=${pageInfo.pageNumber}">${list.coname }</a>
+    		</td>
     		<td>${list.coteacher }</td>
     		<td>${list.cosubject }</td>
     		<td>
@@ -72,10 +77,14 @@
     		<td>${list.cocontent }</td>
     		<td><fmt:formatNumber value="${list.coprice }" pattern="#,###,###"/></td>
     		<td>
-    			<fmt:formatDate value="${list.coupload_date }" pattern="yyyy-MM-dd"/>
+    			<fmt:formatDate value="${list.coupload_date }" pattern="yy-MM-dd"/>
     		</td>
     	</tr>
     	</c:forEach>
     </table>
-${pageInfo.pagingHtml }
+    
+    <br><br>
+    ${pageInfo.pagingHtml }
+	</center>
+
 <%@ include file="../admin/adbottom.jsp" %> 

@@ -3,29 +3,29 @@
 <%@ include file="../common/common.jsp" %>
 <%@ include file="../admin/adtop.jsp" %>
 
-<style>
-	table{
-		width:50%;
-		text-align: center;
-	}
+ <style>
+    .table{
+    	width:1200px;
+    	text-align: center;
+    }
+    
 </style>
 
 <center>
 <!-- shlist.jsp <br> -->
-<h2>주문내역 조회</h2>
-<br>    
-<table border="0" align="center">
+<br><h2>주문내역 조회</h2>   
+<table>
 <tr height="100">
 	<td colspan="6">
-		<form action="shlist.ad" method="get">
-			조회할 회원 아이디 입력:
-			<input type="text" name="keyword" size="20">
-			<input type="submit" value="검색"> 
+		<form action="shlist.ad" method="get" class="btn-group">
+			<input type="text" name="keyword" size="25" placeholder="조회할 회원 아이디 입력" class="form-control">
+			<input type="submit" value="검색" class="btn btn-secondary btn-sm"> 
 		</form>
     </td>
 </tr>
-
-<tr height="50">
+</table>
+<table border="0" align="center" class="table table-striped">
+<tr height="30px" style="border-bottom: 2px solid black; text-align: center">
 	<th>NO.</th>
 	<th>주문번호</th>
 	<th>아이디</th>

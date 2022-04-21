@@ -9,69 +9,72 @@
 		<%@ include file="../user/ustop.jsp"%>
 	</c:otherwise>
 </c:choose>
-<head>					<!-- 헤드 -->
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<!-- 부트스트랩 -->
 
+<style>
+	table{
+		margin:auto;
+		width:1200px;
+		text-align:center;
+	}
+</style>
 
-
-</head>  				<!-- 헤드 끝-->
-
-<%@ include file="color.jsp" %> <!-- include 지시어 : 내용을 복붙 -->
+<%--<%@ include file="color.jsp" %> --%>
+<center>
 <div class="container">
-
-<table border="1" class='table'>
-	<tr>
+<br>
+<h2 align="center">Q&A 문의글 수정</h2>
+<br>
+<table width="60%">
+	<!-- <tr>
 		<td colspan="4" align="center">글내용 보기</td>
-	</tr>
-	<tr>
-		<td align="center" class="table-secondary">
+	</tr> -->
+	<tr height="40" style="border-top: solid black 1px">
+		<td align="center" bgcolor="#DCDCDC">
 			글번호
 		</td>
-		<td align="center" >
+		<td align="center">
 			${bb.num }
 		</td>
-		<td align="center" class="table-secondary">
+		<td align="center" bgcolor="#DCDCDC">
 			조회수
 		</td>
 		<td align="center">
 			${bb.readcount }
 		</td>
 	</tr>
-	<tr  align="center">
-		<td align="center" class="table-secondary">
+	<tr height="40" style="border-top: solid black 1px">
+		<td align="center" bgcolor="#DCDCDC">
 			작성자
 		</td>
 		<td align="center">
 			${bb.writer }
 		</td>
-		<td align="center" class="table-secondary">
+		<td align="center" bgcolor="#DCDCDC">
 			작성일
 		</td>	
 		<td align="center">
 			<fmt:formatDate value="${bb.reg_date }" pattern="yyyy/MM/dd HH:mm" type="both"/>
 		</td>	
 	</tr>
-	<tr>
-		<td align="center" class="table-secondary">
+	<tr height="40" style="border-top: solid black 1px">
+		<td align="center" bgcolor="#DCDCDC">
 			글제목
 		</td>	
 		<td colspan="3" align="center">
 			${bb.subject }
 		</td>	
 	</tr>
-	<tr height="100">
-		<td class="table-secondary">
+	<tr height="300" style="border-top: solid black 1px">
+		<td bgcolor="#DCDCDC">
 			글내용
 		</td>	
 		<td colspan="3" align="center">
 			${bb.content }
 		</td>
 	</tr>
-	<tr align="center">
+	<tr align="center" height="50" style="border-top: solid black 1px">
 		<td colspan="4">
+			<br>
 			<input type="submit" value="글수정" class="btn btn-info" onClick="location.href='update.bod?num=${bb.num}&pageNumber=${pageNumber}'">
 			<input type="button" value="글삭제" class="btn btn-secondary" onClick="location.href='delete.bod?num=${bb.num}&pageNumber=${pageNumber}'">
 			<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
@@ -81,7 +84,14 @@
 		</td>
 	</tr>
 </table>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<!-- 부트스트랩2 -->
-</body>
 </div>
+</center>
+
+<c:choose>
+	<c:when test="${sessionScope.loginInfo.type eq 'admin' }">
+		<%@ include file="../admin/adbottom.jsp" %> 
+	</c:when>
+	<c:otherwise>
+		<%@ include file="../user/usbottom.jsp"%>
+	</c:otherwise>
+</c:choose>

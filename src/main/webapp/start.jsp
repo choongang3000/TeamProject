@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<center>
+<!-- <center>
 <br><br><br><br><br><br><br><br><br>
-
-start.jsp <br>
-
+<%
+    String viewPage = request.getContextPath()+"/home.us";
+    response.sendRedirect(viewPage);
+%>
 [게시판]<br>
 <a href="list.bt">수업자료 게시판(주현)</a><br>
 <a href="list.bs">수강후기 게시판(성은)</a><br>
@@ -23,3 +24,4 @@ start.jsp <br>
 <a href="loginForm.mem">로그인</a><br>
 <a href="show.cos?conum=1">강의 보기</a><br>
 </center>
+ -->

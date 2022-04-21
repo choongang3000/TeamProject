@@ -245,11 +245,13 @@
 			</tr>
 			</c:forEach>
 		</table>
-		${pageInfo.pagingHtml }
+		 <div class="btn-toolbar" role="toolbar">
+      
+        ${pageInfo.pagingHtml }
+      </div>
 	</div>
 </section>
 
-	
 <div id=foot>
 <hr>
 <br><br>	
