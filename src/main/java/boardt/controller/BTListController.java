@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import boardt.model.BTBean;
 import boardt.model.BTDao;
-import utility.BTPaging;
 import utility.COSListPaging;
 
 @Controller
@@ -30,9 +29,6 @@ public class BTListController {
 	
 	@RequestMapping(value=command)
 	public ModelAndView doAction(
-			//@RequestParam(value="whatColumn",required=false) String whatColumn, 
-			//@RequestParam(value="keyword",required=false) String keyword,
-			//@RequestParam Map map, Model model,
 			@RequestParam(value="pageNumber",required=false) String pageNumber,
 			@RequestParam(value="subject",required=false) String subject,
 			HttpServletRequest request,
@@ -45,50 +41,24 @@ public class BTListController {
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("subject",btbean.getSubject());
 			
-			if(subject != null) {
-				if(subject.equals("")) {
-					map.put("subject", null);
-				}
-				else {
-					map.put("subject", subject);
-				}
-			}
-			else {
-				map.put("subject", subject);
-			}
-			
 			int totalCount = btdao.getTotalCount(map);
 			
 			String url;
-			if(subject != null) {
-				String[] subArr = subject.split(",");
-	
-				if(subArr.length > 0) {
-					url = request.getContextPath() + command + "?subject=" + subArr[0];
-					for(int i=0; i<subArr.length-1; i++) {
-						url += "&subject=" + subArr[i+1];
-					}
-				}
-				else {
-					url = request.getContextPath() + command;
-				}
-			}
-			else {				
-				url = request.getContextPath() + command; // ex//list.bd
-			}
-			//(pageNumber,null,totalCount,url,whatColumn,keyword);키워드 검색할 때 시도
-			//pageNumber,pageSize,totalCount,url,whatColumn,keyword);칼럼
+	         if(subject != null) {
+	            String[] subArr = subject.split(",");
+	   
+	            url = request.getContextPath() + command + "?subject=" + subArr[0];
+	            for(int i=0; i<subArr.length-1; i++) {
+	               url += "&subject=" + subArr[i+1];
+	            }
+	         }
+	         else {            
+	            url = request.getContextPath() + command; // ex//list.bd
+	         }
 			
 			COSListPaging pageInfo = new COSListPaging(pageNumber,null,totalCount,url,null,null);//체크박스로 시도
 			List<BTBean> BTList = btdao.getBoardList(pageInfo,map);
 			
-			//Map<String, String> map = new HashMap<String, String>(); //키워드 검색할 때 시도 
-			//map.put("whatColumn", whatColumn); //키워드 검색할 때 시도 
-			//map.put("keyword", "%"+keyword+"%"); //키워드 검색할 때 시도
-//★★		int totalCount = btdao.getTotalCount(); // controller -> Dao -> xml -> Dao -> controller
-			//int totalCount = btdao.getTotalCount(map); //키워드 검색할 때 시도 ( controller -> Dao -> xml -> Dao -> controller )
-			//주소창에 ex 보이기는 ex로 보이지만.. 프로젝트명/com/spring/ex인거임.
-		
 		
 			ModelAndView mav = new ModelAndView();
 //★★		List<BTBean> BTList = btdao.getBoardList(pageInfo);
