@@ -37,5 +37,11 @@ public class STUOrderDeDao {
 		return odbeanArr;
 	}
 	
+	public List<Integer> getOrderDetailConums(String aid){
+		List<Integer> oddConumArr = sqlSessionTemplate.selectList(namespace + ".GetOrderDetailConums", aid);
+		
+		return oddConumArr; 
+	}
+	
 
 }

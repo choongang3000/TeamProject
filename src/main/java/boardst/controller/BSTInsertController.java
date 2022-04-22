@@ -2,11 +2,13 @@ package boardst.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import boardst.model.BSTBean;
 import boardst.model.BSTDao;
+import member.model.MemberBean;
 
 @Controller
 public class BSTInsertController {
@@ -33,12 +36,21 @@ public class BSTInsertController {
 	
 	@RequestMapping(value=command, method=RequestMethod.GET)
 	public String doAction(@RequestParam(value="pageNumber") String pageNumber,
-							HttpServletRequest request) {
+							HttpServletRequest request,
+							HttpSession session) {
 		
-		List<String> subjectArr = bstdao.getSubjectArr();
-		List<String> teacherArr = bstdao.getTeacherArr();
-		request.setAttribute("subjectArr", subjectArr);
+		MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo");
+		
+		List<Integer> oddConumArr = bstdao.getOddConums(loginInfo.getId());
+		ArrayList<String> teacherArr = new ArrayList<String>();
+		ArrayList<String> subArr = new ArrayList<String>();
+		for(Integer conum : oddConumArr) {
+			teacherArr.add(bstdao.getCoteacher(conum));
+			subArr.add(bstdao.getCosubject(conum));
+		}
+		
 		request.setAttribute("teacherArr", teacherArr);
+		request.setAttribute("subArr", subArr);
 		request.setAttribute("pageNumber", pageNumber);
 		
 		return getPage;

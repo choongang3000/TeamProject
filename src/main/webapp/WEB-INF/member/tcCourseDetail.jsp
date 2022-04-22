@@ -65,7 +65,7 @@
 		<td align=right>
 			<%-- <input type="button" value="돌아가기" onClick="location.href='tcCourseList.mem?pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}'" >
 		 --%>
-		 	<input type="button" value="돌아가기" onClick="location.href='stucolist.mem'" >
+		 	<input type="button" value="돌아가기" onClick="location.href='tcCourseList.mem'" >
 		</td>
 	</tr>
 </table>

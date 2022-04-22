@@ -34,6 +34,9 @@
 	  padding: 3rem;
 	  border-radius: 1rem;
 	}
+	h2{
+		display:inline;
+	}
 </style>
 <div class="b-example-divider"></div>
 
@@ -43,6 +46,7 @@
       <div class="modal-header p-5 pb-4 border-bottom-0">
         <!-- <h5 class="modal-title">Modal title</h5> -->
         <h2 class="fw-bold mb-0">비밀번호 찾기</h2>
+        <img width=50 height=50 src="<%=request.getContextPath()%>/resources/images/icon/집모양.png" onClick="location.href='home.us'">
         <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
       </div>
 

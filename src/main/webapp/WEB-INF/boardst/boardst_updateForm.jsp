@@ -12,7 +12,7 @@
 			<td>
 				<select name="subject" class="form-select" style="width:15%; display: inline;" required> <!-- 추가 수정필요 -->
 					<option value="">과목 선택</option>
-					<c:forEach var="sub" items="${subjectArr }">
+					<c:forEach var="sub" items="${subArr }">
 					<option value="${sub }" <c:if test="${board.subject == sub }">selected</c:if>>${sub }</option>
 					</c:forEach>					
 				</select>

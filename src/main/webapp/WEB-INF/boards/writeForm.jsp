@@ -153,8 +153,8 @@
 				 
 					<select name="coname" class="form-control" id="floatingInput" required>
 					<option value="">강의선택</option>
-					<c:forEach var="colist" items="${colist }">
-						<option value="${colist.coname }">${colist.coname }</option>
+					<c:forEach var="colist" items="${conameArr }">
+						<option value="${colist}">${colist }</option>
 					</c:forEach>
 					</select>
 					<form:errors cssClass="err" path="coname"/>
@@ -168,8 +168,8 @@
 				
 					<select name="coteacher" class="form-control" id="floatingInput" required>
 					<option value="">선생님선택</option>
-					<c:forEach var="telist" items="${telist }">
-						<option value="${telist.tname }">${telist.tname }</option>
+					<c:forEach var="telist" items="${teacherArr }">
+						<option value="${telist }">${telist }</option>
 					</c:forEach>
 					</select>
 					<form:errors cssClass="err" path="coteacher"/>

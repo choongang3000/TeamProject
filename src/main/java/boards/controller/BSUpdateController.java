@@ -8,6 +8,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ import admin.model.TeacherBean;
 import admin.model.TeacherDao;
 import boards.model.BSBean;
 import boards.model.BSDao;
+import member.model.MemberBean;
 
 @Controller
 public class BSUpdateController {
@@ -44,19 +46,21 @@ public class BSUpdateController {
 	@RequestMapping(value=command, method=RequestMethod.GET)
 	public String doAction(@RequestParam(value="num", required=true) String num,
 			@RequestParam(value="pageNumber", required=true) String pageNumber,
-			Model model) {
-
-		//강의정보 가져오기
-		List<CoBean> colist = new ArrayList<CoBean>();
-		colist = codao.coursesList();
-		model.addAttribute("colist",colist);
-		//request.setAttribute("colist", colist);
+			Model model,
+			HttpSession session) {
+		MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo");
 		
-		//선생님 정보 가져오기
-		List<TeacherBean> telist = new ArrayList<TeacherBean>();
-		telist = tdao.selectTeacher();
-		model.addAttribute("telist",telist);
-		//request.setAttribute("telist", telist);
+		List<Integer> oddConumArr = bsdao.getOddConums(loginInfo.getId());
+		
+		ArrayList<String> conameArr = new ArrayList<String>();
+		ArrayList<String> teacherArr = new ArrayList<String>();
+		for(Integer conum : oddConumArr) {
+			conameArr.add(bsdao.getConame(conum));
+			teacherArr.add(bsdao.getCoteacher(conum));
+		}
+		
+		model.addAttribute("conameArr", conameArr);
+		model.addAttribute("teacherArr", teacherArr);
 		
 		bsbean = bsdao.getArticle(num);
 

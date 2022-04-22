@@ -2,10 +2,12 @@ package boardst.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import boardst.model.BSTBean;
 import boardst.model.BSTDao;
+import member.model.MemberBean;
 
 @Controller
 public class BSTUpdateController {
@@ -33,17 +36,26 @@ public class BSTUpdateController {
 	
 	@RequestMapping(value=command, method=RequestMethod.GET)
 	public ModelAndView doAction(@RequestParam(value="num", required=true) int num,
-							@RequestParam(value="pageNumber", required=true) String pageNumber) {
+							@RequestParam(value="pageNumber", required=true) String pageNumber,
+							HttpSession session) {
+		
+		MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo");
+		
+		List<Integer> oddConumArr = bstdao.getOddConums(loginInfo.getId());
+		ArrayList<String> teacherArr = new ArrayList<String>();
+		ArrayList<String> subArr = new ArrayList<String>();
+		for(Integer conum : oddConumArr) {
+			teacherArr.add(bstdao.getCoteacher(conum));
+			subArr.add(bstdao.getCosubject(conum));
+		}
 		
 		BSTBean board = bstdao.getBoardByNum(num);
 		
 		beforeFile = board.getImage();
-		List<String> subjectArr = bstdao.getSubjectArr();
-		List<String> teacherArr = bstdao.getTeacherArr();
 		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("subjectArr", subjectArr);
 		mav.addObject("teacherArr", teacherArr);
+		mav.addObject("subArr", subArr);
 		mav.addObject("board",board);
 		mav.addObject("pageNumber",pageNumber);
 		mav.setViewName(getPage);
