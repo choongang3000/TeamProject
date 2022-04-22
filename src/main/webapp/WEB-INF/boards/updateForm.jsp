@@ -140,15 +140,13 @@
 			<td align="center" bgcolor="#DCDCDC">강의명</td>
 			<td>
 				<!-- <input type="text" name="coname" class="form-control" id="floatingInput" placeholder="제목을 입력해주세요"> -->
-				 
-					<select name="coname" class="form-control" id="floatingInput" required>
-					<option value="">강의선택</option>
-					<c:forEach var="colist" items="${colist }">
-						<option value="${colist.coname }" <c:if test="${colist.coname == bb.coname }">selected</c:if>>${colist.coname }</option>
-					</c:forEach>
-					</select>
-					<form:errors cssClass="err" path="coname"/>
-				
+				<select name="coname" class="form-control" id="floatingInput" required>
+				<option value="">강의선택</option>
+				<c:forEach var="colist" items="${colist }">
+					<option value="${colist.coname }" <c:if test="${colist.coname == bb.coname }">selected</c:if>>${colist.coname }</option>
+				</c:forEach>
+				</select>
+				<form:errors cssClass="err" path="coname"/>
 			</td>
 		</tr>
 		<tr>

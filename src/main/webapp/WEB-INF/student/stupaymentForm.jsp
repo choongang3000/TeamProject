@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
-<%@ include file="../admin/adtop.jsp" %>
+<%@ include file="../user/ustop.jsp"%>
 
 <!-- Custom styles for this template -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
@@ -322,7 +322,7 @@ function div_show(selectNum){
 </div>
 
 
-<%@ include file="../admin/adbottom.jsp" %>
+<%@ include file="../user/usbottom.jsp"%>
 <br>
 
 <!-- 

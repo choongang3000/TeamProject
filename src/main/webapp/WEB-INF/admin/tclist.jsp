@@ -2,6 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp" %>
 <%@ include file="adtop.jsp" %>
+	
+	<style>
+		table{
+			width:1200px;
+			text-align: center;
+		}
+	</style>
+	
 	<center>
 	
 	<br>
@@ -9,7 +17,7 @@
     <br>
     
 	
-    <table style="width:1200px">
+    <table>
     	<!-- <tr height=15px>
     		<td></td>
     	</tr> -->

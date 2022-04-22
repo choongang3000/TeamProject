@@ -16,20 +16,16 @@
 
 
 <script type="text/javascript">
-
 		function insert(){
 			location.href = "coinsert.cos"; 
 		}//insert
-		
 </script>
 
 <style type="text/css">
 
 
 /* COSListController / coslist.jsp / CoSDao / CoSBean / course.xml */
-
-
-		
+	
 		h1 {
 				font:20px "맑은 고딕",돋움,arial; 
 				color:#fff;
@@ -226,16 +222,29 @@
 				<td align=center>
 					<fmt:formatNumber value="${course.coprice}" pattern="#,###"/>원 &nbsp;&nbsp;
 				</td>
+				<%--
+				<c:choose>
+					<c:when test="${sessionScope.loginInfo.type eq 'admin' }">
+						<%@ include file="../admin/adtop.jsp" %>
+					</c:when>
+					<c:otherwise>
+						<%@ include file="../user/ustop.jsp"%>
+					</c:otherwise>
+				</c:choose>
+				 --%>
+				<c:if test="${sessionScope.loginInfo.type eq 'student'}"> 
 				<td>
 					<a href="detail.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }"><button id="button1" type="button" class="btn btn-secondary btn-sm">수강신청 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/icon/book-outline.svg" width="20" height="20"/></button></a> &nbsp;
 					<a href="goshow.cos?conum=${course.conum }"><button id="button2" type="button" class="btn btn-secondary btn-sm">강의이동 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/icon/재생 아이콘.png" width="20" height="20"/></button></a>
 				</td>
+				</c:if>
 				<c:if test="${sessionScope.loginInfo.type eq 'admin'}">
 				<td>
-					<a href="coupdate.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}"><input id="b-update" type="button" value="수정"></a>&nbsp;
-					<a href="codelete.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}&whatColumn=${whatColumn}&keyword=${keyword}"><input id="b-delete" type="button" value="삭제"></a>
+					<a href="coupdate.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}"><input id="b-update" type="button" class="w-50 btn btn-primary btn-mg" value="수정"></a>&nbsp;
+					<a href="codelete.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}&whatColumn=${whatColumn}&keyword=${keyword}"><input id="b-delete" type="button" class="w-50 btn btn-primary btn-mg" value="삭제"></a>
 				</td>
 				</c:if>
+				
 			</tr>
 			</c:forEach>
 		</table>
