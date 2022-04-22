@@ -11,9 +11,8 @@
 
 </style>
 <center>
+<!-- <h2>구매 완료</h2> -->
 <br><br>
-<h2>구매 완료</h2>
-<br><br><br>
 <h3><p class="text-muted">구매 완료</p></h3>
 <br><br>
 

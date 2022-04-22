@@ -30,15 +30,14 @@ public class BCsListControlloer {
 	private boardCsDao csdao;
 	
 	@RequestMapping(value=command, method=RequestMethod.GET)
-	public String doAction(@RequestParam(value="aname", required=false) String writer,
-							@RequestParam(value="pageNumber", required= false) String pageNumber, 
+	public String doAction(	@RequestParam(value="pageNumber", required= false) String pageNumber, 
 							HttpServletRequest request,
 							HttpSession session) {
 		
 		MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo");
-		
-		System.out.println("writer:"+writer);
-		Map<String, String> map=new HashMap<String, String>();
+		//System.out.println("writer:"+writer);
+		Map<String, String> map = new HashMap<String, String>();
+		/*
 		if(writer != null) {
 	         if(writer.equals("")) {
 	            map.put("writer", null);
@@ -50,25 +49,29 @@ public class BCsListControlloer {
 	      else {
 	         map.put("writer", writer);
 	      }
-		
-		int totalCount = csdao.getArticlesCount(map);
-		System.out.println("totalCount:"+totalCount);
+		*/
+		//int totalCount = csdao.getArticlesCount(map);
+		int totalCount = csdao.getArticlesCount2();
+		//System.out.println("totalCount:"+totalCount);
 		
 		String url ;
+		url = request.getContextPath()+command;
+		/*
 		if(writer != null) {
 			url = request.getContextPath()+command+"?writer="+writer;
 		}
 		else {
 			url = request.getContextPath()+command;
 		}
+		*/
+		Paging pageInfo = new Paging(pageNumber,"null",totalCount,url,null,null);
 		
-		Paging pageInfo = new Paging(pageNumber,"7",totalCount,url,null,null);
+		//List<boardCsBean> boardArr = csdao.getArticles1(pageInfo,map);
+		List<boardCsBean> boardArr = csdao.getArticles2(pageInfo);
 		
-		List<boardCsBean> boardArr = csdao.getArticles(pageInfo,map);
-		
-		ModelAndView mav=new ModelAndView();
-		mav.addObject("writer",writer);
-		
+		//ModelAndView mav=new ModelAndView();
+		//mav.addObject("writer",writer);
+		request.setAttribute("loginInfo", loginInfo);
 		request.setAttribute("totalCount", totalCount);
 		request.setAttribute("pageInfo", pageInfo);
 		request.setAttribute("boardArr", boardArr);
