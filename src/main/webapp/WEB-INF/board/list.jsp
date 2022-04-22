@@ -16,12 +16,13 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <!-- 부트스트랩 -->
 <style type="text/css" dir="ltr">
-	body{
-		text-align:center;
-	}
 	table{
+		width:1200px;
 		margin:auto;
 		text-align: center;
+	}
+	body{
+		text-align:center;
 	}
 	
 	#container  {
@@ -38,15 +39,11 @@
 
 <%@ include file="color.jsp" %> <!-- include 지시어 : 내용을 복붙 -->
 
-<%-- <body bgcolor="<%= bodyback_c %>"> <!-- 바디 --> --%>
-<br><br>
-<div id=container>
-<!-- <div class="title"> -->
-<%-- <br><h3>고객센터 QnA(전체 글:${totalCount })</h3><br> --%>
-<!-- </div> -->
+<!-- </div> -->	
 <!-- <table width="700" border="1"  class="table table-striped"> -->
-
-<table width="700" border="0" class="table table-striped">
+<div id=container>
+<br><br>
+<table border="0" class="table table-striped"> <!-- 700 -> 1200 -->
 	<tr>
 		<td colspan="2" align="left"><a class="navbar-brand" align="right" style="color:black;"><b>&nbsp;고객센터 Q&A</b></a></td>
 		<td colspan="3" align="right"><a href="insert.bod" class="btn btn-secondary btn-sm">글쓰기</a></td>

@@ -11,8 +11,7 @@
 </style>
 	<br><br>
 	<center>
-	<!-- <br><h2>질문게시판</h2><br> -->
-		<table class="table table-striped" style="width: 1200px">
+		<table width="1200px" style="text-align: center; width:1200px" class="table table-striped" > <!-- JH : 너비 70% -> 1200px로 수정함 -->
 			<tr>
 				<c:if test="${loginInfo.type=='student' }">
 				<td colspan="3" align="left" style="height:35px;">

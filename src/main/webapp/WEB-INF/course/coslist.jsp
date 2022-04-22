@@ -73,7 +73,7 @@
 		
 		#main-title {
 				float:left;
-				width:920px;
+				width:1000px; /* 전 : 920px -> 후 : 1000px */
 				text-align:center;
 				margin:80px auto;
 				background-color:#F6F6F6;
@@ -149,6 +149,13 @@
       			height: 32px;
       			width: 60px;
       	}
+      	
+       table{
+    	
+    	width:1000px;
+    	text-align: center;
+    	
+    	}
 </style>
 
 <body>
@@ -188,7 +195,7 @@
 			<input type="text" name="keyword">
 			<input type="submit" value="검색" id="searchbutton">
 		</form>
-		<table width="920">
+		<table> 
 		
 			<tr align="center" height="30px">
 					<th align="center"><!-- | 강사 | --></th>
