@@ -22,6 +22,7 @@
     	<tr height="30px" style="border-bottom: 2px solid black; text-align: center">
     		<th bgcolor="#DCDCDC">고객ID</th>
     		<th bgcolor="#DCDCDC">주문번호</th>
+    		<th bgcolor="#DCDCDC">과목</th>
     		<th bgcolor="#DCDCDC">상품명</th>
     		<th bgcolor="#DCDCDC">담당선생님</th>
     		<th bgcolor="#DCDCDC">금액</th>
@@ -31,6 +32,7 @@
     		<td>${od.aid }</td>
     		<td>${od.onum }</td>
     		<td>${od.cosubject }</td>
+    		<td>${od.coname }</td>
     		<td>${od.coteacher }</td>
     		<td>
     			<fmt:formatNumber value="${od.coprice }" pattern="##,###,###"/>원
@@ -50,7 +52,7 @@
     	</tr>
     </table>
     <br><br>
-    <input type="button" value="뒤로가기" onClick="history.back()">
+    <input type="button" class="btn btn-secondary btn-sm" value="뒤로가기" onClick="history.back()">
 <br><br>
 
 <%@ include file="../admin/adbottom.jsp" %>

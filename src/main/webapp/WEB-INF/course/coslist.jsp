@@ -277,6 +277,7 @@
 			</tr>
 			</c:forEach>
 		</table>
+		 <!-- <div class="btn-toolbar" role="toolbar"> -->
 		<div class="btn-toolbar" role="toolbar">
 			<div id="pagediv">
 	        	${pageInfo.pagingHtml }

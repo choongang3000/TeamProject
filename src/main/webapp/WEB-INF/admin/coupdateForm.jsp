@@ -74,8 +74,8 @@
             
             <!-- 강의이미지 -->
             <div class="col-12">
-              <label for="coimage" class="form-label">강의 이미지 <span class="text-muted">(Optional)</span></label><br>
-              <img src="<%=request.getContextPath() %>/resources/${cobean.coimage}" width="500" height="400"><br>
+              <label for="coimage" class="form-label">강의 이미지 <span class="text-muted"></span></label><br>
+              <img src="<%=request.getContextPath() %>/resources/images/${cobean.coimage}" width="500" height="400"><br>
               <br> 
               기존 강의 이미지명 : ${cobean.coimage }
               	
@@ -84,7 +84,7 @@
 	            ${fn:substring(cobean.coimage,37,lenimg)}
 	           <br>
 	         
-              <input type="file" class="form-control" name="upimage" value="<%=request.getContextPath()%>/resources/${cobean.coimage}" required>
+              <input type="file" class="form-control" name="upimage" value="<%=request.getContextPath()%>/resources/images/${cobean.coimage}" required>
               <br>
               <div class="invalid-feedback">
                 강의 이미지를 넣어주세요.
@@ -143,7 +143,7 @@
       </div>
     </div>
   </main>
-  
+ <!--  
   <footer class="my-5 pt-5 text-muted text-center text-small">
     <p class="mb-1">&copy; 2017–2021 Company Name</p>
     <ul class="list-inline">
@@ -152,7 +152,7 @@
       <li class="list-inline-item"><a href="#">Support</a></li>
     </ul>
   </footer>
-
+ -->
 </div>
 
 <%@ include file="../admin/adbottom.jsp" %> 

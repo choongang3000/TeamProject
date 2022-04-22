@@ -188,7 +188,7 @@
               <label for="id" class="form-label">아이디*</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
-                <input type="text" name="id" class="form-control" value="${tbean.id }">
+                <input type="text" name="id" class="form-control" value="${tbean.id }" required>
               </div>
             </div>
             
@@ -211,7 +211,7 @@
               <label for="pw" class="form-label">비밀번호*</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
-                <input type="text" name="pw" class="form-control" onBlur="return pw_check()" value="${tbean.pw }">
+                <input type="text" name="pw" class="form-control" onBlur="return pw_check()" value="${tbean.pw }" required>
               </div>
             </div>
 	
@@ -219,10 +219,10 @@
             </div>
 			
             <div class="col-4">
-              <label for="pw_re" class="form-label">비밀번호확인</label>
+              <label for="pw_re" class="form-label">비밀번호확인*</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
-                <input type="text" name="repw" onkeyup="repw_check()" class="form-control">
+                <input type="text" name="repw" onkeyup="repw_check()" class="form-control" required>
                 <div class="invalid-feedback">
                   비밀번호 확인을 작성해주세요.
                 </div>
@@ -240,7 +240,7 @@
               <label for="aname" class="form-label">이름*</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
-                <input type="text" name="aname" class="form-control" value="${tbean.aname }">
+                <input type="text" name="aname" class="form-control" value="${tbean.aname }" required>
               <div class="invalid-feedback">
                   이름을 작성해주세요.
                 </div>
@@ -264,7 +264,7 @@
               <label for="email" class="form-label">E-mail*</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
-                <input type="text" name="email" class="form-control" value="${tbean.email }">
+                <input type="text" name="email" class="form-control" value="${tbean.email }" required>
               <div class="invalid-feedback">
                   E-mail을 작성해주세요.
                 </div>
@@ -275,11 +275,11 @@
               <label for="phone" class="form-label">핸드폰 번호*</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
-                <input type="text" name="phone1" class="form-control" value="${tbean.phone1 }">
+                <input type="text" name="phone1" class="form-control" value="${tbean.phone1 }" required>
                 &nbsp;<b>-</b>&nbsp;
-                <input type="text" name="phone2" class="form-control" value="${tbean.phone2 }">
+                <input type="text" name="phone2" class="form-control" value="${tbean.phone2 }" required>
                 &nbsp;<b>-</b>&nbsp;
-                <input type="text" name="phone3" class="form-control" value="${tbean.phone3 }">
+                <input type="text" name="phone3" class="form-control" value="${tbean.phone3 }" required>
               <div class="invalid-feedback">
                   전화번호를 입력해주세요.
                 </div>
@@ -332,7 +332,7 @@
                 <!-- <span class="input-group-text">@</span> -->
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <c:forEach var="i" begin="0" end="${fn:length(subArr)-1}" >
-					${subArr[i] }&nbsp;<input  type="checkbox" name="subject" value="${subArr[i] }" <c:if test="${fn:contains(tbean.subject,subArr[i]) }">checked</c:if> >&nbsp;&nbsp;&nbsp;
+					${subArr[i] }&nbsp;<input  type="checkbox" name="subject" value="${subArr[i] }">&nbsp;&nbsp;&nbsp;
 				</c:forEach>
 	            <div class="invalid-feedback">
 	               과목을 선택해주세요.
@@ -348,7 +348,7 @@
                 <!-- <span class="input-group-text">@</span> -->
                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <fmt:parseDate var="dateString" value="${tbean.tterm }" pattern="yyyy-MM-dd"></fmt:parseDate>	
-				<input type="date" name="tterm" value="<fmt:formatDate value="${dateString }" type="both" pattern="yyyy-MM-dd"/>">
+				<input type="date" name="tterm" value="<fmt:formatDate value="${dateString }" type="both" pattern="yyyy-MM-dd"/>" required>
 	            <div class="invalid-feedback">
 	               계약기간을 선택해주세요.
 	            </div>
@@ -372,7 +372,7 @@
               <label for="twageratio" class="form-label">강사 임금 비율*</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
-                <input type="text" name="twageratio" class="form-control" value="${tbean.twageratio }">
+                <input type="text" name="twageratio" class="form-control" value="${tbean.twageratio }" required>
 	            <div class="invalid-feedback">
 	               임금 비율을 작성해주세요.
 	            </div>
