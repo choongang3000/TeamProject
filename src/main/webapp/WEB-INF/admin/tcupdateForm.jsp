@@ -184,7 +184,7 @@
               <label for="addr" class="form-label">강사 사진</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
-                <img src="<%=request.getContextPath() %>/resources/${tbean.t_image}" width=150 height=180> 
+                <img src="<%=request.getContextPath() %>/resources/images/${tbean.t_image}" width=150 height=180> 
 				&nbsp;
 				<c:set var="lenstr" value="${fn:length(tbean.t_image) }"/> 
 				${fn:substring(tbean.t_image,37,lenstr)}
