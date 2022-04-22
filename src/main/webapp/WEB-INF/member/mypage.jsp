@@ -18,7 +18,9 @@
  float: right;
 }
 </style>
+
 <br><br>
+
 <div id="container">
 	<div class="row justify-content-center">
 		<div class="col-sm-5">
@@ -64,4 +66,5 @@
 	</div> -->
 </div>
 </div>
+<
 <%@ include file="../user/usbottom.jsp"%>

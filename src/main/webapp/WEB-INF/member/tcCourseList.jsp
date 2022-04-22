@@ -18,9 +18,11 @@
 		margin-top: 10px;
 		margin-bottom: 20px;
 	}
+
 </style>
+<br><br>
 <center>
-<nav class="navbar navbar-light bg-light" style="width: 75%">
+<nav class="navbar navbar-light bg-light" style="width: 1200px">
 	<div class="container-fluid">
 		<a class="navbar-brand"><b>내 강의 목록</b></a>
 		<form action="tcCourseList.mem" method="get" class="d-flex">
@@ -37,14 +39,14 @@
 	</div>
 </nav>
 <c:if test="${fn:length(cosArr) == 0 }">
-<div>
+<div style="width: 1200px">
 	<br><br>
 	<h3>강의가 존재하지 않습니다</h3>
 </div>
 </c:if>
 <c:forEach var="cos" items="${cosArr}">
-<div class="card text-center col-sm-8">
-  <div class="card-header">
+<div class="card text-center col-sm-8" style="width: 1200px">
+  <div class="card-header" style="width: 1200px">
     <ul class="nav nav-pills card-header-pills">
       <li class="nav-item">
         <a class="nav-link" id="atag" href="tcCourseDetail.mem?conum=${cos.conum }&pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}">자세히 보기</a>

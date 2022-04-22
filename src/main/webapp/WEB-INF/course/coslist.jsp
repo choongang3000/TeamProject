@@ -210,7 +210,7 @@
 			<input type="text" name="keyword">
 			<input type="submit" value="검색" id="searchbutton">
 		</form>
-		<table> 
+		<table border="0"> 
 		
 			<tr align="center" height="30px">
 					<th align="center"><!-- | 강사 | --></th>
@@ -268,8 +268,8 @@
 				</td>
 				</c:if>
 				<c:if test="${sessionScope.loginInfo.type eq 'admin'}">
-				<td>
-					<a href="coupdate.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}"><input id="b-update" type="button" class="w-50 btn btn-primary btn-mg" value="수정"></a>&nbsp;
+				<td colspan="2">
+					<a href="coupdate.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}"><input id="b-update" type="button" class="w-50 btn btn-primary btn-mg" value="수정"></a><!-- &nbsp; -->
 					<a href="codelete.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}&whatColumn=${whatColumn}&keyword=${keyword}"><input id="b-delete" type="button" class="w-50 btn btn-primary btn-mg" value="삭제"></a>
 				</td>
 				</c:if>

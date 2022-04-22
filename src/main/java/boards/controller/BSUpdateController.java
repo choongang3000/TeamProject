@@ -35,7 +35,15 @@ public class BSUpdateController {
 	private BSBean bsbean;
 	@Autowired
 	private BSDao bsdao;
+
+	/*
+	@Autowired
+	private CoDao codao;
 	
+	@Autowired
+	private TeacherDao tdao;
+	*/
+
 	@RequestMapping(value=command, method=RequestMethod.GET)
 	public String doAction(@RequestParam(value="num", required=true) String num,
 			@RequestParam(value="pageNumber", required=true) String pageNumber,
