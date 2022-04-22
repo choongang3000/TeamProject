@@ -482,8 +482,8 @@ create table boarda(
   bacategory varchar2(100) not null,
   basubject varchar2(200) not null, 
   bacontent varchar2(300) not null,
-  baimage varchar2(30),
-  bafile varchar2(30)
+  baimage varchar2(200),
+  bafile varchar2(200)
 ); 
 
 insert into boarda values(ba_seq.nextval, '회원', 'ID/PW를 찾고 싶습니다.', '회원님의 아이디를 분실하신 경우, 로그인 페이지 내 하단 [아이디찾기/비밀번호찾기] 으로 확인하실 수 있습니다.', null, null);
