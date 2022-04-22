@@ -84,6 +84,11 @@
 	<li class="nav-item"><a class="nav-link" id="navselect" href="list.ba?bacategory=기타">기타</a></li>
 </ul>
 <div class="accordion accordion-flush" id="accordionFlushExample">
+	<c:if test="${fn:length(list)==0 }">
+		<br>
+		<h4 style=text-align:center;>검색 결과가 없습니다</h4>
+	</c:if>
+	<c:if test="${fn:length(list)!=0 }">
 	<c:forEach var="i" begin="0" end="${fn:length(list)-1 }">
 		<div class="accordion-item">
 			<h2 class="accordion-header" id="${heading[i] }">
@@ -109,6 +114,7 @@
 			</div>
 		</div>
 	</c:forEach>
+	</c:if>
 </div>
 </div>
 <br>
