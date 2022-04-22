@@ -63,8 +63,10 @@
   	</insert>
 
   	<update id="UpdateBA">
-  		update boarda set basubject=#{basubject},bacontent=#{bacontent},baimage=#{baimage},bafile=#{bafile})
+  		update boarda set bacategory=#{bacategory},basubject=#{basubject},bacontent=#{bacontent},baimage=#{baimage},bafile=#{bafile}
+  		where banum=#{banum}
   	</update>
+  	
   	<delete id="DeleteBA">
   		delete boarda where banum=#{banum}
   	</delete>

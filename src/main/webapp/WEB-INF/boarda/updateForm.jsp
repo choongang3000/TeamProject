@@ -21,15 +21,16 @@
 <br><h3>고객센터 QnA 수정</h3><br>
 </center>
 <div id="container">
-	<form:form class="needs-validation" action="update.ba" method="post" commandName="babean">
+	<form:form commandName="babean" class="needs-validation" action="update.ba" method="post">
+		<input type="hidden" name="banum" value="${babean.banum}">
 		<label for="exampleFormControlInput1" class="form-label">카테고리</label>
 		<select name="bacategory" class="form-select" aria-label="Default select example" id="exampleFormControlTextarea1">
   			<option value="">카테고리 선택</option>
-			<option value="회원">회원</option>
-			<option value="클래스이용">클래스 이용</option>
-			<option value="학습">학습</option>
-			<option value="강좌관리">강좌 관리</option>
-			<option value="기타">기타</option>
+			<option value="회원" <c:if test="${babean.bacategory eq '회원'}">selected</c:if>>회원</option>
+			<option value="클래스이용" <c:if test="${babean.bacategory eq '클래스이용'}">selected</c:if>>클래스 이용</option>
+			<option value="학습" <c:if test="${babean.bacategory eq '학습'}">selected</c:if>>학습</option>
+			<option value="강좌관리" <c:if test="${babean.bacategory eq '강좌관리'}">selected</c:if>>강좌 관리</option>
+			<option value="기타" <c:if test="${babean.bacategory eq '기타'}">selected</c:if>>기타</option>
 		</select>
 		<br>
 		<div class="mb-3">

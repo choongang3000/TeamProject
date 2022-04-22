@@ -55,9 +55,9 @@ update.bt 요청 => BoardUpdateController
 	<br><br>
 		<input type="hidden" name="num" value="${bt.num}">
 		<table border="1" width="700">
-			<tr height="50">
-				<td align="center" id="input-text">과목</td>
-				<td> 
+			<tr height="50" style="border-bottom: 1px dotted gray">
+				<td align="center" id="input-text" style="border-right: 1px dotted gray" width="40%">과목</td>
+				<td>&nbsp;
 					<select name="subject">
 							<option value="">전체 선택</option>
 							<c:forEach var="i" items="${sub }">
@@ -69,38 +69,38 @@ update.bt 요청 => BoardUpdateController
 				<br><form:errors cssClass="err" path="subject" />
 				</td>
 			</tr>
-			<tr height="50">
-				<td align="center" id="input-text">퀴즈 이미지</td>
-				<td><input type="file" name="upload2" value="파일선택"> <!-- MultipartFile의 변수명(Bean에서 설정)과 name의 변수명은 일치해야함 -->
+			<tr height="50" style="border-bottom: 1px dotted gray">
+				<td align="center" id="input-text" style="border-right: 1px dotted gray" width="40%">퀴즈 이미지</td>
+				<td>&nbsp;&nbsp;<input type="file" name="upload2" value="파일선택" required> <!-- MultipartFile의 변수명(Bean에서 설정)과 name의 변수명은 일치해야함 -->
 				<br><form:errors cssClass="err" path="quizimg" />
 				</td>
 			</tr>
-			<tr height="50">
-				<td align="center" id="input-text">문제 이미지</td>
-				<td><input type="file" name="upload1" value="파일선택">
+			<tr height="50" style="border-bottom: 1px dotted gray">
+				<td align="center" id="input-text" style="border-right: 1px dotted gray" width="40%">문제 이미지</td>
+				<td>&nbsp;&nbsp;<input type="file" name="upload1" value="파일선택" required>
 				<br><form:errors cssClass="err" path="examfile" />
 				</td>
 			</tr>
-			<tr height="50">	
-				<td align="center">정답 이미지</td>
-				<td><input type="file" name="upload3" value="파일선택">
+			<tr height="50" style="border-bottom: 1px dotted gray">	
+				<td align="center" style="border-right: 1px dotted gray" width="40%" >정답 이미지</td>
+				<td>&nbsp;&nbsp;<input type="file" name="upload3" value="파일선택" required>
 				<br><form:errors cssClass="err" path="movingimg" />
 				</td>
 			</tr>    
-			<tr height="50">	
-				<td align="center">정답 입력(Alert 내용)</td>
-				<td><input type="text" name="answer" value="${bt.answer }">
+			<tr height="50" style="border-bottom: 1px dotted gray">	
+				<td align="center" style="border-right: 1px dotted gray" width="40%" >정답 입력(Alert 내용)</td>
+				<td>&nbsp;&nbsp;<input type="text" name="answer" value="${bt.answer }" required>
 				<br><form:errors cssClass="err" path="answer" />
 				</td>
 			</tr>
-			<tr height="50">
-				<td align="center">비밀번호</td>
-				<td>
-					<input type="password" name="passwd">
+			<tr height="50" style="border-bottom: 1px dotted gray">
+				<td align="center" style="border-right: 1px dotted gray" width="40%">비밀번호</td>
+				<td>&nbsp;
+					<input type="password" name="passwd" required>
 					<form:errors path="passwd" cssClass="err"/>
 				</td>
 			</tr>
-			<tr height="50">
+			<tr height="70" >
 				<td colspan="2" align="center">
 					<input id="b-update" type="submit" value="수정완료">
 					<input id="b-reset" type="reset" value="입력리셋">

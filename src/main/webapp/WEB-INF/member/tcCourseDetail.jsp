@@ -15,7 +15,7 @@
 <br>
 
 <br>
-<table border="1" align="center" width="70%" class="table table-bordered border-secondary" style="width:60%">
+<table border="1" align="center" class="table table-bordered border-secondary" style="width:1200px">
 	<tr>
 		<th width="150" height="50">강의번호</th>
 		<td>${course.conum }</td>
@@ -65,7 +65,7 @@
 		<td align=right>
 			<%-- <input type="button" value="돌아가기" onClick="location.href='tcCourseList.mem?pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}'" >
 		 --%>
-		 	<input type="button" value="돌아가기" onClick="location.href='tcCourseList.mem'" >
+		 	<input type="button" value="돌아가기" onClick="history.back()" >
 		</td>
 	</tr>
 </table>

@@ -108,6 +108,7 @@
 	</form>
 </div>
  --%>
+<br><br>
 <center>
 <nav class="navbar navbar-light bg-light" style="width: 1200px">
 	<div class="container-fluid">
@@ -125,12 +126,6 @@
 		</form>
 	</div>
 </nav>
-<c:if test="${fn:length(list) == 0 }">
-<div>
-	<br><br>
-	<h3>강의가 존재하지 않습니다</h3>
-</div>
-</c:if>
 <table class="table" border="0" align="center" style="width:1200px">
 	
 	<tr height="40" bgcolor="#DCDCDC" style="border-bottom: 3px double black;"> <!-- 목록제목 -->
@@ -142,6 +137,13 @@
 		<td align="center"><b>작성일</b></td>
 		<td align="center"><b>조회수</b></td>
 	</tr>
+	
+	<c:if test="${fn:length(list) == 0 }">
+	<tr>
+		<td colspan="7" align="center"><h3>강의가 존재하지 않습니다</h3></td>
+	<tr>
+	</c:if>
+	
 	
 	<c:set var="contentNum" value="${(totalCount - ((pageInfo.pageNumber-1)*pageInfo.pageSize)) }"/> <!-- 글번호 계산 -->
 	
@@ -187,6 +189,7 @@
 		<td align="center">${list.readcount}</td> <!-- 조회수 -->
 	</tr>	
 	</c:forEach>
+	<c:if test="${sessionScope.loginInfo.type eq 'student'}">
 	<tr height="30"> <!-- 글쓰기 -->
 		<td colspan="7" align="right">
 			<c:if test="${loginInfo != null }">
@@ -194,6 +197,7 @@
 			</c:if>
 		</td>
 	<tr>
+	</c:if>
 	</table>
 	<%-- <c:forEach var="colist" items="colist">
 		<td align="center">${colist.coname }</td><!-- 과목명 -->

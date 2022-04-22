@@ -14,6 +14,7 @@ public class BABean {
 	
 	@NotBlank(message = "답변을 입력하세요.")
 	private String bacontent;
+	
 	private String baimage;
 	private String bafile;
 	private MultipartFile upload;

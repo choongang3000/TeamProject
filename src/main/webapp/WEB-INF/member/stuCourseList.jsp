@@ -24,11 +24,13 @@
 </style>
 
 <center>
-<nav class="navbar navbar-light bg-light" style="width: 75%">
+<br><br>
+<nav class="navbar navbar-light bg-light" style="width: 1200px">
 	<div class="container-fluid">
 		<a class="navbar-brand"><b>내 강의 목록</b></a>
 	</div>
 </nav>
+<br>
 <c:if test="${fn:length(cosArr) == 0 }">
 <div id="nodata">
 	<br><br>
@@ -40,7 +42,8 @@
   <div class="card-header">
     <ul class="nav nav-pills card-header-pills">
       <li class="nav-item">
-        <a class="nav-link" id="atag" href="tcCourseDetail.mem?conum=${cos.conum }&pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}">강의 보러가기</a>
+        <%-- <a class="nav-link" id="atag" href="tcCourseDetail.mem?conum=${cos.conum }&pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}">강의 보러가기</a> --%>
+        <a class="nav-link" id="atag" href="show.cos?conum=${cos.conum }&pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}">강의 보러가기</a>
       </li>
       <!-- 
       <li class="nav-item">
