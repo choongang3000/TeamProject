@@ -41,6 +41,30 @@
             }
         }).open();
     }
+    function check(){
+    	var phone1_regexp = /^[0-9]{3}$/;
+    	var phone2_regexp = /^[0-9]{4}$/;
+    	var phone3_regexp = /^[0-9]{4}$/;
+    	var phone1 = $("input[name=phone1]").val();
+    	var phone2 = $("input[name=phone2]").val();
+    	var phone3 = $("input[name=phone3]").val();
+    	
+    	if(phone1.search(phone1_regexp) == -1){
+    		alert("핸드폰 앞자리 3자리를 입력해 주세요");
+    		$("input[name=phone1]").select();
+    		return false;
+    	}
+    	if(phone2.search(phone2_regexp) == -1){
+    		alert("핸드폰 중간자리 4자리를 입력해 주세요");
+    		$("input[name=phone2]").select();
+    		return false;
+    	}
+    	if(phone3.search(phone3_regexp) == -1){
+    		alert("핸드폰 뒷자리 4자리를 입력해 주세요");
+    		$("input[name=phone3]").select();
+    		return false;
+    	}
+    }
 </script>
 
 <style>
@@ -264,7 +288,7 @@
             <hr class="my-4">
 			
             <button class="w-50 btn btn-secondary btn-mg" type="button" onClick="history.back()">강사 상세보기로 돌아가기</button>
-            <button class="w-50 btn btn-primary btn-mg" type="submit">강사계정 수정완료</button>
+            <button class="w-50 btn btn-primary btn-mg" type="submit" onClick="return check()">강사계정 수정완료</button>
             
 		</div>
         </form>

@@ -133,4 +133,9 @@ private String namespace="member.model.Member";
 		return onumArr;
 	}
 	
+	public MemberBean getMemberById(String id) {
+		MemberBean mbean = sqlSessionTemplate.selectOne(namespace + ".GetMemberById", id);
+		return mbean;
+	}
+	
 }

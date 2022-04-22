@@ -28,6 +28,7 @@ import member.model.MemberDao;
 public class MemberDeleteCotroller {
 	private final String command = "delete.mem";
 	private String getPage = "memberDelete";
+	private String gotoPage_f = "redirect:/delete.mem";
 	private String gotoPage = "redirect:/home.us";
 
 	@Autowired
@@ -44,22 +45,34 @@ public class MemberDeleteCotroller {
 	@RequestMapping(value=command, method=RequestMethod.POST)
 	public String doAction( MemberBean mb,
 							HttpSession session,
-							RedirectAttributes rttr) {
+							HttpServletResponse response) {
+		
+		response.setContentType("text/html;charset=UTF-8");
+		
+		MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo");
+		
+		String inputpw = mb.getPw();
+		
+		MemberBean mbean = mdao.getMemberById(loginInfo.getId());
+		String dbpw = mbean.getPw();
+		
+		if(!(inputpw.equals(dbpw))) {
+			try {
+				PrintWriter out = response.getWriter();
+				out.print("<script>alert('비밀번호가 일치하지 않습니다'); history.back(-1);</script>");
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 
-		MemberBean mbean = (MemberBean)session.getAttribute("loginInfo");
-
-		String loginpw = mbean.getPw();
-		String dbpw = mb.getPw();
-
-		if(!(loginpw.equals(dbpw))) {
-			rttr.addFlashAttribute("msg", false);
-
-			return getPage;
 		}
-
-		mdao.deleteMember(mb);
-		session.invalidate();
-
-		return gotoPage;
+		else {
+	
+			mdao.deleteMember(mb);
+			session.invalidate();
+	
+			return gotoPage;
+		}
+		return gotoPage_f;
 	}
 }

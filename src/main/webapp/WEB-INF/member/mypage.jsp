@@ -28,7 +28,7 @@
 				<div class="card-body">
 					<h5 class="card-title">내 정보 관리</h5>
 					<p class="card-text">내 정보 확인, 수정, 탈퇴</p>
-					<a href="memdetail.mem?anum=${loginInfo.anum}" id="bt" class="btn btn-primary">내 정보 관리</a>
+					<a href="memdetail.mem?anum=${loginInfo.anum}" id="bt" class="btn btn-secondary">내 정보 관리</a>
 				</div>
 			</div>
 		</div>

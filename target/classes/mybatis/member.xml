@@ -39,7 +39,7 @@
  	</select>
  	
  	<update id="UpdateMember">
- 		update accounts set pw=#{pw},aname=#{aname},rrn1=#{rrn1},rrn2=#{rrn2},email=#{email},phone1=#{phone1},phone2=#{phone2},phone3=#{phone3} where anum=#{anum}
+ 		update accounts set pw=#{pw},aname=#{aname},rrn1=#{rrn1},rrn2=#{rrn2},email=#{email},phone1=#{phone1},phone2=#{phone2},phone3=#{phone3},addr=#{addr} where anum=#{anum}
  	</update>
  	
  	<delete id="DeleteMember">
@@ -84,6 +84,10 @@
  	
  	<select id="GetAllConum" resultType="int">
  		select distinct conum from cosord_details where aid=#{aid}
+ 	</select>
+ 	
+ 	<select id="GetMemberById" resultType="member.model.MemberBean">
+ 		select * from accounts where id=#{id}
  	</select>
  	
 </mapper>
