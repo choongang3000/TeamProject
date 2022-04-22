@@ -142,6 +142,24 @@
     		return false;
     	}
     	
+
+    	var rrn1_regexp = /^[0-9]{6}$/;
+    	var rrn2_regexp = /^[0-9]{7}$/;
+    	var rrn1 = $("input[name=rrn1]").val();
+    	var rrn2 = $("input[name=rrn2]").val();
+    	
+    	if(rrn1.search(rrn1_regexp) == -1){
+    		alert("주민번호 앞자리 6자리를 입력해 주세요");
+    		$("input[name=rrn1]").select();
+    		return false;
+    	}
+    	if(rrn2.search(rrn2_regexp) == -1){
+    		alert("주민번호 뒷자리 7자리를 입력해 주세요");
+    		$("input[name=rrn2]").select();
+    		return false;
+    	}
+    
+    	
     }
     
     

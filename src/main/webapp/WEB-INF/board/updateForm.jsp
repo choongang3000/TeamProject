@@ -68,7 +68,7 @@
 			<td align="center" bgcolor="#DCDCDC">비밀번호</td>
 			<td>
 				<!-- <input type="password" name="passwd"> -->
-				<input type="password" name="passwd" class="form-control" id="floatingInput" placeholder="비밀번호을 입력해주세요">
+				<input type="password" name="passwd" class="form-control" id="floatingInput" placeholder="비밀번호을 입력해주세요" required>
 			</td>
 		</tr>
 		<tr>

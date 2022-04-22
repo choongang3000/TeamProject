@@ -17,7 +17,6 @@
 
 <style>
 	body{
-		width:80%;
 		margin:auto;
 		align:center;
 		text-align:center;
@@ -26,17 +25,17 @@
 		text-align:center;
 		align:center;
 	}
-	img{
+	/* img{
 		width:20%;
 		height:20%;
-	}
+	} */
 </style>
 
 <center>
 <h2>강의 정보</h2>
 
 <br>
-<table border="0" align="center" width="80%">
+<table border="0" align="center" width="1200px;">
 	<tr style="border: 1px solid black">
 		<th width="150" height="50" bgcolor="#DCDCDC">강의번호</th>
 		<td>${cobean.conum }</td>
@@ -81,9 +80,9 @@
 </table>
 <br>
 
-<input type="button" value="이전화면" onClick="history.back()">
-<input type="button" value="수정" onClick="upd()">
-<input type="button" value="삭제" onClick="del()">
+<input type="button" value="이전화면" class="btn btn-secondary btn-sm" onClick="history.back()">
+<input type="button" value="수정" class="btn btn-secondary btn-sm" onClick="upd()">
+<input type="button" value="삭제" class="btn btn-secondary btn-sm" onClick="del()">
 </center>
 <br>
 <%@ include file="../admin/adbottom.jsp" %>

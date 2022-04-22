@@ -130,4 +130,20 @@ public class BSTDao {
 		return teacherArr;
 	}
 	
+	public List<Integer> getOddConums(String aid){
+		List<Integer> oddConumArr = sqlSessionTemplate.selectList(namespace + ".GetOddConums",aid);
+		return oddConumArr;
+	}
+	
+	public String getCoteacher(int conum) {
+		String coteacher = sqlSessionTemplate.selectOne(namespace + ".GetCoteacher", conum);
+		return coteacher;
+	}
+	
+	public String getCosubject(int conum) {
+		String cosubject = sqlSessionTemplate.selectOne(namespace + ".GetCosubject", conum);
+		return cosubject;
+	}
+	
+	
 }

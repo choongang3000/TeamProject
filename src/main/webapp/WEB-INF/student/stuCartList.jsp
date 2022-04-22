@@ -3,12 +3,18 @@
 <%@ include file="../common/common.jsp"%>
 <%@ include file="../user/ustop.jsp"%>
 <!-- cartArr 로 cart목록 가져옴 -->
+<style>
+	table{
+		width:1200px;
+	}
+</style>
+
 <center>
 	<br><br>
 	<h2>장바구니</h2>
 	<br>
 	<!-- <form action="payment.stu" method="get"> -->
-	<table class="table" style="width:80%; border-top:2px solid lightgray;border-bottom:2px solid lightgray">
+	<table class="table" style="width:1200px; border-top:2px solid lightgray;border-bottom:2px solid lightgray">
 		<tr style=" height:40px;">
 			<th style="width:5%"></th>
 			<th style="width:20%;text-align: center; vertical-align: middle;">강의 선생님</th>

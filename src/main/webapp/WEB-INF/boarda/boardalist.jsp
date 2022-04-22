@@ -84,6 +84,11 @@
 	<li class="nav-item"><a class="nav-link" id="navselect" href="list.ba?bacategory=기타">기타</a></li>
 </ul>
 <div class="accordion accordion-flush" id="accordionFlushExample">
+	<c:if test="${fn:length(list)==0 }">
+		<br>
+		<h4 style=text-align:center;>검색 결과가 없습니다</h4>
+	</c:if>
+	<c:if test="${fn:length(list)!=0 }">
 	<c:forEach var="i" begin="0" end="${fn:length(list)-1 }">
 		<div class="accordion-item">
 			<h2 class="accordion-header" id="${heading[i] }">
@@ -95,9 +100,9 @@
 			<div id="${collapse[i] }" class="accordion-collapse collapse" aria-labelledby="${heading[i] }" data-bs-parent="#accordionFlushExample">
 				<div class="accordion-body">
 					${list[i].bacontent }
-					<c:if test="${list[i].baimage != null }">
-						<img src="<%request.getContextPath(); %>/resources/images/re.gif">
-					</c:if>
+					<%-- <c:if test="${list[i].baimage != null }">
+						<img src="<%request.getContextPath(); %>/resources/images/">
+					</c:if> --%>
 					<%-- <c:if test="${list[i].bafile != null }">
 						파일 출력 설정 위치 
 					</c:if> --%>
@@ -109,6 +114,7 @@
 			</div>
 		</div>
 	</c:forEach>
+	</c:if>
 </div>
 </div>
 <br>

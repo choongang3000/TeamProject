@@ -29,6 +29,7 @@ include 액션태그 : 실행한 결과를 가져옴
 	<!-- <body>   바디시작 -->
 	<br><h2>Q&A 문의글 작성</h2><br>
 	<form method="post" action="insert.bod">
+	<input type="hidden" name="aname" value="${loginInfo.aname }">
 	<table border="0"  width="60%">
 		<tr>
 			<td align="center" bgcolor="#DCDCDC">이 름</td>

@@ -79,7 +79,7 @@
       	}
 
       	center{
-      	 		width:100%
+      	 		width:100%;
       	 }
       	.album py-5 bg-light{
       		margin:80px; /* 80px 위아래 auto 좌우 */

@@ -63,11 +63,11 @@
         <h4 class="mb-3">강사 정보</h4>
 		<form class="needs-validation" action="tcupdate.ad" method="post" enctype="multipart/form-data">
           <div class="row g-3">	
-          
+          	
 			<input type="hidden" name="anum" value="${tbean.anum }">
 			<input type="hidden" name="tnum" value="${tbean.tnum }">
 			<input type="hidden" name="type" value="teacher">
-	
+			
 			<div class="col-4">
               <label for="id" class="form-label">ID</label>
               <div class="input-group has-validation">
@@ -184,7 +184,7 @@
               <label for="addr" class="form-label">강사 사진</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
-                <img src="<%=request.getContextPath() %>/resources/${tbean.t_image}" width=150 height=180> 
+                <img src="<%=request.getContextPath() %>/resources/images/${tbean.t_image}" width=150 height=180> 
 				&nbsp;
 				<c:set var="lenstr" value="${fn:length(tbean.t_image) }"/> 
 				${fn:substring(tbean.t_image,37,lenstr)}

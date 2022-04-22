@@ -35,6 +35,9 @@
 	  padding: 3rem;
 	  border-radius: 1rem;
 	}
+	h2{
+		display:inline;
+	}
 </style>
 <div class="b-example-divider"></div>
 
@@ -44,6 +47,7 @@
       <div class="modal-header p-5 pb-4 border-bottom-0">
         <!-- <h5 class="modal-title">Modal title</h5> -->
         <h2 class="fw-bold mb-0">On 인터넷 강의 로그인</h2>
+        <img width=50 height=50 src="<%=request.getContextPath()%>/resources/images/icon/집모양.png" onClick="location.href='home.us'">
         <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
       </div>
 
@@ -60,7 +64,7 @@
           <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">로그인</button>
           <small class="text-muted">On강을 이용해주셔서 감사합니다.</small>
         </form:form>
-          
+          <%-- 
           <hr class="my-4">
           <h2 class="fs-5 fw-bold mb-3">다른 계정으로 로그인</h2>
           <center>
@@ -69,7 +73,7 @@
 		  <img src="<%=request.getContextPath() %>/resources/images/icon/kakao_login_medium_wide.png"/>
 		  </a>
           </center>
-          
+           --%>
           <hr class="my-4">
            <h2 class="fs-5 fw-bold mb-3">기타</h2>
           <button class="w-100 py-2 mb-2 btn btn-outline-dark rounded-4" onClick="findId()">

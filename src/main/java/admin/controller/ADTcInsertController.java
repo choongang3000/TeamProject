@@ -49,7 +49,7 @@ public class ADTcInsertController {
 		
 		tBean.setAddr(tBean.getAddr_num()+"|"+tBean.getAddr_first()+"|"+tBean.getAddr_last());
 		
-		String uploadPath = servletContext.getRealPath("/resources");
+		String uploadPath = servletContext.getRealPath("/resources/images");
 		if(!tBean.getT_image().equals("")) {
 			MultipartFile multi = tBean.getUpload();
 			

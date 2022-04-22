@@ -73,7 +73,7 @@
 		
 		#main-title {
 				float:left;
-				width:920px;
+				width:1000px; /* 전 : 920px -> 후 : 1000px */
 				text-align:center;
 				margin:80px auto;
 				background-color:#F6F6F6;
@@ -149,6 +149,28 @@
       			height: 32px;
       			width: 60px;
       	}
+      	
+       table{
+    	
+    	width:1000px;
+    	text-align: center;
+    	
+    	}
+    	#pagediv{
+    		text-align:center;
+    		vertical-align:middle;
+    		margin: auto;
+    		margin-top:20px;
+    		font-weight: bold;
+    		font-size: large;
+    		height:50px;
+    	}
+    	#pagediv a{
+    		color:gray;
+    	}
+    	#pagediv a:hover{
+    		color:black;
+    	}
 </style>
 
 <body>
@@ -188,7 +210,7 @@
 			<input type="text" name="keyword">
 			<input type="submit" value="검색" id="searchbutton">
 		</form>
-		<table width="920">
+		<table border="0"> 
 		
 			<tr align="center" height="30px">
 					<th align="center"><!-- | 강사 | --></th>
@@ -204,8 +226,15 @@
 					<hr>
 				</td>
 			</tr>
-			<c:forEach var="course" items="${list}">
+			<c:if test="${fn:length(list) == 0 }">
 			<tr>
+				<td height=80px style="text-align: center; vertical-align: middle;" colspan=5>
+					강의 목록이 없습니다
+				</td>
+			</tr>
+			</c:if>
+			<c:forEach var="course" items="${list}">
+			<tr style="border-bottom: 1px solid lightgray;">
 				<td align="center" width="15%"> <!-- JH : 화면 이동 매끄럽게 하기 위해서 width 고정함 -->
 					<b>${course.coteacher }</b>선생님
 					<img id="teacher-img" src="<%=request.getContextPath()%>/resources/images/${course.coimage}" width=80 height=80>
@@ -239,8 +268,8 @@
 				</td>
 				</c:if>
 				<c:if test="${sessionScope.loginInfo.type eq 'admin'}">
-				<td>
-					<a href="coupdate.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}"><input id="b-update" type="button" class="w-50 btn btn-primary btn-mg" value="수정"></a>&nbsp;
+				<td colspan="2">
+					<a href="coupdate.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}"><input id="b-update" type="button" class="w-50 btn btn-primary btn-mg" value="수정"></a><!-- &nbsp; -->
 					<a href="codelete.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}&whatColumn=${whatColumn}&keyword=${keyword}"><input id="b-delete" type="button" class="w-50 btn btn-primary btn-mg" value="삭제"></a>
 				</td>
 				</c:if>
@@ -248,11 +277,13 @@
 			</tr>
 			</c:forEach>
 		</table>
-		 <div class="btn-toolbar" role="toolbar">
-      
-        ${pageInfo.pagingHtml }
+		 <!-- <div class="btn-toolbar" role="toolbar"> -->
+		<div class="btn-toolbar" role="toolbar">
+			<div id="pagediv">
+	        	${pageInfo.pagingHtml }
+	      	</div>
       </div>
-	</div>
+	<!-- </div> -->
 </section>
 
 <div id=foot>

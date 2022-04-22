@@ -74,7 +74,7 @@
             <!-- 강의이미지 -->
             <div class="col-12">
               <label for="coimage" class="form-label">강의 이미지 <span class="text-muted">(Optional)</span></label><br>
-              <img src="<%=request.getContextPath() %>/resources/${cobean.coimage}" width="500" height="400"><br>
+              <img src="<%=request.getContextPath() %>/resources/images/${cobean.coimage}" width="500" height="400"><br>
               <br> 
               기존 강의 이미지명 : ${cobean.coimage }
               	

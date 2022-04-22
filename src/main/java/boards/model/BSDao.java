@@ -89,4 +89,20 @@ public class BSDao {
 		return cnt;
 	}
 	*/
+	
+	public List<Integer> getOddConums(String aid){
+		List<Integer> oddConumArr = sqlSessionTemplate.selectList(namespace + ".GetOddConums",aid);
+		
+		return oddConumArr;
+	}
+	
+	public String getConame(int conum) {
+		String coname = sqlSessionTemplate.selectOne(namespace + ".GetConum", conum);
+		return coname;
+	}
+	
+	public String getCoteacher(int conum) {
+		String coteacher = sqlSessionTemplate.selectOne(namespace + ".GetCoteacher", conum);
+		return coteacher;
+	}
 }

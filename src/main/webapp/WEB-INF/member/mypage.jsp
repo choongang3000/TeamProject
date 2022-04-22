@@ -18,7 +18,9 @@
  float: right;
 }
 </style>
+
 <br><br>
+
 <div id="container">
 	<div class="row justify-content-center">
 		<div class="col-sm-5">
@@ -37,7 +39,8 @@
 					<p class="card-text">내 질문, 댓글 관리</p>
 					<div class="btn-group" id="bt" role="group" aria-label="Basic example">
 						<button type="button" onClick="location.href='list.bst'" class="btn btn-primary">수업 질문</button>
-						<button type="button" onClick="location.href='list.bod?aname=${loginInfo.aname}'" class="btn btn-primary">1:1 문의</button>
+						<%-- <button type="button" onClick="location.href='list.bod?aname=${loginInfo.aname}'" class="btn btn-primary">1:1 문의</button> --%>
+						<button type="button" onClick="location.href='list.bod'" class="btn btn-primary">1:1 문의</button>
 					</div>
 				</div>
 			</div>
@@ -64,4 +67,5 @@
 	</div> -->
 </div>
 </div>
+<
 <%@ include file="../user/usbottom.jsp"%>

@@ -81,4 +81,14 @@
 		select tname from teachers
 		order by tname
 	</select>
+	
+	<select id="GetOddConums" resultType="int">
+ 		select distinct conum from cosord_details where aid=#{aid}
+ 	</select>
+ 	<select id="GetCoteacher" resultType="String">
+ 		select distinct coteacher from courses where conum=#{conum}
+ 	</select>
+ 	<select id="GetCosubject" resultType="String">
+ 		select distinct cosubject from courses where conum=#{conum}
+ 	</select>
 </mapper>

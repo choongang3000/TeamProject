@@ -18,7 +18,9 @@
 <hr>
 <div class="helpdesk">
 <p>혹시 해결이 안 되었다면? 상담원이 직접 도와주는 '1:1 문의'에 질문해 주세요!</p>
-<button type="button" class="btn btn-secondary btn-lg" onClick="location.href='userlist.bod'">1:1 문의센터 바로가기</button>
+<!-- <button type="button" class="btn btn-secondary btn-lg" onClick="location.href='userlist.bod'">1:1 문의센터 바로가기</button> -->
+<%-- <button type="button" class="btn btn-secondary btn-lg" onClick="location.href='list.bod?aname=${loginInfo.aname}'">1:1 문의센터 바로가기</button> --%>
+<button type="button" class="btn btn-secondary btn-lg" onClick="location.href='list.bod'">1:1 문의센터 바로가기</button>
 <br>
 <strong>고객센터</strong>
 <div class="time">

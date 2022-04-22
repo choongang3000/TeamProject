@@ -11,6 +11,7 @@
 </script>
 
 <style>
+	
 	* { /* 기본적인 마진,패딩 없앰*/
 		margin:0;
 		padding:0; 
@@ -36,28 +37,38 @@
     .text-muted{
     	font-size: 20px;
     }
-    
-    center{
+    #contentdiv{
     	background-color: #F6F6F6;
-    	height : 50%
+    	height : 500px;
+    	width:700px;
     }
+    h1 {
+		font:20px "맑은 고딕",돋움,arial; 
+		color:#fff;
+		background-color:#690;
+		border-radius:20px;
+		padding:10px 30px;
+		margin-bottom:20px;
+		height:50px
+	}
 </style>
 
 <br>
 <center>
 
 <br>
-
+<div id="contentdiv">
 	<div> <!-- 강의이름&선생님 -->
-		<p class="text-muted">${course.coteacher}의 ${course.coname }</p>
+		<h1>${course.coteacher}의 ${course.coname }</h1>
+		<%-- <p class="text-muted">${course.coteacher}의 ${course.coname }</p> --%>
 	</div>
 	
-	<br>
+	<br><br>
 	
 	<div id="covideo"> <!-- 강의영상출력 -->
 				<%-- poster="<%=request.getContextPath()%>/resources/images/온강 로고.png" --%>
 		<video
-				src="<%=request.getContextPath() %>/resources/images/${course.covideo}"
+				src="<%=request.getContextPath() %>/resources/images/강의동영상1.mp4"
 				poster="<%=request.getContextPath()%>/resources/images/로고짤.gif"
 				width="500"
 				controls>
@@ -72,7 +83,7 @@
 		<a onclick="history.back();"><button id="button2" type="button" class="btn btn-secondary btn-sm">뒤로가기 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/icon/뒤로가기(흰색).svg" width="20" height="20"/></button></a>
 		<a onclick="gotolist()"><button id="button1" type="button" class="btn btn-secondary btn-sm">강의목록 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/icon/과목.png" width="20" height="20"/></button></a>
 	</div>
-
+</div>
 </center>
 <br>
 <%@ include file="../user/usbottom.jsp" %>

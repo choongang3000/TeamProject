@@ -164,6 +164,7 @@ function div_show(selectNum){
   <main>
     <div class="py-5 text-center">
       <h2>결제내역</h2>
+     
       <p class="lead"></p>
     </div>
 	

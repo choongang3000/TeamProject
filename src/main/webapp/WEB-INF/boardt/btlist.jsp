@@ -12,6 +12,15 @@
 		text-decoration: none;
 	}
 
+	#b-insert{
+		border-radius : 3px;
+    	border : 1px solid #35BCAE;
+    	background-color: #35BCAE;
+    	color: white;
+    	height: 32px;
+    	width: 50px;
+	}
+
 	#b-update{
     	border-radius : 3px;
     	border : 1px solid blue;
@@ -36,6 +45,8 @@
     }
 
 </style>
+
+
 <script src="<%= request.getContextPath()%>/resources/js/jquery.js"></script>
 <script type="text/javascript">
 
@@ -144,11 +155,11 @@
 	    }
 
 </script>
-
+<center>
 <div id="body">
 
 <body>
-<center>
+
 	<%-- <br>
 	<form id="myArea" action="list.bt">
 		<table id="allselect" width="700" border="1" align="center" style="background-color:#EAEAEA">
@@ -182,26 +193,26 @@
 				<td align="center">
 					<div class="form-check form-check-inline">
 					  <input class="form-check-input" type="checkbox" value="${i }" name="subjectall" onClick="subAll(this)" checked>
-					  <label class="form-check-label" for="inlineCheckbox1">전체</label>
+					  <label class="form-check-label" for="inlineCheckbox1"><b>전체</b></label>
 					</div>
 					<c:forEach var="i" items="${Subjects }">
 					<c:if test="${i != 'ETC'}">
 					<div class="form-check form-check-inline">
 					  <input class="form-check-input" type="checkbox" value="${i }" id="subchk" name="subject" onClick="subElse(this)" checked>
-					  <label class="form-check-label" for="inlineCheckbox2">${i }</label>
+					  <label class="form-check-label" for="inlineCheckbox2"><b>${i }</b></label>
 					</div>
 					</c:if>
 					</c:forEach>
 					<div class="form-check form-check-inline">
 					  <input class="form-check-input" type="checkbox" value="ETC" id="subchk" name="subject" onClick="subElse(this)" checked>
-					  <label class="form-check-label" for="inlineCheckbox3">IT종합&nbsp;</label>
+					  <label class="form-check-label" for="inlineCheckbox3"><b>IT종합</b>&nbsp;</label>
 					</div>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
 					<input type="submit" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked><!-- onClick="allselect(this)" -->
-					<label class="btn btn-outline-success" for="success-outlined">검색</label>
+					<label class="btn btn-outline-success" for="success-outlined"><b>검색</b></label>
 				</td>
 			</tr>
 			<tr height="30px">
@@ -248,18 +259,18 @@
 		  <td align="center">${page}</td>
 				<c:set var="page" value="${page -1 }" />
 	--%>	
-	<table id="myform2" width="800" align="center" action="post" cellpadding = 0;	cellspacing = 0;>
+	<table id="myform2" width="1200px" align="center" action="post" cellpadding = 0;	cellspacing = 0;>
 <%-- 	 <c:choose>	
 		<c:when test="${sessionScope.loginInfo != null}">
 			<c:if test="${sessionScope.loginInfo.type eq 'admin'}"> --%>
-				<c:if test="${loginInfo.type != 'student'}">
+				<c:if test="${loginInfo.type != 'student' and  loginInfo.type != null}">
 				<tr align="center">
 					<!-- <th><input type="checkbox" name="allcheck" onClick="allRowCheck(this)"></th>-->
 					<!-- allcheck를 눌렀을 때 allRowCheck()함수 호출. 지금 클릭한 바로 이거 this=이름이 allcheck인 checkbox를 넘긴다.-->
 					<th></th>
-					<th>이미지</th>
-					<th>문제</th>
-					<th>답</th>
+					<th><h5><b>이미지</b></h5></th>
+					<th><h5><b>문제</b></h5></th>
+					<th><h5><b>답</b></h5></th>
 					<!-- <th>수정|삭제</th>-->
 				</tr>
 				</c:if>
@@ -284,13 +295,13 @@
 						<td><input type="hidden" value=${bt.num }></td>
 						<td> 
 							<!-- 처음에 암호화(?)시킨걸 저장하려는 images 폴더에 파일을 다 넣어두긴 해야함. -->
-							<img src="<%=request.getContextPath()%>/resources/images/${bt.quizimg}" width=200 height=200>
+							<img src="<%=request.getContextPath()%>/resources/images/${bt.quizimg}" width=300 height=300>
 						</td>
 						<td>
-									<c:if test="${loginInfo.type != 'student'}">
+									<c:if test="${loginInfo.type != 'student' and  loginInfo.type != null}">
 										<a href="detail.bt?num=${bt.num }&pageNumber=${pageInfo.pageNumber}">
 									</c:if>
-											<img src="<%=request.getContextPath() %>/resources/images/${bt.examfile}" width=500 height=200>
+											<img src="<%=request.getContextPath() %>/resources/images/${bt.examfile}" width=600 height=300>
 										</a>
 											
 						</td>
@@ -300,12 +311,13 @@
 									<c:set var="result" value="${ans.answer }"/>
 								</c:if>
 							</c:forEach>
-							<img src="<%=request.getContextPath() %>/resources/images/${bt.movingimg}" width=200 height=200 onclick="answer('${result}')">
+							<img src="<%=request.getContextPath() %>/resources/images/${bt.movingimg}" width=300 height=300 onclick="answer('${result}')">
 						</td>
-						<c:if test="${loginInfo.type != 'student'}">
+						<c:if test="${loginInfo.type != 'student' and  loginInfo.type != null}">
 						<td width="5%">
 <%--						<input id="b-update" type="button" value="수정" onClick="upd()">&nbsp;
 							<input id="b-delete" type="button" value="삭제" onClick="del()"> --%>
+							<a href="insert.bt"><input id="b-insert" type="button" value="추가"></a>&nbsp;
 							<a href="update.bt?num=${bt.num }&pageNumber=${pageInfo.pageNumber}"><input id="b-update" type="button" value="수정"></a>&nbsp;
 							<a href="delete.bt?num=${bt.num }&pageNumber=${pageInfo.pageNumber}"><input id="b-delete" type="button" value="삭제"></a>
 						</td>
@@ -315,18 +327,16 @@
 		</c:if>
 	</table>
 	<br>
-	</center>
+	
 </body>	
 
 </div>
 	<!-- 페이지 번호 설정 -->
-	<center>
 	<c:if test="${BTList == null }">
 	</c:if>
 	<c:if test="${BTList != null }">
 	${pageInfo.pagingHtml}
 	</c:if>
-	</center>
 </center>
 <br><br><br>
 
