@@ -33,7 +33,7 @@
 				</c:forEach>
 			</select>
 			&nbsp;
-			<input class="form-control me-2" type="search" placeholder="Search" name="keyword">
+			<input class="form-control me-2" type="search" placeholder="강의명 입력" name="keyword">
 			<button class="btn btn-outline-primary" type="submit">Search</button>
 		</form>
 	</div>

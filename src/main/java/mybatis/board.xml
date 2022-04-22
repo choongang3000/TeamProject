@@ -4,14 +4,18 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="board.xml">
-	<select id="GetArticleCount" resultType="int">
+	<select id="GetArticleCount1" resultType="int">
 			select count(*) from board
 		<if test="writer != null">
 			 where writer=#{writer}
 		</if>
 	</select>
 	
-	<select id="GetArticles" resultType="board.Csmodel.boardCsBean">
+	<select id="GetArticleCount2" resultType="int">
+			select count(*) from board
+	</select>
+	
+	<select id="GetArticles1" resultType="board.Csmodel.boardCsBean">
 		select num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content 
 		from (select rownum as rank, num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content
 		from (select num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content
@@ -19,6 +23,14 @@
 		<if test="writer != null">
 			 where writer=#{writer}
 		</if>
+		order by ref desc, re_step asc )) 
+	</select>
+	
+	<select id="GetArticles2" resultType="board.Csmodel.boardCsBean">
+		select num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content 
+		from (select rownum as rank, num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content
+		from (select num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content
+		from board
 		order by ref desc, re_step asc )) 
 	</select>
 	

@@ -21,18 +21,34 @@ public class boardCsDao {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	public int getArticlesCount(Map<String, String> map) {
-		int articlecount = sqlSessionTemplate.selectOne(namespace + ".GetArticleCount",map);
+	public int getArticlesCount1(Map<String, String> map) {
+		int articlecount = sqlSessionTemplate.selectOne(namespace + ".GetArticleCoun1t",map);
 		return articlecount;
 	}
 	
-	public List<boardCsBean> getArticles(Paging pageInfo, Map<String, String> map){
+	public int getArticlesCount2() {
+		int articlecount = sqlSessionTemplate.selectOne(namespace + ".GetArticleCount2");
+		return articlecount;
+	}
+	
+	public List<boardCsBean> getArticles1(Paging pageInfo, Map<String, String> map){
 		
 		RowBounds rowbounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
 		
 		List<boardCsBean> list = new ArrayList<boardCsBean>();
 		
-		list = sqlSessionTemplate.selectList(namespace + ".GetArticles",map,rowbounds);
+		list = sqlSessionTemplate.selectList(namespace + ".GetArticles1",map,rowbounds);
+		
+		return list;
+	}
+	
+	public List<boardCsBean> getArticles2(Paging pageInfo){
+		
+		RowBounds rowbounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
+		
+		List<boardCsBean> list = new ArrayList<boardCsBean>();
+		
+		list = sqlSessionTemplate.selectList(namespace + ".GetArticles2",rowbounds);
 		
 		return list;
 	}

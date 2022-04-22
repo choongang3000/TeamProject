@@ -3,6 +3,7 @@ package board.CsController;
 import java.sql.Timestamp;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import board.Csmodel.boardCsBean;
 import board.Csmodel.boardCsDao;
+import member.model.MemberBean;
 
 @Controller
 public class BCsInsertController {
@@ -29,7 +31,8 @@ public class BCsInsertController {
 	}
 	
 	@RequestMapping(value=command, method=RequestMethod.POST)
-	public String doAction(boardCsBean bb, HttpServletRequest request) {
+	public String doAction(boardCsBean bb, HttpServletRequest request,HttpSession session) {
+		MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo");
 		Timestamp reg_date = new Timestamp(System.currentTimeMillis());
 		
 		bb.setReg_date(reg_date);
