@@ -113,7 +113,7 @@
 			<input class="btn btn-primary" type="submit" value="후기 수정" onClick="location.href='update.bs?num=${bb.num}&pageNumber=${pageNumber}'">
 			</c:if>
 			<input class="btn btn-secondary" type="button" value="후기 목록" onClick="location.href='list.bs?pageNumber=${pageNumber}'">
-			<c:if test="${loginInfo.id == bb.writer}">
+			<c:if test="${loginInfo.id == bb.writer || loginInfo.type == 'admin'}">
 			<input class="btn btn-outline-danger" type="button" value="삭제" onClick="location.href='delete.bs?num=${bb.num}&pageNumber=${pageNumber}'">
 			</c:if>
 			<%-- <c:if test="">

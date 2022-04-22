@@ -51,15 +51,17 @@ public class BSInsertController {
 	public String doAction(HttpServletRequest request, HttpSession session) {
 		MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo");
 		
-		//강의정보 가져오기
-		List<CoBean> colist = new ArrayList<CoBean>();
-		colist = codao.coursesList();
-		request.setAttribute("colist", colist);
+		List<Integer> oddConumArr = bsdao.getOddConums(loginInfo.getId());
 		
-		//선생님 정보 가져오기
-		List<TeacherBean> telist = new ArrayList<TeacherBean>();
-		telist = tdao.selectTeacher();
-		request.setAttribute("telist", telist);
+		ArrayList<String> conameArr = new ArrayList<String>();
+		ArrayList<String> teacherArr = new ArrayList<String>();
+		for(Integer conum : oddConumArr) {
+			conameArr.add(bsdao.getConame(conum));
+			teacherArr.add(bsdao.getCoteacher(conum));
+		}
+		
+		request.setAttribute("conameArr", conameArr);
+		request.setAttribute("teacherArr", teacherArr);
 		
 		return getPage;
 	}

@@ -142,8 +142,8 @@
 				<!-- <input type="text" name="coname" class="form-control" id="floatingInput" placeholder="제목을 입력해주세요"> -->
 				<select name="coname" class="form-control" id="floatingInput" required>
 				<option value="">강의선택</option>
-				<c:forEach var="colist" items="${colist }">
-					<option value="${colist.coname }" <c:if test="${colist.coname == bb.coname }">selected</c:if>>${colist.coname }</option>
+				<c:forEach var="colist" items="${conameArr}">
+					<option value="${colist }" <c:if test="${colist == bb.coname }">selected</c:if>>${colist }</option>
 				</c:forEach>
 				</select>
 				<form:errors cssClass="err" path="coname"/>
@@ -156,8 +156,8 @@
 				
 					<select name="coteacher" class="form-control" id="floatingInput" required>
 					<option value="">선생님선택</option>
-					<c:forEach var="telist" items="${telist }">
-						<option value="${telist.tname }" <c:if test="${telist.tname == bb.coteacher }">selected</c:if>>${telist.tname }</option>
+					<c:forEach var="telist" items="${teacherArr }">
+						<option value="${telist }" <c:if test="${telist == bb.coteacher }">selected</c:if>>${telist }</option>
 					</c:forEach>
 					</select>
 					<form:errors cssClass="err" path="coteacher"/>

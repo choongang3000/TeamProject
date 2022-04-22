@@ -22,5 +22,9 @@
 		order by odnum
 	</select>
 	
+	<select id="GetOrderDetailConums" resultType="int">
+		select distinct conum from cosord_details where aid=#{aid}
+	</select>
+	
 </mapper>
 <!-- orderdetail.xml -->

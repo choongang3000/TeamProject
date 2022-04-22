@@ -21,6 +21,9 @@
 	  padding: 3rem;
 	  border-radius: 1rem;
 	}
+	h2{
+		display: inline;
+	}
 </style>
 
 <!-- loginForm.mem => MemberLoginController로 이동 -->
@@ -29,7 +32,10 @@
 <form:form method="post" action="loginForm.mem" commandname="loginBean">
 	<table border="1" width="300" height="150px" class="table table-borderless" style="width:400px">
 		<tr>
-			<td><h2>On_인터넷 강의 로그인</h2></td>
+			<td>
+				<h2>On_인터넷 강의 로그인</h2>
+				<img src="<%=request.getContextPath()%>/resources/images/icon/집모양.png" onClick="location.href='home.us'">
+			</td>
 		</tr>
 		<tr>
 			<td><input type="text" class="form-control form-control-lg" name="id" placeholder="아이디" required></td>
