@@ -37,45 +37,45 @@
 
 <br>
 <table border="0" align="center" width="80%">
-	<tr>
-		<td width="150" height="50">강의번호</td>
+	<tr style="border: 1px solid black">
+		<th width="150" height="50" bgcolor="#DCDCDC">강의번호</th>
 		<td>${cobean.conum }</td>
-		<td width="150" height="50">강의명</td>
+		<th width="150" height="50" bgcolor="#DCDCDC">강의명</th>
 		<td>${cobean.coname }</td>
 	</tr>    
-	<tr>
-		<td width="150" height="50">담당선생님</td>
+	<tr style="border: 1px solid black">
+		<th width="150" height="50" bgcolor="#DCDCDC">담당선생님</th>
 		<td>${cobean.coteacher }</td>
-		<td width="150" height="50">과목</td>
+		<th width="150" height="50" bgcolor="#DCDCDC">과목</th>
 		<td>${cobean.cosubject }</td>
 	</tr>
-	<tr>
-		<td width="150" height="150">강의이미지</td>
+	<tr style="border: 1px solid black">
+		<th width="150" height="150" bgcolor="#DCDCDC">강의이미지</th>
 		<td colspan="3">
 			<img src="<%=request.getContextPath() %>/resources/images/${cobean.coimage}">
 		</td>
 	</tr>
-	<tr>
-		<td width="150" height="300">강의영상</td>
+	<tr style="border: 1px solid black">
+		<th width="150" height="300" bgcolor="#DCDCDC">강의영상</th>
 		<td colspan="3">
 			<br>
 			<video
 				src="<%=request.getContextPath() %>/resources/images/${cobean.covideo}"
-				poster="<%=request.getContextPath()%>/resources/images/${cobean.covideo}"
-				width="500"
+				poster="<%=request.getContextPath()%>/resources/images/로고짤.gif"
+				width="500" height="282"
 				controls autoplay>
 			</video>
 			<br>
 		</td>
 	</tr>
-	<tr>
-		<td width="150" height="50">강의소개</td>
+	<tr style="border: 1px solid black">
+		<th width="150" height="50" bgcolor="#DCDCDC">강의소개</th>
 		<td colspan="3">${cobean.cocontent }</td>
 	</tr>
-	<tr>
-		<td width="150" height="50">강의가격</td>
+	<tr style="border: 1px solid black">
+		<th width="150" height="50" bgcolor="#DCDCDC">강의가격</th>
 		<td><fmt:formatNumber value="${cobean.coprice }" pattern="###,###"/></td>
-		<td width="150" height="50">업로드날짜</td>
+		<th width="150" height="50" bgcolor="#DCDCDC">업로드날짜</th>
 		<td><fmt:formatDate value="${cobean.coupload_date }" pattern="yyyy-MM-dd"/></td>
 	</tr>
 </table>

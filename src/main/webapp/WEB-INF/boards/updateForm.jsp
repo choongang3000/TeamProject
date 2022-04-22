@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp" %>
 
-<%@ include file="../admin/adtop.jsp" %>
+<%@ include file="../user/ustop.jsp" %>
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -140,15 +140,13 @@
 			<td align="center" bgcolor="#DCDCDC">강의명</td>
 			<td>
 				<!-- <input type="text" name="coname" class="form-control" id="floatingInput" placeholder="제목을 입력해주세요"> -->
-				 
-					<select name="coname" class="form-control" id="floatingInput" required>
-					<option value="">강의선택</option>
-					<c:forEach var="colist" items="${colist }">
-						<option value="${colist.coname }" <c:if test="${colist.coname == bb.coname }">selected</c:if>>${colist.coname }</option>
-					</c:forEach>
-					</select>
-					<form:errors cssClass="err" path="coname"/>
-				
+				<select name="coname" class="form-control" id="floatingInput" required>
+				<option value="">강의선택</option>
+				<c:forEach var="colist" items="${colist }">
+					<option value="${colist.coname }" <c:if test="${colist.coname == bb.coname }">selected</c:if>>${colist.coname }</option>
+				</c:forEach>
+				</select>
+				<form:errors cssClass="err" path="coname"/>
 			</td>
 		</tr>
 		<tr>
@@ -229,4 +227,4 @@
 	</table>
 </form:form>
 </center>
-<%@ include file="../admin/adbottom.jsp" %> 
+<%@ include file="../user/usbottom.jsp" %>

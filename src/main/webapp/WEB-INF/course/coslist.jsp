@@ -16,30 +16,16 @@
 
 
 <script type="text/javascript">
-
 		function insert(){
 			location.href = "coinsert.cos"; 
 		}//insert
-		
 </script>
 
 <style type="text/css">
 
 
 /* COSListController / coslist.jsp / CoSDao / CoSBean / course.xml */
-
-		* { /* 기본적인 마진,패딩 없앰*/
-			margin:0;
-			padding:0; 
-			text-decoration : none; /* 밑줄 없애기 */
-			list-style : none; /* 불릿 없애기 */
-		}
-		
-		body { 
-				width:100%;
-				margin-top:30px;
-		}
-		
+	
 		h1 {
 				font:20px "맑은 고딕",돋움,arial; 
 				color:#fff;
@@ -154,6 +140,15 @@
       			height: 32px;
       			width: 80px;
       	}
+      	
+      	#searchbutton{
+      			border-radius : 3px;
+      			border : 1px solid #365E43;
+      			background-color: #365E43;
+      			color: white;
+      			height: 32px;
+      			width: 60px;
+      	}
 </style>
 
 <body>
@@ -191,7 +186,7 @@
 			</select>
 			<input type="hidden" name="cosubject" value="${cosubject }">
 			<input type="text" name="keyword">
-			<input type="submit" value="검색">
+			<input type="submit" value="검색" id="searchbutton">
 		</form>
 		<table width="920">
 		
@@ -227,31 +222,40 @@
 				<td align=center>
 					<fmt:formatNumber value="${course.coprice}" pattern="#,###"/>원 &nbsp;&nbsp;
 				</td>
+				<%--
+				<c:choose>
+					<c:when test="${sessionScope.loginInfo.type eq 'admin' }">
+						<%@ include file="../admin/adtop.jsp" %>
+					</c:when>
+					<c:otherwise>
+						<%@ include file="../user/ustop.jsp"%>
+					</c:otherwise>
+				</c:choose>
+				 --%>
+				<c:if test="${sessionScope.loginInfo.type eq 'student'}"> 
 				<td>
-					<a href="detail.cos"><button id="button1" type="button" class="btn btn-secondary btn-sm">수강신청 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/book-outline.svg" width="20" height="20"/></button></a> &nbsp;
-					<a href="list.bst"><button id="button2" type="button" class="btn btn-secondary btn-sm">강의질문 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/질문게시판.svg" width="20" height="20"/></button></a>
-				</td>
-				<c:if test="${sessionScope.loginInfo.type eq 'admin'}">
-				<td>
-					&nbsp;<a href="coupdate.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}"><input id="b-update" type="button" value="수정"></a>&nbsp;
-					<a href="codelete.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}&whatColumn=${whatColumn}&keyword=${keyword}"><input id="b-delete" type="button" value="삭제"></a>
+					<a href="detail.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }"><button id="button1" type="button" class="btn btn-secondary btn-sm">수강신청 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/icon/book-outline.svg" width="20" height="20"/></button></a> &nbsp;
+					<a href="goshow.cos?conum=${course.conum }"><button id="button2" type="button" class="btn btn-secondary btn-sm">강의이동 &nbsp;<img src="<%=request.getContextPath() %>/resources/images/icon/재생 아이콘.png" width="20" height="20"/></button></a>
 				</td>
 				</c:if>
-			</tr>
-			<tr>
-				<td colspan="5">
-					<hr>
+				<c:if test="${sessionScope.loginInfo.type eq 'admin'}">
+				<td>
+					<a href="coupdate.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}"><input id="b-update" type="button" class="w-50 btn btn-primary btn-mg" value="수정"></a>&nbsp;
+					<a href="codelete.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}&whatColumn=${whatColumn}&keyword=${keyword}"><input id="b-delete" type="button" class="w-50 btn btn-primary btn-mg" value="삭제"></a>
 				</td>
+				</c:if>
+				
 			</tr>
 			</c:forEach>
 		</table>
-		${pageInfo.pagingHtml }
+		 <div class="btn-toolbar" role="toolbar">
+      
+        ${pageInfo.pagingHtml }
+      </div>
 	</div>
 </section>
 
-	
 <div id=foot>
-<hr>
 <br><br>	
 <%@ include file="../user/usbottom.jsp"%>
 </div>

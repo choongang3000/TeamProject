@@ -12,21 +12,22 @@
     	}   
     	table{
     		text-align: center;
+    		width:1200px;
     	} 
     </style>
-    
+    <br>
     <h2>주문 상세내역 조회</h2>
-    <br><br>
-    <table align="center" width="70%" height="30%" border="0">
-    	<tr>
-    		<td bgcolor="#DCDCDC">고객ID</td>
-    		<td bgcolor="#DCDCDC">주문번호</td>
-    		<td bgcolor="#DCDCDC">상품명</td>
-    		<td bgcolor="#DCDCDC">담당선생님</td>
-    		<td bgcolor="#DCDCDC">금액</td>
+    <br>
+    <table align="center" border="0">
+    	<tr height="30px" style="border-bottom: 2px solid black; text-align: center">
+    		<th bgcolor="#DCDCDC">고객ID</th>
+    		<th bgcolor="#DCDCDC">주문번호</th>
+    		<th bgcolor="#DCDCDC">상품명</th>
+    		<th bgcolor="#DCDCDC">담당선생님</th>
+    		<th bgcolor="#DCDCDC">금액</th>
     	</tr>
     	<c:forEach var="od" items="${odArr }">
-    	<tr>
+    	<tr height="40px">
     		<td>${od.aid }</td>
     		<td>${od.onum }</td>
     		<td>${od.cosubject }</td>
@@ -41,11 +42,11 @@
     	<c:forEach var="od" items="${odArr }">
     	<c:set var="totalprice" value="${totalprice + od.coprice }"/>
     	</c:forEach>
-    	<tr>
-    		<td bgcolor="#DCDCDC">총 개수</td>
-    		<td>${fn:length(odArr) }개</td>
-    		<td bgcolor="#DCDCDC">총 금액</td>
-    		<td colspan="2"><fmt:formatNumber value="${totalprice }" pattern="##,###,###"/>원</td>
+    	<tr height="30px" style="border-top: 2px solid black; text-align: center">
+    		<th bgcolor="#DCDCDC">총 개수</th>
+    		<th>${fn:length(odArr) }개</th>
+    		<th bgcolor="#DCDCDC">총 금액</th>
+    		<th colspan="2"><fmt:formatNumber value="${totalprice }" pattern="##,###,###"/>원</th>
     	</tr>
     </table>
     <br><br>

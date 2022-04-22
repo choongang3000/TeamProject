@@ -83,51 +83,51 @@
 	       <!--  <a class="link-secondary" href="#">Subscribe</a> -->
 	      </div>
 	      <div class="col-4 text-center">
-	        <a class="blog-header-logo text-dark title" href="home.us"><img src="<%=request.getContextPath() %>/resources/images/온강 로고.png" width="100" height="100"/></a>
+	        <a class="blog-header-logo text-dark title" href="home.us"><img src="<%=request.getContextPath() %>/resources/images/icon/온강_로고.png" width="100" height="100"/></a>
 	      </div>
 	      <div class="col-4 d-flex justify-content-end align-items-center">
-	        <a class="link-secondary" href="#" aria-label="Search">
+	       <!--  <a class="link-secondary" href="#" aria-label="Search">
 	          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
-	        </a>
+	        </a> -->
 	        <c:choose>
 				<c:when test="${sessionScope.loginInfo != null}">
 					<div id="header-main-menu">
 						<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
 							<span>관리자님 반갑습니다!</span>
-							<a href="logout.mem" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/로그아웃.png" title="로그아웃" width="20" height="20"/></a>
+							<a href="logout.mem" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/로그아웃 아이콘.png" title="로그아웃" width="80" height="32"/></a>
 							<br>
 							<a href="list.ad" class="header-sub-menu">관리자 홈으로 가기</a>
 						</c:if>
 						<c:if test="${sessionScope.loginInfo.type eq 'teacher' }">
 							<span>${loginInfo.aname } 선생님 반갑습니다!</span>
-							<a href="logout.mem" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/로그아웃.png" title="로그아웃" width="20" height="20"/></a>
+							<a href="logout.mem" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/로그아웃 아이콘.png" title="로그아웃" width="80" height="32"/></a>
 							<br>
-							<a href="tcInfo.mem?anum=${loginInfo.anum}" class="header-sub-menu">정보수정</a>					
+							<a href="tcInfo.mem?anum=${loginInfo.anum}" class="header-sub-menu">내 정보</a>					
 						</c:if>
 						<c:if test="${sessionScope.loginInfo.type eq 'student' }">
 							<span>${loginInfo.aname } 님 반갑습니다!</span>
-							<a href="logout.mem" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/로그아웃.png" title="로그아웃" width="20" height="20"/></a>
+							<a href="logout.mem" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/로그아웃 아이콘.png" title="로그아웃" width="80" height="32"/></a>
 							<br>
-							<a href="memdetail.mem?anum=${loginInfo.anum}" class="header-sub-menu">정보수정</a>
+							<a href="memdetail.mem?anum=${loginInfo.anum}" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/정보수정 아이콘.png" title="정보수정" width="80" height="32"/></a>
+							<a href="shlist.stu" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/구매목록 아이콘.png" title="구매목록" width="80" height="32"/></a>&nbsp;							
 							<a href="cartlist.stu" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/카트_small.png" title="장바구니" width="20" height="20"/></a>
-							<a href="shlist.stu" class="header-sub-menu">구매목록</a>							
 						</c:if>
 					</div>
 				</c:when>
 				<c:when test="${userId ne null}">
 					<div id="header-main-menu">
 						<span>(카카오)${userName} 님 반갑습니다!</span>
-						<a href="logout.mem" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/로그아웃.png" title="로그아웃" width="20" height="20"/></a>
+						<a href="logout.mem" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/로그아웃 아이콘.png" title="로그아웃" width="80" height="32"/></a>
 						<br>
-						<a href="memdetail.mem?anum=${loginInfo.anum}" class="header-sub-menu">정보수정</a>
+						<a href="memdetail.mem?anum=${loginInfo.anum}" class="header-sub-menu"><img src="<%=request.getContextPath()%>/resources/images/icon/정보수정 아이콘.png" width="80" height="32"></a>
+						<a href="shlist.stu" class="header-sub-menu"><img src="<%=request.getContextPath()%>/resources/images/icon/구매목록 아이콘.png" width="80" height="32"></a>							
 						<a href="cartlist.stu" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/카트_small.png" title="장바구니" width="20" height="20"/></a>
-						<a href="shlist.stu" class="header-sub-menu">구매목록</a>							
 					</div>
 				</c:when>
 				<c:otherwise>
 					<div id="header-main-menu">
-						<a href="loginForm.mem" class="header-sub-menu">로그인</a> 
-						<a href="register.mem" class="header-sub-menu">회원가입</a>
+						<a href="loginForm.mem" class="header-sub-menu"><img src="<%=request.getContextPath()%>/resources/images/icon/로그인 아이콘.png" width="80" height="32"></a>&nbsp;
+						<a href="register.mem" class="header-sub-menu"><img src="<%=request.getContextPath()%>/resources/images/icon/회원가입 아이콘.png" width="80" height="32"></a>
 					</div>
 				</c:otherwise>
 			</c:choose>

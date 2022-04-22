@@ -2,6 +2,7 @@ package boardst.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
@@ -23,7 +24,6 @@ public class BSTUpdateController {
 	private final String command = "update.bst";
 	private String getPage = "boardst_updateForm";
 	private String beforeFile;
-	private String afterFile;
 	
 	@Autowired
 	private BSTDao bstdao;
@@ -38,8 +38,12 @@ public class BSTUpdateController {
 		BSTBean board = bstdao.getBoardByNum(num);
 		
 		beforeFile = board.getImage();
+		List<String> subjectArr = bstdao.getSubjectArr();
+		List<String> teacherArr = bstdao.getTeacherArr();
 		
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("subjectArr", subjectArr);
+		mav.addObject("teacherArr", teacherArr);
 		mav.addObject("board",board);
 		mav.addObject("pageNumber",pageNumber);
 		mav.setViewName(getPage);

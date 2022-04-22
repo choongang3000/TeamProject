@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import student.model.STUOrderDeBean;
 import utility.COSListPaging;
 
 @Component("COSDao") /* course.xml 파일로 이동 */
@@ -63,6 +64,13 @@ public class COSDao {
 		subArr = sqlSessionTemplate.selectList(namespace + ".GetSubject");
 		
 		return subArr;
+	}
+	
+	public List<Integer> getOrderDetails(String aid){
+		
+		List<Integer> oddArr = sqlSessionTemplate.selectList(namespace + ".GetOrderDetails",aid);
+		
+		return oddArr;
 	}
 
 }

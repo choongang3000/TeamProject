@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp" %>
 
-<%@ include file="../admin/adtop.jsp" %>
+<%@ include file="../user/ustop.jsp" %>
    <!--  deleteForm.jsp<br> -->
 
 <center>
@@ -38,4 +38,4 @@
 	</table>
 </form>    
 </center>
-<%@ include file="../admin/adbottom.jsp" %> 
+<%@ include file="../user/usbottom.jsp" %>

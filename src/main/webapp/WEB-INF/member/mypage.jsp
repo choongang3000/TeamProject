@@ -18,6 +18,7 @@
  float: right;
 }
 </style>
+<br><br>
 <div id="container">
 	<div class="row justify-content-center">
 		<div class="col-sm-5">
@@ -51,6 +52,8 @@
 		</div>
 	</div>
 	<div class="col-sm-5">
+	</div>
+	<!-- <div class="col-sm-5">
 		<div class="card">
 			<div class="card-body">
 				<h5 class="card-title">ㅇㅅㅇ</h5>
@@ -58,7 +61,7 @@
 				<a href="#" id="bt" class="btn btn-primary">ㅇㅅㅇ</a>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </div>
 </div>
 <%@ include file="../user/usbottom.jsp"%>

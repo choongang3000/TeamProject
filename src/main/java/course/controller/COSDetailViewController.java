@@ -21,7 +21,7 @@ public class COSDetailViewController {
 	@RequestMapping(value = command ,method = RequestMethod.GET)
 	public String doAction(
 			@RequestParam(value = "conum",required = true) int conum,
-			@RequestParam(value = "pageNumber",required = true) String pageNumber,
+			@RequestParam(value = "pageNumber",required = false) String pageNumber,
 			Model model) {
 		
 		COSBean bean = cosdao.getCOS(conum);

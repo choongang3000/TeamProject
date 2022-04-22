@@ -13,6 +13,9 @@
 		<if test="whatColumn =='title'">
 			where title like #{keyword}
 		</if>
+		<if test="whatColumn =='coname'">
+			where coname like #{keyword}
+		</if>
 		<if test="writer != null">
 			 where writer=#{writer}
 		</if>
@@ -28,6 +31,9 @@
 		</if>
 		<if test="whatColumn =='title'">
 			where title like #{keyword}
+		</if>
+		<if test="whatColumn =='coname'">
+			where coname like #{keyword}
 		</if>
 		<if test="writer != null">
 			 where writer=#{writer}

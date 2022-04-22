@@ -59,4 +59,5 @@
 	</table>
 </form:form>
 </div>
+</div>
 <%@ include file="memberbottom.jsp" %>

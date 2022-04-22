@@ -46,7 +46,7 @@ public class ADCoUpdateController2 {
 	@Inject
 	private SubDao2 subdao;
 	
-	@Autowired
+	@Inject
 	private TeacherDao tdao;
 	
 	@Autowired
@@ -57,7 +57,9 @@ public class ADCoUpdateController2 {
 		//선생님 정보 가져오기
 		List<TeacherBean> telist = new ArrayList<TeacherBean>();
 		telist = tdao.selectTeacher();
+		//request.setAttribute("telist", telist);
 		model.addAttribute("telist",telist);
+		
 		
 		List<SubBean2> sublist = subdao.subjectAll();
 		CoBean2 cobean = codao.coursesCount(conum);

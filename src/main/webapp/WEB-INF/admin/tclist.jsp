@@ -2,16 +2,27 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp" %>
 <%@ include file="adtop.jsp" %>
+	
+	<style>
+		table{
+			width:1200px;
+			text-align: center;
+		}
+	</style>
+	
 	<center>
-    <table style="width:70%">
-    	<tr>
-    		<td align=right><input type="button" value="선생님 계정 생성" class="btn btn-primary btn-sm" onClick="location.href='tcinsert.ad'"><br></td>
-    	</tr>
-    	<tr height=15px>
+	
+	<br>
+    <h2>강사 카테고리</h2>
+    <br>
+    
+	
+    <table>
+    	<!-- <tr height=15px>
     		<td></td>
-    	</tr>
+    	</tr> -->
     	<tr>
-    		<td align=right>
+    		<td align=left>
 			    <div class="dropdown">
 				  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
 				    테이블 정렬 설정
@@ -53,6 +64,7 @@
 		</tr>
 		<tr>
 			<td>
+				<br>
 			    <table class="table table-striped">
 			    	<tr style="border-bottom: 2px solid black; text-align: center">
 			    		<th>NO</th>
@@ -83,6 +95,9 @@
 			    </table>
 		    </td>
 	    </tr>
+	    <tr>
+    		<td align=right><input type="button" value="선생님 계정 생성" class="btn btn-primary btn-sm" onClick="location.href='tcinsert.ad'"><br></td>
+    	</tr>
     </table>
 	</center>
     

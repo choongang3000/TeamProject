@@ -1,3 +1,5 @@
+<%--
+삭제보류
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp" %>   
@@ -182,15 +184,15 @@ sidetab<br>
 				<td>
 					<img id="teacher-img" src="<%=request.getContextPath()%>/resources/images/${course.coimage}" width=80 height=80>
 				</td>
-				<%-- <td>
+				<td>
 					<c:out value="${course.conum }" />
-				</td>	 --%>			
+				</td>				
 				<td>
 					<a href="detail.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }">${course.coname }</a>
 				</td>
-				<%-- <td>
+				<td>
 					${course.cocontent }
-				</td> --%>
+				</td>
 				<td>
 					<fmt:formatNumber value="${course.coprice}" pattern="#,###"/>원
 				</td>
@@ -222,3 +224,4 @@ sidetab<br>
 <%@ include file="../user/usbottom.jsp"%>
 </div>
 </body>
+ --%>

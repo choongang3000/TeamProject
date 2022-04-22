@@ -28,7 +28,8 @@ insert into accounts values(acc_seq.nextval, '마이클', 'teacher', 'teacher3',
 insert into accounts values(acc_seq.nextval, '제니', 'teacher', 'teacher4', '1234', '111', '111', 'teacher4@gmail.com', '010', '8822', '7766', '경기도 고양시 일산동구 마두1동',default); 
 insert into accounts values(acc_seq.nextval, '샬럿', 'teacher', 'teacher5', '1234', '111', '111', 'teacher5@gmail.com', '010', '7722', '7766', '서울시 은평구 갈현1동',default); 
 insert into accounts values(acc_seq.nextval, '디올', 'teacher', 'teacher6', '1234', '111', '111', 'teacher6@gmail.com', '010', '9988', '7766', '경기도 하남시 풍산동',default); 
-insert into accounts values(acc_seq.nextval, '학생', 'student', 'student', '1234', '111', '111', 'student@gmail.com', '010', '3344', '5566', '경기도 고양시 일산동구 마두1동',default); 
+insert into accounts values(acc_seq.nextval, '학생1', 'student', 'student1', '1234', '111', '111', 'student@gmail.com', '010', '3344', '5566', '경기도 고양시 일산동구 마두1동',default);
+insert into accounts values(acc_seq.nextval, '학생2', 'student', 'student2', '1234', '111', '111', 'student@gmail.com', '010', '3344', '5566', '경기도 고양시 일산동구 마두1동',default); 
 
 --강사 테이블
 drop sequence tch_seq;
@@ -352,16 +353,14 @@ start with 1
 increment by 1 
 nocache ;
 
-DROP TABLE orders CASCADE CONSTRAINTS;
 
+DROP TABLE orders CASCADE CONSTRAINTS;
   create table orders(
   onum number primary key,--주문번호
   aid varchar2(50) references accounts(id) on delete set null, --주문자id
   totprice number not null, --주문전체금액
   odate date default sysdate  --주문날짜
 );
-
-
 
 -- 강의 주문 상세 테이블
 drop sequence cosordd_seq;
@@ -380,6 +379,7 @@ create table cosord_details(
   conum number references courses(conum) on delete set null, --강의번호
   oddate date default sysdate --주문테이블의 주문날짜와 같음
 ); 
+
 
 -- 1:1 질문 게시판(권준)
 drop sequence bst_seq;
@@ -437,18 +437,18 @@ create table boards(
 	num number not null primary key,
 	writer varchar2(20) not null,
 	email varchar2(20),
-	title varchar2(30) not null,
+	title varchar2(100) not null,
 	passwd varchar2(20) not null,
 	reg_date date not null,
 	readcount int default 0, 
 	ref number not null, 
 	re_step number not null, 
 	re_level number not null,
-	content varchar2(50) not null,
+	content varchar2(200) not null,
 	image varchar2(30),
 	rating number,
-  coname varchar2(50),
-  coteacher varchar2(30)
+    coname varchar2(50),
+    coteacher varchar2(30)
 );
 
 drop sequence boards_seq;
@@ -486,7 +486,15 @@ create table boarda(
   bafile varchar2(30)
 ); 
 
-insert into boarda values(ba_seq.nextval, '카테1', '질문1', '답변1', null, null);
+insert into boarda values(ba_seq.nextval, '회원', 'ID/PW를 찾고 싶습니다.', '회원님의 아이디를 분실하신 경우, 로그인 페이지 내 하단 [아이디찾기/비밀번호찾기] 으로 확인하실 수 있습니다.', null, null);
+insert into boarda values(ba_seq.nextval, '회원', '아이디(ID)를 변경하고 싶은데 가능한가요?', '한번 가입된 아이디(ID)는 변경이 불가능합니다.', null, null);
+insert into boarda values(ba_seq.nextval, '클래스이용', 'QnA 질문하기 버튼이 없습니다', '잘 찾아보세요', null, null);
+insert into boarda values(ba_seq.nextval, '학습', '다운로드 받은 자료 내용이 보이지 않아요', '자료실 페이지에서 필요하신 자료를 다운로드 하여 이용시 자료의 내용이 보이지 않는 경우에는 해당 자료를 읽을 수 있는 프로그램이 설치되어 있는지 확인해 주시기 바랍니다.', null, null);
+insert into boarda values(ba_seq.nextval, '학습', '다운로드 받은 자료 내용이 보이지 않아요', 'CPU : 인텔 i3 혹은 AMD 라이젠3 이상(이와 유사한 성능을 가진 CPU), VG A: 64MB 이상의 NVidia 또는 동급의 그래픽 카드, OS : windows 7이상  /macOS 10.12 이상(Sierra),RAM : 4GByte 이상', null, null);
+insert into boarda values(ba_seq.nextval, '강좌관리', '동영상 파일의 크기 제한이 있나요?', '제작한 영상은 400MB 이하로 보내 주세요', null, null);
+insert into boarda values(ba_seq.nextval, '강좌관리', 'EBS 프로그램을 소장하고 싶어요', '외화나 애니메이션 등 EBS에서 저작권을 가지고 있지 않은 프로그램의 구입은 어려울 수 있는 점 양해 부탁드립니다', null, null);
+insert into boarda values(ba_seq.nextval, '기타', '동영상 파일의 크기 제한이 있나요?', '제작한 영상은 400MB 이하로 보내 주세요', null, null);
+insert into boarda values(ba_seq.nextval, '기타', '웹 서비스란 정확히 어떤 건가요?', '모바일웹 서비스란 일반 휴대폰 및 네트워크에 접속이 가능한 모바일 단말기에서 인터넷 웹사이트에 접속하는 것을 말합니다.', null, null);
 
 commit;
 
@@ -513,6 +521,197 @@ create sequence boardt_seq
   minvalue 1
   maxvalue 10000
   nocache;
+  
+-- CSS, DB, HTML, JAVA, JSP, IT종합
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'CSS','CSS1.png','해당 답 화면 출력','1234','1퀴즈.png','1답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'CSS','CSS2.png','해당 답 화면 출력','1234','2퀴즈.png','2답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'CSS','CSS3.png','해당 답 화면 출력','1234','3퀴즈.png','3답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'CSS','CSS4.png','해당 답 화면 출력','1234','4퀴즈.png','4답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'CSS','CSS5.png','해당 답 화면 출력','1234','5퀴즈.png','5답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'CSS','CSS6.png','해당 답 화면 출력','1234','6퀴즈.png','6답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'CSS','CSS7.png','해당 답 화면 출력','1234','7퀴즈.png','7답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'HTML','HTML1.png','해당 답 화면 출력','1234','1퀴즈.png','1답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'HTML','HTML2.png','해당 답 화면 출력','1234','2퀴즈.png','2답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'HTML','HTML3.png','해당 답 화면 출력','1234','3퀴즈.png','3답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'HTML','HTML4.png','해당 답 화면 출력','1234','4퀴즈.png','4답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'HTML','HTML5.png','해당 답 화면 출력','1234','5퀴즈.png','5답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'HTML','HTML6.png','해당 답 화면 출력','1234','6퀴즈.png','6답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'HTML','HTML7.png','해당 답 화면 출력','1234','7퀴즈.png','7답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'JSP','JSP1.png','해당 답 화면 출력','1234','1퀴즈.png','1답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'JSP','JSP2.png','해당 답 화면 출력','1234','2퀴즈.png','2답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'JSP','JSP3.png','해당 답 화면 출력','1234','3퀴즈.png','3답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'JSP','JSP4.png','해당 답 화면 출력','1234','4퀴즈.png','4답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'JSP','JSP5.png','해당 답 화면 출력','1234','5퀴즈.png','5답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'JSP','JSP6.png','해당 답 화면 출력','1234','6퀴즈.png','6답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'JSP','JSP7.png','해당 답 화면 출력','1234','7퀴즈.png','7답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'DB','DB1.png','해당 답 화면 출력','1234','8퀴즈.png','8답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'DB','DB2.png','해당 답 화면 출력','1234','9퀴즈.png','9답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'DB','DB3.png','해당 답 화면 출력','1234','10퀴즈.png','10답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'DB','DB4.png','해당 답 화면 출력','1234','11퀴즈.png','11답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'DB','DB5.png','해당 답 화면 출력','1234','12퀴즈.png','12답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'DB','DB6.png','해당 답 화면 출력','1234','13퀴즈.png','13답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'DB','DB7.png','해당 답 화면 출력','1234','14퀴즈.png','14답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'CSS','CSS1.png','해당 답 화면 출력','1234','1퀴즈.png','1답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'CSS','CSS2.png','해당 답 화면 출력','1234','2퀴즈.png','2답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'CSS','CSS3.png','해당 답 화면 출력','1234','3퀴즈.png','3답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'CSS','CSS4.png','해당 답 화면 출력','1234','4퀴즈.png','4답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'CSS','CSS5.png','해당 답 화면 출력','1234','5퀴즈.png','5답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'CSS','CSS6.png','해당 답 화면 출력','1234','6퀴즈.png','6답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'CSS','CSS7.png','해당 답 화면 출력','1234','7퀴즈.png','7답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'HTML','HTML1.png','해당 답 화면 출력','1234','1퀴즈.png','1답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'HTML','HTML2.png','해당 답 화면 출력','1234','2퀴즈.png','2답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'HTML','HTML3.png','해당 답 화면 출력','1234','3퀴즈.png','3답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'HTML','HTML4.png','해당 답 화면 출력','1234','4퀴즈.png','4답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'HTML','HTML5.png','해당 답 화면 출력','1234','5퀴즈.png','5답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'HTML','HTML6.png','해당 답 화면 출력','1234','6퀴즈.png','6답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'HTML','HTML7.png','해당 답 화면 출력','1234','7퀴즈.png','7답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'JSP','JSP1.png','해당 답 화면 출력','1234','1퀴즈.png','1답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'JSP','JSP2.png','해당 답 화면 출력','1234','2퀴즈.png','2답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'JSP','JSP3.png','해당 답 화면 출력','1234','3퀴즈.png','3답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'JSP','JSP4.png','해당 답 화면 출력','1234','4퀴즈.png','4답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'JSP','JSP5.png','해당 답 화면 출력','1234','5퀴즈.png','5답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'JSP','JSP6.png','해당 답 화면 출력','1234','6퀴즈.png','6답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'JSP','JSP7.png','해당 답 화면 출력','1234','7퀴즈.png','7답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'DB','DB1.png','해당 답 화면 출력','1234','8퀴즈.png','8답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'DB','DB2.png','해당 답 화면 출력','1234','9퀴즈.png','9답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'DB','DB3.png','해당 답 화면 출력','1234','10퀴즈.png','10답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'DB','DB4.png','해당 답 화면 출력','1234','11퀴즈.png','11답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'DB','DB5.png','해당 답 화면 출력','1234','12퀴즈.png','12답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'DB','DB6.png','해당 답 화면 출력','1234','13퀴즈.png','13답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'DB','DB7.png','해당 답 화면 출력','1234','14퀴즈.png','14답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'JAVA','JAVA1.png','해당 답 화면 출력','1234','8퀴즈.png','8답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'JAVA','JAVA2.png','해당 답 화면 출력','1234','9퀴즈.png','9답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'JAVA','JAVA3.png','해당 답 화면 출력','1234','10퀴즈.png','10답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'JAVA','JAVA4.png','해당 답 화면 출력','1234','11퀴즈.png','11답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'JAVA','JAVA5.png','해당 답 화면 출력','1234','12퀴즈.png','12답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'JAVA','JAVA6.png','해당 답 화면 출력','1234','13퀴즈.png','13답.png');
+
+insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
+values(boardt_seq.nextval,'JAVA','JAVA7.png','해당 답 화면 출력','1234','14퀴즈.png','14답.png');
   
 insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
 values(boardt_seq.nextval,'JAVA','문제10.png','12','1234','퀴즈10.png','정답확인10.png');
@@ -543,6 +742,8 @@ values(boardt_seq.nextval,'ETC','문제2.png','캡슐화','1234','퀴즈2.png','
 
 insert into boardt(num,subject,examfile,answer,passwd,quizimg,movingimg)
 values(boardt_seq.nextval,'ETC','문제1.png','UML','1234','퀴즈1.png','정답확인1.png');
+
+
 
 commit;  
 

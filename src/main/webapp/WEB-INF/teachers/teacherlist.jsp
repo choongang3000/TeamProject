@@ -4,18 +4,7 @@
 
 <style type="text/css">
 
-		* { /* 기본적인 마진,패딩 없앰*/
-			
-			margin:0;
-			padding:0; 
-			text-decoration : none; /* 밑줄 없애기 */
-			list-style : none; /* 불릿 없애기 */
-		}
-		
-		body { 
-				width:100%;
-				margin-top:30px;
-		}
+
 		h1 {
 				font:20px "맑은 고딕",돋움,arial; 
 				color:#fff;
@@ -137,7 +126,7 @@
 	 			 		<div class="card-body">
 	 			 		<h5><b>${te.tname }</b>선생님</h5>
 	 			 			<p class="card-text">${te.introduction}</p>
-	 			 			<a href="sublist.te?tname=${te.tname}"><button id="button3" type="button" class="btn btn-secondary btn-sm"><font color="white">강의 보러가기<img src="<%=request.getContextPath() %>/resources/images/하늘색이동화살표.png" width="40" height="20"/></font></button></a>
+	 			 			<a href="sublist.te?tname=${te.tname}"><button id="button3" type="button" class="btn btn-secondary btn-sm"><font color="white">강의 보러가기<img src="<%=request.getContextPath() %>/resources/images/icon/하늘색이동화살표.png" width="40" height="20"/></font></button></a>
 	 			 		</div>
  			 	</div>
  			 </div>
@@ -145,7 +134,6 @@
       </div>
     </div>
     <div align="center">${pageInfo.pagingHtml}</div>
-    <hr>
 </div>
 ${t_image }
 
