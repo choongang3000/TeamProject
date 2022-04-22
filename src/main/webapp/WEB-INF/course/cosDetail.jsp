@@ -292,8 +292,10 @@
 				</span>
 			</div>
 			<!-- 버튼 시작 -->
+			<c:if test="${sessionScope.loginInfo.type eq 'student'}"> 
 			<button type="button" class="buy-btn" onclick="location.href='buydirect.stu?conum=${bean.conum}'">결제하기</button>
 			<button type="button" class="cart-btn" onclick="location.href='addcart.stu?conum=${bean.conum}'"><img src="<%=request.getContextPath() %>/resources/images/icon/카트_large.png" /></button>
+			</c:if>
 			<button type="button" class="cart-btn" onclick="list()"><img src="<%=request.getContextPath() %>/resources/images/icon/목록.png" /></button>
 			<!-- 버튼 끝 -->
 		</div>

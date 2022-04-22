@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp" %>
-<%@ include file="../admin/adtop.jsp" %>
+<%@ include file="../user/ustop.jsp" %>
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -228,4 +228,4 @@
 		</tr>
 	</table>
 </form:form>
-<%@ include file="../admin/adbottom.jsp" %> 
+<%@ include file="../user/usbottom.jsp" %>

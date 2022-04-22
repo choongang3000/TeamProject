@@ -187,6 +187,7 @@
 		<td align="center">${list.readcount}</td> <!-- 조회수 -->
 	</tr>	
 	</c:forEach>
+	<c:if test="${sessionScope.loginInfo.type eq 'student'}">
 	<tr height="30"> <!-- 글쓰기 -->
 		<td colspan="7" align="right">
 			<c:if test="${loginInfo != null }">
@@ -194,6 +195,7 @@
 			</c:if>
 		</td>
 	<tr>
+	</c:if>
 	</table>
 	<%-- <c:forEach var="colist" items="colist">
 		<td align="center">${colist.coname }</td><!-- 과목명 -->
