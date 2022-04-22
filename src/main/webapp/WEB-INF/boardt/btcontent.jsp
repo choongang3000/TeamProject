@@ -13,7 +13,6 @@ BTContent.jsp => /content.bt 요청 => BTDetailController
 	
 	table{
 		background: #E4F2FF;
-		border : thin;
 		border-color: black;
 	}
 	
@@ -46,59 +45,60 @@ BTContent.jsp => /content.bt 요청 => BTDetailController
 <br><br><br><br>
 <center>
 	<table border="1" width="700">
-		<tr height="50">
-			<td>
+		<tr height="50" style="border-bottom: 1px dotted gray">
+			<td style="border-right: 1px dotted gray" width="20%">
 				게시 번호
 			</td>
 			<td>
 				${bt.num }
 			</td>
 		</tr>
-		<tr height="50">
-			<td>
+		<tr height="50" style="border-bottom: 1px dotted gray">
+			<td style="border-right: 1px dotted gray" width="20%">
 				과목
 			</td>	
 			<td>
 				${bt.subject } 
 			</td>	
 		</tr>
-		<tr  height="50">
-			<td>
+		<tr  height="50" style="border-bottom: 1px dotted gray">
+			<td style="border-right: 1px dotted gray" width="20%">
 				문제 이미지
 			</td>
 			<td>
 				<img src="<%=request.getContextPath() %>/resources/images/${bt.examfile}" width=500 height=200>
 			</td>
 		</tr>
-		<tr  height="50">
-			<td>
+		<tr  height="50" style="border-bottom: 1px dotted gray">
+			<td style="border-right: 1px dotted gray" width="20%">
 			    문제 답
 			</td>
 			<td>
 				${bt.answer }
 			</td>
 		</tr>
-		<tr height="50">
-			<td>
+		<tr height="150" style="border-bottom: 1px dotted gray">
+			<td style="border-right: 1px dotted gray" width="20%">
 			    기본 퀴즈 이미지 
 			</td>
 			<td colspan="2">
 				<img src="<%=request.getContextPath() %>/resources/images/${bt.quizimg}" width=150 height=150>
 			</td>
 		</tr>
-		<tr  height="50">
-			<td>
+		<tr  height="150" style="border-bottom: 1px dotted gray">
+			<td style="border-right: 1px dotted gray" width="20%">
 			    기본 정답 이미지
 			</td>
 			<td>
 				<img src="<%=request.getContextPath() %>/resources/images/${bt.movingimg}" width=150 height=150>
 			</td>
 		</tr>
-		<tr  height="50">
+		<tr  height="70">
 			<td colspan="2">
 				<input id="b-update" type="submit" value="글수정" onClick="location.href='update.bt?num=${bt.num}&pageNumber=${pageNumber}'">
 				<input id="b-delete" type="button" value="글삭제" onClick="location.href='delete.bt?num=${bt.num}&pageNumber=${pageNumber}'">
 				<input id="b-list"type="button" value="글목록" onClick="location.href='list.bt?pageNumber=${pageNumber}'">
+				
 			</td>
 		</tr>
 	</table>

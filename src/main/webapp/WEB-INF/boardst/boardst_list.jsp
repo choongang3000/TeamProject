@@ -4,7 +4,7 @@
 <%@ include file="../user/ustop.jsp" %>
 	<br><br>
 	<center>
-		<table style="text-align: center; width:70%" class="table table-striped" >
+		<table width="1200px" style="text-align: center; width:1200px" class="table table-striped" > <!-- JH : 너비 70% -> 1200px로 수정함 -->
 			<tr>
 				<c:if test="${loginInfo.type=='student' }">
 				<td colspan=6 align=right>

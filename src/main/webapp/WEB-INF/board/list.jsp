@@ -39,13 +39,13 @@
 <%@ include file="color.jsp" %> <!-- include 지시어 : 내용을 복붙 -->
 
 <body bgcolor="<%= bodyback_c %>"> <!-- 바디 -->
-<div id=container>
+<div id=container><br><br>
 <!-- <div class="title"> -->
-<br><h3>고객센터 QnA<%-- (전체 글:${totalCount }) --%></h3><br>
+<br><h3><p class="text-muted">고객센터 QnA</p><%-- (전체 글:${totalCount }) --%></h3><br> <!-- 글씨체 이걸로 바꿔버릴꺼지롱 JH -->
 <!-- </div> -->
 <!-- <table width="700" border="1"  class="table table-striped"> -->
 
-<table width="700" border="0" class="table table-striped">
+<table width="1200px" border="0" class="table table-striped"> <!-- 700 -> 1200 -->
 	<tr>
 		<td colspan="5" align="right"><a href="insert.bod" class="btn btn-secondary btn-sm">글쓰기</a></td>
 	</tr>

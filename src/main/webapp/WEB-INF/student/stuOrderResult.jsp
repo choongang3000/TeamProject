@@ -2,11 +2,19 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
 <%@ include file="../user/ustop.jsp"%>
+
+<style>
+
+.table{
+	border-color: black;
+}
+
+</style>
 <center>
-<br>
-<h2>구매 완료</h2>
+<br><br><br>
+<h3><p class="text-muted">구매 완료</p></h3>
 <br><br>
-<table class="table" style="width:60%">
+<table class="table" style="width:1200px"> <!-- (JH 수정) 이전 : 60% -> 이후 : 1200px -->
 	<tr class="table-active" style="text-align: center;">
 		<th>NO</th>
 		<th>강의명</th>
@@ -15,7 +23,7 @@
 	<c:set var="totalprice" value="0"/>
 	<c:set var="number" value="1"/>
 	<c:forEach var="odbean" items="${odbeanArr }">
-	<tr style="text-align: center; vertical-align: middle;">
+	<tr style="text-align: center; vertical-align: middle; height: 70px">
 		<td>${number }</td>
 		<td><b>${odbean.coteacher }[${odbean.cosubject }]</b>&nbsp;${odbean.coname }</td>
 		<fmt:formatNumber var="price" value="${odbean.coprice }" pattern="#,###,###"/>
