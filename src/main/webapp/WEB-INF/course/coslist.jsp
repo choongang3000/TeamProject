@@ -156,9 +156,7 @@
     	text-align: center;
     	
     	}
-<<<<<<< HEAD
     	
-=======
     	#pagediv{
     		text-align:center;
     		vertical-align:middle;
@@ -174,7 +172,7 @@
     	#pagediv a:hover{
     		color:black;
     	}
->>>>>>> branch 'merged' of https://github.com/choongang3000/TeamProject.git
+
 </style>
 
 <body>
@@ -281,17 +279,13 @@
 			</tr>
 			</c:forEach>
 		</table>
-<<<<<<< HEAD
+
 		 <!-- <div class="btn-toolbar" role="toolbar"> -->
-		
-        ${pageInfo.pagingHtml }
-        
-=======
+
 		<div class="btn-toolbar" role="toolbar">
 			<div id="pagediv">
 	        	${pageInfo.pagingHtml }
 	      	</div>
->>>>>>> branch 'merged' of https://github.com/choongang3000/TeamProject.git
       </div>
 	<!-- </div> -->
 </section>
