@@ -211,6 +211,13 @@
 					<hr>
 				</td>
 			</tr>
+			<c:if test="${fn:length(list) == 0 }">
+			<tr>
+				<td height=80px style="text-align: center; vertical-align: middle;" colspan=5>
+					강의 목록이 없습니다
+				</td>
+			</tr>
+			</c:if>
 			<c:forEach var="course" items="${list}">
 			<tr>
 				<td align="center" width="15%"> <!-- JH : 화면 이동 매끄럽게 하기 위해서 width 고정함 -->
@@ -256,7 +263,6 @@
 			</c:forEach>
 		</table>
 		 <div class="btn-toolbar" role="toolbar">
-      
         ${pageInfo.pagingHtml }
       </div>
 	</div>

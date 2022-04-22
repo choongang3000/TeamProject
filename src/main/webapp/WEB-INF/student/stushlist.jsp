@@ -11,19 +11,19 @@
 </style>
 
 <center>
-
+<br><br>
 <!-- shlist.jsp <br> -->
-<h2>주문내역 조회</h2>
+<h2><b>주문내역 조회</b></h2>
 <br>    
 
-<table border="0" align="center">
+<table class="table" align="center" style="width:70%">
 
-<tr height="50">
-	<th>주문번호</th>
-	<th>주문강의</th>
-	<th>총금액</th>
-	<th>주문일자</th>
-	<th>상세정보</th>
+<tr height="50" class="bg-light" style="text-align: center; vertical-align: middle;">
+	<th width=10%>주문번호</th>
+	<th width=40%>주문강의</th>
+	<th width=15%>총금액</th>
+	<th width=20%>주문일자</th>
+	<th width=15%>상세정보</th>
 </tr>
 <c:if test="${fn:length(obArr) == 0 }">
 <tr>
@@ -49,13 +49,9 @@
 </tr>
 <c:set var="number" value="${number + 1 }"/>
 </c:forEach>
-<tr height="50">
-	<td colspan="3">총합</td>
-	<td>금액</td>
-</tr>
 
 </table>
 
 </center>
-
+<br>
 <%@ include file="../user/usbottom.jsp" %>

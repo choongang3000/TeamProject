@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp" %>
-<%@ include file="../admin/adtop.jsp" %>
+<%@ include file="../user/ustop.jsp" %>
 	
 	<style>
     	body{
@@ -10,8 +10,8 @@
     		margin: auto;
     	}
     </style>
-    
-	<h2>결제 상세내역 조회</h2>
+    <br><br>
+	<h2><b>결제 상세내역 조회</b></h2>
 	<br>
 	<div>구매일자: 2022.03.31</div>
 	<br>
@@ -56,6 +56,7 @@
 			<td colspan="1"><fmt:formatNumber value="${totalprice }" pattern="##,###,###"/>원</td>
 		</tr>
 	</table>
+	<br><br>
+	<input type="button" class="btn btn-secondary" value="주문내역" onClick="location.href='shlist.stu'">
 	<br>
-<input type="button" value="목록" onClick="location.href='shlist.stu'">
-<%@ include file="../admin/adbottom.jsp" %>
+<%@ include file="../user/usbottom.jsp" %>
