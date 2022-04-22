@@ -27,7 +27,7 @@ public class ADTcDeleteController {
 	@RequestMapping(value=command)
 	public String doAction(@RequestParam(value="anum", required=true) int anum) {
 		
-		String uploadPath = servletContext.getRealPath("/resources");
+		String uploadPath = servletContext.getRealPath("/resources/images");
 		
 		TeacherBean tbean = tdao.getTeacherData(anum);
 		 

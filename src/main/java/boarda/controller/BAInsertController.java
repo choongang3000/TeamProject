@@ -42,8 +42,8 @@ public class BAInsertController {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		String uploadPath = servletContext.getRealPath("/resources");
-		MultipartFile multi = bean.getUpload();
+		//String uploadPath = servletContext.getRealPath("/resources");
+		//MultipartFile multi = bean.getUpload();
 		
 		if(result.hasErrors()) {
 			mav.setViewName(getPage);
@@ -54,6 +54,7 @@ public class BAInsertController {
 		int cnt = baDao.insertBA(bean);
 		System.out.println("cnt:"+cnt);
 		if(cnt>0) {
+			/*
 			File f = new File(uploadPath+"\\"+bean.getBaimage());
 			
 			try {
@@ -63,6 +64,7 @@ public class BAInsertController {
 			}catch(IOException e) {
 				System.out.println("이미지 삽입 오류2");
 			}
+			*/
 			mav.setViewName(gotoPage);
 		}
 		else {
