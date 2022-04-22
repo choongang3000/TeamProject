@@ -46,9 +46,14 @@
 
     var checked = false;
     var check_res = false;
+    var check_pw = false;
 
     $(function(){
-
+		
+    	$("input[name=pw]").keydown(function(){
+    		check_pw = false;
+    	})
+    	
     	$("input[name=id]").keydown(function(){
     		$("#idspan").css("display","none");
     		checked = false;
@@ -87,16 +92,17 @@
     	var regexp = /^[a-z0-9]{3,12}$/;
     	var chk_num =  pw.search(/^[0-9]{3,12}$/);	
     	var chk_eng =  pw.search(/^[a-z]{3,12}$/);
-    	
 
     	if(pw.search(regexp) == -1){
     		alert("3~12자리의 영소문자/숫자를 조합해 주세요");
+    		return false;
     	}
     	if(chk_num == 0 || chk_eng == 0){
     		alert("3~12자리의 영소문자/숫자를 조합해 주세요");
     		return false;
     	}
     	
+    	check_pw = true;
     }
 
 
@@ -128,6 +134,27 @@
     		return false;
     	}
     	
+    	if(check_pw == false){
+    		alert("잘못된 비밀번호 형식입니다.");
+    		return false;
+    	}
+    	
+    	var rrn1_regexp = /^[0-9]{6}$/;
+    	var rrn2_regexp = /^[0-9]{7}$/;
+    	var rrn1 = $("input[name=rrn1]").val();
+    	var rrn2 = $("input[name=rrn2]").val();
+    	
+    	if(rrn1.search(rrn1_regexp) == -1){
+    		alert("주민번호 앞자리 6자리를 입력해 주세요");
+    		$("input[name=rrn1]").select();
+    		return false;
+    	}
+    	if(rrn2.search(rrn2_regexp) == -1){
+    		alert("주민번호 뒷자리 7자리를 입력해 주세요");
+    		$("input[name=rrn2]").select();
+    		return false;	
+    	}
+    
     }
     
     
@@ -227,9 +254,9 @@
               <label for="aname" class="form-label">주민등록번호*</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
-                <input type="text" name="rrn1" class="form-control" value="${tbean.rrn1 }">
+                <input type="text" name="rrn1" class="form-control" value="${tbean.rrn1 }" pattern="^[0-9]{6}$" required>
                 &nbsp;<b>-</b>&nbsp;
-           		<input type="text" name="rrn2" class="form-control" value="${tbean.rrn2 }">
+           		<input type="text" name="rrn2" class="form-control" value="${tbean.rrn2 }" pattern="^[0-9]{7}$" required>
               </div>
             </div>
             

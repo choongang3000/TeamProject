@@ -282,7 +282,7 @@
 	        	${pageInfo.pagingHtml }
 	      	</div>
       </div>
-	</div>
+	<!-- </div> -->
 </section>
 
 <div id=foot>

@@ -100,7 +100,7 @@
 							<span>${loginInfo.aname } 선생님 반갑습니다!</span>
 							<a href="logout.mem" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/로그아웃 아이콘.png" title="로그아웃" width="80" height="32"/></a>
 							<br>
-							<a href="tcInfo.mem?anum=${loginInfo.anum}" class="header-sub-menu">내 정보</a>					
+							<%-- <a href="tcInfo.mem?anum=${loginInfo.anum}" class="header-sub-menu">내 정보</a> --%>					
 						</c:if>
 						<c:if test="${sessionScope.loginInfo.type eq 'student' }">
 							<span>${loginInfo.aname } 님 반갑습니다!</span>
