@@ -17,7 +17,6 @@
 <div class="container">
   <main>
     <div class="py-5 text-center">
-      <img class="d-block mx-auto mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
       <h2>강의 등록</h2>
       <p class="lead">강의를 등록해주세요.</p>
     </div>
@@ -72,7 +71,7 @@
             
 			<!-- 강의이미지 -->
             <div class="col-12">
-              <label for="coimage" class="form-label">강의 이미지 <span class="text-muted">(Optional)</span></label>
+              <label for="coimage" class="form-label">강의 이미지 <span class="text-muted"></span></label>
               <input type="file" class="form-control" name="upimage" required>
               <div class="invalid-feedback">
                 강의 이미지를 넣어주세요.

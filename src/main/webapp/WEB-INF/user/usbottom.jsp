@@ -71,7 +71,7 @@ address .copyright {
 				</div>
 				<div class="col">
 					<div class="help">
-						<img alt="on강 고객센터 홈페이지" src="<%=request.getContextPath() %>/resources/images/icon/고객센터.png" onclick="location.href='userlist.ba'">
+						<img alt="on강 고객센터 홈페이지" src="<%=request.getContextPath() %>/resources/images/icon/고객센터.png" onclick="location.href='list.ba'">
 					</div>
 				</div>
 			</div>

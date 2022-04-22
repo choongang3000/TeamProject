@@ -156,6 +156,23 @@
     	text-align: center;
     	
     	}
+    	
+    	#pagediv{
+    		text-align:center;
+    		vertical-align:middle;
+    		margin: auto;
+    		margin-top:20px;
+    		font-weight: bold;
+    		font-size: large;
+    		height:50px;
+    	}
+    	#pagediv a{
+    		color:gray;
+    	}
+    	#pagediv a:hover{
+    		color:black;
+    	}
+
 </style>
 
 <body>
@@ -219,7 +236,7 @@
 			</tr>
 			</c:if>
 			<c:forEach var="course" items="${list}">
-			<tr>
+			<tr style="border-bottom: 1px solid lightgray;">
 				<td align="center" width="15%"> <!-- JH : 화면 이동 매끄럽게 하기 위해서 width 고정함 -->
 					<b>${course.coteacher }</b>선생님
 					<img id="teacher-img" src="<%=request.getContextPath()%>/resources/images/${course.coimage}" width=80 height=80>
@@ -262,10 +279,15 @@
 			</tr>
 			</c:forEach>
 		</table>
-		 <div class="btn-toolbar" role="toolbar">
-        ${pageInfo.pagingHtml }
+
+		 <!-- <div class="btn-toolbar" role="toolbar"> -->
+
+		<div class="btn-toolbar" role="toolbar">
+			<div id="pagediv">
+	        	${pageInfo.pagingHtml }
+	      	</div>
       </div>
-	</div>
+	<!-- </div> -->
 </section>
 
 <div id=foot>

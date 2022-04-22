@@ -24,7 +24,7 @@
 			</if>
 		</if>
 		<if test="keyword != null">
-			where basubject like #{keyword}
+			where UPPER(basubject) like UPPER(#{keyword})
 		</if>
 	</select>
   	
@@ -48,7 +48,7 @@
 			</if>
 		</if>
 		<if test="keyword != null">
-			where basubject like #{keyword}
+			where UPPER(basubject) like UPPER(#{keyword})
 		</if>
 		order by banum desc
   	</select>
