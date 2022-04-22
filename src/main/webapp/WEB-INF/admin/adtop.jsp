@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ include file="../common/common.jsp"%>
 <!doctype html>
 <html lang="en">
   <head>
@@ -43,6 +43,10 @@
           font-size: 3.5rem;
         }
       }
+      
+      #a{
+      	align:center;
+      }
     </style>
 
     
@@ -76,6 +80,34 @@
 </svg>
 <br><br>
 <main>
+<div id="a">
+	<c:choose>
+				<c:when test="${sessionScope.loginInfo != null}">
+					<div id="header-main-menu">
+						<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
+							<span>관리자님 반갑습니다!</span>
+							<a href="logout.mem" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/로그아웃 아이콘.png" title="로그아웃" width="80" height="32"/></a>
+							<br>
+							<a href="list.ad" class="header-sub-menu">관리자 홈으로 가기</a>
+						</c:if>
+						<%-- <c:if test="${sessionScope.loginInfo.type eq 'teacher' }">
+							<span>${loginInfo.aname } 선생님 반갑습니다!</span>
+							<a href="logout.mem" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/로그아웃 아이콘.png" title="로그아웃" width="80" height="32"/></a>
+							<br>
+							<a href="tcInfo.mem?anum=${loginInfo.anum}" class="header-sub-menu">내 정보</a>					
+						</c:if>
+						<c:if test="${sessionScope.loginInfo.type eq 'student' }">
+							<span>${loginInfo.aname } 님 반갑습니다!</span>
+							<a href="logout.mem" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/로그아웃 아이콘.png" title="로그아웃" width="80" height="32"/></a>
+							<br>
+							<a href="memdetail.mem?anum=${loginInfo.anum}" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/정보수정 아이콘.png" title="정보수정" width="80" height="32"/></a>
+							<a href="shlist.stu" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/구매목록 아이콘.png" title="구매목록" width="80" height="32"/></a>&nbsp;							
+							<a href="cartlist.stu" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/카트_small.png" title="장바구니" width="20" height="20"/></a>
+						</c:if> --%>
+					</div>
+				</c:when>
+	</c:choose>
+</div>
   <div class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
       <a href="home.us" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">

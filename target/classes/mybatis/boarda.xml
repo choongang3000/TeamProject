@@ -58,12 +58,12 @@
   	</select>
   	
   	<insert id="InsertBA">
-  		insert into boarda(banum,bacategory,basubject,bacontent,baimage,bafile)
-  		values(ba_seq.nextval,#{bacategory},#{basubject},#{bacontent},#{baimage},#{bafile})
+  		insert into boarda(banum,bacategory,basubject,bacontent)
+  		values(ba_seq.nextval,#{bacategory},#{basubject},#{bacontent})
   	</insert>
 
   	<update id="UpdateBA">
-  		update boarda set bacategory=#{bacategory},basubject=#{basubject},bacontent=#{bacontent},baimage=#{baimage},bafile=#{bafile}
+  		update boarda set bacategory=#{bacategory},basubject=#{basubject},bacontent=#{bacontent}
   		where banum=#{banum}
   	</update>
   	

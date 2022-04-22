@@ -28,7 +28,7 @@ public class BSListController {
 	
 	@RequestMapping(value=command, method=RequestMethod.GET)
 	public String doAction(@RequestParam(value="aname", required=false) String writer,
-						@RequestParam(value="pageNumber",required = false) String pageNumber, 
+						   @RequestParam(value="pageNumber",required = false) String pageNumber, 
 					       @RequestParam(value="whatColumn",required = false) String whatColumn,
 						   @RequestParam(value="keyword",required = false) String keyword,
 						   HttpServletRequest request, HttpSession session) {

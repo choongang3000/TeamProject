@@ -56,8 +56,8 @@ public class BAUpdateController {
 								HttpServletResponse response) {
 		
 		ModelAndView mav = new ModelAndView();
-		String uploadPath = servletContext.getRealPath("/resources");
-
+		//String uploadPath = servletContext.getRealPath("/resources");
+		/*
 		if( !babean.getBaimage().equals("") ) {
 			MultipartFile multi = babean.getUpload();
 		
@@ -74,11 +74,12 @@ public class BAUpdateController {
 			String fileName = uuid + "-" + multi.getOriginalFilename();
 			
 			babean.setBaimage(fileName);
-			
+			*/
 			int cnt = baDao.updateBA(babean);
 			
 			
 			if(cnt>0) {
+				/*
 				File f = new File(uploadPath,fileName);
 				try {
 					multi.transferTo(f);
@@ -88,11 +89,11 @@ public class BAUpdateController {
 					e.printStackTrace();
 				}
 			}
-			
+			*/
 			mav.setViewName(gotoPage);
 		}
 		else {
-			babean.setBaimage(beforeFile);
+			//babean.setBaimage(beforeFile);
 			baDao.updateBA(babean);
 			mav.setViewName(gotoPage);
 		}

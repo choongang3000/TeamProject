@@ -95,9 +95,9 @@
 			<div id="${collapse[i] }" class="accordion-collapse collapse" aria-labelledby="${heading[i] }" data-bs-parent="#accordionFlushExample">
 				<div class="accordion-body">
 					${list[i].bacontent }
-					<c:if test="${list[i].baimage != null }">
-						<img src="<%request.getContextPath(); %>/resources/images/re.gif">
-					</c:if>
+					<%-- <c:if test="${list[i].baimage != null }">
+						<img src="<%request.getContextPath(); %>/resources/images/">
+					</c:if> --%>
 					<%-- <c:if test="${list[i].bafile != null }">
 						파일 출력 설정 위치 
 					</c:if> --%>

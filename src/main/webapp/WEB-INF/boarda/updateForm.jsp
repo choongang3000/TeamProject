@@ -44,8 +44,11 @@
 			<textarea class="form-control" name="bacontent" id="exampleFormControlTextarea1" rows="3" required style="resize:none">${babean.bacontent }</textarea>
 		</div>
 		</div>
-		<input class="form-control" id="formFile" type="file" name="upload" value="파일선택">
-		<br>
-		<center><button type="submit" class="btn btn-primary btn-md" style="margin: auto">수정</button></center>
+		<!-- <input class="form-control" id="formFile" type="file" name="upload" value="파일선택">
+		<br> -->
+		<center>
+		<button type="submit" class="btn btn-primary btn-md" style="margin: auto">수정</button>
+		<button type="button" onClick="history.back()" value="뒤로가기" class="btn btn-primary btn-md">뒤로가기</button>
+		</center>
 	</form>
 </div>

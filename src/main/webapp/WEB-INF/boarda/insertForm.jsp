@@ -15,6 +15,9 @@
 	}
 	
 </style>
+<script>
+
+</script>
 <center>
 <br><h2>질문 입력</h2><br>
 </center>
@@ -41,9 +44,12 @@
 			<label for="exampleFormControlTextarea1" class="form-label">답변</label>
 			<textarea class="form-control" name="bacontent" id="exampleFormControlTextarea1" rows="3" required style="resize:none"></textarea>
 		</div>
-		<input class="form-control" id="formFile" type="file" name="upload" value="파일선택">
-		<br>
-		<center><button type="submit" class="btn btn-primary btn-md">작성하기</button></center>
+		<!-- <input class="form-control" id="formFile" type="file" name="upload" value="파일선택">
+		<br> -->
+		<center>
+		<button type="submit" class="btn btn-primary btn-md">작성하기</button>
+		<button type="button" onClick="history.back()" value="뒤로가기" class="btn btn-primary btn-md">뒤로가기</button>
+		</center>
 	</form:form>
 </div>
 <%@ include file="../admin/adbottom.jsp" %>
