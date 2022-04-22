@@ -36,6 +36,7 @@ public class BSInsertController {
 	
 	@Inject
 	private BSDao bsdao;
+
 	/*
 	@Inject
 	private CoDao codao;
@@ -43,6 +44,7 @@ public class BSInsertController {
 	@Inject
 	private TeacherDao tdao;
 	*/
+	
 	@Autowired
 	ServletContext servletContext;
 

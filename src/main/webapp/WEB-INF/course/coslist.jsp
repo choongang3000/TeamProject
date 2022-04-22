@@ -195,7 +195,7 @@
 			<input type="text" name="keyword">
 			<input type="submit" value="검색" id="searchbutton">
 		</form>
-		<table> 
+		<table border="0"> 
 		
 			<tr align="center" height="30px">
 					<th align="center"><!-- | 강사 | --></th>
@@ -211,6 +211,13 @@
 					<hr>
 				</td>
 			</tr>
+			<c:if test="${fn:length(list) == 0 }">
+			<tr>
+				<td height=80px style="text-align: center; vertical-align: middle;" colspan=5>
+					강의 목록이 없습니다
+				</td>
+			</tr>
+			</c:if>
 			<c:forEach var="course" items="${list}">
 			<tr>
 				<td align="center" width="15%"> <!-- JH : 화면 이동 매끄럽게 하기 위해서 width 고정함 -->
@@ -246,8 +253,8 @@
 				</td>
 				</c:if>
 				<c:if test="${sessionScope.loginInfo.type eq 'admin'}">
-				<td>
-					<a href="coupdate.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}"><input id="b-update" type="button" class="w-50 btn btn-primary btn-mg" value="수정"></a>&nbsp;
+				<td colspan="2">
+					<a href="coupdate.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}"><input id="b-update" type="button" class="w-50 btn btn-primary btn-mg" value="수정"></a><!-- &nbsp; -->
 					<a href="codelete.cos?conum=${course.conum }&pageNumber=${pageInfo.pageNumber }&cosubject=${cosubject}&whatColumn=${whatColumn}&keyword=${keyword}"><input id="b-delete" type="button" class="w-50 btn btn-primary btn-mg" value="삭제"></a>
 				</td>
 				</c:if>
@@ -256,7 +263,6 @@
 			</c:forEach>
 		</table>
 		 <div class="btn-toolbar" role="toolbar">
-      
         ${pageInfo.pagingHtml }
       </div>
 	</div>

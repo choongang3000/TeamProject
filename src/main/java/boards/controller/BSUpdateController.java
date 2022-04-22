@@ -35,6 +35,7 @@ public class BSUpdateController {
 	private BSBean bsbean;
 	@Autowired
 	private BSDao bsdao;
+
 	/*
 	@Autowired
 	private CoDao codao;

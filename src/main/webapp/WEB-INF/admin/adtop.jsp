@@ -45,8 +45,11 @@
       }
       
       #a{
-      	align:center;
+      	float: right;
+      	margin-right: 450px;
       }
+    
+
     </style>
 
     
@@ -88,7 +91,6 @@
 							<span>관리자님 반갑습니다!</span>
 							<a href="logout.mem" class="header-sub-menu"><img src="<%=request.getContextPath() %>/resources/images/icon/로그아웃 아이콘.png" title="로그아웃" width="80" height="32"/></a>
 							<br>
-							<a href="list.ad" class="header-sub-menu">관리자 홈으로 가기</a>
 						</c:if>
 						<%-- <c:if test="${sessionScope.loginInfo.type eq 'teacher' }">
 							<span>${loginInfo.aname } 선생님 반갑습니다!</span>
@@ -108,6 +110,7 @@
 				</c:when>
 	</c:choose>
 </div>
+	<br><br><br>
   <div class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
       <a href="home.us" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
