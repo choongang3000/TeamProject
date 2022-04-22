@@ -38,16 +38,18 @@
 
 <%@ include file="color.jsp" %> <!-- include 지시어 : 내용을 복붙 -->
 
-<body bgcolor="<%= bodyback_c %>"> <!-- 바디 -->
+<%-- <body bgcolor="<%= bodyback_c %>"> <!-- 바디 --> --%>
+<br><br>
 <div id=container>
 <!-- <div class="title"> -->
-<br><h3>고객센터 QnA<%-- (전체 글:${totalCount }) --%></h3><br>
+<%-- <br><h3>고객센터 QnA(전체 글:${totalCount })</h3><br> --%>
 <!-- </div> -->
 <!-- <table width="700" border="1"  class="table table-striped"> -->
 
 <table width="700" border="0" class="table table-striped">
 	<tr>
-		<td colspan="5" align="right"><a href="insert.bod" class="btn btn-secondary btn-sm">글쓰기</a></td>
+		<td colspan="2" align="left"><a class="navbar-brand" align="right" style="color:black;"><b>&nbsp;고객센터 Q&A</b></a></td>
+		<td colspan="3" align="right"><a href="insert.bod" class="btn btn-secondary btn-sm">글쓰기</a></td>
 	</tr>
 	<tr height="30px" style="border-bottom: 2px solid black; text-align: center">
 		<th align="center">번호</th>

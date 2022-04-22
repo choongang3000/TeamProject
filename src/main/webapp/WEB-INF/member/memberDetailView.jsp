@@ -5,7 +5,7 @@
 <!--  회원정보<br> -->
 <style>
 main {
-	width: 60%;
+	width: 1200px;
 	margin: auto;
 }
 </style>

@@ -24,11 +24,13 @@
 </style>
 
 <center>
-<nav class="navbar navbar-light bg-light" style="width: 75%">
+<br><br>
+<nav class="navbar navbar-light bg-light" style="width: 1200px">
 	<div class="container-fluid">
 		<a class="navbar-brand"><b>내 강의 목록</b></a>
 	</div>
 </nav>
+<br>
 <c:if test="${fn:length(cosArr) == 0 }">
 <div id="nodata">
 	<br><br>

@@ -60,7 +60,7 @@
           <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">로그인</button>
           <small class="text-muted">On강을 이용해주셔서 감사합니다.</small>
         </form:form>
-          
+          <%-- 
           <hr class="my-4">
           <h2 class="fs-5 fw-bold mb-3">다른 계정으로 로그인</h2>
           <center>
@@ -69,7 +69,7 @@
 		  <img src="<%=request.getContextPath() %>/resources/images/icon/kakao_login_medium_wide.png"/>
 		  </a>
           </center>
-          
+           --%>
           <hr class="my-4">
            <h2 class="fs-5 fw-bold mb-3">기타</h2>
           <button class="w-100 py-2 mb-2 btn btn-outline-dark rounded-4" onClick="findId()">

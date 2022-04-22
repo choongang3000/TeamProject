@@ -3,10 +3,10 @@
 <%@ include file="../common/common.jsp"%>
 <%@ include file="../user/ustop.jsp"%>
 <center>
-<br>
+<br><br>
 <h2>구매 완료</h2>
 <br><br>
-<table class="table" style="width:60%">
+<table class="table" style="width:1200px;">
 	<tr class="table-active" style="text-align: center;">
 		<th>NO</th>
 		<th>강의명</th>
