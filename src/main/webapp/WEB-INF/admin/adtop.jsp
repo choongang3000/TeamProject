@@ -43,10 +43,11 @@
           font-size: 3.5rem;
         }
       }
-      
-      #a{
-      	float: right;
-      	margin-right: 450px;
+      #condiv{
+      	text-align:right;
+      	display:block;
+      }
+      #header-main-menu{
       }
     
 
@@ -83,7 +84,7 @@
 </svg>
 <br><br>
 <main>
-<div id="a">
+<div class="container" id="condiv">
 	<c:choose>
 				<c:when test="${sessionScope.loginInfo != null}">
 					<div id="header-main-menu">
@@ -110,7 +111,7 @@
 				</c:when>
 	</c:choose>
 </div>
-	<br><br><br>
+	<br>
   <div class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
       <a href="home.us" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">

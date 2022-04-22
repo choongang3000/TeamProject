@@ -69,7 +69,7 @@ main {
 							</div>
 						</div>
 						
-						<div class="col-4">
+						<div class="col-12">
 							<label for="aname" class="form-label">지역정보</label>
 							<div class="input-group has-validation">
 								<input type="text" class="form-control" value="${mbean.addr }" disabled="disabled">
