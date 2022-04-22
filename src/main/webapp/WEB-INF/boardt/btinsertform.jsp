@@ -50,6 +50,20 @@ insert.bt 요청 => BTInsertController
     
 </style>
 
+<!-- *************************************************** 시간 안돼면 삭제 ***************************************** -->
+<!-- <script type="text/javascript">
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				$('#blah').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+</script> -->
+<!-- *************************************************** 시간 안돼면 삭제 ***************************************** -->
+
 <br><br>
 <center><!-- 업데이트인지?? BTBean 소문자/대문자 상관없다고 함.. -->
 	<form:form commandName="BTBean" method="post" action="insert.bt" enctype="multipart/form-data">
@@ -70,8 +84,11 @@ insert.bt 요청 => BTInsertController
 			</tr>
 			<tr height="50" style="border-bottom: 1px dotted gray">	
 				<td align="center" style="border-right: 1px dotted gray" width="40%">퀴즈 이미지</td>
-				<td>&nbsp;&nbsp;<input type="file" name="upload2" value="파일선택" required> <!-- input에 required를 붙이면 예쁘게 유효성 검사가 뜬다규~★ -->
+				<td>&nbsp;&nbsp;<input type="file" name="upload2" value="파일선택"  onchange="readURL(this);" required> <!-- input에 required를 붙이면 예쁘게 유효성 검사가 뜬다규~★ -->
 				<br><form:errors cssClass="err" path="quizimg" />
+				<!-- <img id="blah" src="#" alt="image" width="100px" height="100px"/> -->
+	<!-- 			&nbsp;<img id="blah" src="" /> -->
+				<%-- <%=request.getContextPath() %>/resources/images/1퀴즈.png" alt="image" width="100px" height="100px/> --%>
 				</td>
 			</tr>    
 			<tr height="50" style="border-bottom: 1px dotted gray">

@@ -39,7 +39,7 @@
 		<td colspan="3">
 			<br>
 			<video
-				src="<%=request.getContextPath() %>/resources/${course.covideo}"
+				src="<%=request.getContextPath() %>/resources/images/강의동영상1.mp4"
 				poster="<%=request.getContextPath()%>/resources/images/로고짤.gif"
 				width="500"
 				controls autoplay>

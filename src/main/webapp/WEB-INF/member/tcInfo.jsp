@@ -8,13 +8,10 @@
 		/* margin:auto; */ 
 		
 	}
-	h2,h4{
+	h4{
 		text-align: left;
 	}
 	
-	div{
-		text-align: left;
-	}
 </style>
 <link href="form-validation.css" rel="stylesheet">
 </head>
@@ -36,7 +33,7 @@
 			<input type="hidden" name="type" value="teacher">
 	
 	        <div class="col-12">
-              <label for="addr" class="form-label">강사 사진</label>
+              <!-- <label for="addr" class="form-label" id="label" align="center">강사사진</label> -->
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
                 <img src="<%=request.getContextPath() %>/resources/images/${tbean.t_image}" width=150 height=180> 
@@ -45,9 +42,9 @@
 				${fn:substring(tbean.t_image,37,lenstr)}
               </div>
             </div>
-	
-			<div class="col-6">
-              <label for="id" class="form-label">ID</label>
+
+			<div class="col-6" style=text-align:left;>
+              <label for="id" class="form-label" id="label">ID</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
                 <input type="text" name="id" class="form-control" value="${tbean.id }" disabled="disabled">
@@ -56,8 +53,8 @@
             
            <!-- <div class="col-2"></div> -->
             
-            <div class="col-6">
-              <label for="pw" class="form-label">PW</label>
+            <div class="col-6" style=text-align:left;>
+              <label for="pw" class="form-label" id="label">PW</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
                 <input type="password" name="pw" class="form-control" value="${tbean.pw }" disabled="disabled">
@@ -65,8 +62,8 @@
             </div>
             <!--  -->
            
-             <div class="col-6">
-              <label for="aname" class="form-label">이름</label>
+             <div class="col-6" style=text-align:left;>
+              <label for="aname" class="form-label" id="label">이름</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
                 <input type="text" name="aname" class="form-control" value="${tbean.aname }" disabled>
@@ -78,8 +75,8 @@
             
             <!-- <div class="col-2"></div> -->
             
-            <div class="col-6">
-              <label for="aname" class="form-label">주민등록번호</label>
+            <div class="col-6" style=text-align:left;>
+              <label for="aname" class="form-label" id="label">주민등록번호</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
                 <input type="text" name="rrn1" class="form-control" value="${tbean.rrn1 }" disabled>
@@ -88,8 +85,8 @@
               </div>
             </div>
             <!--  -->
-            <div class="col-6">
-              <label for="email" class="form-label">E-mail</label>
+            <div class="col-6" style=text-align:left;>
+              <label for="email" class="form-label" id="label">E-mail</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
                 <input type="text" name="email" class="form-control" value="${tbean.email }" disabled>
@@ -99,8 +96,8 @@
               </div>
             </div>
             <!-- <div class="col-2"></div> -->
-            <div class="col-6">
-              <label for="phone" class="form-label">핸드폰 번호</label>
+            <div class="col-6" style=text-align:left;>
+              <label for="phone" class="form-label" id="label">핸드폰 번호</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
                 <input type="text" name="phone1" class="form-control" value="${tbean.phone1 }" disabled>
@@ -114,8 +111,8 @@
               </div>
             </div>
             <!--  -->
-            <div class="col-12">
-              <label for="addr" class="form-label">주소</label>
+            <div class="col-12" style=text-align:left;>
+              <label for="addr" class="form-label" id="label">주소</label>
               <div class="input-group has-validation">
                 <input type="text" class="form-control" id="sample4_postcode" name="addr_num" placeholder="우편번호" value="${fn:split(tbean.addr,'|')[1] } ${fn:split(tbean.addr,'|')[2] } (우편번호:${fn:split(tbean.addr,'|')[0] })" disabled>
 				<span id="guide" style="color:#999"></span>
@@ -138,12 +135,9 @@
               </div>
             </div>
              --%>
-
-            <!-- 
-            <div class="col-12"></div>
-             -->
-            <div class="col-6">
-              <label for="subject" class="form-label">과목</label>
+            <!-- <div class="col-12"></div> -->
+            <div class="col-6" style=text-align:left;>
+              <label for="subject" class="form-label" id="label">과목</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
                 <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
@@ -154,8 +148,8 @@
               </div>
             </div>
 			<!-- <div class="col-2"></div> -->
-			<div class="col-6">
-              <label for="tterm" class="form-label">계약기간</label>
+			<div class="col-6" style=text-align:left;>
+              <label for="tterm" class="form-label" id="label">계약기간</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
                  <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
@@ -169,8 +163,8 @@
             <!-- 
             <div class="col-12"></div>
              -->
-            <div class="col-12">
-              <label for="tterm" class="form-label">강사소개</label>
+            <div class="col-12" style=text-align:left;>
+              <label for="tterm" class="form-label" id="label">강사소개</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
                 <textarea class="form-control" name="introduction" style="height: 100px; resize: none;" disabled>${tbean.introduction }</textarea>
@@ -180,8 +174,8 @@
               </div>
             </div>
             
-            <div class="col-6">
-              <label for="twageratio" class="form-label">강사 임금 비율</label>
+            <div class="col-6" style=text-align:left;>
+              <label for="twageratio" class="form-label" id="label">강사 임금 비율</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
                 <input type="text" name="twageratio" class="form-control" value="${tbean.twageratio }" disabled>
@@ -191,8 +185,8 @@
               </div>
             </div>
             <!-- <div class="col-2"></div> -->
-            <div class="col-6">
-              <label for="visa" class="form-label">Visa</label>
+            <div class="col-6" style=text-align:left;>
+              <label for="visa" class="form-label" id="label">Visa</label>
               <div class="input-group">
                 <!-- <span class="input-group-text">@</span> -->
                 <input type="text" name="visa" class="form-control" value="${tbean.visa }" disabled>

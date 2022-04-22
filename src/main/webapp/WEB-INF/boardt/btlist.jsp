@@ -45,6 +45,11 @@
     }
 
 </style>
+
+
+출처: https://kindtis.tistory.com/514 [Game Programmer Life]
+
+
 <script src="<%= request.getContextPath()%>/resources/js/jquery.js"></script>
 <script type="text/javascript">
 
