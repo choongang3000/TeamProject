@@ -8,6 +8,11 @@ main {
 	width: 1200px;
 	margin: auto;
 }
+
+#numberdiv{
+	text-align: left;
+	align:left;
+}
 </style>
 <link href="form-validation.css" rel="stylesheet">
 </head>
@@ -56,8 +61,8 @@ main {
 
 						<div class="col-1"></div>
 
-						<div class="col-6">
-							<label for="aname" class="form-label">주민등록번호</label>
+						<div class="col-6" id="numberdiv">
+							<label for="aname" class="form-label" id="number">주민등록번호</label>
 							<div class="input-group has-validation">
 								<input type="text" class="form-control" value="${mbean.rrn1 }" disabled="disabled">&nbsp;<b>-</b>&nbsp; 
 								<input type="password" class="form-control" value="${mbean.rrn2 }" disabled="disabled">
