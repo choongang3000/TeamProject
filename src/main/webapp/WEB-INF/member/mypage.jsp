@@ -5,7 +5,7 @@
 
 <style type="text/css">
 #container {
-	width: 1200px;
+	width: 80%;
 	margin: auto;
 }
 
