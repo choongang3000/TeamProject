@@ -156,7 +156,6 @@
     	text-align: center;
     	
     	}
-    	
     	#pagediv{
     		text-align:center;
     		vertical-align:middle;
@@ -172,7 +171,6 @@
     	#pagediv a:hover{
     		color:black;
     	}
-
 </style>
 
 <body>
@@ -279,9 +277,7 @@
 			</tr>
 			</c:forEach>
 		</table>
-
 		 <!-- <div class="btn-toolbar" role="toolbar"> -->
-
 		<div class="btn-toolbar" role="toolbar">
 			<div id="pagediv">
 	        	${pageInfo.pagingHtml }
