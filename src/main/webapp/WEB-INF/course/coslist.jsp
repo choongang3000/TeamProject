@@ -156,6 +156,7 @@
     	text-align: center;
     	
     	}
+    	
 </style>
 
 <body>
@@ -262,10 +263,12 @@
 			</tr>
 			</c:forEach>
 		</table>
-		 <div class="btn-toolbar" role="toolbar">
+		 <!-- <div class="btn-toolbar" role="toolbar"> -->
+		
         ${pageInfo.pagingHtml }
+        
       </div>
-	</div>
+	<!-- </div> -->
 </section>
 
 <div id=foot>

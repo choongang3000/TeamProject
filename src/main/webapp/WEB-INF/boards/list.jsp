@@ -86,7 +86,8 @@
 	
 	.fa-star{
 		font-size:65px;
-	}	 
+	}
+
 </style> 
 <%-- 
 <br><br>
@@ -205,7 +206,9 @@
 <br>
 
 <!-- 하단페이지 -->
-${pageInfo.pagingHtml }
+<!-- <div class="pagination"> -->
+	${pageInfo.pagingHtml }
+<!-- </div> -->
 </center>
 <br><br>
 <%@ include file="../user/usbottom.jsp" %>

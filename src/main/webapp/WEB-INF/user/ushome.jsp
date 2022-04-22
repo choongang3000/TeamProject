@@ -2,11 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
 <%@ include file="ustop.jsp"%>
-<main>
 
 <style>
 
-		
 	.card{
 			margin-left: 100px;
 			margin-top: 30px;
@@ -93,7 +91,7 @@
 		</div>
 	</div>
 
-	<!-- FOOTER -->
+	<!-- <!-- FOOTER -->
 	<footer class="container">
 		<p class="float-end">
 			<a href="#">Back to top</a>
@@ -102,8 +100,8 @@
 			&copy; 2017–2021 Company, Inc. &middot; <a href="#">Privacy</a>
 			&middot; <a href="#">Terms</a>
 		</p>
-	</footer>
-</main>
+	</footer> -->
+
 
 
 <script
