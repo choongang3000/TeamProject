@@ -85,7 +85,8 @@
 			    		<td>${tc.aname }</td>
 			    		<td>${tc.id }</td>
 			    		<td>${tc.email }</td>
-			    		<td>${tc.phone1 }-${tc.phone2 }-${tc.phone3 }</td>
+			    		<%-- <td>${tc.phone1 }-${tc.phone2 }-${tc.phone3 }</td> --%>
+			    		<td>0${tc.phone1 }-${tc.phone2 }-${tc.phone3 }</td>
 			    		<td>${fn:substring(tc.tterm,0,11) }</td>
 			    		<td>
 			    			<button type="button" class="btn btn-outline-primary btn-sm" onClick="location.href='tcdetail.ad?anum=${tc.anum }'">상세보기</button>

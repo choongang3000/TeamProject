@@ -35,7 +35,7 @@
 	</tr>
 	<tr height=50 valign="middle" style="border-bottom: 1px dotted gray">
 		<th class="table-active" style="text-align: center">전화번호</th>
-		<td colspan=2>${tbean.phone1 }-${tbean.phone2 }-${tbean.phone3 }</td>
+		<td colspan=2>0${tbean.phone1 }-${tbean.phone2 }-${tbean.phone3 }</td>
 	</tr>
 	<tr height=50 valign="middle" style="border-bottom: 1px dotted gray">
 		<th class="table-active" style="text-align: center">E-mail</th>

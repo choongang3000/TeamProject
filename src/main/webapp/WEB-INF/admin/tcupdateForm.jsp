@@ -153,7 +153,7 @@
               <label for="phone" class="form-label">핸드폰 번호*</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
-                <input type="text" name="phone1" class="form-control" value="${tbean.phone1 }">
+                <input type="text" name="phone1" class="form-control" value="0${tbean.phone1 }">
                 &nbsp;<b>-</b>&nbsp;
                 <input type="text" name="phone2" class="form-control" value="${tbean.phone2 }">
                 &nbsp;<b>-</b>&nbsp;

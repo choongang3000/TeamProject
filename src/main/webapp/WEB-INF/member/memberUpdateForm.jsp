@@ -213,7 +213,7 @@ main {
 							<label for="phone" class="form-label">핸드폰 번호*</label>
 							<div class="input-group has-validation">
 								<!-- <span class="input-group-text">@</span> -->
-								<input type="text" name="phone1" class="form-control" value="${mbean.phone1 }"> &nbsp;<b>-</b>&nbsp; 
+								<input type="text" name="phone1" class="form-control" value="0${mbean.phone1 }"> &nbsp;<b>-</b>&nbsp; 
 								<input type="text" name="phone2" class="form-control" value="${mbean.phone2 }"> &nbsp;<b>-</b>&nbsp; 
 								<input type="text" name="phone3" class="form-control" value="${mbean.phone3 }">
 								<div class="invalid-feedback">전화번호를 입력해주세요.</div>

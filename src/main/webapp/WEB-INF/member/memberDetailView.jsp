@@ -87,7 +87,7 @@ main {
 							<label for="phone" class="form-label">핸드폰 번호*</label>
 							<div class="input-group has-validation">
 								<!-- <span class="input-group-text">@</span> -->
-								<input type="text" class="form-control" value="${mbean.phone1 }" disabled="disabled"> &nbsp;<b>-</b>&nbsp; 
+								<input type="text" class="form-control" value="0${mbean.phone1 }" disabled="disabled"> &nbsp;<b>-</b>&nbsp; 
 								<input type="text" class="form-control" value="${mbean.phone2 }" disabled="disabled"></a> &nbsp;<b>-</b>&nbsp; 
 								<input type="text" class="form-control" value="${mbean.phone3 }" disabled="disabled"></a>
 							</div>
