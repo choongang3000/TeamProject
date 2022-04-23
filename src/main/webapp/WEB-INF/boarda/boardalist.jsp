@@ -58,7 +58,7 @@
 
 <!-- <body> -->
 <center>
-<br><h2>FAQ 자주 묻는 질문</h2><br>
+<br><h2><b>FAQ 자주 묻는 질문</b></h2><br>
 </center>
 <div id=container>
 <nav class="navbar navbar-light bg-light">

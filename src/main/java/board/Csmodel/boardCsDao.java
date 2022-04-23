@@ -42,13 +42,13 @@ public class boardCsDao {
 		return list;
 	}
 	
-	public List<boardCsBean> getArticles2(Paging pageInfo){
+	public List<boardCsBean> getArticles2(Map<String, String> map, Paging pageInfo){
 		
 		RowBounds rowbounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
 		
 		List<boardCsBean> list = new ArrayList<boardCsBean>();
 		
-		list = sqlSessionTemplate.selectList(namespace + ".GetArticles2",rowbounds);
+		list = sqlSessionTemplate.selectList(namespace + ".GetArticles2",map,rowbounds);
 		
 		return list;
 	}

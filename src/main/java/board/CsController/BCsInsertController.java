@@ -25,7 +25,14 @@ public class BCsInsertController {
 	private boardCsDao csdao;
 	
 	@RequestMapping(value=command, method=RequestMethod.GET)
-	public String doAction1() {
+	public String doAction1(HttpSession session) {
+		
+		MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo");
+		if(loginInfo == null) {
+			session.setAttribute("destination", "redirect:/list.bod");
+			
+			return "redirect:/loginForm.mem";
+		}
 		
 		return getPage;
 	}

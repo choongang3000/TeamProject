@@ -16,9 +16,9 @@
     	} 
     </style>
     <br>
-    <h2>주문 상세내역 조회</h2>
+    <h2><b>주문 상세내역 조회</b></h2>
     <br>
-    <table align="center" border="0">
+    <table align="center" border="1" style="width:1200px;">
     	<tr height="30px" style="border-bottom: 2px solid black; text-align: center">
     		<th bgcolor="#DCDCDC">고객ID</th>
     		<th bgcolor="#DCDCDC">주문번호</th>
@@ -28,7 +28,7 @@
     		<th bgcolor="#DCDCDC">금액</th>
     	</tr>
     	<c:forEach var="od" items="${odArr }">
-    	<tr height="40px">
+    	<tr height="40px" style="border-bottom: 1px solid lightgray">
     		<td>${od.aid }</td>
     		<td>${od.onum }</td>
     		<td>${od.cosubject }</td>
@@ -52,7 +52,7 @@
     	</tr>
     </table>
     <br><br>
-    <input type="button" class="btn btn-secondary btn-sm" value="뒤로가기" onClick="history.back()">
+    <input type="button" class="btn btn-secondary" value="뒤로가기" onClick="history.back()">
 <br><br>
 
 <%@ include file="../admin/adbottom.jsp" %>

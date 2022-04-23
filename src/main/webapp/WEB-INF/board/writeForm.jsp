@@ -34,7 +34,7 @@ include 액션태그 : 실행한 결과를 가져옴
 		<tr>
 			<td align="center" bgcolor="#DCDCDC">이 름</td>
 			<td>
-				<input type="text" name="writer" class="form-control" id="floatingInput" value="${loginInfo.id }" readonly>
+				<input type="text" name="writer" class="form-control" id="floatingInput" value="${loginInfo.aname }" readonly>
 			</td>
 		</tr>
 		<tr>

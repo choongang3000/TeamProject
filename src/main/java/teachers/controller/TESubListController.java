@@ -25,14 +25,14 @@ import utility.Paging;
 
 @Controller
 public class TESubListController {//4/14 JH - teacherlist.jsp 강의 보러가기 버튼 -> sublist.te 요청 -> teachersublist.jsp 이동
-
-
+	
+	
 	private final String command = "/sublist.te";
 	private String getPage = "teachersublist";
 	
 	@Autowired
 	private TEDao tedao;
-
+	
 	@RequestMapping(value=command)
 	public ModelAndView doAction( /* 상단 선생님 탭(teacherlist.jsp)에서 버튼 누르면 tname 넘김 */
 			@RequestParam(value="pageNumber", required=false) String pageNumber,
@@ -42,7 +42,10 @@ public class TESubListController {//4/14 JH - teacherlist.jsp 강의 보러가기 버튼
 		
 		List<TEBean> list = tedao.getTESubList(tbean); /* TEDao -> teachers.xml */
 		
-		TEBean comp = list.get(0);
+		TEBean comp = null;
+		if(list.size() != 0) {
+			comp = list.get(0);			
+		}
 		
 		
 		/*

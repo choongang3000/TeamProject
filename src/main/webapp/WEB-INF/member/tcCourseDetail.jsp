@@ -3,7 +3,7 @@
 <%@ include file="../common/common.jsp" %>
 <%@ include file="../user/ustop.jsp" %>
 <style>
-	table{
+	table {
 		width:1200px;
 		align:center;
 		text-align:center;

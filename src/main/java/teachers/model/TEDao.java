@@ -76,4 +76,5 @@ public class TEDao {
 		subArr = sqlSessionTemplate.selectList(namespace + ".GetSubject");
 		return subArr;
 	}
+	
 }

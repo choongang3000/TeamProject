@@ -79,7 +79,7 @@
 <body class="bg-light">
 	<main>
 	<div class="py-5 text-center">
-      <h2>강사 정보 수정</h2>
+      <h2><b>강사 정보 수정</b></h2>
     </div>
     
     <div class="row g-5">

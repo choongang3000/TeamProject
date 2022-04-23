@@ -18,7 +18,7 @@
 
   <main>
     <div class="py-5 text-center">
-      <h2>강의 정보 수정</h2>
+      <h2><b>강의 정보 수정</b></h2>
       <p class="lead">등록된 강의를 수정해주세요.</p>
     </div>
 	

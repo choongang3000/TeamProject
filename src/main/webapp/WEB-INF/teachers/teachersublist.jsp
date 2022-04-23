@@ -118,6 +118,14 @@
 				<b><hr></b>
 				</td>
 			</tr>
+			<c:if test="${fn:length(list) == 0 }">
+			<tr>
+				<td colspan=4 style="text-align: center; vertical-align: middle; height:80px;">
+				강의 목록이 없습니다
+				</td>
+			</tr>
+			</c:if>
+			<c:if test="${fn:length(list) != 0 }">
 			<c:forEach var="course" items="${list}">
 			<tr>
 				<td>
@@ -142,6 +150,7 @@
 				</td>
 			</tr>
 			</c:forEach>
+			</c:if>
 		</table>
 		${pageInfo.pagingHtml }
 	</div>

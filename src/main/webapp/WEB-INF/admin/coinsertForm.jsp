@@ -17,7 +17,7 @@
 <div class="container">
   <main>
     <div class="py-5 text-center">
-      <h2>강의 등록</h2>
+      <h2><b>강의 등록</b></h2>
       <p class="lead">강의를 등록해주세요.</p>
     </div>
 	

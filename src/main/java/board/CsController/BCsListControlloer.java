@@ -31,6 +31,8 @@ public class BCsListControlloer {
 	
 	@RequestMapping(value=command, method=RequestMethod.GET)
 	public String doAction(	@RequestParam(value="pageNumber", required= false) String pageNumber, 
+							@RequestParam(value="whatColumn", required= false) String whatColumn,
+							@RequestParam(value="keyword", required= false) String keyword,
 							HttpServletRequest request,
 							HttpSession session) {
 		
@@ -55,7 +57,7 @@ public class BCsListControlloer {
 		//System.out.println("totalCount:"+totalCount);
 		
 		String url ;
-		url = request.getContextPath()+command;
+		url = request.getContextPath()+"/"+command;
 		/*
 		if(writer != null) {
 			url = request.getContextPath()+command+"?writer="+writer;
@@ -64,10 +66,10 @@ public class BCsListControlloer {
 			url = request.getContextPath()+command;
 		}
 		*/
-		Paging pageInfo = new Paging(pageNumber,"null",totalCount,url,null,null);
+		Paging pageInfo = new Paging(pageNumber,"10",totalCount,url,null,null);
 		
 		//List<boardCsBean> boardArr = csdao.getArticles1(pageInfo,map);
-		List<boardCsBean> boardArr = csdao.getArticles2(pageInfo);
+		List<boardCsBean> boardArr = csdao.getArticles2(map,pageInfo);
 		
 		//ModelAndView mav=new ModelAndView();
 		//mav.addObject("writer",writer);

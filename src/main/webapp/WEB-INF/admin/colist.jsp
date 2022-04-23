@@ -15,12 +15,14 @@
 		width:1300px;
 		/*text-align: center;*/
 	}
-	
+	a{
+		text-decoration: none;
+	}
 	
 </style>
 
   <center>
-  <br><h2>강의 목록</h2><br>
+  <br><h2><b>강의 목록</b></h2><br>
   	<form method="get" action="colist.ad" class="btn-group">
 		<div class="input-group">
 			<select name="whatColumn" class="form-control"> <!-- 미완성(대소문자 구분하는법) -->
@@ -56,7 +58,7 @@
     	</tr>
     	<!-- conum,coname,coteacher,cosubject,coimage,covideo,cocontent,coprice,coupload_date -->
     	<c:forEach var="list" items="${colist }">
-    	<tr>
+    	<tr height=60px style="vertical-align: middle;">
     		<td>${list.conum }</td>
     		<td>
     			<a href="codetail.ad?conum=${list.conum }&pageNumber=${pageInfo.pageNumber}">${list.coname }</a>

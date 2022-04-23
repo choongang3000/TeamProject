@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,12 +16,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import board.Csmodel.boardCsBean;
 import board.Csmodel.boardCsDao;
+import member.model.MemberBean;
 
 @Controller
 public class BCsDeleteController {
 	
 	private final String command = "delete.bod";
 	private String getPage = "deleteForm";
+	private String gotoPage = "redirect:/list.bod";
 	
 	@Autowired
 	private boardCsDao csdao;
@@ -29,7 +32,17 @@ public class BCsDeleteController {
 	public String doAction1(@RequestParam(value="num", required=true) String num,
 							@RequestParam(value="pageNumber", required=true) String pageNumber, 
 							HttpServletRequest request,
-							HttpServletResponse response) {
+							HttpServletResponse response,
+							HttpSession session) {
+		
+		MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo");
+		if(loginInfo.getType().equals("admin")) {
+			csdao.deleteArticle(num);
+			
+			return gotoPage + "?pageNumber=" + pageNumber;
+		}
+		
+		
 		request.setAttribute("num", num);
 		request.setAttribute("pageNumber", pageNumber);	
 		
@@ -47,13 +60,13 @@ public class BCsDeleteController {
 		boardCsBean csBean = csdao.getArticle(num);
 		if(csBean.getPasswd().equals(passwd)){
 			csdao.deleteArticle(num);
-			return "redirect:/list.bod?pageNumber=" + pageNumber;
+			return  gotoPage + "?pageNumber=" + pageNumber;
 		}
 		else {
 			PrintWriter out;
 			try {
 				out = response.getWriter();
-				out.print("<script>alert('삭제완료되었습니다.')</script>");
+				out.print("<script>alert('게시글 비밀번호가 일치하지 않습니다.')</script>");
 				out.flush();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -61,9 +74,8 @@ public class BCsDeleteController {
 			}
 			request.setAttribute("num", num);
 			request.setAttribute("pageNumber", pageNumber);
-			return getPage;
-		
 			
+			return getPage;
 		}
 		
 		

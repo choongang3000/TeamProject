@@ -32,31 +32,31 @@
 </style>
 
 <center>
-<h2>강의 정보</h2>
+<h2><b>강의 정보</b></h2>
 
 <br>
-<table border="0" align="center" width="1200px;">
-	<tr style="border: 1px solid black">
-		<th width="150" height="50" bgcolor="#DCDCDC">강의번호</th>
-		<td>${cobean.conum }</td>
-		<th width="150" height="50" bgcolor="#DCDCDC">강의명</th>
-		<td>${cobean.coname }</td>
+<table class="table" align="center" border=1 style="width:1200px">
+	<tr>
+		<th width="150" height="50" style="background: lightgray; text-align: center; vertical-align: middle;">강의번호</th>
+		<td  style="vertical-align: middle;">${cobean.conum }</td>
+		<th width="150" height="50" style="background: lightgray; text-align: center; vertical-align: middle;">강의명</th>
+		<td  style="vertical-align: middle;">${cobean.coname }</td>
 	</tr>    
-	<tr style="border: 1px solid black">
-		<th width="150" height="50" bgcolor="#DCDCDC">담당선생님</th>
-		<td>${cobean.coteacher }</td>
-		<th width="150" height="50" bgcolor="#DCDCDC">과목</th>
-		<td>${cobean.cosubject }</td>
+	<tr>
+		<th width="150" height="50" style="background: lightgray; text-align: center; vertical-align: middle;">담당선생님</th>
+		<td style="vertical-align: middle;">${cobean.coteacher }</td>
+		<th width="150" height="50" style="background: lightgray; text-align: center; vertical-align: middle;">과목</th>
+		<td style="vertical-align: middle;">${cobean.cosubject }</td>
 	</tr>
-	<tr style="border: 1px solid black">
-		<th width="150" height="150" bgcolor="#DCDCDC">강의이미지</th>
-		<td colspan="3">
-			<img src="<%=request.getContextPath() %>/resources/images/${cobean.coimage}">
+	<tr>
+		<th width="150" height="150" style="background: lightgray; text-align: center; vertical-align: middle;">강의이미지</th>
+		<td colspan="3" style="vertical-align: middle;">
+			<img src="<%=request.getContextPath() %>/resources/images/${cobean.coimage}"  width=200px>
 		</td>
 	</tr>
-	<tr style="border: 1px solid black">
-		<th width="150" height="300" bgcolor="#DCDCDC">강의영상</th>
-		<td colspan="3">
+	<tr>
+		<th width="150" height="300" style="background: lightgray; text-align: center; vertical-align: middle;">강의영상</th>
+		<td colspan="3" style="vertical-align: middle;">
 			<br>
 			<video
 				src="<%=request.getContextPath() %>/resources/images/${cobean.covideo}"
@@ -67,22 +67,22 @@
 			<br>
 		</td>
 	</tr>
-	<tr style="border: 1px solid black">
-		<th width="150" height="50" bgcolor="#DCDCDC">강의소개</th>
-		<td colspan="3">${cobean.cocontent }</td>
+	<tr>
+		<th width="150" height="50" style="background: lightgray; text-align: center; vertical-align: middle;">강의소개</th>
+		<td colspan="3" style="vertical-align: middle;">${cobean.cocontent }</td>
 	</tr>
-	<tr style="border: 1px solid black">
-		<th width="150" height="50" bgcolor="#DCDCDC">강의가격</th>
-		<td><fmt:formatNumber value="${cobean.coprice }" pattern="###,###"/></td>
-		<th width="150" height="50" bgcolor="#DCDCDC">업로드날짜</th>
-		<td><fmt:formatDate value="${cobean.coupload_date }" pattern="yyyy-MM-dd"/></td>
+	<tr>
+		<th width="150" height="50" style="background: lightgray; text-align: center; vertical-align: middle;">강의가격</th>
+		<td style="vertical-align: middle;"><fmt:formatNumber value="${cobean.coprice }" pattern="###,###"/></td>
+		<th width="150" height="50" style="background: lightgray; text-align: center; vertical-align: middle;">업로드날짜</th>
+		<td style="vertical-align: middle;"><fmt:formatDate value="${cobean.coupload_date }" pattern="yyyy-MM-dd"/></td>
 	</tr>
 </table>
 <br>
 
-<input type="button" value="이전화면" class="btn btn-secondary btn-sm" onClick="history.back()">
-<input type="button" value="수정" class="btn btn-secondary btn-sm" onClick="upd()">
-<input type="button" value="삭제" class="btn btn-secondary btn-sm" onClick="del()">
+<input type="button" value="이전화면" class="btn btn-secondary" onClick="history.back()">
+<input type="button" value="수정" class="btn btn-primary" onClick="upd()">
+<input type="button" value="삭제" class="btn btn-outline-danger" onClick="del()">
 </center>
 <br>
 <%@ include file="../admin/adbottom.jsp" %>
