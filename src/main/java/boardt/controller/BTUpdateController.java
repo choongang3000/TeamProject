@@ -63,12 +63,12 @@ public class BTUpdateController {
 			response.setContentType("text/html;charset=UTF-8");
 			//ModelAndView mav = new ModelAndView();
 			//mav.addObject("pageNumber",pageNumber);
-			System.out.println("여기~~"+bt.getSubject());
-			System.out.println("여기~~"+bt.getExamfile());
-			System.out.println("여기~~"+bt.getAnswer());
-			System.out.println("여기~~"+bt.getPasswd());
-			System.out.println("여기~~"+bt.getQuizimg());
-			System.out.println("여기~~"+bt.getMovingimg());
+			System.out.println("여기~~getSubject"+bt.getSubject());
+			System.out.println("여기~~getAnswer"+bt.getAnswer());
+			System.out.println("여기~~getPasswd"+bt.getPasswd());
+			System.out.println("여기~~getQuizimg"+bt.getQuizimg());
+			System.out.println("여기~~getExamfile"+bt.getExamfile());
+			System.out.println("여기~~getMovingimg"+bt.getMovingimg());
 
 			if(result.hasErrors()) {
 				List<String> sub = btdao.getSubList();
@@ -86,7 +86,7 @@ public class BTUpdateController {
 					out.print("<script>alert('비밀번호가 일치하지 않습니다')</script>");
 					out.flush();
 				} catch (IOException e) {
-				}
+			}
 				return getPage;
 			}
 	}

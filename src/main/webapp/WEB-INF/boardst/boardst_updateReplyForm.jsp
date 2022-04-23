@@ -3,8 +3,12 @@
 <%@ include file="../common/common.jsp" %>
 <%@ include file="../user/ustop.jsp" %>
 <center>
-	<table border=1 class="table table-striped" style="width:60%">
-		<tr>
+<br>
+	<table border="0" class="table table-striped" style="width:1200px">
+		<tr>	
+			<td colspan="1" align="left" style="height:35px;">
+				<a class="navbar-brand" align="right" style="color:black;"><b>&nbsp;학생 질문</b></a>
+			</td>
 			<td align=right colspan=2>
 				<input type="button" value="목록으로" class="btn btn-secondary btn-sm" onClick="location.href='list.bst?pageNumber=${pageNumber}'">
 			</td>
@@ -33,7 +37,9 @@
 	</table>
 	<!-- 답글 테이블 -->
 	<form action="updateReply.bst?pageNumber=${pageNumber}" method="post">
-	<table style="width:60%; margin-top:50px; border:none;">
+		<input type="hidden" name="num" value="${reply.num }">
+		<input type="hidden" name="pnum" value="${board.num }">
+	<table style="width:1200px; margin-top:50px; border:none;">
 	<!--
 	  num number primary key,
 	  pnum number references board_st(num) on delete cascade,
@@ -42,8 +48,11 @@
 	  image varchar2(30),
 	  repdate date default sysdate
 	-->
-		<input type="hidden" name="num" value="${reply.num }">
-		<input type="hidden" name="pnum" value="${board.num }">
+		<tr>	
+			<td colspan="3" align="left" style="height:35px;">
+					<a class="navbar-brand" align="right" style="color:black;"><b>&nbsp;선생님 답변</b></a>
+			</td>
+		</tr>
 		<tr>
 			<td>
 				<div class="form-floating">
@@ -60,6 +69,5 @@
 		</tr>
 	</table>
 	</form>
-	
 </center>
 <%@ include file="../user/usbottom.jsp" %>

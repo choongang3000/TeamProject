@@ -361,11 +361,11 @@ create sequence boards_seq
   maxvalue 10000
   nocache;
   
-insert into boards(num,writer,email,title,passwd,reg_date,ref,re_step,re_level,content,image,coname,coteacher)
-values(boards_seq.nextval,'student2','stu@naver.com','짱이에요','1234','2015-1-1',1,0,0,'선생님 감사해용',null,'자바 실전 프로그래밍6','제시');
+insert into boards(num,writer,email,title,passwd,reg_date,ref,re_step,re_level,content,image,rating,coname,coteacher)
+values(boards_seq.nextval,'student2','stu@naver.com','짱이에요','1234','2015-1-1',1,0,0,'선생님 감사해용',null,5,'자바 실전 프로그래밍6','제시');
 
-insert into boards(num,writer,email,title,passwd,reg_date,ref,re_step,re_level,content,image,coname,coteacher)
-values(boards_seq.nextval,'student1','stu2@gmail.com','감사해요','1234','2018-10-5',2,0,0,'성생님 짱이에요!',null,'자바 실전 프로그래밍6','제시');
+insert into boards(num,writer,email,title,passwd,reg_date,ref,re_step,re_level,content,image,rating,coname,coteacher)
+values(boards_seq.nextval,'student1','stu2@gmail.com','감사해요','1234','2018-10-5',2,0,0,'성생님 짱이에요!',null,4,'웹 CSS 초급반6','제니');
 
 commit;
 

@@ -59,14 +59,15 @@
 		font-size:65px;
 	}	 	
 </style>
+<br><br>
 <center>
-<nav class="navbar navbar-light bg-light" style="width: 75%">
+<nav class="navbar navbar-light bg-light" style="width: 1200px">
 	<div class="container-fluid">
 		<a class="navbar-brand"><b>&nbsp;수강 후기</b></a>
 	</div>
 </nav>
 <br>
-<table class="table" style="width:60%">
+<table class="table" style="width:1200px">
 	<tr style="height:40px" class="bg-light">
 		<td align=left width=70%>&nbsp;&nbsp;${bb.title } <font color="lightgray">|</font> <b>${bb.coname}[${bb.coteacher}]</b></td>
 		<td align=right><font color="gray">작성일</font>&nbsp;<fmt:formatDate value="${bb.reg_date }" pattern="yyyy-MM-dd HH:mm" type="both"/>&nbsp;&nbsp;</td>

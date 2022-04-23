@@ -4,9 +4,15 @@
 <%@ include file="../user/ustop.jsp" %>
 <br>
 <center>
+<br>
 	<form action="insert.bst" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="stuid" value="${loginInfo.id }"> <!-- 추가 수정필요 -->
-	<table class="table table-striped" style="width:60%" border=1>
+	<table class="table table-striped" style="width:1200px" border="0">
+		<tr>	
+			<td colspan="3" align="left" style="height:35px;">
+					<a class="navbar-brand" align="right" style="color:black;"><b>&nbsp;질문 작성하기</b></a>
+			</td>
+		</tr>
 		<tr>
 			<td>
 				<select name="subject" class="form-select" style="width:15%; display: inline;" required> <!-- 추가 수정필요 -->

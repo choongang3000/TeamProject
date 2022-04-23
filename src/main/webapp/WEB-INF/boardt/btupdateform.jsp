@@ -115,7 +115,9 @@ update.bt 요청 => BoardUpdateController
 			reader.readAsDataURL(event.target.files[0]);
 	}
 </script>
+
 <br><br><br>
+
 <center>
 <!-- BTBean으로 담아서 넘겨줘용 -->
 <form:form commandName="bt" method="post" action="update.bt?pageNumber=${pageNumber}" enctype="multipart/form-data">

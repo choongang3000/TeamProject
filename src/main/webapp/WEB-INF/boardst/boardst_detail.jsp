@@ -39,18 +39,29 @@
 	}
 	
 </script>
-<br>
+<br><br>
 <center>
-	<table border=1 class="table table-striped" style="width:60%">
+	<table border="0" class="table table-striped" style="width:1200px">
+		<!-- <tr>	
+			<td colspan="3" align="left" style="height:35px;">
+				<a class="navbar-brand" align="right" style="color:black;"><b>&nbsp;질문 보기</b></a>
+			</td>
+		</tr> -->
 		<tr>
-			<td align=left>
+			<%-- <td align=left>
 				<c:if test="${loginInfo.type=='student' }">
 				<input type="button" value="삭제" class="btn btn-outline-danger btn-sm" onClick="return delete_board()">
 				</c:if>
+			</td> --%>
+			<td colspan="1" align="left" style="height:35px;">
+				<a class="navbar-brand" align="right" style="color:black;"><b>&nbsp;학생 질문</b></a>
 			</td>
-			<td align=right>
+			<td align=right colspan="2">
 				<c:if test="${loginInfo.type=='student' }">
 				<input type="button" value="수정" class="btn btn-primary btn-sm" onClick="location.href='update.bst?num=${board.num}&pageNumber=${pageNumber }'">
+				</c:if>
+				<c:if test="${loginInfo.type=='student' }">
+				<input type="button" value="삭제" class="btn btn-outline-danger btn-sm" onClick="return delete_board()">
 				</c:if>
 				<input type="button" value="목록으로" class="btn btn-secondary btn-sm" onClick="location.href='list.bst?pageNumber=${pageNumber}'">
 			</td>
@@ -84,14 +95,21 @@
 			</td>
 		</tr>
 	</table>
+	<br>
 	<!-- 답글 테이블 -->
-	
 	<c:if test="${reply ne null }"> <!-- 선생님이 답변을 달았을때 -->
-		<table border=1 class="table" style="width:60%; margin-top: 50px;">
+		<table border="0" class="table" style="width:1200;">
+		<!-- 	<tr class="table-light">
+			</tr> -->
 			<tr class="table-light">
+				<td colspan="1" align="left" style="height:35px;">
+					<a class="navbar-brand" align="right" style="color:black;"><b>&nbsp;선생님 답변</b></a>
+				</td>
 				<c:if test="${loginInfo.type == 'teacher'}">
-				<td align=left><input type="button" value="답변 삭제" class="btn btn-outline-danger btn-sm" onClick="return delete_reply()"></td>
-				<td align=right><input type="button" value="답변 수정" class="btn btn-primary btn-sm" onClick="location.href='updateReply.bst?replyNum=${reply.num}&pageNumber=${pageNumber}&num=${board.num}'"></td>
+				<!-- <td align=left></td> -->
+				<td align=right>
+				<input type="button" value="답변 삭제" class="btn btn-outline-danger btn-sm" onClick="return delete_reply()">
+				<input type="button" value="답변 수정" class="btn btn-primary btn-sm" onClick="location.href='updateReply.bst?replyNum=${reply.num}&pageNumber=${pageNumber}&num=${board.num}'"></td>
 				</c:if>
 			</tr>
 			<tr>
@@ -110,9 +128,13 @@
 		</table>
 	</c:if>
 	<c:if test="${loginInfo.type == 'teacher' }">
+	
 	<c:if test="${reply eq null }"> <!-- 답변X 일때 -->
 		<form action="reply.bst?num=${board.num }&pageNumber=${pageNumber}" method="post">
-		<table style="width:60%; margin-top:50px; border:none;">
+			<input type="hidden" name="pnum" value="${board.num }">
+			<input type="hidden" name="teachid" value="${loginInfo.aname }"> <!-- 여기 나중에 수정 필요 -->
+		<br>
+		<table style="width:1200px; margin-top:50px; border:none;">
 	  <!-- 	 
 	  num number primary key,
 	  pnum number references board_st(num) on delete cascade,
@@ -121,12 +143,15 @@
 	  image varchar2(30),
 	  repdate date default sysdate 
 	  -->
-			<input type="hidden" name="pnum" value="${board.num }">
-			<input type="hidden" name="teachid" value="${loginInfo.aname }"> <!-- 여기 나중에 수정 필요 -->
+		  	<tr>	
+				<td colspan="3" align="left" style="height:35px;">
+					<a class="navbar-brand" align="right" style="color:black;"><b>&nbsp;선생님 답변</b></a>
+				</td>
+			</tr>
 			<tr>
 				<td>
 					<div class="form-floating">
-					  <textarea class="form-control" name="content" id="floatingTextarea2" style="height:300px; width:100%; resize:none;" required></textarea>
+					  <textarea class="form-control" name="content" id="floatingTextarea2" style="height:300px; width:1200px; resize:none;" required></textarea>
 					  <label for="floatingTextarea2">답변 작성</label>
 					</div>
 				</td>

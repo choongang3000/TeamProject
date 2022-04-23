@@ -5,7 +5,7 @@
 
 <style>
 	table{
-		width:1000px;
+		width:1200px;
 		text-align: center;
 	}
 </style>
@@ -13,10 +13,10 @@
 	<center>
 		<table width="1200px" style="text-align: center; width:1200px" class="table table-striped" > <!-- JH : 너비 70% -> 1200px로 수정함 -->
 			<tr>
-				<c:if test="${loginInfo.type=='student' }">
 				<td colspan="3" align="left" style="height:35px;">
 					<a class="navbar-brand" align="right" style="color:black;"><b>&nbsp;질문 게시판</b></a>
 				</td>
+				<c:if test="${loginInfo.type=='student' }">
 				<td colspan="3" align="right">
 					<input type="button" value="질문 작성" class="btn btn-secondary btn-sm" onClick="location.href='insert.bst?pageNumber=${pageInfo.pageNumber}'">
 				</td>

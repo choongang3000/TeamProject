@@ -7,11 +7,11 @@
 
 <center>
 <br><br>
-<h2 align="center">비밀번호 입력</h2>
+<h2 align="center" style="width: 1200px">비밀번호 입력</h2>
 <br>
 <form method="post" action="delete.bs?num=${num }">
-	<input type="hidden" name="pageNumber" value="${pageNumber}">
-	<table border="0" width="60%">
+	<input type="hidden" name="pageNumber" value="${pageNumber}" style="width: 1200px">
+	<table border="0" width="1200px">
 		<!-- <tr>
 			<td>비밀번호를 입력하세요</td>
 		</tr> -->

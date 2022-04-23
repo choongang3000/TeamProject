@@ -21,9 +21,9 @@
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/check.js"></script>
 
 <center>
+<br><br>
 <div class="container">
-<br>
-<h2 align="center">수강후기 수정</h2>
+<h2 align="center">Q&A 문의글 수정</h2>
 <br>
 <form method="post" action="update.bod?num=${bb.num }&pageNumber=${pageNumber}" onsubmit="return check()">
 	<input type="hidden" name="num" value="${bb.num}">

@@ -7,7 +7,12 @@
 	<form action="update.bst" method="post"  enctype="multipart/form-data">
 	<input type="hidden" name="pageNumber" value="${pageNumber }">
 	<input type="hidden" name="num" value="${board.num }">
-	<table border=1 class="table table-striped" style="width:60%">
+	<table border="0" class="table table-striped" style="width:1200PX">
+		 <tr>	
+			<td colspan="3" align="left" style="height:35px;">
+					<a class="navbar-brand" align="right" style="color:black;"><b>&nbsp;질문 수정하기</b></a>
+			</td>
+		</tr>
 		<tr>
 			<td>
 				<select name="subject" class="form-select" style="width:15%; display: inline;" required> <!-- 추가 수정필요 -->
