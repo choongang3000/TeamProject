@@ -7,11 +7,9 @@
 
 <Main>
 <style>
-
 	a {
 		text-decoration: none;
 	}
-
 	#b-insert{
 		border-radius : 3px;
     	border : 1px solid #35BCAE;
@@ -20,7 +18,6 @@
     	height: 32px;
     	width: 50px;
 	}
-
 	#b-update{
     	border-radius : 3px;
     	border : 1px solid blue;
@@ -43,13 +40,11 @@
     	border : 1px solid #35BCAE;
 	   	background-color:#35BCAE;
     }
-
 </style>
 
 
 <script src="<%= request.getContextPath()%>/resources/js/jquery.js"></script>
 <script type="text/javascript">
-
 	function upd(){
 		location.href= "update.bt?num=${bt.num }&pageNumber=${pageInfo.pageNumber}";
 	}
@@ -57,7 +52,6 @@
 	function del(){
 		location.href= "delete.bt?num=${bt.num }&pageNumber=${pageInfo.pageNumber}";
 	} 
-
 	function getinsert(){
 		location.href = "insert.bt"; 
 	}//getinsert
@@ -108,7 +102,6 @@
 			//유효성 검사가 다 끝났으면 document.myform.submit(); 마치 submit 누른것처럼 동작해라. 실제로는 submit이 없지만.. button을 누르면 submit누른것처럼 action으로 갈 수 있음.
 			document.myform.submit();			
 	}//selectDelete
-
 	
 	/*(기존)
 	function subElse(elsesubck){
@@ -129,10 +122,8 @@
 	   
 	   function subAll(allsubck){ //전체 선택을 클릭하면 실행됨
 	      $("input[id=subchk]").removeAttr("checked");//전체 선택을 클릭하면 과목별 체크를 풀어라
-
 	   }
 	*/
-
 	
 	//(변경)
 	//기본적으로 전체 + 모든 과목 다 체크
@@ -153,7 +144,6 @@
 	       $("input[name=subjectall]").removeAttr("checked");//input타입의 name이 subjectall인 것의 특정 속성(체크한 것)을 제거해라
 	      }
 	    }
-
 </script>
 <center>
 <div id="body">
