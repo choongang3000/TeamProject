@@ -23,6 +23,7 @@
 	    <div class="card">
 	      <div class="card-body">
 	        <h5 class="card-title">내 정보 관리</h5>
+	        <br>
 	      <!--   <p class="card-text">내 정보 관리, 수정</p> -->
 	        <input class="btn btn-secondary" id="bt" type="button" value="내 정보 관리" onClick="location.href='tcInfo.mem?anum=${loginInfo.anum}'">
 	      </div>
@@ -32,7 +33,8 @@
 	    <div class="card">
 	      <div class="card-body">
 	      <!--   <h5 class="card-title">학생 질문 게시글 관리</h5> -->
-	        <p class="card-text">학생 질문 게시글 관리</p>
+	        <h5 class="card-text">학생 질문 게시글 관리</h5>
+	        <br>
 	        <a href="list.bst"  id="bt" class="btn btn-primary">질문 게시글 관리</a>
 	      </div>
 	    </div>
@@ -41,6 +43,7 @@
 	    <div class="card">
 	      <div class="card-body">
 	        <h5 class="card-title">내 강의 목록</h5>
+	        <br>
 	    <!--     <p class="card-text">강의 목록</p> -->
 	        <a href="tcCourseList.mem"  id="bt" class="btn btn-primary">내 강의 목록</a>
 	      </div>

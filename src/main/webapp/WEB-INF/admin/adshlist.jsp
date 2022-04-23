@@ -13,7 +13,7 @@
 
 <center>
 <!-- shlist.jsp <br> -->
-<br><h2>주문내역 조회</h2>   
+<br><h2><b>주문내역 조회</b></h2>   
 <table>
 <tr height="100">
 	<td colspan="6">
@@ -40,13 +40,13 @@
 </c:if>
 <c:set var="totalcount" value="${totalcount - ((pageInfo.pageNumber-1) * pageInfo.pageSize) }"/>
 <c:forEach var="list" items="${list }">
-<tr height="30">
+<tr height="50" style="vertical-align: middle">
 	<td>${totalcount }</td>
 	<td>${list.onum}</td>
 	<td>${list.aid }</td>
 	<td>${list.odate }</td>
 	<td><fmt:formatNumber value="${list.totprice }" pattern="#,###,###"/></td>
-	<td><a href="shlistdetail.ad?onum=${list.onum }">상세정보</a></td>
+	<td><input type="button" value="상세정보" class="btn btn-outline-primary" onClick="location.href='shlistdetail.ad?onum=${list.onum }'"></td>
 </tr>
 <c:set var="totalcount" value="${totalcount-1 }"/>
 </c:forEach>

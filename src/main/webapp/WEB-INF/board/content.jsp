@@ -75,8 +75,10 @@
 	<tr align="center" height="50" style="border-top: solid black 1px">
 		<td colspan="4">
 			<br>
+			<c:if test="${loginInfo.aname == bb.writer || loginInfo.type == 'admin' }">
 			<input type="submit" value="글수정" class="btn btn-info" onClick="location.href='update.bod?num=${bb.num}&pageNumber=${pageNumber}'">
 			<input type="button" value="글삭제" class="btn btn-secondary" onClick="location.href='delete.bod?num=${bb.num}&pageNumber=${pageNumber}'">
+			</c:if>
 			<c:if test="${sessionScope.loginInfo.type eq 'admin' }">
 				<input type="button" value="답변하기" class="btn btn-info" onClick="location.href='reply.bod?ref=${bb.ref }&re_step=${bb.re_step}&re_level=${bb.re_level}&pageNumber=${pageNumber}'">
 			</c:if>

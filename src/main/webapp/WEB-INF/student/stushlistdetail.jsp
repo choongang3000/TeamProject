@@ -31,6 +31,7 @@
 		<tr align="center" style="border-bottom: 1px solid lightgray">
 			<td>${number }</td>
 			<td style="padding-top:10px; padding-bottom:10px;">
+
 				<%-- <img src="${od.coimage }" width="50" height="50"> --%>
 				<img src="<%=request.getContextPath() %>/resources/images/${od.coimage }" width="50" height="50">
 				<br>

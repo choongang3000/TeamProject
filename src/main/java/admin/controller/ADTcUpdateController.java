@@ -58,7 +58,7 @@ public class ADTcUpdateController {
 
 		ModelAndView mav = new ModelAndView();
 		
-		String uploadPath = servletContext.getRealPath("/resources");
+		String uploadPath = servletContext.getRealPath("/resources/images");
 
 		if( !tbean.getT_image().equals("") ) {
 			MultipartFile multi = tbean.getUpload();

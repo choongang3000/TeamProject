@@ -59,7 +59,7 @@ address .copyright {
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<img class="mb-2" onClick="location.href='home.us'" src="<%=request.getContextPath() %>/resources/images/icon/ON강_로고2.png"></a>
+					<a href="home.us"><img class="mb-2" src="<%=request.getContextPath() %>/resources/images/icon/ON강_로고2.png"></a>
 				</div>
 				<div class="col-6">
 					<address>
@@ -71,7 +71,7 @@ address .copyright {
 				</div>
 				<div class="col">
 					<div class="help">
-						<img alt="on강 고객센터 홈페이지" src="<%=request.getContextPath() %>/resources/images/icon/고객센터.png" onclick="location.href='list.ba'">
+						<a href="list.ba"><img alt="on강 고객센터 홈페이지" src="<%=request.getContextPath() %>/resources/images/icon/고객센터.png"></a>
 					</div>
 				</div>
 			</div>

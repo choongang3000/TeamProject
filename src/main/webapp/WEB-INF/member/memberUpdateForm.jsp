@@ -91,6 +91,29 @@ function check(){
     		return false;
     	}
     	
+    	var phone1_regexp = /^[0-9]{3}$/;
+    	var phone2_regexp = /^[0-9]{4}$/;
+    	var phone3_regexp = /^[0-9]{4}$/;
+    	var phone1 = $("input[name=phone1]").val();
+    	var phone2 = $("input[name=phone2]").val();
+    	var phone3 = $("input[name=phone3]").val();
+    	
+    	if(phone1.search(phone1_regexp) == -1){
+    		alert("핸드폰 앞자리 3자리를 입력해 주세요");
+    		$("input[name=phone1]").select();
+    		return false;
+    	}
+    	if(phone2.search(phone2_regexp) == -1){
+    		alert("핸드폰 중간자리 4자리를 입력해 주세요");
+    		$("input[name=phone2]").select();
+    		return false;
+    	}
+    	if(phone3.search(phone3_regexp) == -1){
+    		alert("핸드폰 뒷자리 4자리를 입력해 주세요");
+    		$("input[name=phone3]").select();
+    		return false;
+    	}
+    	
     }
     
     
@@ -224,7 +247,7 @@ main {
 						<div style="height: 20px;"></div>
 						<div class="d-grid gap-2 col-6 mx-auto">
   							<button class="btn btn-primary" type="submit" onClick="return check()">수정하기</button>
-  							<button class="btn btn-outline-danger" type="button" onClick="location.href='delete.mem?anum=${loginInfo.anum}'">회원 탈퇴</button>
+  							<button class="btn btn-outline-danger" type="button" onClick="location.href='delete.mem'">회원 탈퇴</button>
 						</div>
 					</div>
 				</form:form>

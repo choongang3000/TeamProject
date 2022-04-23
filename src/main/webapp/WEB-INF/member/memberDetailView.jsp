@@ -72,7 +72,7 @@ main {
 						<div class="col-12">
 							<label for="aname" class="form-label">지역정보</label>
 							<div class="input-group has-validation">
-								<input type="text" class="form-control" value="${mbean.addr }" disabled="disabled">
+								<input type="text" class="form-control" value="${fn:split(mbean.addr,'|')[1] } ${fn:split(mbean.addr,'|')[2] } (우편번호:${fn:split(mbean.addr,'|')[0] })" disabled>
 							</div>
 						</div>
 

@@ -143,6 +143,12 @@
     	var rrn2_regexp = /^[0-9]{7}$/;
     	var rrn1 = $("input[name=rrn1]").val();
     	var rrn2 = $("input[name=rrn2]").val();
+    	var phone1_regexp = /^[0-9]{3}$/;
+    	var phone2_regexp = /^[0-9]{4}$/;
+    	var phone3_regexp = /^[0-9]{4}$/;
+    	var phone1 = $("input[name=phone1]").val();
+    	var phone2 = $("input[name=phone2]").val();
+    	var phone3 = $("input[name=phone3]").val();
     	
     	if(rrn1.search(rrn1_regexp) == -1){
     		alert("주민번호 앞자리 6자리를 입력해 주세요");
@@ -154,6 +160,22 @@
     		$("input[name=rrn2]").select();
     		return false;	
     	}
+    	if(phone1.search(phone1_regexp) == -1){
+    		alert("핸드폰 앞자리 3자리를 입력해 주세요");
+    		$("input[name=phone1]").select();
+    		return false;
+    	}
+    	if(phone2.search(phone2_regexp) == -1){
+    		alert("핸드폰 중간자리 4자리를 입력해 주세요");
+    		$("input[name=phone2]").select();
+    		return false;
+    	}
+    	if(phone3.search(phone3_regexp) == -1){
+    		alert("핸드폰 뒷자리 4자리를 입력해 주세요");
+    		$("input[name=phone3]").select();
+    		return false;
+    	}
+    	
     
     }
     
@@ -174,7 +196,7 @@
 <body class="bg-light">
 	<main>
 	<div class="py-5 text-center">
-      <h2>강사 계정 생성</h2>
+      <h2><b>강사 계정 생성</b></h2>
     </div>
     
     <div class="row g-5">
