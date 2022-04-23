@@ -13,7 +13,6 @@
     <br><br>
 	<h2><b>결제 상세내역 조회</b></h2>
 	<br>
-	<div>구매일자: 2022.03.31</div>
 	<br>
 	<table border="0" align="center" width=60%>
 		<tr>
@@ -50,12 +49,12 @@
 			<td colspan="4" align="center" bgcolor="#DCDCDC" style="border-top: 1px solid black;">결제정보</td>
 		</tr>
 		<tr style="border-bottom:1px dotted lightgray">
-			<td height="40" colspan="2" style=text-align:left;>총 결제 개수</td>
+			<td height="40" colspan="2" style=text-align:center;>총 결제 개수</td>
 			<td colspan="2" style=text-align:center;>총 결제 금액</td>
 		</tr>
 		<tr style="border-bottom:1px solid black">
-			<td height="40" colspan="2" style=text-align:left;>${fn:length(odArr) }개</td>
-			<td colspan="1" style=text-align:center;><fmt:formatNumber value="${totalprice }" pattern="##,###,###"/>원</td>
+			<td height="40" colspan="2" style=text-align:center;>${fn:length(odArr) }개</td>
+			<td colspan="2" style=text-align:center;><fmt:formatNumber value="${totalprice }" pattern="##,###,###"/>원</td>
 		</tr>
 	</table>
 	<br><br>

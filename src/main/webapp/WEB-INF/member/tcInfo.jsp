@@ -100,7 +100,7 @@
               <label for="phone" class="form-label" id="label">핸드폰 번호</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text">@</span> -->
-                <input type="text" name="phone1" class="form-control" value="${tbean.phone1 }" disabled>
+                <input type="text" name="phone1" class="form-control" value="0${tbean.phone1 }" disabled>
                 &nbsp;<b>-</b>&nbsp;
                 <input type="text" name="phone2" class="form-control" value="${tbean.phone2 }" disabled>
                 &nbsp;<b>-</b>&nbsp;

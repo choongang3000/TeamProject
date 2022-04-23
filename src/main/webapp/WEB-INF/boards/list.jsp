@@ -141,7 +141,7 @@
 	
 	<c:if test="${fn:length(list) == 0 }">
 	<tr>
-		<td colspan="7" align="center"><h3>강의가 존재하지 않습니다</h3></td>
+		<td colspan="7" align="center"><h3>후기를 찾을 수 없습니다.</h3></td>
 	<tr>
 	</c:if>
 	
