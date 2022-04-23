@@ -31,7 +31,8 @@
 		<tr align="center" style="border-bottom: 1px solid lightgray">
 			<td>${number }</td>
 			<td style="padding-top:10px; padding-bottom:10px;">
-				<img src="" width="50" height="50">
+				<%-- <img src="${od.coimage }" width="50" height="50"> --%>
+				<img src="<%=request.getContextPath() %>/resources/images/${od.coimage }" width="50" height="50">
 				<br>
 				<b>${od.coteacher }[${od.cosubject }]</b>&nbsp;${od.coname }
 			</td>
@@ -48,12 +49,12 @@
 			<td colspan="4" align="center" bgcolor="#DCDCDC" style="border-top: 1px solid black;">결제정보</td>
 		</tr>
 		<tr style="border-bottom:1px dotted lightgray">
-			<td height="25" colspan="2">총 결제 개수</td>
-			<td colspan="2">총 결제 금액</td>
+			<td height="40" colspan="2" style=text-align:left;>총 결제 개수</td>
+			<td colspan="2" style=text-align:center;>총 결제 금액</td>
 		</tr>
 		<tr style="border-bottom:1px solid black">
-			<td height="25" colspan="2">${fn:length(odArr) }개</td>
-			<td colspan="1"><fmt:formatNumber value="${totalprice }" pattern="##,###,###"/>원</td>
+			<td height="40" colspan="2" style=text-align:left;>${fn:length(odArr) }개</td>
+			<td colspan="1" style=text-align:center;><fmt:formatNumber value="${totalprice }" pattern="##,###,###"/>원</td>
 		</tr>
 	</table>
 	<br><br>
