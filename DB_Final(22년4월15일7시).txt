@@ -303,11 +303,11 @@ create table board_st(
   write_date date default sysdate
 ); 
 --check : Befor Reply(BR), After Reply(AR)
-insert into board_st values(bst_seq.nextval, 'kim', '수학', '아이유', '수능특강 수2 138pg 적분 질문', '질문 내용 입니다', null, 'AR', sysdate);
-insert into board_st values(bst_seq.nextval, 'kim', '수학', '아이유', '수능특강 수2 138pg 적분 질문1', '질문 내용 입니다1', null, 'BR', sysdate);
-insert into board_st values(bst_seq.nextval, 'kim', '수학', '아이유', '수능특강 수2 138pg 적분 질문2', '질문 내용 입니다2', null, 'BR', sysdate);
-insert into board_st values(bst_seq.nextval, 'kim', '수학', '아이유', '수능특강 수2 138pg 적분 질문3', '질문 내용 입니다3', null, 'BR', sysdate);
-insert into board_st values(bst_seq.nextval, 'kim', '수학', '아이유', '수능특강 수2 138pg 적분 질문4', '질문 내용 입니다4', null, 'BR', sysdate);
+insert into board_st values(bst_seq.nextval, 'student1', 'JAVA', '제시', '수능특강 수2 138pg 적분 질문', '질문 내용 입니다', null, 'AR', sysdate);
+insert into board_st values(bst_seq.nextval, 'student1', 'JAVA', '제시', '수능특강 수2 138pg 적분 질문1', '질문 내용 입니다1', null, 'BR', sysdate);
+insert into board_st values(bst_seq.nextval, 'student2', 'JAVA', '제시', '수능특강 수2 138pg 적분 질문2', '질문 내용 입니다2', null, 'BR', sysdate);
+insert into board_st values(bst_seq.nextval, 'student2', 'DB', '니콜라', '수능특강 수2 138pg 적분 질문3', '질문 내용 입니다3', null, 'BR', sysdate);
+insert into board_st values(bst_seq.nextval, 'student2', 'DB', '니콜라', '수능특강 수2 138pg 적분 질문4', '질문 내용 입니다4', null, 'BR', sysdate);
 
 -- 1:1 질문 게시판 답변(권준)
 drop sequence bstrep_seq;
@@ -327,7 +327,7 @@ create table boardreply_st(
   repdate date default sysdate
 ); 
 
-insert into boardreply_st values(bstrep_seq.nextval, 1, '아이유', '선생님 답변 내용 입니다', null, sysdate);
+insert into boardreply_st values(bstrep_seq.nextval, 1, '제시', '선생님 답변 내용 입니다', null, sysdate);
 
 commit;
 
