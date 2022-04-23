@@ -68,7 +68,7 @@
 	<div id="covideo"> <!-- 강의영상출력 -->
 				<%-- poster="<%=request.getContextPath()%>/resources/images/온강 로고.png" --%>
 		<video
-				src="<%=request.getContextPath() %>/resources/images/강의동영상1.mp4"
+				src="<%=request.getContextPath() %>/resources/images/${course.covideo}"
 				poster="<%=request.getContextPath()%>/resources/images/로고짤.gif"
 				width="500"
 				controls>

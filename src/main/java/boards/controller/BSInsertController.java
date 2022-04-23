@@ -2,12 +2,14 @@ package boards.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import javax.servlet.ServletContext;
@@ -50,22 +52,36 @@ public class BSInsertController {
 
 	
 	@RequestMapping(value=command, method=RequestMethod.GET)
-	public String doAction(HttpServletRequest request, HttpSession session) {
+	public String doAction(HttpServletRequest request, 
+							HttpSession session,
+							HttpServletResponse response) throws IOException {
+		
+		response.setContentType("text/html;charset=UTF-8");
+		
 		MemberBean loginInfo = (MemberBean)session.getAttribute("loginInfo");
 		
 		List<Integer> oddConumArr = bsdao.getOddConums(loginInfo.getId());
 		
-		ArrayList<String> conameArr = new ArrayList<String>();
-		ArrayList<String> teacherArr = new ArrayList<String>();
-		for(Integer conum : oddConumArr) {
-			conameArr.add(bsdao.getConame(conum));
-			teacherArr.add(bsdao.getCoteacher(conum));
+		if(oddConumArr.size() == 0) {
+			PrintWriter out = response.getWriter();
+			out.print("<script>alert('결제한 강의가 없습니다'); history.back(-1);</script>");
+			out.close();
+			
+			return "redirect:/list.bs";
 		}
-		
-		request.setAttribute("conameArr", conameArr);
-		request.setAttribute("teacherArr", teacherArr);
-		
-		return getPage;
+		else {
+			ArrayList<String> conameArr = new ArrayList<String>();
+			ArrayList<String> teacherArr = new ArrayList<String>();
+			for(Integer conum : oddConumArr) {
+				conameArr.add(bsdao.getConame(conum));
+				teacherArr.add(bsdao.getCoteacher(conum));
+			}
+			
+			request.setAttribute("conameArr", conameArr);
+			request.setAttribute("teacherArr", teacherArr);
+			
+			return getPage;
+		}
 	}
 	
 	@RequestMapping(value=command, method=RequestMethod.POST)

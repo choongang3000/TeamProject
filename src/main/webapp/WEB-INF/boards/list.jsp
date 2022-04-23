@@ -87,6 +87,9 @@
 	.fa-star{
 		font-size:65px;
 	}
+	a{
+		text-decoration: none;
+	}
 
 </style> 
 <%-- 
@@ -149,7 +152,7 @@
 	<c:set var="contentNum" value="${(totalCount - ((pageInfo.pageNumber-1)*pageInfo.pageSize)) }"/> <!-- 글번호 계산 -->
 	
 	<c:forEach var="list" items="${list }">
-	<tr height="40">
+	<tr height="50" style="vertical-align: middle;">
 		<td align="center">${contentNum}</td> <!-- 글번호 -->
 		
 		<c:set var="contentNum" value="${contentNum -1 }"/> <!-- 1씩 감소시켜서 조회 -->

@@ -63,7 +63,7 @@
  	<select id="GetCOSListCount" resultType="int">
 		select count(*) from courses
 		<if test="whatColumn == 'coname'">
-			where coname UPPER(#{keyword})
+			where coname like UPPER(#{keyword})
 		</if>
 		<if test="whatColumn == 'coteacher'">
  			where coteacher like UPPER(#{keyword})

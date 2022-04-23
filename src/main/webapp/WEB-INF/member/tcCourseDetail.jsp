@@ -38,9 +38,9 @@
 	<tr>
 		<th width="150" height="300" style="background: lightgray; text-align: center; vertical-align: middle;">강의영상</th>
 		<td colspan="3">
-			<br>
+			<br><!-- 강의동영상1.mp4 -->
 			<video
-				src="<%=request.getContextPath() %>/resources/images/강의동영상1.mp4"
+				src="<%=request.getContextPath() %>/resources/images/${course.covideo}"
 				poster="<%=request.getContextPath()%>/resources/images/로고짤.gif"
 				width="500"
 				controls autoplay>

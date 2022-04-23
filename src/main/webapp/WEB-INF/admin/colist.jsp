@@ -41,7 +41,7 @@
    <center>
    <table border="0" align="center" class="table table-striped" id="table">
 	    <tr>
-			<td colspan="9" align="right">
+			<td colspan="7" align="right">
 				<input type="button" value="강의추가" onClick="insert()" class="btn btn-secondary btn-sm">
 			</td>
 		<tr>
@@ -50,8 +50,8 @@
     		<th>강의명</th>
     		<th>선생님</th>
     		<th>과목</th>
-    		<th>이미지</th>
-    		<th>영상</th>
+    		<!-- <th>이미지</th>
+    		<th>영상</th> -->
     		<th>소개</th>
     		<th>가격</th>
     		<th>날짜</th>
@@ -65,18 +65,16 @@
     		</td>
     		<td>${list.coteacher }</td>
     		<td>${list.cosubject }</td>
-    		<td>
-    			<%-- ${list.coimage } --%>
+    		<%-- <td>
 	    		<c:set var="lenimg" value="${fn:length(list.coimage) }"/>
 	            <c:set var="img" value="${fn:substring(list.coimage,37,lenimg)}"/>
 	            ${fn:substring(list.coimage,37,lenimg)}
     		</td>
     		<td>
-    			<%-- ${list.covideo } --%>
     			<c:set var="lenvid" value="${fn:length(list.covideo) }"/>
             	<c:set var="vid" value="${fn:substring(list.covideo,37,lenvid)}"/>
             	<c:out value="${fn:substring(list.covideo,37,lenvid)}"/>
-    		</td>
+    		</td> --%>
     		<td>${list.cocontent }</td>
     		<td><fmt:formatNumber value="${list.coprice }" pattern="#,###,###"/></td>
     		<td>

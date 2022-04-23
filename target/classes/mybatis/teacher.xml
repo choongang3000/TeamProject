@@ -7,7 +7,7 @@
  		select count(*)
 		from accounts,teachers where id=tid
  		<if test="whatColumn == 'subject' and ascdesc == null">
- 			and subject like #{keyword}
+ 			and UPPER(subject) like UPPER(#{keyword})
  		</if>
  		<if test="whatColumn == 'tname' and ascdesc == null">
  			and tname like #{keyword}
@@ -23,7 +23,7 @@
  		select anum,tnum,aname,tname,id,tid,pw,rrn1,rrn2,email,phone1,phone2,phone3,addr,joindate,t_image,subject,visa,tterm,twageratio,introduction
 		from accounts,teachers where id=tid
 		<if test="whatColumn == 'subject' and ascdesc == null">
- 			and subject like #{keyword}
+ 			and UPPER(subject) like UPPER(#{keyword})
  		</if>
  		<if test="whatColumn == 'tname' and ascdesc == null">
  			and tname like #{keyword}
