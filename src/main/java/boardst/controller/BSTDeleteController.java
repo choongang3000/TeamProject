@@ -40,14 +40,15 @@ public class BSTDeleteController {
 		
 		BSTBean bstbean =bstdao.getBoardByNum(num);
 		
-		if(!bstbean.getImage().equals("")) {
-			File dir = new File(uploadPath,bstbean.getImage());
-			
-			if(dir.exists()) {
-				dir.delete();
+		if(bstbean.getImage() != null) {
+			if(!bstbean.getImage().equals("")) {
+				File dir = new File(uploadPath,bstbean.getImage());
+				
+				if(dir.exists()) {
+					dir.delete();
+				}
 			}
 		}
-
 		int cnt = bstdao.deleteBoard(num);
 		
 		if(cnt>0) {
