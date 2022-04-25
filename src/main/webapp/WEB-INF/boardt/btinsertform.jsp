@@ -176,9 +176,9 @@ insert.bt 요청 => BTInsertController
 					예시 화면/미리 보기
 				</td>
 				<td width="60%" align="center">
-					<div id="image_container1"><img id="img1" src="<%=request.getContextPath() %>/resources/images/${bt.quizimg}" width="200px" height="200px"></div>
-					<div id="image_container2"><img id="img2" src="<%=request.getContextPath() %>/resources/images/${bt.examfile}" width="300px" height="200px"></div>
-					<div id="image_container3"><img id="img3" src="<%=request.getContextPath() %>/resources/images/${bt.movingimg}" width="200px" height="200px"></div>
+					<div id="image_container1"><img id="img1" src="<%=request.getContextPath() %>/resources/images/1퀴즈.png" width="200px" height="200px"></div>
+					<div id="image_container2"><img id="img2" src="<%=request.getContextPath() %>/resources/images/CSS1.png" width="300px" height="200px"></div>
+					<div id="image_container3"><img id="img3" src="<%=request.getContextPath() %>/resources/images/1답.png" width="200px" height="200px"></div>
 				</td>
 			</tr>
 			<tr height="70">
