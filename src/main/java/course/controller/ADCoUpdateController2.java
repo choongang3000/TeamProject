@@ -79,7 +79,7 @@ public class ADCoUpdateController2 {
 		System.out.println("update 넘어옴");
 		
 		//이미지, 영상
-		String uploadPath = servletContext.getRealPath("/resources");
+		String uploadPath = servletContext.getRealPath("/resources/images");
 		
 		//유효성검사 에러
 		if(result.hasErrors()) {

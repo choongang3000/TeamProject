@@ -64,8 +64,9 @@ address .copyright {
 				<div class="col-6">
 					<address>
 						<strong>10393</strong> "서울 마포구 신촌로 176 온강빌딩" <span>사업자등록번호 : 110-95-12345</span><br>
-						<span> "통신판매번호 : 제 1234-서울마포-00001호"<br>"학원설립/운영 등록번호 : 제123456789호 온강"
-						</span><br> 
+						<span> "통신판매번호 : 제 1234-서울마포-00001호"<br>"학원설립/운영 등록번호 : 제123456789호 온강"<br>
+						<a href="bottom.us">개인정보 취급 방침</a>&nbsp; 
+						</span><br>
 						<strong class="copyright">Copyright ⓒ 2022 by ONGANG INSTITUTE, All Rights Reserved.</strong>
 					</address>
 				</div>

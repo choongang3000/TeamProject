@@ -338,7 +338,7 @@ drop table boards;
 create table boards( 
 	num number not null primary key,
 	writer varchar2(20) not null,
-	email varchar2(20),
+	email varchar2(50),
 	title varchar2(100) not null,
 	passwd varchar2(20) not null,
 	reg_date date not null,

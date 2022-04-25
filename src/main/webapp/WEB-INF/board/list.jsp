@@ -61,7 +61,7 @@
 	<tr>
 		<td align="center">${contentNum}</td>
 		<c:set var="contentNum" value="${contentNum -1 }"/>
-		<td>
+		<td align="left">
 			<c:if test="${bd.re_level > 0 }">
 			<c:set var="wid" value="${bd.re_level * 20 }"/>
 				<img src="<%=request.getContextPath() %>/resources/images/level.gif" width="${wid }" height="15">
