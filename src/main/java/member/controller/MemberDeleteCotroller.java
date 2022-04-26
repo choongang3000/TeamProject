@@ -67,9 +67,16 @@ public class MemberDeleteCotroller {
 
 		}
 		else {
-	
 			mdao.deleteMember(mb);
 			session.invalidate();
+			try {
+				PrintWriter out = response.getWriter();
+				out.print("<script>alert('È¸¿ø Å»Åð µÇ¾ú½À´Ï´Ù.'); location.href='home.us';</script>");
+				out.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	
 			return gotoPage;
 		}

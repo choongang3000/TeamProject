@@ -1,5 +1,9 @@
 package member.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,14 +36,26 @@ public class MemberRegisterController {
 
 	
 	@RequestMapping(value=command,method=RequestMethod.POST)
-	public ModelAndView doAction(@ModelAttribute("membean") @Valid MemberBean membean,BindingResult result) {
+	public ModelAndView doAction(@ModelAttribute("membean") @Valid MemberBean membean,
+									BindingResult result,
+									HttpServletResponse response) {
 								//POST諛⑹떇
 		
+		response.setContentType("text/html;charset=UTF-8");
 		membean.setAddr(membean.getAddr_num()+"|"+membean.getAddr_first()+"|"+membean.getAddr_last());
 		
 		ModelAndView mav = new ModelAndView();
 		
 		int cnt = memberDao.insertMember(membean);
+		
+		try {
+			PrintWriter out = response.getWriter();
+			out.print("<script>alert('회원 가입 되었습니다'); location.href='loginForm.mem';</script>");
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		mav.setViewName(gotoPage);
 		return mav;
